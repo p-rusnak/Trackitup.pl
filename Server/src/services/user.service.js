@@ -1,94 +1,54 @@
 const httpStatus = require('http-status');
-const { User } = require('../models');
+const bcrypt = require('bcryptjs');
 const ApiError = require('../utils/ApiError');
-const pool = require('../db');
+const prisma = require('../db');
 
-/**
- * Create a user
- * @param {Object} userBody
- * @returns {Promise<User>}
- */
 const createUser = async (userBody) => {
-  if (await User.isEmailTaken(userBody.email)) {
+  const emailTaken = await prisma.user.findFirst({ where: { email: userBody.email } });
+  if (emailTaken) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
-  
-  if (await User.isUsernameTaken(userBody.username)) {
+  const usernameTaken = await prisma.user.findFirst({ where: { username: userBody.username } });
+  if (usernameTaken) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Username already taken');
   }
-  return User.createUser(userBody);
+  const hashedPassword = await bcrypt.hash(userBody.password, 8);
+  const user = await prisma.user.create({ data: { ...userBody, password: hashedPassword } });
+  return user;
 };
 
-/**
- * Query for users
- * @param {Object} filter - Mongo filter
- * @param {Object} options - Query options
- * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
- * @param {number} [options.limit] - Maximum number of results per page (default = 10)
- * @param {number} [options.page] - Current page (default = 1)
- * @returns {Promise<QueryResult>}
- */
-const queryUsers = async (filter, options) => {
-  // simple implementation without pagination
-  const { rows } = await pool.query('SELECT * FROM users');
-  return { results: rows };
+const queryUsers = async () => {
+  const results = await prisma.user.findMany();
+  return { results };
 };
 
-/**
- * Get user by id
- * @param {ObjectId} id
- * @returns {Promise<User>}
- */
-const getUserById = async (id) => {
-  return User.findById(id);
-};
+const getUserById = async (id) => prisma.user.findUnique({ where: { id } });
+const getUserByEmail = async (email) => prisma.user.findUnique({ where: { email } });
+const getUserByUsername = async (username) => prisma.user.findUnique({ where: { username } });
 
-/**
- * Get user by email
- * @param {string} email
- * @returns {Promise<User>}
- */
-const getUserByEmail = async (email) => {
-  return User.findOneByEmail(email);
-};
-
-/**
- * Get user by username
- * @param {string} username
- * @returns {Promise<User>}
- */
-const getUserByUsername  = async (username) => {
-  return User.findOneByUsername(username);
-};
-
-/**
- * Update user by id
- * @param {ObjectId} userId
- * @param {Object} updateBody
- * @returns {Promise<User>}
- */
 const updateUserById = async (userId, updateBody) => {
   const user = await getUserById(userId);
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  if (updateBody.email) {
+    const existing = await prisma.user.findFirst({ where: { email: updateBody.email, NOT: { id: userId } } });
+    if (existing) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+    }
   }
-  return User.updateById(userId, updateBody);
+  if (updateBody.password) {
+    updateBody.password = await bcrypt.hash(updateBody.password, 8);
+  }
+  return prisma.user.update({ where: { id: userId }, data: updateBody });
 };
 
-/**
- * Delete user by id
- * @param {ObjectId} userId
- * @returns {Promise<User>}
- */
 const deleteUserById = async (userId) => {
   const user = await getUserById(userId);
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  return User.removeById(userId);
+  return prisma.user.delete({ where: { id: userId } });
 };
 
 module.exports = {
