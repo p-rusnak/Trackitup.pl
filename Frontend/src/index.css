@@ -1,0 +1,203 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.item_single,
+.single_mode {
+  background: url('Assets/Diffs/mini_stepball_single.png') no-repeat transparent;
+  background-size: 100%;
+}
+
+.item_double,
+.double_mode {
+  background: url('Assets/Diffs/mini_stepball_double.png') no-repeat transparent;
+  background-size: 100%;
+}
+
+.item_sinper,
+.sinper_mode {
+  background: url('Assets/Diffs/mini_stepball_singlep.png') no-repeat transparent;
+  background-size: 100%;
+}
+
+.item_douper,
+.douper_mode {
+  background: url('Assets/Diffs/mini_stepball_doublep.png') no-repeat transparent;
+  background-size: 100%;
+}
+
+.item_coop,
+.coop_mode {
+  background: url('Assets/Diffs/mini_stepball_coop.png') no-repeat transparent;
+  background-size: 100%;
+}
+
+.lv_01 {
+  background-position: 0 0 !important;
+}
+
+.lv_02 {
+  background-position: 0 3.45% !important;
+}
+
+.lv_03 {
+  background-position: 0 6.9% !important;
+}
+
+.lv_04 {
+  background-position: 0 10.34% !important;
+}
+
+.lv_05 {
+  background-position: 0 13.79% !important;
+}
+
+.lv_06 {
+  background-position: 0 17.24% !important;
+}
+
+.lv_07 {
+  background-position: 0 20.69% !important;
+}
+
+.lv_08 {
+  background-position: 0 24.14% !important;
+}
+
+.lv_09 {
+  background-position: 0 27.59% !important;
+}
+
+.lv_10 {
+  background-position: 0 31.03% !important;
+}
+
+.lv_11 {
+  background-position: 0 34.48% !important;
+}
+
+.lv_12 {
+  background-position: 0 37.93% !important;
+}
+
+.lv_13 {
+  background-position: 0 41.38% !important;
+}
+
+.lv_14 {
+  background-position: 0 44.83% !important;
+}
+
+.lv_15 {
+  background-position: 0 48.28% !important;
+}
+
+.lv_16 {
+  background-position: 0 51.72% !important;
+}
+
+.lv_17 {
+  background-position: 0 55.17% !important;
+}
+
+.lv_18 {
+  background-position: 0 58.62% !important;
+}
+
+.lv_19 {
+  background-position: 0 62.07% !important;
+}
+
+.lv_20 {
+  background-position: 0 65.52% !important;
+}
+
+.lv_21 {
+  background-position: 0 68.97% !important;
+}
+
+.lv_22 {
+  background-position: 0 72.41% !important;
+}
+
+.lv_23 {
+  background-position: 0 75.86% !important;
+}
+
+.lv_24 {
+  background-position: 0 79.31% !important;
+}
+
+.lv_25 {
+  background-position: 0 82.76% !important;
+}
+
+.lv_26 {
+  background-position: 0 86.21% !important;
+}
+
+.lv_27 {
+  background-position: 0 89.66% !important;
+}
+
+.lv_28 {
+  background-position: 0 93.1% !important;
+}
+
+.lv_29 {
+  background-position: 0 96.55% !important;
+}
+
+.lv_30 {
+  background-position: 0 100% !important;
+}
+
+
+.lv_x1 {
+  background-position: 0 0 !important;
+}
+
+.lv_x2 {
+  background-position: 0 10% !important;
+}
+
+.lv_x3 {
+  background-position: 0 20% !important;
+}
+
+.lv_x4 {
+  background-position: 0 30% !important;
+}
+
+.lv_x5 {
+  background-position: 0 40% !important;
+}
+
+.lv_x6 {
+  background-position: 0 50% !important;
+}
+
+.lv_x7 {
+  background-position: 0 60% !important;
+}
+
+.lv_x8 {
+  background-position: 0 80% !important;
+}
+
+.lv_x9 {
+  background-position: 0 90% !important;
+}
+
+.lv_50 {
+  background-position: 0 100% !important;
+}
