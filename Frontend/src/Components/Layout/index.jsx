@@ -33,7 +33,7 @@ const themeDark = createTheme({
   },
 });
 const Layout = () => {
-  const [mode, setMode] = React.useState("dark");
+  const [mode, setMode] = React.useState("light");
   const theme = useTheme();
   const colorMode = React.useMemo(
     () => ({
