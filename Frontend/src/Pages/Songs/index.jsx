@@ -86,7 +86,7 @@ const Songs = ({mode}) => {
         'item_single': {},
         'item_double': {},
     })
-    const [sort, setSort] = useState('popularity')
+    const [sort, setSort] = useState('tier')
     const [hidden, setHidden] = useState({})
     const [tags, setTags] = useState({})
     const [hideScore, setHideScores] = useState('')
@@ -231,6 +231,21 @@ const Songs = ({mode}) => {
                     value={search?.title || ''}
                     label="Search by name"
                 />
+                <FormControl>
+                    <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
+                    <RadioGroup
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        defaultValue="tier"
+                        value={sort}
+                        onChange={e => setSort(e.target.value)}
+                        name="radio-buttons-group"
+                    >
+                        <FormControlLabel value="popularity" control={<Radio />} label="Song popularity" />
+                        <FormControlLabel value="grade" control={<Radio />} label="Grade" />
+                        <FormControlLabel value="tier" control={<Radio />} label="Tier list diff (not everything is included)" />
+                        <FormControlLabel value="fav" control={<Radio />} label="Favourites" />
+                    </RadioGroup>
+                </FormControl>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -278,23 +293,6 @@ const Songs = ({mode}) => {
                                 <FormControlLabel control={<Checkbox onChange={(_, b) => {setHidden({ ...hidden, notPlayed: b }) }} value={hidden.notPlayed} />} label="Not Played" />
                                 <FormControlLabel control={<Checkbox onChange={(_, b) => {setHidden({ ...hidden, score: b })}} value={hidden.score} />} label="Score better than" />
                                 <GradeSelect value={hideScore} onChange={(e) => setHideScores(e.target.value)} />
-                        </div>
-                        <div>
-                                <FormControl>
-                                    <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
-                                    <RadioGroup
-                                        aria-labelledby="demo-radio-buttons-group-label"
-                                        defaultValue="popularity"
-                                        value={sort}
-                                        onChange={e => setSort(e.target.value)}
-                                        name="radio-buttons-group"
-                                    >
-                                        <FormControlLabel value="popularity" control={<Radio />} label="Song popularity" />
-                                        <FormControlLabel value="grade" control={<Radio />} label="Grade" />
-                                        <FormControlLabel value="tier" control={<Radio />} label="Tier list diff (not everything is included)" />
-                                        <FormControlLabel value="fav" control={<Radio />} label="Favourites" />
-                                    </RadioGroup>
-                                </FormControl>
                         </div>
                         </Filters>
                     </AccordionDetailsStyled>
