@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { User } = require('../models');
 const ApiError = require('../utils/ApiError');
+const pool = require('../db');
 
 /**
  * Create a user
@@ -15,7 +16,7 @@ const createUser = async (userBody) => {
   if (await User.isUsernameTaken(userBody.username)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Username already taken');
   }
-  return User.create(userBody);
+  return User.createUser(userBody);
 };
 
 /**
@@ -28,8 +29,9 @@ const createUser = async (userBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryUsers = async (filter, options) => {
-  const users = await User.paginate(filter, options);
-  return users;
+  // simple implementation without pagination
+  const { rows } = await pool.query('SELECT * FROM users');
+  return { results: rows };
 };
 
 /**
@@ -47,7 +49,7 @@ const getUserById = async (id) => {
  * @returns {Promise<User>}
  */
 const getUserByEmail = async (email) => {
-  return User.findOne({ email });
+  return User.findOneByEmail(email);
 };
 
 /**
@@ -56,7 +58,7 @@ const getUserByEmail = async (email) => {
  * @returns {Promise<User>}
  */
 const getUserByUsername  = async (username) => {
-  return User.findOne({ username });
+  return User.findOneByUsername(username);
 };
 
 /**
@@ -73,9 +75,7 @@ const updateUserById = async (userId, updateBody) => {
   if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
-  Object.assign(user, updateBody);
-  await user.save();
-  return user;
+  return User.updateById(userId, updateBody);
 };
 
 /**
@@ -88,8 +88,7 @@ const deleteUserById = async (userId) => {
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  await user.remove();
-  return user;
+  return User.removeById(userId);
 };
 
 module.exports = {

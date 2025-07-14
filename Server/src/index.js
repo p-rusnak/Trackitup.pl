@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const { Pool } = require('pg');
 const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
@@ -6,12 +6,15 @@ const https = require('https');
 const fs = require('fs');
 const port = 3000;
 
+const pool = new Pool({
+  connectionString: config.postgres.url,
+});
+
 
 
 let server;
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
-  logger.info('Connected to MongoDB');
-  console.log(config.env)
+pool.connect().then(() => {
+  logger.info('Connected to PostgreSQL');
   if (config.env === 'development') {
     server = app.listen(config.port, () => {
       logger.info(`Listening to port ${config.port}`);
@@ -29,15 +32,20 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
       logger.info(`Listening to port ${config.port}`);
     });
   }
+}).catch((err) => {
+  logger.error(err);
+  process.exit(1);
 });
 
 const exitHandler = () => {
   if (server) {
     server.close(() => {
       logger.info('Server closed');
+      pool.end();
       process.exit(1);
     });
   } else {
+    pool.end();
     process.exit(1);
   }
 };
