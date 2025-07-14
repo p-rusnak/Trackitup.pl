@@ -240,7 +240,7 @@ const Songs = ({ mode }) => {
         />
         <FormControl>
           <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
-          <RadioGroup
+          <SortOptions
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="tier"
             value={sort}
@@ -263,7 +263,7 @@ const Songs = ({ mode }) => {
               control={<Radio />}
               label="Favourites"
             />
-          </RadioGroup>
+          </SortOptions>
         </FormControl>
         <Accordion>
           <AccordionSummary
@@ -548,6 +548,14 @@ const Card = styled.div`
 const DiffSearch = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const SortOptions = styled(RadioGroup)`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 `;
 
 const AccordionDetailsStyled = styled(AccordionDetails)`
