@@ -1,13 +1,15 @@
-import { Button, Select } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Button, TextField } from '@mui/material'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import GradeSelect from '../../Components/GradeSelect'
 import packs from '../../consts/packs'
 import Tesseract from 'tesseract.js'
 
-const SongDetails = ({chart, changeGrade}) => {
+const SongDetails = ({chart, changeGrade, updateDiff}) => {
     const [grade, setGrade] = useState(chart.grade || '')
     const [goal, setGoal] = useState(chart.goal || '')
+    const [adiff, setAdiff] = useState(chart.adiff || '')
+    const [tags, setTags] = useState(chart.tag ? chart.tag.join(', ') : '')
     const [selectedImage, setSelectedImage] = useState(null);
     const [recognizedText, setRecognizedText] = useState('');
     const handleImageUpload = (event) => {
@@ -64,6 +66,13 @@ const SongDetails = ({chart, changeGrade}) => {
             onChange={(e) => setGoal(e.target.value)}
         /> */}
         <div />
+        <div>
+            <TextField label="Adiff" value={adiff} onChange={e => setAdiff(e.target.value)} />
+            <TextField label="Tags (comma separated)" value={tags} onChange={e => setTags(e.target.value)} />
+            <Button onClick={() => {
+                updateDiff(chart.id, chart.mode, chart.diff, adiff, tags)
+            }}>Save</Button>
+        </div>
         <div>
             test
             <input type="file" accept="image/*" onChange={handleImageUpload} />
