@@ -157,7 +157,30 @@ const Songs = ({mode}) => {
             }
         } else {
             details[mode][openChart.diff] = {[openChart.id]: {grade: value} }
-        } 
+        }
+    }
+
+    const updateDiff = (songId, mode, diff, adiffValue, tagsValue) => {
+        const song = songs[songId]
+        if (!song) return
+        const obj = song.diffs.find(d => typeof d === 'object' && d.type === mode && d.diff === diff)
+        if (obj) {
+            obj.adiff = adiffValue || undefined
+            const arr = tagsValue ? tagsValue.split(',').map(t => t.trim()).filter(Boolean) : []
+            obj.tag = arr.length ? arr : undefined
+        }
+        setOpenChart({ ...openChart, adiff: obj.adiff, tag: obj.tag })
+        loadData(songs)
+    }
+
+    const downloadSongs = () => {
+        const json = JSON.stringify(songs, null, 2)
+        const blob = new Blob([json], { type: 'application/json' })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'songs_modified.json'
+        a.click()
     }
 
     const shouldDisplayDiff = (diff) => {
@@ -192,16 +215,18 @@ const Songs = ({mode}) => {
                 aria-describedby="modal-modal-description"
             >
                 <StyledBox>
-                    <SongDetails 
+                    <SongDetails
                         chart={openChart}
                         changeGrade={changeGrade}
+                        updateDiff={updateDiff}
                     />
                     
                 </StyledBox>
             </Modal>
 
             <div>
-                <StyledTextField 
+                <Button onClick={downloadSongs}>Download JSON</Button>
+                <StyledTextField
                     onChange={(e) => setSearch(e.target.value ? { ...search, title: e.target.value} : undefined)}
                     value={search?.title || ''}
                     label="Search by name"
