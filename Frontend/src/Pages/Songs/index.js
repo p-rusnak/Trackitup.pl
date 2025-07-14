@@ -173,7 +173,7 @@ const Songs = ({ mode }) => {
 
   const changeGrade = (value) => {
     apiClient.postScores(mode, {
-      songId: openChart.id,
+      song_id: openChart.id,
       diff: openChart.diff,
       grade: value,
     });

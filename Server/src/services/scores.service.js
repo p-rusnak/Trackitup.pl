@@ -18,6 +18,7 @@ const getScores = async (filter) => {
 };
 
 const createScore = async (scoreBody, mode, user) => {
+  console.log('Creating score', scoreBody, mode, user);
   return prisma.score.create({ data: { ...scoreBody, userId: user.id, mode } });
 };
 
