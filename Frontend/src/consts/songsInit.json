@@ -32,10 +32,7 @@
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.3",
-        "tag": [
-          "gimmick",
-          "jack/jump"
-        ]
+        "tag": ["gimmick", "jack/jump"]
       },
       {
         "type": "item_single",
@@ -224,9 +221,7 @@
         "diff": "lv_18",
         "stepmaker": "CONRAD",
         "adiff": "18",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -274,21 +269,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_05",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_08",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_11",
         "stepmaker": "SUNNY"
       },
@@ -300,22 +280,30 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "SUNNY",
-        "adiff": "18.7",
-        "tag": [
-          "gimmick"
-        ]
+        "diff": "lv_08",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_single",
-        "diff": "lv_22",
+        "diff": "lv_05",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_18",
         "stepmaker": "SUNNY",
-        "adiff": "22.9",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "adiff": "18.7",
+        "tag": ["gimmick"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_double",
@@ -323,10 +311,11 @@
         "stepmaker": "SUNNY"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
+        "type": "item_single",
+        "diff": "lv_22",
         "stepmaker": "SUNNY",
-        "adiff": "14.0"
+        "adiff": "22.9",
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -354,7 +343,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_10",
         "stepmaker": "FEFEMZ"
       },
       {
@@ -364,7 +353,7 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_10",
+        "diff": "lv_04",
         "stepmaker": "FEFEMZ"
       },
       {
@@ -374,21 +363,6 @@
         "adiff": "16.9"
       },
       {
-        "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "FEFEMZ",
-        "adiff": "18.5"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_21",
-        "stepmaker": "FEFEMZ",
-        "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
-      },
-      {
         "type": "item_double",
         "diff": "lv_07",
         "stepmaker": "FEFEMZ"
@@ -396,8 +370,12 @@
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "FEFEMZ",
-        "adiff": "13.5"
+        "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "AEVILUX"
       },
       {
         "type": "item_double",
@@ -405,14 +383,22 @@
         "stepmaker": "FEFEMZ"
       },
       {
+        "type": "item_single",
+        "diff": "lv_18",
+        "stepmaker": "FEFEMZ",
+        "adiff": "18.5"
+      },
+      {
         "type": "item_double",
         "diff": "lv_22",
         "stepmaker": "FEFEMZ"
       },
       {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "AEVILUX"
+        "type": "item_single",
+        "diff": "lv_21",
+        "stepmaker": "FEFEMZ",
+        "adiff": "21.5",
+        "tag": ["twist"]
       }
     ]
   },
@@ -443,9 +429,7 @@
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -483,9 +467,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -518,13 +500,8 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_01",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "EXC"
+        "diff": "lv_08",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_single",
@@ -533,8 +510,15 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_08",
-        "stepmaker": "SUNNY"
+        "diff": "lv_17",
+        "stepmaker": "EXC",
+        "adiff": "?",
+        "tag": ["gimmick"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_single",
@@ -543,18 +527,19 @@
         "adiff": "?"
       },
       {
-        "type": "item_single",
-        "diff": "lv_17",
-        "stepmaker": "EXC",
-        "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "type": "item_double",
+        "diff": "lv_19",
+        "stepmaker": "SUNNY"
       },
       {
-        "type": "item_douper",
-        "diff": "lv_04",
-        "stepmaker": "Z_AL"
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_01",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
@@ -562,15 +547,9 @@
         "stepmaker": "EXC"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "EXC",
-        "adiff": "14.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "SUNNY"
+        "type": "item_douper",
+        "diff": "lv_04",
+        "stepmaker": "Z_AL"
       }
     ]
   },
@@ -601,10 +580,7 @@
         "diff": "lv_19",
         "stepmaker": "OSING",
         "adiff": "19.3",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_single",
@@ -627,9 +603,7 @@
         "diff": "lv_16",
         "stepmaker": "OSING",
         "adiff": "16.7",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -680,30 +654,21 @@
         "diff": "lv_15",
         "stepmaker": "",
         "adiff": "15.9",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "",
         "adiff": "17.9",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "",
         "adiff": "20.9",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       }
     ]
   },
@@ -745,9 +710,7 @@
         "diff": "lv_17",
         "stepmaker": "OSING",
         "adiff": "17.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -829,9 +792,7 @@
         "diff": "lv_17",
         "stepmaker": "FEFEMZ",
         "adiff": "17.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_coop",
@@ -935,16 +896,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_01",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_07",
         "stepmaker": "EXC"
       },
@@ -960,29 +911,26 @@
         "adiff": "17.3"
       },
       {
-        "type": "item_single",
-        "diff": "lv_21",
-        "stepmaker": "EXC",
-        "adiff": "21",
-        "tag": [
-          "bracket"
-        ]
-      },
-      {
-        "type": "item_douper",
-        "diff": "lv_03",
-        "stepmaker": "CATACLYXM"
+        "type": "item_double",
+        "diff": "lv_17",
+        "stepmaker": "OSING"
       },
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "EXC",
-        "adiff": "14.5"
+        "stepmaker": "EXC"
       },
       {
-        "type": "item_double",
-        "diff": "lv_17",
-        "stepmaker": "OSING"
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_21",
+        "stepmaker": "EXC",
+        "adiff": "21",
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -990,9 +938,19 @@
         "stepmaker": "OSING"
       },
       {
+        "type": "item_single",
+        "diff": "lv_01",
+        "stepmaker": "EXC"
+      },
+      {
         "type": "item_coop",
         "diff": "lv_50",
         "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_douper",
+        "diff": "lv_03",
+        "stepmaker": "CATACLYXM"
       }
     ]
   },
@@ -1009,9 +967,9 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_06",
-        "stepmaker": "FEFEMZ"
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "AEVILUX"
       },
       {
         "type": "item_single",
@@ -1020,18 +978,41 @@
       },
       {
         "type": "item_single",
+        "diff": "lv_06",
+        "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_16",
+        "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_15",
         "stepmaker": "FEFEMZ",
         "adiff": "15.3",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_11",
+        "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_18",
+        "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_single",
         "diff": "lv_16",
         "stepmaker": "FEFEMZ",
         "adiff": "16"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_single",
@@ -1046,38 +1027,12 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_11",
-        "stepmaker": "FEFEMZ"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "FEFEMZ",
-        "adiff": "14.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_16",
-        "stepmaker": "FEFEMZ"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_18",
+        "diff": "lv_21",
         "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_double",
         "diff": "lv_19",
-        "stepmaker": "AEVILUX"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
-        "stepmaker": "FEFEMZ"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
         "stepmaker": "AEVILUX"
       }
     ]
@@ -1170,9 +1125,7 @@
         "diff": "lv_15",
         "stepmaker": "NIMGO",
         "adiff": "15.7",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_double",
@@ -1189,10 +1142,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.5",
-        "tag": [
-          "side",
-          "gimmick"
-        ]
+        "tag": ["side", "gimmick"]
       },
       {
         "type": "item_double",
@@ -1239,9 +1189,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.3",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_double",
@@ -1303,9 +1251,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -1387,10 +1333,7 @@
         "diff": "lv_17",
         "stepmaker": "EXC",
         "adiff": "18",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -1446,9 +1389,7 @@
         "diff": "lv_16",
         "stepmaker": "NIMGO",
         "adiff": "16",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -1496,13 +1437,9 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_06",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_11",
-        "stepmaker": "EXC"
+        "diff": "lv_17",
+        "stepmaker": "EXC",
+        "adiff": "17.3"
       },
       {
         "type": "item_single",
@@ -1512,9 +1449,13 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_17",
-        "stepmaker": "EXC",
-        "adiff": "17.3"
+        "diff": "lv_11",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_06",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_single",
@@ -1523,13 +1464,26 @@
         "adiff": "19.3"
       },
       {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_21",
+        "stepmaker": "EXC"
+      },
+      {
         "type": "item_single",
         "diff": "lv_22",
         "stepmaker": "EXC",
         "adiff": "22.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
+      },
+      {
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_douper",
@@ -1538,23 +1492,7 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "EXC",
-        "adiff": "13.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_double",
         "diff": "lv_24",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
         "stepmaker": "EXC"
       }
     ]
@@ -1576,9 +1514,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -1621,20 +1557,14 @@
         "diff": "lv_20",
         "stepmaker": "EXC",
         "adiff": "20.9",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.9",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -1675,9 +1605,7 @@
         "diff": "lv_16",
         "stepmaker": "FEFEMZ",
         "adiff": "16",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -1833,9 +1761,7 @@
         "diff": "lv_20",
         "stepmaker": "SUNNY",
         "adiff": "20.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -1877,9 +1803,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -1891,9 +1815,7 @@
         "diff": "lv_20",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -1929,19 +1851,14 @@
         "diff": "lv_15",
         "stepmaker": "",
         "adiff": "15.7",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "",
         "adiff": "18.9",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       }
     ]
   },
@@ -1959,16 +1876,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "BANNIE"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_06",
-        "stepmaker": "BANNIE"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_08",
         "stepmaker": "BANNIE"
       },
@@ -1979,20 +1886,29 @@
       },
       {
         "type": "item_single",
+        "diff": "lv_06",
+        "stepmaker": "BANNIE"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "BANNIE"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "BANNIE",
         "adiff": "17.3"
       },
       {
-        "type": "item_double",
-        "diff": "lv_10",
-        "stepmaker": "ENVYTIC"
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "SUNNY"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "BANNIE",
-        "adiff": "14.5"
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "BANNIE"
       },
       {
         "type": "item_double",
@@ -2000,9 +1916,9 @@
         "stepmaker": "BANNIE"
       },
       {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "SUNNY"
+        "type": "item_double",
+        "diff": "lv_10",
+        "stepmaker": "ENVYTIC"
       }
     ]
   },
@@ -2034,9 +1950,7 @@
         "diff": "lv_21",
         "stepmaker": "WINDFORCE",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -2145,10 +2059,7 @@
         "diff": "lv_19",
         "stepmaker": "ENVYTIC",
         "adiff": "19.7",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_double",
@@ -2211,9 +2122,7 @@
         "diff": "lv_20",
         "stepmaker": "NIMGO",
         "adiff": "20.7",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -2269,10 +2178,7 @@
         "diff": "lv_16",
         "stepmaker": "CONRAD",
         "adiff": "15",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_double",
@@ -2325,6 +2231,28 @@
     "diffs": [
       {
         "type": "item_single",
+        "diff": "lv_16",
+        "stepmaker": "NIMGO",
+        "adiff": "16.3"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_06",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_20",
+        "stepmaker": "NIMGO",
+        "adiff": "20"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_02",
         "stepmaker": "NIMGO"
       },
@@ -2335,42 +2263,19 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_06",
-        "stepmaker": "NIMGO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "NIMGO",
-        "adiff": "16.3"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_20",
-        "stepmaker": "NIMGO",
-        "adiff": "20"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_22",
         "stepmaker": "NIMGO",
         "adiff": "21.9"
       },
       {
-        "type": "item_douper",
-        "diff": "lv_03",
-        "stepmaker": "FELIXOR"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "NIMGO",
-        "adiff": "14.5"
-      },
-      {
         "type": "item_double",
         "diff": "lv_20",
         "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "BME"
       },
       {
         "type": "item_double",
@@ -2378,9 +2283,9 @@
         "stepmaker": "NIMGO"
       },
       {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "BME"
+        "type": "item_douper",
+        "diff": "lv_03",
+        "stepmaker": "FELIXOR"
       }
     ]
   },
@@ -2406,9 +2311,7 @@
         "diff": "lv_15",
         "stepmaker": "SUNNY",
         "adiff": "15.0",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -2425,10 +2328,7 @@
         "diff": "lv_17",
         "stepmaker": "SUNNY",
         "adiff": "17",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -2480,18 +2380,14 @@
         "diff": "lv_17",
         "stepmaker": "",
         "adiff": "17.7",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "",
         "adiff": "20.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       }
     ]
   },
@@ -2538,9 +2434,7 @@
         "diff": "lv_15",
         "stepmaker": "SPHAM",
         "adiff": "15.0",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -2583,21 +2477,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_02",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_06",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_09",
         "stepmaker": "CONRAD"
       },
@@ -2608,17 +2487,35 @@
       },
       {
         "type": "item_single",
+        "diff": "lv_06",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_16",
         "stepmaker": "CONRAD",
         "adiff": "15",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
-        "type": "item_douper",
-        "diff": "lv_03",
-        "stepmaker": "CATACLYXM"
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_02",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_16",
+        "stepmaker": "CONRAD"
       },
       {
         "type": "item_double",
@@ -2626,15 +2523,9 @@
         "stepmaker": "CONRAD"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "CONRAD",
-        "adiff": "14.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_16",
-        "stepmaker": "CONRAD"
+        "type": "item_douper",
+        "diff": "lv_03",
+        "stepmaker": "CATACLYXM"
       },
       {
         "type": "item_double",
@@ -2665,9 +2556,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -2679,9 +2568,7 @@
         "diff": "lv_20",
         "stepmaker": "NIMGO",
         "adiff": "20.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -2850,10 +2737,7 @@
         "diff": "lv_17",
         "stepmaker": "EXC",
         "adiff": "17.3",
-        "tag": [
-          "jack/jump",
-          "gimmick"
-        ]
+        "tag": ["jack/jump", "gimmick"]
       },
       {
         "type": "item_douper",
@@ -2900,20 +2784,14 @@
         "diff": "lv_18",
         "stepmaker": "BME",
         "adiff": "18.3",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "NIMGO",
         "adiff": "20.3",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_double",
@@ -2969,9 +2847,7 @@
         "diff": "lv_15",
         "stepmaker": "",
         "adiff": "15.7",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -3014,9 +2890,7 @@
         "diff": "lv_17",
         "stepmaker": "SUNNY",
         "adiff": "17.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -3166,9 +3040,7 @@
         "diff": "lv_21",
         "stepmaker": "OSING",
         "adiff": "21.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -3207,12 +3079,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_06",
+        "diff": "lv_13",
         "stepmaker": "SUNNY"
       },
       {
@@ -3222,14 +3089,8 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_13",
+        "diff": "lv_06",
         "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "SUNNY",
-        "adiff": "16.3"
       },
       {
         "type": "item_single",
@@ -3238,8 +3099,14 @@
         "adiff": "18.5"
       },
       {
+        "type": "item_single",
+        "diff": "lv_16",
+        "stepmaker": "SUNNY",
+        "adiff": "16.3"
+      },
+      {
         "type": "item_double",
-        "diff": "lv_05",
+        "diff": "lv_17",
         "stepmaker": "SUNNY"
       },
       {
@@ -3249,18 +3116,22 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "SUNNY",
-        "adiff": "14.0"
+        "diff": "lv_05",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_double",
-        "diff": "lv_17",
+        "diff": "lv_14",
         "stepmaker": "SUNNY"
       },
       {
         "type": "item_double",
         "diff": "lv_20",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_03",
         "stepmaker": "SUNNY"
       }
     ]
@@ -3287,9 +3158,7 @@
         "diff": "lv_10",
         "stepmaker": "SPHAM",
         "adiff": "18",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -3357,9 +3226,7 @@
         "diff": "lv_19",
         "stepmaker": "",
         "adiff": "19.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -3494,7 +3361,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_13",
         "stepmaker": "FEFEMZ"
       },
       {
@@ -3509,11 +3376,6 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_13",
-        "stepmaker": "FEFEMZ"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_16",
         "stepmaker": "FEFEMZ",
         "adiff": "15"
@@ -3525,11 +3387,6 @@
         "adiff": "18"
       },
       {
-        "type": "item_douper",
-        "diff": "lv_05",
-        "stepmaker": "ZELLLOOO"
-      },
-      {
         "type": "item_double",
         "diff": "lv_11",
         "stepmaker": "FEFEMZ"
@@ -3537,13 +3394,22 @@
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "FEFEMZ",
-        "adiff": "14.0"
+        "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_double",
         "diff": "lv_16",
         "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_douper",
+        "diff": "lv_05",
+        "stepmaker": "ZELLLOOO"
       },
       {
         "type": "item_double",
@@ -3585,9 +3451,7 @@
         "diff": "lv_18",
         "stepmaker": "CONRAD",
         "adiff": "18.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -3660,25 +3524,15 @@
         "adiff": "16.3"
       },
       {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "OSING"
+      },
+      {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "OSING",
         "adiff": "19.3"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_22",
-        "stepmaker": "OSING",
-        "adiff": "21.9",
-        "tag": [
-          "bracket"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "OSING",
-        "adiff": "13.9"
       },
       {
         "type": "item_double",
@@ -3689,6 +3543,13 @@
         "type": "item_double",
         "diff": "lv_21",
         "stepmaker": "OSING"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_22",
+        "stepmaker": "OSING",
+        "adiff": "21.9",
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -3714,9 +3575,7 @@
         "diff": "lv_17",
         "stepmaker": "OSING",
         "adiff": "17.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -3728,9 +3587,7 @@
         "diff": "lv_20",
         "stepmaker": "OSING",
         "adiff": "20.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -3796,9 +3653,7 @@
         "diff": "lv_17",
         "stepmaker": "SUNNY",
         "adiff": "17.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -3870,9 +3725,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -3884,10 +3737,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.5",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_double",
@@ -3939,9 +3789,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -3958,9 +3806,7 @@
         "diff": "lv_22",
         "stepmaker": "NIMGO",
         "adiff": "22.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -4088,9 +3934,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -4176,9 +4020,7 @@
         "diff": "lv_19",
         "stepmaker": "",
         "adiff": "19.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       }
     ]
   },
@@ -4204,9 +4046,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -4223,9 +4063,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -4256,10 +4094,7 @@
         "diff": "lv_15",
         "stepmaker": "CONRAD",
         "adiff": "15.5",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       },
       {
         "type": "item_single",
@@ -4324,10 +4159,7 @@
         "diff": "lv_18",
         "stepmaker": "AEVILUX",
         "adiff": "18.9",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_double",
@@ -4344,10 +4176,7 @@
         "diff": "lv_22",
         "stepmaker": "AEVILUX",
         "adiff": "22.5",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_douper",
@@ -4410,10 +4239,7 @@
         "diff": "lv_21",
         "stepmaker": "BME",
         "adiff": "21",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_single",
@@ -4461,12 +4287,12 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_08",
+        "diff": "lv_13",
         "stepmaker": "AEVILUX"
       },
       {
-        "type": "item_single",
-        "diff": "lv_13",
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "AEVILUX"
       },
       {
@@ -4477,29 +4303,14 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "AEVILUX",
-        "adiff": "19.5"
+        "diff": "lv_08",
+        "stepmaker": "AEVILUX"
       },
       {
         "type": "item_single",
-        "diff": "lv_22",
+        "diff": "lv_19",
         "stepmaker": "AEVILUX",
-        "adiff": "22.3",
-        "tag": [
-          "bracket"
-        ]
-      },
-      {
-        "type": "item_douper",
-        "diff": "lv_05",
-        "stepmaker": "ZELLLOOO"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "AEVILUX",
-        "adiff": "14.9"
+        "adiff": "19.5"
       },
       {
         "type": "item_double",
@@ -4508,13 +4319,25 @@
       },
       {
         "type": "item_double",
+        "diff": "lv_22",
+        "stepmaker": "AEVILUX"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_22",
+        "stepmaker": "AEVILUX",
+        "adiff": "22.3",
+        "tag": ["bracket"]
+      },
+      {
+        "type": "item_double",
         "diff": "lv_21",
         "stepmaker": "AEVILUX"
       },
       {
-        "type": "item_double",
-        "diff": "lv_22",
-        "stepmaker": "AEVILUX"
+        "type": "item_douper",
+        "diff": "lv_05",
+        "stepmaker": "ZELLLOOO"
       }
     ]
   },
@@ -4573,10 +4396,7 @@
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "22.3",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_double",
@@ -4656,16 +4476,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_01",
-        "stepmaker": "BANNIE"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "BANNIE"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_05",
         "stepmaker": "BANNIE"
       },
@@ -4686,21 +4496,30 @@
         "adiff": "16.3"
       },
       {
+        "type": "item_double",
+        "diff": "lv_08",
+        "stepmaker": "BANNIE"
+      },
+      {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.3"
       },
       {
-        "type": "item_double",
-        "diff": "lv_08",
-        "stepmaker": "BANNIE"
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "NIMGO"
       },
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "BANNIE",
-        "adiff": "14.5"
+        "stepmaker": "BANNIE"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "BANNIE"
       },
       {
         "type": "item_double",
@@ -4708,14 +4527,14 @@
         "stepmaker": "NIMGO"
       },
       {
+        "type": "item_single",
+        "diff": "lv_01",
+        "stepmaker": "BANNIE"
+      },
+      {
         "type": "item_double",
         "diff": "lv_23",
         "stepmaker": "AEVILUX"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "NIMGO"
       }
     ]
   },
@@ -4763,10 +4582,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_double",
@@ -4861,12 +4677,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "BANNIE"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_05",
+        "diff": "lv_13",
         "stepmaker": "BANNIE"
       },
       {
@@ -4875,8 +4686,8 @@
         "stepmaker": "BANNIE"
       },
       {
-        "type": "item_single",
-        "diff": "lv_13",
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "BANNIE"
       },
       {
@@ -4884,9 +4695,7 @@
         "diff": "lv_15",
         "stepmaker": "BANNIE",
         "adiff": "16",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -4894,10 +4703,9 @@
         "stepmaker": "BANNIE"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "BANNIE",
-        "adiff": "14.5"
+        "type": "item_single",
+        "diff": "lv_05",
+        "stepmaker": "BANNIE"
       },
       {
         "type": "item_double",
@@ -4908,6 +4716,11 @@
         "type": "item_double",
         "diff": "lv_18",
         "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "BANNIE"
       }
     ]
   },
@@ -4929,8 +4742,8 @@
         "stepmaker": "CONRAD"
       },
       {
-        "type": "item_single",
-        "diff": "lv_12",
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "CONRAD"
       },
       {
@@ -4940,6 +4753,16 @@
         "adiff": "17.5"
       },
       {
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_12",
+        "stepmaker": "CONRAD"
+      },
+      {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "CONRAD",
@@ -4947,23 +4770,12 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "CONRAD",
-        "adiff": "14.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_double",
         "diff": "lv_22",
         "stepmaker": "CONRAD"
       },
       {
-        "type": "item_coop",
-        "diff": "lv_50",
+        "type": "item_double",
+        "diff": "lv_19",
         "stepmaker": "CONRAD"
       }
     ]
@@ -5070,9 +4882,7 @@
         "diff": "lv_18",
         "stepmaker": "EXC",
         "adiff": "18",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -5135,9 +4945,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -5165,8 +4973,10 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_07",
-        "stepmaker": "AYAPPING"
+        "diff": "lv_16",
+        "stepmaker": "AYAPPING",
+        "adiff": "16.5",
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -5175,23 +4985,13 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "AYAPPING",
-        "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_11",
+        "diff": "lv_07",
         "stepmaker": "AYAPPING"
       },
       {
         "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "IMBA",
-        "adiff": "13.0"
+        "diff": "lv_22",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
@@ -5200,8 +5000,13 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_22",
-        "stepmaker": "EXC"
+        "diff": "lv_13",
+        "stepmaker": "IMBA"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_11",
+        "stepmaker": "AYAPPING"
       }
     ]
   },
@@ -5219,7 +5024,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_11",
         "stepmaker": "SUNNY"
       },
       {
@@ -5229,7 +5034,7 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_11",
+        "diff": "lv_04",
         "stepmaker": "SUNNY"
       },
       {
@@ -5239,12 +5044,6 @@
         "adiff": "15.7"
       },
       {
-        "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "EXC",
-        "adiff": "18.5"
-      },
-      {
         "type": "item_double",
         "diff": "lv_06",
         "stepmaker": "SUNNY"
@@ -5252,13 +5051,18 @@
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "SUNNY",
-        "adiff": "13.0"
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_double",
         "diff": "lv_20",
         "stepmaker": "EXC"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_18",
+        "stepmaker": "EXC",
+        "adiff": "18.5"
       }
     ]
   },
@@ -5321,9 +5125,7 @@
         "diff": "lv_21",
         "stepmaker": "CONRAD",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -5351,7 +5153,19 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_09",
+        "diff": "lv_16",
+        "stepmaker": "CONRAD",
+        "adiff": "?",
+        "tag": ["gimmick"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_17",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "CONRAD"
       },
       {
@@ -5361,37 +5175,20 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "CONRAD",
-        "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "CONRAD",
-        "adiff": "19.9",
-        "tag": [
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "CONRAD",
-        "adiff": "13.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_17",
+        "diff": "lv_09",
         "stepmaker": "CONRAD"
       },
       {
         "type": "item_double",
         "diff": "lv_20",
         "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_19",
+        "stepmaker": "CONRAD",
+        "adiff": "19.9",
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -5409,13 +5206,15 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_08",
         "stepmaker": "BME"
       },
       {
         "type": "item_single",
-        "diff": "lv_08",
-        "stepmaker": "BME"
+        "diff": "lv_15",
+        "stepmaker": "BME",
+        "adiff": "15.7",
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -5424,12 +5223,8 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_15",
-        "stepmaker": "BME",
-        "adiff": "15.7",
-        "tag": [
-          "jack/jump"
-        ]
+        "diff": "lv_04",
+        "stepmaker": "BME"
       },
       {
         "type": "item_single",
@@ -5439,24 +5234,23 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "BME",
-        "adiff": "13.5"
-      },
-      {
-        "type": "item_double",
         "diff": "lv_17",
-        "stepmaker": "BME"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
         "stepmaker": "BME"
       },
       {
         "type": "item_coop",
         "diff": "lv_50",
         "stepmaker": "SUNBME"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "BME"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_21",
+        "stepmaker": "BME"
       }
     ]
   },
@@ -5519,9 +5313,7 @@
         "diff": "lv_21",
         "stepmaker": "FEFEMZ",
         "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -5563,9 +5355,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -5603,17 +5393,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "NIMGO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_07",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_11",
         "stepmaker": "EXC"
       },
       {
@@ -5621,24 +5401,7 @@
         "diff": "lv_17",
         "stepmaker": "EXC",
         "adiff": "17.3",
-        "tag": [
-          "drill"
-        ]
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_21",
-        "stepmaker": "EXC",
-        "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "EXC",
-        "adiff": "13.9"
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -5646,9 +5409,31 @@
         "stepmaker": "BME"
       },
       {
+        "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_21",
+        "stepmaker": "EXC",
+        "adiff": "21.5",
+        "tag": ["twist"]
+      },
+      {
         "type": "item_double",
         "diff": "lv_21",
         "stepmaker": "EXC"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "NIMGO"
       }
     ]
   },
@@ -5684,9 +5469,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.9",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -5725,19 +5508,24 @@
     "diffs": [
       {
         "type": "item_single",
+        "diff": "lv_16",
+        "stepmaker": "OSING",
+        "adiff": "16"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_20",
+        "stepmaker": "OSING"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_08",
         "stepmaker": "OSING"
       },
       {
-        "type": "item_single",
-        "diff": "lv_11",
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "OSING"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "OSING",
-        "adiff": "16"
       },
       {
         "type": "item_single",
@@ -5750,25 +5538,16 @@
         "diff": "lv_21",
         "stepmaker": "OSING",
         "adiff": "21",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
-        "type": "item_douper",
-        "diff": "lv_05",
-        "stepmaker": "HARU-KAZE"
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "AEVILUX"
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "OSING",
-        "adiff": "13.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_20",
+        "type": "item_single",
+        "diff": "lv_11",
         "stepmaker": "OSING"
       },
       {
@@ -5777,9 +5556,9 @@
         "stepmaker": "OSING"
       },
       {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "AEVILUX"
+        "type": "item_douper",
+        "diff": "lv_05",
+        "stepmaker": "HARU-KAZE"
       }
     ]
   },
@@ -5888,9 +5667,7 @@
         "diff": "lv_17",
         "stepmaker": "CONRAD",
         "adiff": "17",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -5947,9 +5724,7 @@
         "diff": "lv_20",
         "stepmaker": "CONRAD",
         "adiff": "20.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -5961,9 +5736,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -6058,11 +5831,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_11",
-        "stepmaker": "FEFEMZ"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_14",
         "stepmaker": "FEFEMZ",
         "adiff": "14.0"
@@ -6075,9 +5843,24 @@
       },
       {
         "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "FEFEMZ",
         "adiff": "21.5"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_18",
+        "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_single",
@@ -6086,25 +5869,14 @@
         "adiff": "23.5"
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "FEFEMZ",
-        "adiff": "13.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_18",
-        "stepmaker": "FEFEMZ"
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "AEVILUX"
       },
       {
         "type": "item_double",
         "diff": "lv_22",
         "stepmaker": "FEFEMZ"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "AEVILUX"
       }
     ]
   },
@@ -6141,9 +5913,7 @@
         "diff": "lv_20",
         "stepmaker": "CONRAD",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -6190,9 +5960,7 @@
         "diff": "lv_17",
         "stepmaker": "",
         "adiff": "19",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -6210,7 +5978,12 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_11",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_coop",
+        "diff": "lv_50",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -6220,32 +5993,22 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_11",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.5"
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
@@ -6253,8 +6016,8 @@
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_coop",
-        "diff": "lv_50",
+        "type": "item_single",
+        "diff": "lv_04",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -6276,9 +6039,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -6290,10 +6051,7 @@
         "diff": "lv_21",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_double",
@@ -6346,9 +6104,7 @@
         "diff": "lv_17",
         "stepmaker": "OSING",
         "adiff": "17.9",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -6391,17 +6147,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_07",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_11",
         "stepmaker": "SUNNY"
       },
       {
@@ -6411,13 +6157,36 @@
         "adiff": "16.9"
       },
       {
+        "type": "item_double",
+        "diff": "lv_17",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "SUNNY"
+      },
+      {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "SUNNY",
         "adiff": "20",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_21",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_douper",
@@ -6427,22 +6196,6 @@
       {
         "type": "item_double",
         "diff": "lv_06",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "SUNNY",
-        "adiff": "13.9"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_17",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
         "stepmaker": "SUNNY"
       }
     ]
@@ -6461,12 +6214,24 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_16",
+        "stepmaker": "SUNNY",
+        "adiff": "16.3"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_21",
         "stepmaker": "SUNNY"
       },
       {
         "type": "item_single",
-        "diff": "lv_06",
+        "diff": "lv_19",
+        "stepmaker": "SUNNY",
+        "adiff": "19.3"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "SUNNY"
       },
       {
@@ -6476,15 +6241,8 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "SUNNY",
-        "adiff": "16.3"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "SUNNY",
-        "adiff": "19.3"
+        "diff": "lv_04",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_single",
@@ -6493,14 +6251,8 @@
         "adiff": "22.3"
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "SUNNY",
-        "adiff": "13.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
+        "type": "item_single",
+        "diff": "lv_06",
         "stepmaker": "SUNNY"
       },
       {
@@ -6548,19 +6300,14 @@
         "diff": "lv_19",
         "stepmaker": "AEVILUX",
         "adiff": "19",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "AEVILUX",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -6608,9 +6355,7 @@
         "diff": "lv_17",
         "stepmaker": "CONRAD",
         "adiff": "17.5",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_single",
@@ -6672,10 +6417,7 @@
         "diff": "lv_19",
         "stepmaker": "CONRAD",
         "adiff": "19.3",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -6771,30 +6513,21 @@
         "diff": "lv_15",
         "stepmaker": "BME",
         "adiff": "15.5",
-        "tag": [
-          "jack/jump",
-          "drill"
-        ]
+        "tag": ["jack/jump", "drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "BME",
         "adiff": "18.3",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "BME",
         "adiff": "21",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_single",
@@ -6835,9 +6568,7 @@
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -6875,10 +6606,7 @@
         "diff": "lv_22",
         "stepmaker": "SUNNY",
         "adiff": "22.9",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       }
     ]
   },
@@ -6982,10 +6710,7 @@
         "diff": "lv_21",
         "stepmaker": "FEFEMZ",
         "adiff": "21.5",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_double",
@@ -7016,9 +6741,7 @@
         "diff": "lv_15",
         "stepmaker": "WINDFORCE",
         "adiff": "16",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -7040,10 +6763,7 @@
         "diff": "lv_19",
         "stepmaker": "WINDFORCE",
         "adiff": "19.9",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_douper",
@@ -7080,9 +6800,7 @@
         "diff": "lv_19",
         "stepmaker": "",
         "adiff": "19.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       }
     ]
   },
@@ -7113,9 +6831,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_double",
@@ -7166,10 +6882,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "17",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_double",
@@ -7181,19 +6894,14 @@
         "diff": "lv_21",
         "stepmaker": "EXC",
         "adiff": "21.9",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "EXC",
         "adiff": "18.7",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -7232,7 +6940,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_12",
         "stepmaker": "HP"
       },
       {
@@ -7242,17 +6950,8 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_12",
+        "diff": "lv_04",
         "stepmaker": "HP"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "NIMGO",
-        "adiff": "18.3",
-        "tag": [
-          "side"
-        ]
       },
       {
         "type": "item_single",
@@ -7261,25 +6960,31 @@
         "adiff": "19.9"
       },
       {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "HP"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_18",
+        "stepmaker": "NIMGO",
+        "adiff": "18.3",
+        "tag": ["side"]
+      },
+      {
         "type": "item_douper",
         "diff": "lv_04",
         "stepmaker": "HARU-KAZE"
       },
       {
         "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "HP",
-        "adiff": "14.5"
+        "diff": "lv_23",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_double",
         "diff": "lv_21",
         "stepmaker": "HP"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_23",
-        "stepmaker": "SUNNY"
       }
     ]
   },
@@ -7300,9 +7005,7 @@
         "diff": "lv_15",
         "stepmaker": "AEVILUX",
         "adiff": "15.7",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -7329,9 +7032,7 @@
         "diff": "lv_21",
         "stepmaker": "AEVILUX",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -7393,9 +7094,7 @@
         "diff": "lv_18",
         "stepmaker": "EXC",
         "adiff": "18.9",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       }
     ]
   },
@@ -7416,9 +7115,7 @@
         "diff": "lv_16",
         "stepmaker": "NIMGO",
         "adiff": "16.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -7487,9 +7184,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -7516,9 +7211,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_coop",
@@ -7544,9 +7237,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -7589,23 +7280,36 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_11",
-        "stepmaker": "SPHAM"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_15",
         "stepmaker": "SPHAM",
         "adiff": "15.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "SPHAM",
         "adiff": "17.3"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_18",
+        "stepmaker": "SPHAM"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "SPHAM"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_21",
+        "stepmaker": "SPHAM"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "SPHAM"
       },
       {
         "type": "item_single",
@@ -7618,25 +7322,7 @@
         "diff": "lv_22",
         "stepmaker": "SPHAM",
         "adiff": "22.9",
-        "tag": [
-          "bracket"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "SPHAM",
-        "adiff": "13.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_18",
-        "stepmaker": "SPHAM"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
-        "stepmaker": "SPHAM"
+        "tag": ["bracket"]
       }
     ]
   },
@@ -7662,9 +7348,7 @@
         "diff": "lv_15",
         "stepmaker": "NIMGO",
         "adiff": "15.0",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -7707,12 +7391,17 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_08",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
-        "diff": "lv_13",
+        "diff": "lv_08",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -7728,15 +7417,9 @@
         "adiff": "21.5"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_18",
-        "stepmaker": "ANDAMIRO"
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "WINDFORCE"
       },
       {
         "type": "item_double",
@@ -7744,9 +7427,9 @@
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "WINDFORCE"
+        "type": "item_double",
+        "diff": "lv_18",
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -7772,10 +7455,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.9",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       },
       {
         "type": "item_double",
@@ -7877,10 +7557,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.7",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -7902,10 +7579,7 @@
         "diff": "lv_22",
         "stepmaker": "EXC",
         "adiff": "22.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
@@ -7938,30 +7612,29 @@
     "diffs": [
       {
         "type": "item_single",
+        "diff": "lv_18",
+        "stepmaker": "WINDFORCE",
+        "adiff": "18.9",
+        "tag": ["bracket"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "WINDFORCE"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_12",
         "stepmaker": "WINDFORCE"
       },
       {
         "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "WINDFORCE",
-        "adiff": "18.9",
-        "tag": [
-          "bracket"
-        ]
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_22",
-        "stepmaker": "WINDFORCE",
-        "adiff": "22.9",
-        "tag": [
-          "bracket"
-        ]
-      },
-      {
-        "type": "item_single",
         "diff": "lv_24",
+        "stepmaker": "WINDFORCE"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_22",
         "stepmaker": "WINDFORCE"
       },
       {
@@ -7971,19 +7644,15 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "WINDFORCE",
-        "adiff": "14.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_22",
-        "stepmaker": "WINDFORCE"
-      },
-      {
-        "type": "item_double",
         "diff": "lv_25",
         "stepmaker": "WINDFORCE"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_22",
+        "stepmaker": "WINDFORCE",
+        "adiff": "22.9",
+        "tag": ["bracket"]
       }
     ]
   },
@@ -8014,9 +7683,7 @@
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -8085,9 +7752,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -8146,9 +7811,7 @@
         "diff": "lv_18",
         "stepmaker": "",
         "adiff": "18",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -8257,9 +7920,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -8282,10 +7943,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.3",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_double",
@@ -8352,10 +8010,7 @@
         "diff": "lv_20",
         "stepmaker": "SUNNY",
         "adiff": "21",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       }
     ]
   },
@@ -8453,10 +8108,7 @@
         "diff": "lv_18",
         "stepmaker": "OSING",
         "adiff": "18.3",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -8497,9 +8149,7 @@
         "diff": "lv_17",
         "stepmaker": "",
         "adiff": "17.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -8592,10 +8242,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.9",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -8629,35 +8276,22 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_09",
-        "stepmaker": "EXC"
+        "diff": "lv_17",
+        "stepmaker": "EXC",
+        "adiff": "17.5",
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.5",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
-        "diff": "lv_17",
-        "stepmaker": "EXC",
-        "adiff": "17.5",
-        "tag": [
-          "drill"
-        ]
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_22",
-        "stepmaker": "EXC",
-        "adiff": "22.9",
-        "tag": [
-          "drill"
-        ]
+        "diff": "lv_09",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_single",
@@ -8665,10 +8299,16 @@
         "stepmaker": "EXC"
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
+        "type": "item_single",
+        "diff": "lv_22",
         "stepmaker": "EXC",
-        "adiff": "13.9"
+        "adiff": "22.9",
+        "tag": ["drill"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_24",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
@@ -8677,7 +8317,7 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_24",
+        "diff": "lv_13",
         "stepmaker": "EXC"
       },
       {
@@ -8715,9 +8355,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.3",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -8778,9 +8416,7 @@
         "diff": "lv_16",
         "stepmaker": "SUNNY",
         "adiff": "16",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -8872,9 +8508,7 @@
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -8915,29 +8549,21 @@
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.9",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "EXC",
         "adiff": "21",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.5",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -8970,7 +8596,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_09",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -8980,12 +8606,22 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_09",
+        "diff": "lv_12",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
-        "diff": "lv_12",
+        "diff": "lv_04",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_coop",
+        "diff": "lv_50",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -8993,20 +8629,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.3",
-        "tag": [
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "ANDAMIRO"
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -9078,9 +8701,7 @@
         "diff": "lv_15",
         "stepmaker": "NIMGO",
         "adiff": "15.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -9097,9 +8718,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.5",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_single",
@@ -9137,38 +8756,32 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_12",
-        "stepmaker": "NIMGO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "NIMGO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_12",
+        "stepmaker": "NIMGO"
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21.5",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "NIMGO",
-        "adiff": "13.5"
+        "type": "item_single",
+        "diff": "lv_16",
+        "stepmaker": "NIMGO"
       },
       {
         "type": "item_double",
@@ -9219,9 +8832,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -9293,16 +8904,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_02",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_09",
         "stepmaker": "ANDAMIRO"
       },
@@ -9324,13 +8925,22 @@
       },
       {
         "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "IMBA",
-        "adiff": "13.0"
+        "diff": "lv_16",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
-        "diff": "lv_16",
+        "diff": "lv_13",
+        "stepmaker": "IMBA"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_02",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -9378,10 +8988,7 @@
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21.5",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_single",
@@ -9476,8 +9083,26 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_07",
+        "diff": "lv_16",
+        "stepmaker": "CONRAD",
+        "adiff": "16.5"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_17",
         "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_20",
+        "stepmaker": "CONRAD",
+        "adiff": "21",
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
@@ -9486,33 +9111,15 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "CONRAD",
-        "adiff": "16.5"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "CONRAD",
         "adiff": "18.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
-        "diff": "lv_20",
-        "stepmaker": "CONRAD",
-        "adiff": "21",
-        "tag": [
-          "twist",
-          "drill"
-        ]
-      },
-      {
-        "type": "item_douper",
-        "diff": "lv_03",
-        "stepmaker": "UYAB"
+        "diff": "lv_07",
+        "stepmaker": "CONRAD"
       },
       {
         "type": "item_double",
@@ -9520,15 +9127,9 @@
         "stepmaker": "CONRAD"
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "CONRAD",
-        "adiff": "13.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_17",
-        "stepmaker": "CONRAD"
+        "type": "item_douper",
+        "diff": "lv_03",
+        "stepmaker": "UYAB"
       }
     ]
   },
@@ -9549,9 +9150,7 @@
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.0",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -9563,9 +9162,7 @@
         "diff": "lv_17",
         "stepmaker": "SUNNY",
         "adiff": "18",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -9577,10 +9174,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_douper",
@@ -9613,24 +9207,21 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_10",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.9"
       },
       {
         "type": "item_single",
+        "diff": "lv_10",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.9",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_single",
@@ -9641,8 +9232,7 @@
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "EXC",
-        "adiff": "13.9"
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
@@ -9679,18 +9269,14 @@
         "diff": "lv_22",
         "stepmaker": "OSING",
         "adiff": "21.9",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "OSING",
         "adiff": "19.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -9767,9 +9353,7 @@
         "diff": "lv_20",
         "stepmaker": "WINDFORCE",
         "adiff": "20.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_douper",
@@ -10010,37 +9594,16 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_10",
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "WINDFORCE"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_15",
-        "stepmaker": "SUNNY",
-        "adiff": "16",
-        "tag": [
-          "drill"
-        ]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "WINDFORCE",
         "adiff": "18.3",
-        "tag": [
-          "drill"
-        ]
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_22",
-        "stepmaker": "WINDFORCE",
-        "adiff": "22.9",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -10048,15 +9611,23 @@
         "stepmaker": "WINDFORCE"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "WINDFORCE",
-        "adiff": "14.5"
+        "type": "item_single",
+        "diff": "lv_15",
+        "stepmaker": "SUNNY",
+        "adiff": "16",
+        "tag": ["drill"]
       },
       {
-        "type": "item_double",
-        "diff": "lv_17",
-        "stepmaker": "BME"
+        "type": "item_single",
+        "diff": "lv_10",
+        "stepmaker": "WINDFORCE"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_22",
+        "stepmaker": "WINDFORCE",
+        "adiff": "22.9",
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_double",
@@ -10067,6 +9638,11 @@
         "type": "item_double",
         "diff": "lv_25",
         "stepmaker": "WINDFORCE"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_17",
+        "stepmaker": "BME"
       }
     ]
   },
@@ -10087,9 +9663,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -10112,9 +9686,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -10181,9 +9753,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.3",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_double",
@@ -10286,19 +9856,14 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_single",
@@ -10332,43 +9897,40 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_08",
-        "stepmaker": "NIMGO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_13",
-        "stepmaker": "NIMGO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18"
       },
       {
         "type": "item_single",
-        "diff": "lv_21",
-        "stepmaker": "NIMGO",
-        "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
-      },
-      {
-        "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "NIMGO",
-        "adiff": "13.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_18",
         "stepmaker": "NIMGO"
       },
       {
         "type": "item_double",
         "diff": "lv_20",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_21",
+        "stepmaker": "NIMGO",
+        "adiff": "21.5",
+        "tag": ["twist"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_08",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_18",
         "stepmaker": "NIMGO"
       },
       {
@@ -10400,9 +9962,7 @@
         "diff": "lv_19",
         "stepmaker": "HP",
         "adiff": "19.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -10475,9 +10035,7 @@
         "diff": "lv_19",
         "stepmaker": "CONRAD",
         "adiff": "19.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -10526,16 +10084,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_07",
-        "stepmaker": "OSING"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_10",
-        "stepmaker": "OSING"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_14",
         "stepmaker": "OSING",
         "adiff": "14.5"
@@ -10545,30 +10093,12 @@
         "diff": "lv_16",
         "stepmaker": "OSING",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "OSING",
-        "adiff": "19.7",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_09",
-        "stepmaker": "OSING"
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "OSING",
-        "adiff": "13.5"
+        "stepmaker": "OSING"
       },
       {
         "type": "item_double",
@@ -10576,14 +10106,36 @@
         "stepmaker": "OSING"
       },
       {
+        "type": "item_single",
+        "diff": "lv_10",
+        "stepmaker": "OSING"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_07",
+        "stepmaker": "OSING"
+      },
+      {
         "type": "item_double",
-        "diff": "lv_20",
+        "diff": "lv_09",
         "stepmaker": "OSING"
       },
       {
         "type": "item_coop",
         "diff": "lv_50",
         "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_20",
+        "stepmaker": "OSING"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_19",
+        "stepmaker": "OSING",
+        "adiff": "19.7",
+        "tag": ["twist", "gimmick"]
       }
     ]
   },
@@ -10604,9 +10156,7 @@
         "diff": "lv_15",
         "stepmaker": "BANNIE",
         "adiff": "15.7",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -10684,9 +10234,7 @@
         "diff": "lv_18",
         "stepmaker": "ZELLLOOO",
         "adiff": "18.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -10708,9 +10256,7 @@
         "diff": "lv_17",
         "stepmaker": "",
         "adiff": "17.9",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       }
     ]
   },
@@ -10727,18 +10273,29 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_03",
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "SUNNY"
       },
       {
         "type": "item_single",
-        "diff": "lv_06",
+        "diff": "lv_19",
+        "stepmaker": "SUNNY",
+        "adiff": "19"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_18",
         "stepmaker": "SUNNY"
       },
       {
         "type": "item_single",
         "diff": "lv_11",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_06",
         "stepmaker": "SUNNY"
       },
       {
@@ -10749,19 +10306,7 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "SUNNY",
-        "adiff": "19"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "SUNNY",
-        "adiff": "13.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_18",
+        "diff": "lv_03",
         "stepmaker": "SUNNY"
       },
       {
@@ -10788,9 +10333,7 @@
         "diff": "lv_17",
         "stepmaker": "WINDFORCE",
         "adiff": "17",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -10813,9 +10356,7 @@
         "diff": "lv_21",
         "stepmaker": "WINDFORCE",
         "adiff": "21",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -10852,8 +10393,8 @@
         "stepmaker": "NIMGO"
       },
       {
-        "type": "item_single",
-        "diff": "lv_11",
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "EXC"
       },
       {
@@ -10867,25 +10408,22 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.9",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "EXC",
-        "adiff": "13.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_18",
-        "stepmaker": "FEFEMZ"
+        "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
         "diff": "lv_21",
         "stepmaker": "EXC"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_18",
+        "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_coop",
@@ -10926,9 +10464,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -10940,10 +10476,7 @@
         "diff": "lv_15",
         "stepmaker": "",
         "adiff": "15.7",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_douper",
@@ -11080,9 +10613,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -11104,9 +10635,7 @@
         "diff": "lv_18",
         "stepmaker": "EXC",
         "adiff": "18.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_coop",
@@ -11158,9 +10687,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.3",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_double",
@@ -11255,10 +10782,7 @@
         "diff": "lv_19",
         "stepmaker": "CONRAD",
         "adiff": "19.3",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_double",
@@ -11309,19 +10833,14 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "22.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -11333,10 +10852,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.9",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_double",
@@ -11387,9 +10903,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -11490,19 +11004,19 @@
     "diffs": [
       {
         "type": "item_single",
+        "diff": "lv_15",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "15.3"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_05",
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_single",
-        "diff": "lv_09",
+        "type": "item_double",
+        "diff": "lv_17",
         "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_15",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "15.3"
       },
       {
         "type": "item_single",
@@ -11511,14 +11025,13 @@
         "adiff": "21.5"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.5"
+        "type": "item_single",
+        "diff": "lv_09",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
-        "diff": "lv_17",
+        "diff": "lv_14",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -11571,10 +11084,7 @@
         "diff": "lv_19",
         "stepmaker": "CONRAD",
         "adiff": "19.5",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_double",
@@ -11597,8 +11107,9 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_10",
-        "stepmaker": "NIMGO"
+        "diff": "lv_19",
+        "stepmaker": "NIMGO",
+        "adiff": "19.5"
       },
       {
         "type": "item_single",
@@ -11608,24 +11119,20 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "NIMGO",
-        "adiff": "19.5"
+        "diff": "lv_10",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "NIMGO"
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21.5",
-        "tag": [
-          "drill"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "NIMGO",
-        "adiff": "13.0"
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -11754,7 +11261,14 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_07",
+        "diff": "lv_20",
+        "stepmaker": "CONRAD",
+        "adiff": "20.5",
+        "tag": ["twist"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_20",
         "stepmaker": "CONRAD"
       },
       {
@@ -11762,47 +11276,33 @@
         "diff": "lv_16",
         "stepmaker": "CONRAD",
         "adiff": "16.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_07",
+        "stepmaker": "CONRAD"
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "CONRAD",
         "adiff": "18",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
-        "type": "item_single",
-        "diff": "lv_20",
-        "stepmaker": "CONRAD",
-        "adiff": "20.5",
-        "tag": [
-          "twist"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "CONRAD",
-        "adiff": "13.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_20",
+        "type": "item_coop",
+        "diff": "lv_50",
         "stepmaker": "CONRAD"
       },
       {
         "type": "item_double",
         "diff": "lv_22",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
         "stepmaker": "CONRAD"
       }
     ]
@@ -11994,43 +11494,32 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_08",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_10",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_12",
         "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
-        "diff": "lv_17",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "17.9",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "diff": "lv_08",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
+        "type": "item_single",
+        "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
-        "adiff": "13.9"
+        "adiff": "17.9",
+        "tag": ["gimmick", "drill"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_10",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
@@ -12040,6 +11529,11 @@
       {
         "type": "item_double",
         "diff": "lv_20",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -12067,9 +11561,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -12148,10 +11640,7 @@
         "diff": "lv_21",
         "stepmaker": "CONRAD",
         "adiff": "21",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_double",
@@ -12194,7 +11683,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_03",
+        "diff": "lv_10",
         "stepmaker": "AEVILUX"
       },
       {
@@ -12204,24 +11693,21 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_10",
-        "stepmaker": "AEVILUX"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "AEVILUX",
         "adiff": "17.7"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "AEVILUX"
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "AEVILUX",
         "adiff": "20",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -12229,10 +11715,9 @@
         "stepmaker": "AEVILUX"
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "AEVILUX",
-        "adiff": "13.0"
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "AEVILUX"
       }
     ]
   },
@@ -12253,9 +11738,7 @@
         "diff": "lv_16",
         "stepmaker": "NIMGO",
         "adiff": "16.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -12267,10 +11750,7 @@
         "diff": "lv_20",
         "stepmaker": "NIMGO",
         "adiff": "20.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
@@ -12435,18 +11915,14 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -12504,9 +11980,7 @@
         "diff": "lv_16",
         "stepmaker": "BME",
         "adiff": "16.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -12589,8 +12063,8 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_08",
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "OSING"
       },
       {
@@ -12600,9 +12074,13 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_17",
-        "stepmaker": "OSING",
-        "adiff": "17"
+        "diff": "lv_08",
+        "stepmaker": "OSING"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_19",
+        "stepmaker": "OSING"
       },
       {
         "type": "item_single",
@@ -12611,9 +12089,15 @@
         "adiff": "20.3"
       },
       {
-        "type": "item_douper",
-        "diff": "lv_04",
-        "stepmaker": "DR.BOX"
+        "type": "item_single",
+        "diff": "lv_17",
+        "stepmaker": "OSING",
+        "adiff": "17"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_21",
+        "stepmaker": "OSING"
       },
       {
         "type": "item_double",
@@ -12621,20 +12105,9 @@
         "stepmaker": "OSING"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "OSING",
-        "adiff": "14.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "OSING"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
-        "stepmaker": "OSING"
+        "type": "item_douper",
+        "diff": "lv_04",
+        "stepmaker": "DR.BOX"
       }
     ]
   },
@@ -12711,9 +12184,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -12730,18 +12201,14 @@
         "diff": "lv_18",
         "stepmaker": "EXC",
         "adiff": "18.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -12787,10 +12254,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_double",
@@ -12841,9 +12305,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.9",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_douper",
@@ -12901,9 +12363,7 @@
         "diff": "lv_22",
         "stepmaker": "BME",
         "adiff": "22.3",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -12931,14 +12391,9 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_11",
-        "stepmaker": "FEFEMZ"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_15",
-        "stepmaker": "SUNNY",
-        "adiff": "15.0"
+        "diff": "lv_20",
+        "stepmaker": "FEFEMZ",
+        "adiff": "20"
       },
       {
         "type": "item_single",
@@ -12948,20 +12403,24 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_20",
-        "stepmaker": "FEFEMZ",
-        "adiff": "20"
+        "diff": "lv_11",
+        "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "FEFEMZ",
-        "adiff": "14.9"
+        "stepmaker": "FEFEMZ"
       },
       {
         "type": "item_double",
         "diff": "lv_21",
         "stepmaker": "FEFEMZ"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_15",
+        "stepmaker": "SUNNY",
+        "adiff": "15.0"
       }
     ]
   },
@@ -13064,10 +12523,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.7",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_single",
@@ -13095,43 +12551,17 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_09",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_16",
         "stepmaker": "CONRAD",
         "adiff": "16",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "CONRAD",
         "adiff": "18.3",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_05",
-        "stepmaker": "CONRAD"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "CONRAD",
-        "adiff": "13.5"
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_double",
@@ -13145,7 +12575,27 @@
       },
       {
         "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_09",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_double",
         "diff": "lv_23",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "CONRAD"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_05",
         "stepmaker": "CONRAD"
       }
     ]
@@ -13164,8 +12614,10 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_11",
-        "stepmaker": "EXC"
+        "diff": "lv_18",
+        "stepmaker": "EXC",
+        "adiff": "18",
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_single",
@@ -13175,25 +12627,19 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "EXC",
-        "adiff": "18",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
-      },
-      {
-        "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "EXC",
         "adiff": "21.9"
       },
       {
+        "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "EXC"
+      },
+      {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "EXC",
-        "adiff": "14.0"
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
@@ -13219,9 +12665,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.9",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -13309,9 +12753,7 @@
         "diff": "lv_21",
         "stepmaker": "DAEGUOSU",
         "adiff": "21.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -13484,9 +12926,7 @@
         "diff": "lv_19",
         "stepmaker": "CONRAD",
         "adiff": "19.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -13579,9 +13019,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "15",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -13603,9 +13041,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -13722,9 +13158,7 @@
         "diff": "lv_20",
         "stepmaker": "MINAMI",
         "adiff": "20.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -13761,10 +13195,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.7",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_double",
@@ -13840,10 +13271,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.9",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       }
     ]
   },
@@ -13880,10 +13308,7 @@
         "diff": "lv_22",
         "stepmaker": "EXC",
         "adiff": "22.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_double",
@@ -13956,6 +13381,11 @@
     "diffs": [
       {
         "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_04",
         "stepmaker": "SUNNY"
       },
@@ -13965,8 +13395,8 @@
         "stepmaker": "SUNNY"
       },
       {
-        "type": "item_single",
-        "diff": "lv_11",
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "SUNNY"
       },
       {
@@ -13974,15 +13404,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.7",
-        "tag": [
-          "twist"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "SUNNY",
-        "adiff": "13.5"
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -14045,10 +13467,7 @@
         "diff": "lv_20",
         "stepmaker": "NIMGO",
         "adiff": "20.3",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_double",
@@ -14084,9 +13503,7 @@
         "diff": "lv_16",
         "stepmaker": "CONRAD",
         "adiff": "16.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -14189,9 +13606,7 @@
         "diff": "lv_15",
         "stepmaker": "SUNNY",
         "adiff": "15.0",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -14252,19 +13667,14 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.5",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -14349,27 +13759,6 @@
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "EXC",
-        "adiff": "13.9"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_15",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_17",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "EXC"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_21",
         "stepmaker": "EXC"
       },
       {
@@ -14379,7 +13768,27 @@
       },
       {
         "type": "item_double",
+        "diff": "lv_17",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_15",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_21",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_double",
         "diff": "lv_25",
+        "stepmaker": "EXC"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_19",
         "stepmaker": "EXC"
       }
     ]
@@ -14411,10 +13820,7 @@
         "diff": "lv_17",
         "stepmaker": "AEVILUX",
         "adiff": "17.7",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_douper",
@@ -14461,10 +13867,7 @@
         "diff": "lv_21",
         "stepmaker": "SUNNY",
         "adiff": "?",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_single",
@@ -14501,9 +13904,7 @@
         "diff": "lv_15",
         "stepmaker": "NIMGO",
         "adiff": "15.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -14516,9 +13917,7 @@
         "diff": "lv_22",
         "stepmaker": "NIMGO",
         "adiff": "22.3",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -14560,9 +13959,7 @@
         "diff": "lv_15",
         "stepmaker": "EXC",
         "adiff": "15.3",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -14588,9 +13985,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -14662,9 +14057,7 @@
         "diff": "lv_22",
         "stepmaker": "WINDFORCE",
         "adiff": "22.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -14741,9 +14134,7 @@
         "diff": "lv_15",
         "stepmaker": "AEVILUX",
         "adiff": "15.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -14827,13 +14218,8 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_07",
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -14849,38 +14235,37 @@
       },
       {
         "type": "item_single",
+        "diff": "lv_07",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "19.5",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "diff": "lv_04",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_19",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "19.5",
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_douper",
         "diff": "lv_05",
         "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.0"
       },
       {
         "type": "item_double",
@@ -14921,19 +14306,14 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.7",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_single",
@@ -14956,13 +14336,10 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_07",
-        "stepmaker": "ANDAMIRO"
+        "diff": "lv_20",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "20.3",
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_single",
@@ -14974,26 +14351,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.5",
-        "tag": [
-          "jack/jump",
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_20",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "20.3",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "tag": ["jack/jump", "gimmick"]
       },
       {
         "type": "item_double",
@@ -15002,7 +14360,22 @@
       },
       {
         "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_07",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
         "diff": "lv_23",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -15035,9 +14408,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -15103,9 +14474,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -15264,9 +14633,7 @@
         "diff": "lv_15",
         "stepmaker": "MINAMI",
         "adiff": "15.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -15354,24 +14721,24 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_05",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_08",
-        "stepmaker": "ANDAMIRO"
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "NIMGO"
       },
       {
         "type": "item_single",
         "diff": "lv_12",
         "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_22",
+        "stepmaker": "AEVILUX"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_16",
+        "stepmaker": "KAHRUNYA"
       },
       {
         "type": "item_single",
@@ -15380,25 +14747,24 @@
         "adiff": "17.5"
       },
       {
+        "type": "item_single",
+        "diff": "lv_08",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.5"
+        "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_double",
-        "diff": "lv_16",
-        "stepmaker": "KAHRUNYA"
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_double",
-        "diff": "lv_22",
-        "stepmaker": "AEVILUX"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "NIMGO"
+        "type": "item_single",
+        "diff": "lv_05",
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -15435,9 +14801,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.7",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -15518,9 +14882,7 @@
         "diff": "lv_18",
         "stepmaker": "ZELLLOOO",
         "adiff": "18.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -15626,9 +14988,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -15666,9 +15026,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_coop",
@@ -15691,36 +15049,8 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_06",
-        "stepmaker": "HUGE"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_11",
         "stepmaker": "HUGE"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "HUGE",
-        "adiff": "16.3"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "NIMGO",
-        "adiff": "18.3"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_07",
-        "stepmaker": "HUGE"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "HUGE",
-        "adiff": "13.0"
       },
       {
         "type": "item_double",
@@ -15731,6 +15061,33 @@
         "type": "item_coop",
         "diff": "lv_50",
         "stepmaker": "AEVILUX"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_07",
+        "stepmaker": "HUGE"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "HUGE"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_18",
+        "stepmaker": "NIMGO",
+        "adiff": "18.3"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_06",
+        "stepmaker": "HUGE"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_16",
+        "stepmaker": "HUGE",
+        "adiff": "16.3"
       }
     ]
   },
@@ -15756,10 +15113,7 @@
         "diff": "lv_18",
         "stepmaker": "CONRAD",
         "adiff": "18.5",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_double",
@@ -15776,9 +15130,7 @@
         "diff": "lv_16",
         "stepmaker": "CONRAD",
         "adiff": "16.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -15821,9 +15173,7 @@
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -15916,9 +15266,7 @@
         "diff": "lv_20",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -15940,9 +15288,7 @@
         "diff": "lv_17",
         "stepmaker": "EXC",
         "adiff": "18",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -15968,20 +15314,14 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.3",
-        "tag": [
-          "gimmick",
-          "twist"
-        ]
+        "tag": ["gimmick", "twist"]
       },
       {
         "type": "item_single",
@@ -16003,9 +15343,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       }
     ]
   },
@@ -16071,18 +15409,14 @@
         "diff": "lv_18",
         "stepmaker": "AYAPPING",
         "adiff": "18.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "NEXXTPOKE",
         "adiff": "21",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -16134,10 +15468,7 @@
         "diff": "lv_18",
         "stepmaker": "CONRAD",
         "adiff": "18.3",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_single",
@@ -16175,11 +15506,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_07",
         "stepmaker": "SUNNY"
       },
@@ -16193,20 +15519,22 @@
         "diff": "lv_17",
         "stepmaker": "SPHAM",
         "adiff": "17.9",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "SPHAM",
-        "adiff": "13.0"
+        "stepmaker": "SPHAM"
       },
       {
         "type": "item_double",
         "diff": "lv_18",
         "stepmaker": "SPHAM"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_coop",
@@ -16263,9 +15591,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.7",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_double",
@@ -16352,9 +15678,7 @@
         "diff": "lv_20",
         "stepmaker": "EXC",
         "adiff": "20.9",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_single",
@@ -16385,9 +15709,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -16409,9 +15731,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_coop",
@@ -16509,9 +15829,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -16635,6 +15953,18 @@
     "diffs": [
       {
         "type": "item_single",
+        "diff": "lv_19",
+        "stepmaker": "NIMGO",
+        "adiff": "19.9",
+        "tag": ["drill"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_12",
+        "stepmaker": "ENVYTIC"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_03",
         "stepmaker": "ENVYTIC"
       },
@@ -16645,29 +15975,9 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_12",
-        "stepmaker": "ENVYTIC"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "ENVYTIC",
         "adiff": "17"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "NIMGO",
-        "adiff": "19.9",
-        "tag": [
-          "drill"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "ENVYTIC",
-        "adiff": "13.5"
       },
       {
         "type": "item_double",
@@ -16678,6 +15988,11 @@
         "type": "item_double",
         "diff": "lv_20",
         "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "ENVYTIC"
       }
     ]
   },
@@ -16738,9 +16053,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -16797,9 +16110,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -16816,9 +16127,7 @@
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -16921,9 +16230,7 @@
         "diff": "lv_21",
         "stepmaker": "WINDFORCE",
         "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_coop",
@@ -16959,10 +16266,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.9",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_double",
@@ -17034,9 +16338,7 @@
         "diff": "lv_20",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       }
     ]
   },
@@ -17134,9 +16436,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -17173,6 +16473,17 @@
         "stepmaker": "NIMGO"
       },
       {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_19",
+        "stepmaker": "WINDFORCE",
+        "adiff": "19.9"
+      },
+      {
         "type": "item_single",
         "diff": "lv_15",
         "stepmaker": "NIMGO",
@@ -17183,18 +16494,6 @@
         "diff": "lv_17",
         "stepmaker": "OSING",
         "adiff": "17.5"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_19",
-        "stepmaker": "WINDFORCE",
-        "adiff": "19.9"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "NIMGO",
-        "adiff": "13.5"
       },
       {
         "type": "item_double",
@@ -17241,9 +16540,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -17279,9 +16576,7 @@
         "diff": "lv_16",
         "stepmaker": "NIMGO",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -17308,9 +16603,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -17366,18 +16659,14 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_douper",
@@ -17501,27 +16790,21 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -17578,9 +16861,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -17607,8 +16888,8 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_11",
+        "type": "item_double",
+        "diff": "lv_19",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -17621,25 +16902,19 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.5",
-        "tag": [
-          "gimmick"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.5"
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -17647,8 +16922,8 @@
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_double",
-        "diff": "lv_19",
+        "type": "item_single",
+        "diff": "lv_11",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -17670,10 +16945,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
@@ -17685,9 +16957,7 @@
         "diff": "lv_18",
         "stepmaker": "OSING",
         "adiff": "18.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -17865,18 +17135,16 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "ANDAMIRO"
+        "diff": "lv_16",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "16.9"
       },
       {
         "type": "item_single",
-        "diff": "lv_07",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_11",
-        "stepmaker": "ANDAMIRO"
+        "diff": "lv_20",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "20.9",
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -17885,33 +17153,30 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "16.9"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
-        "diff": "lv_20",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "20.9",
-        "tag": [
-          "drill"
-        ]
+        "diff": "lv_07",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -17943,9 +17208,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -17971,18 +17234,14 @@
         "diff": "lv_15",
         "stepmaker": "ENVYTIC",
         "adiff": "15.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_20",
         "stepmaker": "ENVYTIC",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -18034,10 +17293,7 @@
         "diff": "lv_17",
         "stepmaker": "NIMGO",
         "adiff": "17.9",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       },
       {
         "type": "item_single",
@@ -18078,18 +17334,14 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -18155,9 +17407,7 @@
         "diff": "lv_16",
         "stepmaker": "AYAPPING",
         "adiff": "16.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -18189,8 +17439,13 @@
     ],
     "diffs": [
       {
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
         "type": "item_single",
-        "diff": "lv_01",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -18200,18 +17455,12 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_13",
+        "diff": "lv_01",
         "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.9"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -18230,17 +17479,7 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_02",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_05",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_11",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -18250,20 +17489,29 @@
         "adiff": "15"
       },
       {
+        "type": "item_double",
+        "diff": "lv_21",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "type": "item_single",
+        "diff": "lv_11",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
-        "diff": "lv_21",
+        "diff": "lv_14",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_02",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -18295,9 +17543,7 @@
         "diff": "lv_18",
         "stepmaker": "WINDFORCE",
         "adiff": "18.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -18354,10 +17600,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "17",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_double",
@@ -18388,9 +17631,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_double",
@@ -18456,19 +17697,14 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.7",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.5",
-        "tag": [
-          "side",
-          "drill"
-        ]
+        "tag": ["side", "drill"]
       },
       {
         "type": "item_douper",
@@ -18545,9 +17781,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -18579,19 +17813,14 @@
         "diff": "lv_16",
         "stepmaker": "AEVILUX",
         "adiff": "16",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "AEVILUX",
         "adiff": "21.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_double",
@@ -18622,9 +17851,7 @@
         "diff": "lv_18",
         "stepmaker": "WINDFORCE",
         "adiff": "18.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -18636,9 +17863,7 @@
         "diff": "lv_15",
         "stepmaker": "WINDFORCE",
         "adiff": "15.0",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -18666,13 +17891,9 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_07",
-        "stepmaker": "ANDAMIRO"
+        "diff": "lv_18",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "18.7"
       },
       {
         "type": "item_single",
@@ -18687,19 +17908,22 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "18.7"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.9"
+        "diff": "lv_07",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
         "diff": "lv_20",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -18721,9 +17945,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -18735,9 +17957,7 @@
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "22.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -18854,9 +18074,7 @@
         "diff": "lv_17",
         "stepmaker": "EXC",
         "adiff": "17",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -18928,9 +18146,7 @@
         "diff": "lv_18",
         "stepmaker": "SUNNY",
         "adiff": "18.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -18972,10 +18188,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.9",
-        "tag": [
-          "side",
-          "drill"
-        ]
+        "tag": ["side", "drill"]
       },
       {
         "type": "item_single",
@@ -18993,10 +18206,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.7",
-        "tag": [
-          "side",
-          "drill"
-        ]
+        "tag": ["side", "drill"]
       }
     ]
   },
@@ -19013,13 +18223,18 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "ANDAMIRO"
+        "type": "item_double",
+        "diff": "lv_20",
+        "stepmaker": "SUNNY"
       },
       {
         "type": "item_single",
         "diff": "lv_06",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_04",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -19033,21 +18248,15 @@
         "stepmaker": "SUNNY"
       },
       {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.7"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_20",
-        "stepmaker": "SUNNY"
       }
     ]
   },
@@ -19139,10 +18348,7 @@
         "diff": "lv_18",
         "stepmaker": "HP",
         "adiff": "18.5",
-        "tag": [
-          "jack/jump",
-          "drill"
-        ]
+        "tag": ["jack/jump", "drill"]
       },
       {
         "type": "item_double",
@@ -19224,9 +18430,7 @@
         "diff": "lv_17",
         "stepmaker": "EXC",
         "adiff": "17.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -19243,9 +18447,7 @@
         "diff": "lv_18",
         "stepmaker": "EXC",
         "adiff": "18.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -19276,18 +18478,14 @@
         "diff": "lv_19",
         "stepmaker": "CONRAD",
         "adiff": "19.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -19349,9 +18547,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.7",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       }
     ]
   },
@@ -19378,9 +18574,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -19418,13 +18612,9 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_03",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_07",
-        "stepmaker": "ANDAMIRO"
+        "diff": "lv_20",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "20"
       },
       {
         "type": "item_single",
@@ -19432,29 +18622,30 @@
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_single",
-        "diff": "lv_20",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "20"
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.5"
+        "type": "item_single",
+        "diff": "lv_03",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
         "diff": "lv_22",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_07",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -19476,9 +18667,7 @@
         "diff": "lv_16",
         "stepmaker": "NIMGO",
         "adiff": "16.7",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -19505,10 +18694,7 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.7",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       }
     ]
   },
@@ -19534,27 +18720,21 @@
         "diff": "lv_22",
         "stepmaker": "EXC",
         "adiff": "?",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.7",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -19590,10 +18770,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.3",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_single",
@@ -19704,9 +18881,7 @@
         "diff": "lv_17",
         "stepmaker": "",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -19742,9 +18917,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.9",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -19757,9 +18930,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -19787,9 +18958,9 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_09",
-        "stepmaker": "EXC"
+        "type": "item_double",
+        "diff": "lv_19",
+        "stepmaker": "STACCATO"
       },
       {
         "type": "item_single",
@@ -19801,9 +18972,7 @@
         "diff": "lv_18",
         "stepmaker": "FELIXOR",
         "adiff": "18.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -19812,25 +18981,24 @@
         "adiff": "22.5"
       },
       {
-        "type": "item_douper",
-        "diff": "lv_05",
-        "stepmaker": "KAZEMURA"
+        "type": "item_single",
+        "diff": "lv_09",
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "EXC",
-        "adiff": "13.9"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "STACCATO"
+        "stepmaker": "EXC"
       },
       {
         "type": "item_double",
         "diff": "lv_24",
         "stepmaker": "EXC"
+      },
+      {
+        "type": "item_douper",
+        "diff": "lv_05",
+        "stepmaker": "KAZEMURA"
       }
     ]
   },
@@ -19851,9 +19019,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -19935,9 +19101,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -20024,9 +19188,7 @@
         "diff": "lv_18",
         "stepmaker": "OSING",
         "adiff": "18",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       }
     ]
   },
@@ -20043,18 +19205,18 @@
     ],
     "diffs": [
       {
-        "type": "item_sinper",
-        "diff": "lv_01",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_04",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
         "type": "item_single",
         "diff": "lv_10",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_sinper",
+        "diff": "lv_01",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -20063,10 +19225,9 @@
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.5"
+        "type": "item_single",
+        "diff": "lv_04",
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -20089,24 +19250,26 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "",
-        "adiff": "18.3",
-        "tag": [
-          "drill"
-        ]
-      },
-      {
-        "type": "item_single",
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "22.5"
       },
       {
+        "type": "item_single",
+        "diff": "lv_18",
+        "stepmaker": "",
+        "adiff": "18.3",
+        "tag": ["drill"]
+      },
+      {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.9"
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
@@ -20116,11 +19279,6 @@
       {
         "type": "item_double",
         "diff": "lv_24",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
         "stepmaker": "ANDAMIRO"
       }
     ]
@@ -20138,13 +19296,28 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_05",
+        "type": "item_double",
+        "diff": "lv_14",
         "stepmaker": "NIMGO"
       },
       {
         "type": "item_single",
         "diff": "lv_09",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_05",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_19",
+        "stepmaker": "NIMGO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_07",
         "stepmaker": "NIMGO"
       },
       {
@@ -20158,22 +19331,6 @@
         "diff": "lv_18",
         "stepmaker": "NIMGO",
         "adiff": "18.5"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_07",
-        "stepmaker": "NIMGO"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "NIMGO",
-        "adiff": "14.9"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "NIMGO"
       }
     ]
   },
@@ -20199,9 +19356,7 @@
         "diff": "lv_19",
         "stepmaker": "",
         "adiff": "19.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       }
     ]
   },
@@ -20219,7 +19374,14 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_06",
+        "diff": "lv_17",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "?",
+        "tag": ["gimmick"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -20229,23 +19391,13 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_13",
+        "diff": "lv_06",
         "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_17",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
       },
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -20306,10 +19458,7 @@
         "diff": "lv_15",
         "stepmaker": "ENVYTIC",
         "adiff": "15.7",
-        "tag": [
-          "jack/jump",
-          "gimmick"
-        ]
+        "tag": ["jack/jump", "gimmick"]
       },
       {
         "type": "item_double",
@@ -20356,9 +19505,7 @@
         "diff": "lv_19",
         "stepmaker": "SUNNY",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -20428,9 +19575,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "16",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_double",
@@ -20463,6 +19608,26 @@
     ],
     "diffs": [
       {
+        "type": "item_coop",
+        "diff": "lv_50",
+        "stepmaker": "AEVILUX"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_19",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_13",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_24",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
         "type": "item_single",
         "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
@@ -20472,39 +19637,14 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.9",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.9"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_24",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_coop",
-        "diff": "lv_50",
-        "stepmaker": "AEVILUX"
+        "tag": ["twist"]
       }
     ]
   },
@@ -20522,7 +19662,14 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_16",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "16.9",
+        "tag": ["jack/jump", "drill"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_10",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -20532,23 +19679,8 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_06",
+        "diff": "lv_04",
         "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_10",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_16",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "16.9",
-        "tag": [
-          "jack/jump",
-          "drill"
-        ]
       },
       {
         "type": "item_single",
@@ -20557,10 +19689,14 @@
         "adiff": "?"
       },
       {
+        "type": "item_single",
+        "diff": "lv_06",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -20592,9 +19728,7 @@
         "diff": "lv_15",
         "stepmaker": "SUNNY",
         "adiff": "15.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       }
     ]
   },
@@ -20635,10 +19769,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "16",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_single",
@@ -20671,10 +19802,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.9",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -20756,9 +19884,7 @@
         "diff": "lv_16",
         "stepmaker": "CONRAD",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -20796,9 +19922,7 @@
         "diff": "lv_20",
         "stepmaker": "CONRAD",
         "adiff": "20.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -20819,9 +19943,7 @@
         "diff": "lv_15",
         "stepmaker": "NIMGO",
         "adiff": "15.0",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -20862,9 +19984,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -20902,10 +20022,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.5",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -21017,9 +20134,7 @@
         "diff": "lv_16",
         "stepmaker": "BME",
         "adiff": "16",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       }
     ]
   },
@@ -21040,9 +20155,7 @@
         "diff": "lv_18",
         "stepmaker": "BME",
         "adiff": "18",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -21115,9 +20228,7 @@
         "diff": "lv_16",
         "stepmaker": "BANNIE",
         "adiff": "16.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -21163,19 +20274,14 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -21267,10 +20373,7 @@
         "diff": "lv_18",
         "stepmaker": "",
         "adiff": "18.3",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       }
     ]
   },
@@ -21301,9 +20404,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -21375,10 +20476,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.7",
-        "tag": [
-          "jack/jump",
-          "gimmick"
-        ]
+        "tag": ["jack/jump", "gimmick"]
       },
       {
         "type": "item_double",
@@ -21553,9 +20651,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -21631,9 +20727,7 @@
         "diff": "lv_18",
         "stepmaker": "EXC",
         "adiff": "18.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -21664,9 +20758,7 @@
         "diff": "lv_19",
         "stepmaker": "CONRAD",
         "adiff": "19.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -21727,10 +20819,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.9",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       },
       {
         "type": "item_single",
@@ -21747,29 +20836,21 @@
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "22.9",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.5",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       }
     ]
   },
@@ -21826,9 +20907,7 @@
         "diff": "lv_20",
         "stepmaker": "EXC",
         "adiff": "20.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -21860,10 +20939,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.9",
-        "tag": [
-          "gimmick",
-          "drill"
-        ]
+        "tag": ["gimmick", "drill"]
       },
       {
         "type": "item_double",
@@ -21976,9 +21052,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -22004,9 +21078,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "18",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -22053,9 +21125,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -22091,9 +21161,7 @@
         "diff": "lv_20",
         "stepmaker": "OSING",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -22165,13 +21233,13 @@
     ],
     "diffs": [
       {
-        "type": "item_sinper",
-        "diff": "lv_02",
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
-        "diff": "lv_04",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       },
       {
@@ -22181,19 +21249,18 @@
       },
       {
         "type": "item_single",
-        "diff": "lv_08",
+        "diff": "lv_04",
+        "stepmaker": "ANDAMIRO"
+      },
+      {
+        "type": "item_sinper",
+        "diff": "lv_02",
         "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
-        "diff": "lv_13",
+        "diff": "lv_08",
         "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.0"
       }
     ]
   },
@@ -22250,9 +21317,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -22264,9 +21329,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -22292,9 +21355,7 @@
         "diff": "lv_15",
         "stepmaker": "",
         "adiff": "15.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -22334,18 +21395,18 @@
     "diffs": [
       {
         "type": "item_single",
+        "diff": "lv_13",
+        "stepmaker": "SUNNY"
+      },
+      {
+        "type": "item_single",
         "diff": "lv_06",
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_single",
-        "diff": "lv_09",
-        "stepmaker": "SUNNY"
-      },
-      {
-        "type": "item_single",
-        "diff": "lv_13",
-        "stepmaker": "SUNNY"
+        "type": "item_double",
+        "diff": "lv_14",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_douper",
@@ -22353,15 +21414,14 @@
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_double",
+        "type": "item_single",
         "diff": "lv_09",
         "stepmaker": "SUNNY"
       },
       {
         "type": "item_double",
-        "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.0"
+        "diff": "lv_09",
+        "stepmaker": "SUNNY"
       }
     ]
   },
@@ -22382,9 +21442,7 @@
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -22489,10 +21547,7 @@
         "diff": "lv_22",
         "stepmaker": "NIMGO",
         "adiff": "22.3",
-        "tag": [
-          "side",
-          "bracket"
-        ]
+        "tag": ["side", "bracket"]
       },
       {
         "type": "item_single",
@@ -22559,10 +21614,7 @@
         "diff": "lv_21",
         "stepmaker": "EXC",
         "adiff": "21",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       }
     ]
   },
@@ -22583,18 +21635,14 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "16",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -22646,9 +21694,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -22665,9 +21711,7 @@
         "diff": "lv_16",
         "stepmaker": "",
         "adiff": "16.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -22688,19 +21732,14 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.9",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "SUNNY",
         "adiff": "19.7",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -22747,9 +21786,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_single",
@@ -22775,9 +21812,7 @@
         "diff": "lv_22",
         "stepmaker": "EXC",
         "adiff": "22.3",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -22813,9 +21848,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -22841,9 +21874,7 @@
         "diff": "lv_18",
         "stepmaker": "SUNNY",
         "adiff": "18.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -22955,10 +21986,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.3",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_single",
@@ -23059,9 +22087,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -23196,9 +22222,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.7",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       }
     ]
   },
@@ -23224,10 +22248,7 @@
         "diff": "lv_19",
         "stepmaker": "SUNNY",
         "adiff": "19",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -23284,9 +22305,7 @@
         "diff": "lv_16",
         "stepmaker": "NIMGO",
         "adiff": "16.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -23378,9 +22397,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_double",
@@ -23411,9 +22428,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.7",
-        "tag": [
-          "side"
-        ]
+        "tag": ["side"]
       },
       {
         "type": "item_single",
@@ -23430,9 +22445,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       }
     ]
   },
@@ -23474,9 +22487,7 @@
         "diff": "lv_19",
         "stepmaker": "",
         "adiff": "19.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -23497,18 +22508,14 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -23584,10 +22591,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "17",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -23625,10 +22629,7 @@
         "diff": "lv_21",
         "stepmaker": "NIMGO",
         "adiff": "21.5",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_double",
@@ -23733,16 +22734,12 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.9",
-        "tag": [
-          "bracket",
-          "drill"
-        ]
+        "tag": ["bracket", "drill"]
       },
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -23763,9 +22760,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_single",
@@ -23831,8 +22826,7 @@
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -23958,9 +22952,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -24026,30 +23018,21 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "17",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.3",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.9",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_double",
@@ -24075,9 +23058,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -24273,10 +23254,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.7",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_douper",
@@ -24293,9 +23271,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.5",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       },
       {
         "type": "item_single",
@@ -24347,9 +23323,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -24423,9 +23397,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       }
     ]
   },
@@ -24443,11 +23415,6 @@
     "diffs": [
       {
         "type": "item_single",
-        "diff": "lv_09",
-        "stepmaker": "ANDAMIRO"
-      },
-      {
-        "type": "item_single",
         "diff": "lv_12",
         "stepmaker": "ANDAMIRO"
       },
@@ -24456,16 +23423,17 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.0",
-        "tag": [
-          "gimmick",
-          "twist"
-        ]
+        "tag": ["gimmick", "twist"]
+      },
+      {
+        "type": "item_single",
+        "diff": "lv_09",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.5"
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -24486,9 +23454,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.9",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -24545,10 +23511,7 @@
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "22.5",
-        "tag": [
-          "twist",
-          "gimmick"
-        ]
+        "tag": ["twist", "gimmick"]
       },
       {
         "type": "item_single",
@@ -24560,20 +23523,14 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.9",
-        "tag": [
-          "side",
-          "gimmick"
-        ]
+        "tag": ["side", "gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.9",
-        "tag": [
-          "side",
-          "gimmick"
-        ]
+        "tag": ["side", "gimmick"]
       },
       {
         "type": "item_double",
@@ -24658,19 +23615,14 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.7",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_double",
@@ -24696,9 +23648,7 @@
         "diff": "lv_20",
         "stepmaker": "NIMGO",
         "adiff": "20.9",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -24745,9 +23695,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.7",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       }
     ]
   },
@@ -24789,6 +23737,11 @@
     ],
     "diffs": [
       {
+        "type": "item_double",
+        "diff": "lv_19",
+        "stepmaker": "OSING"
+      },
+      {
         "type": "item_single",
         "diff": "lv_12",
         "stepmaker": "ANDAMIRO"
@@ -24796,13 +23749,7 @@
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.0"
-      },
-      {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "OSING"
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -24852,9 +23799,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       }
     ]
   },
@@ -24905,9 +23850,7 @@
         "diff": "lv_19",
         "stepmaker": "EXC",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       }
     ]
   },
@@ -24924,33 +23867,28 @@
     ],
     "diffs": [
       {
-        "type": "item_single",
-        "diff": "lv_18",
-        "stepmaker": "",
-        "adiff": "18.5",
-        "tag": [
-          "gimmick"
-        ]
+        "type": "item_double",
+        "diff": "lv_19",
+        "stepmaker": "ANDAMIRO"
       },
       {
         "type": "item_single",
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
         "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "X"
+        "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_double",
-        "diff": "lv_19",
-        "stepmaker": "ANDAMIRO"
+        "type": "item_single",
+        "diff": "lv_18",
+        "stepmaker": "",
+        "adiff": "18.5",
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -24971,9 +23909,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -24985,10 +23921,7 @@
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "22.9",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       }
     ]
   },
@@ -25024,9 +23957,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -25082,9 +24013,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -25115,9 +24044,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       }
     ]
   },
@@ -25197,9 +24124,7 @@
         "diff": "lv_22",
         "stepmaker": "NIMGO",
         "adiff": "22.5",
-        "tag": [
-          "bracket"
-        ]
+        "tag": ["bracket"]
       },
       {
         "type": "item_single",
@@ -25231,10 +24156,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.9",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       },
       {
         "type": "item_single",
@@ -25265,19 +24187,14 @@
         "diff": "lv_17",
         "stepmaker": "MINAMI",
         "adiff": "17.9",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_15",
         "stepmaker": "MINAMI",
         "adiff": "15.9",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -25362,8 +24279,7 @@
       {
         "type": "item_double",
         "diff": "lv_14",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "14.9"
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -25384,9 +24300,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.3",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -25437,10 +24351,7 @@
         "diff": "lv_19",
         "stepmaker": "NIMGO",
         "adiff": "19.3",
-        "tag": [
-          "bracket",
-          "twist"
-        ]
+        "tag": ["bracket", "twist"]
       }
     ]
   },
@@ -25505,9 +24416,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "20.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
@@ -25538,10 +24447,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "16",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       }
     ]
   },
@@ -25587,9 +24493,7 @@
         "diff": "lv_22",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_double",
@@ -25615,9 +24519,7 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "21.5",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       },
       {
         "type": "item_double",
@@ -25667,9 +24569,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.5",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       },
       {
         "type": "item_double",
@@ -25691,15 +24591,14 @@
     ],
     "diffs": [
       {
-        "type": "item_douper",
-        "diff": "lv_05",
+        "type": "item_double",
+        "diff": "lv_13",
         "stepmaker": "ANDAMIRO"
       },
       {
-        "type": "item_double",
-        "diff": "lv_13",
-        "stepmaker": "ANDAMIRO",
-        "adiff": "13.5"
+        "type": "item_douper",
+        "diff": "lv_05",
+        "stepmaker": "ANDAMIRO"
       }
     ]
   },
@@ -25720,10 +24619,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "17",
-        "tag": [
-          "side",
-          "drill"
-        ]
+        "tag": ["side", "drill"]
       },
       {
         "type": "item_single",
@@ -25935,9 +24831,7 @@
         "diff": "lv_16",
         "stepmaker": "EXC",
         "adiff": "16.3",
-        "tag": [
-          "jack/jump"
-        ]
+        "tag": ["jack/jump"]
       }
     ]
   },
@@ -26007,10 +24901,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.7",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       }
     ]
   },
@@ -26041,9 +24932,7 @@
         "diff": "lv_19",
         "stepmaker": "ANDAMIRO",
         "adiff": "19.5",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -26093,9 +24982,7 @@
         "diff": "lv_18",
         "stepmaker": "",
         "adiff": "18.3",
-        "tag": [
-          "drill"
-        ]
+        "tag": ["drill"]
       }
     ]
   },
@@ -26116,10 +25003,7 @@
         "diff": "lv_16",
         "stepmaker": "ANDAMIRO",
         "adiff": "16.7",
-        "tag": [
-          "twist",
-          "drill"
-        ]
+        "tag": ["twist", "drill"]
       },
       {
         "type": "item_double",
@@ -26145,9 +25029,7 @@
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "16",
-        "tag": [
-          "twist"
-        ]
+        "tag": ["twist"]
       }
     ]
   },
@@ -26227,10 +25109,7 @@
         "diff": "lv_20",
         "stepmaker": "ANDAMIRO",
         "adiff": "21",
-        "tag": [
-          "bracket",
-          "gimmick"
-        ]
+        "tag": ["bracket", "gimmick"]
       }
     ]
   },
@@ -26251,9 +25130,7 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.3",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       }
     ]
   },
@@ -26293,19 +25170,14 @@
         "diff": "lv_21",
         "stepmaker": "ANDAMIRO",
         "adiff": "?",
-        "tag": [
-          "gimmick"
-        ]
+        "tag": ["gimmick"]
       },
       {
         "type": "item_single",
         "diff": "lv_15",
         "stepmaker": "ANDAMIRO",
         "adiff": "15.7",
-        "tag": [
-          "jack/jump",
-          "twist"
-        ]
+        "tag": ["jack/jump", "twist"]
       }
     ]
   },
@@ -26409,10 +25281,7 @@
         "diff": "lv_18",
         "stepmaker": "ANDAMIRO",
         "adiff": "18.7",
-        "tag": [
-          "side",
-          "twist"
-        ]
+        "tag": ["side", "twist"]
       }
     ]
   }
