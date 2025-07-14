@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - '12'
 services:
-  - mongodb
+  - postgres
 cache: yarn
 branches:
   only:
@@ -10,7 +10,7 @@ branches:
 env:
   global:
     - PORT=3000
-    - MONGODB_URL=mongodb://localhost:27017/trackitup
+    - POSTGRES_URL=postgresql://postgres:postgres@localhost:5432/trackitup
     - JWT_SECRET=thisisasamplesecret
     - JWT_ACCESS_EXPIRATION_MINUTES=30
     - JWT_REFRESH_EXPIRATION_DAYS=30

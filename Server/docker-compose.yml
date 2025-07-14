@@ -1,31 +1,36 @@
 version: '3'
 
 services:
+
   node-app:
     build: .
     image: node-app
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/trackitup
+      - POSTGRES_URL=postgresql://postgres:postgres@postgres:5432/trackitup
     ports:
       - '3000:3000'
     depends_on:
-      - mongodb
+      - postgres
     volumes:
       - .:/usr/src/node-app
     networks:
       - node-network
 
-  mongodb:
-    image: mongo:4.2.1-bionic
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: trackitup
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
-      - '27017:27017'
+      - '5432:5432'
     volumes:
-      - dbdata:/data/db
+      - pgdata:/var/lib/postgresql/data
     networks:
       - node-network
 
 volumes:
-  dbdata:
+  pgdata:
 
 networks:
   node-network:
