@@ -1,5 +1,5 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, Checkbox, Divider, FormControl, FormControlLabel, FormLabel, Modal, Radio, RadioGroup, TextField, Typography } from '@mui/material';
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styled from 'styled-components';
 import { ApiClient } from '../../API/httpService'
@@ -160,28 +160,6 @@ const Songs = ({mode}) => {
         }
     }
 
-    const updateDiff = (songId, mode, diff, adiffValue, tagsValue) => {
-        const song = songs[songId]
-        if (!song) return
-        const obj = song.diffs.find(d => typeof d === 'object' && d.type === mode && d.diff === diff)
-        if (obj) {
-            obj.adiff = adiffValue || undefined
-            const arr = tagsValue ? tagsValue.split(',').map(t => t.trim()).filter(Boolean) : []
-            obj.tag = arr.length ? arr : undefined
-        }
-        setOpenChart({ ...openChart, adiff: obj.adiff, tag: obj.tag })
-        loadData(songs)
-    }
-
-    const downloadSongs = () => {
-        const json = JSON.stringify(songs, null, 2)
-        const blob = new Blob([json], { type: 'application/json' })
-        const url = URL.createObjectURL(blob)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = 'songs_modified.json'
-        a.click()
-    }
 
     const shouldDisplayDiff = (diff) => {
         const prefix1 = search?.p1Diff > 9 ? 'lv_' : 'lv_0'
@@ -218,14 +196,12 @@ const Songs = ({mode}) => {
                     <SongDetails
                         chart={openChart}
                         changeGrade={changeGrade}
-                        updateDiff={updateDiff}
                     />
                     
                 </StyledBox>
             </Modal>
 
             <div>
-                <Button onClick={downloadSongs}>Download JSON</Button>
                 <StyledTextField
                     onChange={(e) => setSearch(e.target.value ? { ...search, title: e.target.value} : undefined)}
                     value={search?.title || ''}
