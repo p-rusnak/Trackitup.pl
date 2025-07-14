@@ -269,6 +269,7 @@ const Songs = ({mode}) => {
                                 <FormControlLabel control={<Checkbox onChange={(_, b) => setTags({ ...tags, gimmick: b })} value={tags.gimmick} />} label="Gimmick" />
                                 <FormControlLabel control={<Checkbox onChange={(_, b) => setTags({ ...tags, bracket: b })} value={tags.bracket} />} label="Bracket" />
                                 <FormControlLabel control={<Checkbox onChange={(_, b) => setTags({ ...tags, 'jack/jump': b })} value={tags['jack/jump']} />} label="Jacks/Jumps" />
+                                <FormControlLabel control={<Checkbox onChange={(_, b) => setTags({ ...tags, half: b })} value={tags.half} />} label="Half" />
                         </div>
                         <div>
                                 Hide:
