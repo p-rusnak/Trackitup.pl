@@ -47,7 +47,10 @@ function NavBar() {
   };
 
   const handleCloseNavMenu = (page) => {
-    page && navigate(`/${page}`)
+    if (page) {
+      navigate(`/${page}`);
+      window.location.reload();
+    }
     setAnchorElNav(null);
   };
 
