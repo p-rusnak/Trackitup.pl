@@ -1,7 +1,7 @@
-const { Score } = require('../models');
+const prisma = require('../db');
 
 const getScores = async (filter) => {
-  const scores = await Score.findByUser(filter.userId, filter.mode);
+  const scores = await prisma.score.findMany({ where: { userId: filter.userId, mode: filter.mode } });
   const response = {};
   scores.forEach((el) => {
     if (response[el.diff]) {
@@ -18,7 +18,7 @@ const getScores = async (filter) => {
 };
 
 const createScore = async (scoreBody, mode, user) => {
-  return Score.createScore({ ...scoreBody, userId: user.id, mode });
+  return prisma.score.create({ data: { ...scoreBody, userId: user.id, mode } });
 };
 
 module.exports = {

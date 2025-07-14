@@ -1,20 +1,14 @@
-const { Pool } = require('pg');
 const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const https = require('https');
 const fs = require('fs');
-const port = 3000;
-
-const pool = new Pool({
-  connectionString: config.postgres.url,
-});
-
-
+const prisma = require('./prisma');
 
 let server;
-pool.connect().then(() => {
-  logger.info('Connected to PostgreSQL');
+
+prisma.$connect().then(() => {
+  logger.info('Connected to PostgreSQL via Prisma');
   if (config.env === 'development') {
     server = app.listen(config.port, () => {
       logger.info(`Listening to port ${config.port}`);
@@ -26,7 +20,7 @@ pool.connect().then(() => {
     const credentials = {
       key: privateKey,
       cert: certificate,
-      ca: ca
+      ca,
     };
     server = https.createServer(credentials, app).listen(config.port, () => {
       logger.info(`Listening to port ${config.port}`);
@@ -39,14 +33,13 @@ pool.connect().then(() => {
 
 const exitHandler = () => {
   if (server) {
-    server.close(() => {
+    server.close(async () => {
       logger.info('Server closed');
-      pool.end();
+      await prisma.$disconnect();
       process.exit(1);
     });
   } else {
-    pool.end();
-    process.exit(1);
+    prisma.$disconnect().then(() => process.exit(1));
   }
 };
 

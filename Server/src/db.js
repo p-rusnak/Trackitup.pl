@@ -1,8 +1,3 @@
-const { Pool } = require('pg');
-const config = require('./config/config');
+const prisma = require('./prisma');
 
-const pool = new Pool({
-  connectionString: config.postgres.url,
-});
-
-module.exports = pool;
+module.exports = prisma;
