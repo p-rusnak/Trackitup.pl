@@ -1,34 +1,22 @@
-const mongoose = require('mongoose');
-const { toJSON, paginate } = require('./plugins');
+const pool = require('../db');
 
-const scoreSchema = mongoose.Schema(
-    {
-        userId: {
-            type: String,
-            required: true,
-        },
-        mode: {
-            type: String,
-            required: true,
-        },
-        songId: {
-            type: String,
-            required: true,
-        },
-        diff: {
-            type: String,
-            required: true,
-        },
-        grade: {
-            type: String,
-            required: false,
-        },
-    },
-);
-// add plugin that converts mongoose to json
-scoreSchema.plugin(toJSON);
-scoreSchema.plugin(paginate);
+const createScore = async (scoreBody) => {
+  const { rows } = await pool.query(
+    'INSERT INTO scores(user_id, mode, song_id, diff, grade) VALUES($1,$2,$3,$4,$5) RETURNING *',
+    [scoreBody.userId, scoreBody.mode, scoreBody.songId, scoreBody.diff, scoreBody.grade || null]
+  );
+  return rows[0];
+};
 
-const Rating = mongoose.model('Score', scoreSchema);
+const findByUser = async (userId, mode) => {
+  const { rows } = await pool.query(
+    'SELECT * FROM scores WHERE user_id = $1 AND mode = $2',
+    [userId, mode]
+  );
+  return rows;
+};
 
-module.exports = Rating;
+module.exports = {
+  createScore,
+  findByUser,
+};
