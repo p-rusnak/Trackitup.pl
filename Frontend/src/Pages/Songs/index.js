@@ -256,7 +256,7 @@ const Songs = ({ mode }) => {
             <FormControlLabel
               value="tier"
               control={<Radio />}
-              label="Tier list diff (not everything is included)"
+              label="Tier list diff"
             />
             <FormControlLabel
               value="fav"
@@ -318,7 +318,7 @@ const Songs = ({ mode }) => {
                 </Button>
               </DiffSearch>
               <div>
-                Tags (not everything is included):
+                Tags:
                 <FormControlLabel
                   control={
                     <Checkbox
