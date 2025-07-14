@@ -13,10 +13,10 @@ const swaggerDef = {
   },
   servers: [
     {
-      url: `https://api.trackitup.pl:${config.port}/v1`,
+      url: `https://api.trackitup.pl:${config.port}/trackitup/api/v1`,
     },
     {
-      url: `http://localhost:${config.port}/v1`,
+      url: `http://localhost:${config.port}/trackitup/api/v1`,
     }
   ],
 };
