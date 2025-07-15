@@ -22,7 +22,19 @@ const createScore = async (scoreBody, mode, user) => {
   return prisma.score.create({ data: { ...scoreBody, userId: user.id, mode } });
 };
 
+const getLatestScores = async (limit = 10) =>
+  prisma.score.findMany({
+    take: limit,
+    orderBy: { id: 'desc' },
+    include: {
+      user: {
+        select: { username: true },
+      },
+    },
+  });
+
 module.exports = {
   getScores,
   createScore,
+  getLatestScores,
 };

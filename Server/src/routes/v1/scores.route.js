@@ -7,6 +7,10 @@ const scoresController = require('../../controllers/scores.controller');
 const router = express.Router();
 
 router
+  .route('/latest')
+  .get(validate(scoresValidation.getLatestScores), scoresController.getLatestScores);
+
+router
   .route('/:mode')
   .post(auth('postScores'), validate(scoresValidation.createScore), scoresController.postScore)
   .get(auth('getScores'), validate(scoresValidation.getScores), scoresController.getScores);
