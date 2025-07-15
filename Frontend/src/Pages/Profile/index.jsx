@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import Section from "../../Components/Layout/Section";
 import {
@@ -10,7 +10,10 @@ import {
   Chip,
   Box,
   Typography,
+  Avatar,
+  IconButton,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import { ApiClient } from "../../API/httpService";
 import songs from "../../consts/songs.json";
 import compareGrades from "../../helpers/compareGrades";
@@ -18,6 +21,7 @@ import grades from "../../Assets/Grades";
 import styled from "styled-components";
 import getBestTitle from "../../helpers/getBestTitle";
 import { formatBadge } from "../../helpers/badgeUtils";
+import Av from "../../Assets/anon.png";
 
 const MODES = {
   SINGLE: "item_single",
@@ -34,6 +38,17 @@ const GradeImg = styled.img`
   height: 40px;
 `;
 
+const AvatarWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const AddButton = styled(IconButton)`
+  position: absolute !important;
+  bottom: 0;
+  right: 0;
+`;
+
 const TablesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -48,6 +63,19 @@ const Profile = () => {
   const [singleScores, setSingleScores] = useState({});
   const [doubleScores, setDoubleScores] = useState({});
   const [bestTitle, setBestTitle] = useState(null);
+  const fileInputRef = useRef(null);
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const avatarUrl = reader.result;
+      setUser((u) => ({ ...u, avatarUrl }));
+      apiClient.updateUser(id, { avatarUrl }).catch((err) => console.error(err));
+    };
+    reader.readAsDataURL(file);
+  };
 
   useEffect(() => {
     if (!id) return;
@@ -118,7 +146,22 @@ const Profile = () => {
       <Section header="User info">
         {user && (
           <Box>
-            <Typography variant="h6">{user.username}</Typography>
+            <AvatarWrapper>
+              <Avatar src={user.avatarUrl || Av} sx={{ width: 80, height: 80 }} />
+              <AddButton onClick={() => fileInputRef.current && fileInputRef.current.click()} size="small">
+                <AddIcon fontSize="small" />
+              </AddButton>
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleAvatarChange}
+                style={{ display: "none" }}
+              />
+            </AvatarWrapper>
+            <Typography variant="h6" sx={{ mt: 1 }}>
+              {user.username}
+            </Typography>
             {bestTitle && (
               <Typography variant="subtitle1">Title: {bestTitle}</Typography>
             )}
