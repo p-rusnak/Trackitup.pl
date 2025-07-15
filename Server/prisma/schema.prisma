@@ -42,3 +42,10 @@ model Score {
   grade     String?
   mode      String
 }
+
+model Missing {
+  id        Int      @id @default(autoincrement())
+  song_name String
+  diff      String
+  createdAt DateTime @default(now())
+}
