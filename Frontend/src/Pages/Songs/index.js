@@ -26,6 +26,7 @@ import diffCounter from "../../consts/diffsCounter";
 import GradeSelect from "../../Components/GradeSelect";
 import compareGrades from "../../helpers/compareGrades";
 import { useNotification } from "../../Components/Notification";
+import { formatBadge } from "../../helpers/badgeUtils";
 
 const apiClient = new ApiClient();
 
@@ -196,8 +197,9 @@ const Songs = ({ mode }) => {
       .then((r) => {
         const { newBadges = [], newTitles = [] } = r.data || {};
         if (newBadges.length || newTitles.length) {
+          const badgeNames = newBadges.map((b) => formatBadge(b));
           notify(
-            `New achievements: ${[...newBadges, ...newTitles].join(', ')}`,
+            `New achievements: ${[...badgeNames, ...newTitles].join(', ')}`,
             'success'
           );
         }
