@@ -125,7 +125,7 @@ const Songs = ({ mode }) => {
     ...Object.keys(diffCounter[mode]).map((d) => parseInt(d.replace("lv_", "")))
   );
 
-  let prevChart;
+  let prevCategory;
 
   const loadData = (songData) => {
     const newData = {};
@@ -542,15 +542,23 @@ const Songs = ({ mode }) => {
                       const adiff = chartData.diffs.find(
                         (a) => a.diff === diff && a.type === mode
                       )?.adiff;
-                      const divider = sort === "tier" && prevChart !== adiff;
-                      prevChart = adiff;
+                      const grade = chartData.grade;
+                      let divider = false;
+                      let dividerLabel = "";
+                      if (sort === "tier") {
+                        divider = prevCategory !== adiff;
+                        dividerLabel = adiff || "Not Specified";
+                        prevCategory = adiff;
+                      } else if (sort === "grade") {
+                        divider = prevCategory !== grade;
+                        dividerLabel = grade || "No Grade";
+                        prevCategory = grade;
+                      }
 
                       return (
                         <React.Fragment key={`${chart[0]}-${diff}`}>
                           {divider && (
-                            <DividerStyled>
-                              {adiff || "Not Specified"}
-                            </DividerStyled>
+                            <DividerStyled>{dividerLabel}</DividerStyled>
                           )}
                           <Thumbnail
                             data={chartData}
