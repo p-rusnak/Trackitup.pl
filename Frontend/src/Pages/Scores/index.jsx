@@ -24,6 +24,7 @@ const Scores = () => {
             <TableRow>
               <TableCell>User</TableCell>
               <TableCell>Song</TableCell>
+              <TableCell>Diff</TableCell>
               <TableCell>Grade</TableCell>
             </TableRow>
           </TableHead>
@@ -33,8 +34,8 @@ const Scores = () => {
                 <TableCell>
                   <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
                 </TableCell>
+                <TableCell>{songs[s.song_id]?.title || s.song_id}</TableCell>
                 <TableCell>
-                  {songs[s.song_id]?.title || s.song_id}{' '}
                   <DiffBall className={`${s.mode} ${s.diff}`} />
                 </TableCell>
                 <TableCell>
