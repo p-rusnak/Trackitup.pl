@@ -29,7 +29,7 @@ export class ApiClient {
 
     login = (params) => client.post('auth/login', params)
     register = (params) => client.post('auth/register', params)
-    
+
     getScores = (mode) => client.get(`scores/${mode}`)
     postScores = (mode, data) => client.post(`scores/${mode}`, data)
     getLatestScores = (limit) => client.get('scores/latest', { params: { limit } })
@@ -37,6 +37,7 @@ export class ApiClient {
     getUsers = () => client.get('users')
     getUser = (id) => client.get(`users/${id}`)
     getLeaderboard = () => client.get('leaderboard')
+    reportMissing = (data) => client.post('missings', data)
 }
 
 export default client

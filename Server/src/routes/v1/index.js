@@ -4,6 +4,7 @@ const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const scoresRoute = require('./scores.route');
 const leaderboardRoute = require('./leaderboard.route');
+const missingRoute = require('./missing.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -24,6 +25,10 @@ const defaultRoutes = [
   {
     path: '/leaderboard',
     route: leaderboardRoute,
+  },
+  {
+    path: '/missings',
+    route: missingRoute,
   },
 ];
 

@@ -11,6 +11,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import TextField from "@mui/material/TextField";
 import Logo from "../../Assets/logo.png";
 import Av from "../../Assets/anon.png";
 import styled from "styled-components";
@@ -21,6 +26,8 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { ColorModeContext } from "../Layout";
 import { Link } from "react-router-dom";
 import { styled as styled2 } from "@mui/system";
+import { ApiClient } from "../../API/httpService";
+import { useNotification } from "../Notification";
 
 const pages = [
   "Single",
@@ -35,9 +42,14 @@ const settings = ["Profile", "Logout"];
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [reportOpen, setReportOpen] = React.useState(false);
+  const [songName, setSongName] = React.useState('');
+  const [diff, setDiff] = React.useState('');
   const navigate = useNavigate();
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
+  const { notify } = useNotification();
+  const apiClient = React.useMemo(() => new ApiClient(), []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -136,6 +148,12 @@ function NavBar() {
                   {page}
                 </Button>
               ))}
+            <Button
+              onClick={() => setReportOpen(true)}
+              sx={{ my: 2, color: "white", display: "block", ml: 2 }}
+            >
+              Report Missing Chart
+            </Button>
           </Box>
           {localStorage.getItem("token") ? (
             <Box sx={{ flexGrow: 0 }}>
@@ -182,6 +200,41 @@ function NavBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    <Dialog open={reportOpen} onClose={() => setReportOpen(false)}>
+      <DialogTitle>Report Missing Chart</DialogTitle>
+      <DialogContent>
+        <TextField
+          margin="dense"
+          label="Song name"
+          fullWidth
+          value={songName}
+          onChange={(e) => setSongName(e.target.value)}
+        />
+        <TextField
+          margin="dense"
+          label="Diff"
+          fullWidth
+          value={diff}
+          onChange={(e) => setDiff(e.target.value)}
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setReportOpen(false)}>Cancel</Button>
+        <Button
+          onClick={() => {
+            apiClient
+              .reportMissing({ song_name: songName, diff })
+              .then(() => notify("Report submitted", "success"))
+              .catch(() => notify("Error submitting report", "error"));
+            setReportOpen(false);
+            setSongName('');
+            setDiff('');
+          }}
+        >
+          Submit
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 export default NavBar;
