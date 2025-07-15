@@ -105,7 +105,7 @@ const checkTitles = (scores, currentTitles) => {
 
 const updateUserAchievements = async (userId, score = null) => {
   const user = await prisma.user.findUnique({ where: { id: userId }, include: { scores: true } });
-  if (!user) return;
+  if (!user) return { newBadges: [], newTitles: [] };
 
   let badges;
   let titles;
@@ -119,7 +119,12 @@ const updateUserAchievements = async (userId, score = null) => {
     titles = checkTitles(user.scores, user.titles);
   }
 
+  const newBadges = badges.filter((b) => !user.badges.includes(b));
+  const newTitles = titles.filter((t) => !user.titles.includes(t));
+
   await prisma.user.update({ where: { id: userId }, data: { badges, titles } });
+
+  return { newBadges, newTitles };
 };
 
 module.exports = { updateUserAchievements };

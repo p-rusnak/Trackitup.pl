@@ -185,11 +185,18 @@ const Songs = ({ mode }) => {
   };
 
   const changeGrade = (value) => {
-    apiClient.postScores(mode, {
-      song_id: openChart.id,
-      diff: openChart.diff,
-      grade: value,
-    });
+    apiClient
+      .postScores(mode, {
+        song_id: openChart.id,
+        diff: openChart.diff,
+        grade: value,
+      })
+      .then((r) => {
+        const { newBadges = [], newTitles = [] } = r.data || {};
+        if (newBadges.length || newTitles.length) {
+          alert(`New achievements: ${[...newBadges, ...newTitles].join(', ')}`);
+        }
+      });
 
     if (details[mode][openChart.diff]) {
       if (details[mode][openChart.diff][openChart.id]) {

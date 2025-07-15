@@ -14,8 +14,8 @@ const getScores = catchAsync(async (req, res) => {
 });
 
 const postScore = catchAsync(async (req, res) => {
-    const score = await scoresService.createScore(req.body, req.params.mode, req.user);
-    res.status(httpStatus.CREATED).send(score);
+    const result = await scoresService.createScore(req.body, req.params.mode, req.user);
+    res.status(httpStatus.CREATED).send(result);
 });
 
 const getLatestScores = catchAsync(async (req, res) => {
