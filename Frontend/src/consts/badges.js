@@ -1,4 +1,4 @@
-const songBadges = {
+export const songBadges = {
   drill: [
     { level: 1, song: "Vook", songId: 340, mode: "item_single", diff: "lv_15" },
     {
@@ -343,9 +343,9 @@ const songBadges = {
   ],
 };
 
-const metaBadges = {
+export const metaBadges = {
   twist: "[Twist] Expert",
   specialist: "Specialist",
 };
 
-module.exports = { songBadges, metaBadges };
+export { songBadges, metaBadges };
