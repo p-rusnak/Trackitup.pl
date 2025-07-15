@@ -7,3 +7,4 @@ module.exports.leaderboardService = require('./leaderboard.service');
 module.exports.achievementService = require('./achievement.service');
 module.exports.missingService = require('./missing.service');
 module.exports.ratingsService = require('./ratings.service');
+module.exports.goalsService = require('./goals.service');

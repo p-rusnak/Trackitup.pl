@@ -63,6 +63,8 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const [singleScores, setSingleScores] = useState({});
   const [doubleScores, setDoubleScores] = useState({});
+  const [singleGoals, setSingleGoals] = useState([]);
+  const [doubleGoals, setDoubleGoals] = useState([]);
   const [bestTitle, setBestTitle] = useState(null);
   const fileInputRef = useRef(null);
   const { user: loggedUser, setUser: setLoggedUser } = useUser();
@@ -90,6 +92,8 @@ const Profile = () => {
     });
     apiClient.getScores(MODES.SINGLE).then((r) => setSingleScores(r.data));
     apiClient.getScores(MODES.DOUBLE).then((r) => setDoubleScores(r.data));
+    apiClient.getGoals(MODES.SINGLE).then((r) => setSingleGoals(r.data));
+    apiClient.getGoals(MODES.DOUBLE).then((r) => setDoubleGoals(r.data));
   }, [id]);
 
   const getAdiff = (songId, diff, mode) => {
@@ -224,6 +228,48 @@ const Profile = () => {
                   </TableCell>
                   <TableCell>
                     <DiffBall className={`${MODES.DOUBLE} ${bp.diff}`} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TablesWrapper>
+      </Section>
+      <Section header="Goals">
+        <TablesWrapper>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" colSpan={2}>
+                  Singles
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {singleGoals.map((g) => (
+                <TableRow key={`${g.song_id}-${g.diff}`}>
+                  <TableCell>{songs[g.song_id]?.title || g.song_id}</TableCell>
+                  <TableCell>
+                    <DiffBall className={`${MODES.SINGLE} ${g.diff}`} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" colSpan={2}>
+                  Doubles
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {doubleGoals.map((g) => (
+                <TableRow key={`${g.song_id}-${g.diff}`}>
+                  <TableCell>{songs[g.song_id]?.title || g.song_id}</TableCell>
+                  <TableCell>
+                    <DiffBall className={`${MODES.DOUBLE} ${g.diff}`} />
                   </TableCell>
                 </TableRow>
               ))}

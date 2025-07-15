@@ -10,10 +10,17 @@ const SongDetails = ({ chart, changeGrade }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
+  const [goal, setGoal] = useState(false);
   const apiClient = useMemo(() => new ApiClient(), []);
 
   useEffect(() => {
     apiClient.getRating(chart.id, chart.diff).then((r) => setRatings(r.data));
+    apiClient.getGoals(chart.mode).then((r) => {
+      const isGoal = r.data.some(
+        (g) => g.song_id === chart.id && g.diff === chart.diff
+      );
+      setGoal(isGoal);
+    });
   }, [chart, apiClient]);
 
   const rateChart = (val) => {
@@ -76,6 +83,13 @@ const SongDetails = ({ chart, changeGrade }) => {
                 changeGrade(g);
               }}
             />
+            <Button size="small" onClick={() => {
+              apiClient
+                .postGoal(chart.mode, { song_id: chart.id, diff: chart.diff })
+                .then(() => setGoal((g) => !g));
+            }}>
+              {goal ? 'Remove Goal' : 'Set Goal'}
+            </Button>
           </GradeWrapper>
         )}
         <Typography variant="subtitle2" gutterBottom>
