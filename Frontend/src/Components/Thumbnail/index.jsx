@@ -50,7 +50,7 @@ export default Thumbnail
 
 const Container = styled.div`
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: space-between;
     margin: 5px;
     background-color: white;
@@ -58,6 +58,10 @@ const Container = styled.div`
     min-height: 101px;
     max-width: 180px;
     max-height: 101px;
+    @media only screen and (max-width: 600px) {
+        min-width: calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
 `
 const Image = styled.div`
     display: flex;

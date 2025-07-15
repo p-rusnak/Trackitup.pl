@@ -9,8 +9,8 @@ import {
   FormControlLabel,
   FormLabel,
   Modal,
-  Radio,
-  RadioGroup,
+  ToggleButton,
+  ToggleButtonGroup,
   TextField,
   Typography,
   Grid,
@@ -285,28 +285,13 @@ const Songs = ({ mode }) => {
             <FormControl fullWidth>
               <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
               <SortOptions
-                row
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="tier"
+                exclusive
                 value={sort}
-                onChange={(e) => setSort(e.target.value)}
-                name="radio-buttons-group"
+                onChange={(_, v) => v && setSort(v)}
               >
-                <FormControlLabel
-                  value="popularity"
-                  control={<Radio />}
-                  label="Popular"
-                />
-                <FormControlLabel
-                  value="grade"
-                  control={<Radio />}
-                  label="Grade"
-                />
-                <FormControlLabel
-                  value="tier"
-                  control={<Radio />}
-                  label="Tier list"
-                />
+                <ToggleButton value="popularity">Popular</ToggleButton>
+                <ToggleButton value="grade">Grade</ToggleButton>
+                <ToggleButton value="tier">Tier list</ToggleButton>
               </SortOptions>
             </FormControl>
           </Grid>
@@ -639,13 +624,13 @@ const DiffSearch = styled.div`
   align-items: center;
 `;
 
-const SortOptions = styled(RadioGroup)`
+const SortOptions = styled(ToggleButtonGroup)`
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 10px;
-  justify-content: space-between;
   margin-bottom: 20px;
+  width: 100%;
+  & .MuiToggleButton-root {
+    flex: 1;
+  }
 `;
 
 const AccordionDetailsStyled = styled(AccordionDetails)`
