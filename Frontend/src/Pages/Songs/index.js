@@ -25,6 +25,7 @@ import songs from "../../consts/songs";
 import diffCounter from "../../consts/diffsCounter";
 import GradeSelect from "../../Components/GradeSelect";
 import compareGrades from "../../helpers/compareGrades";
+import { useNotification } from "../../Components/Notification";
 
 const apiClient = new ApiClient();
 
@@ -100,6 +101,7 @@ const filterItems = (a, details, mode, diff, hidden, hideScore, tags) => {
 };
 
 const Songs = ({ mode }) => {
+  const { notify } = useNotification();
   const [openChart, setOpenChart] = useState(false);
   const [search, setSearch] = useState();
   const [data, setData] = useState({});
@@ -194,7 +196,10 @@ const Songs = ({ mode }) => {
       .then((r) => {
         const { newBadges = [], newTitles = [] } = r.data || {};
         if (newBadges.length || newTitles.length) {
-          alert(`New achievements: ${[...newBadges, ...newTitles].join(', ')}`);
+          notify(
+            `New achievements: ${[...newBadges, ...newTitles].join(', ')}`,
+            'success'
+          );
         }
       });
 
