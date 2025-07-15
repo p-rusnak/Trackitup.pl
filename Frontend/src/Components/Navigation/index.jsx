@@ -91,7 +91,13 @@ function NavBar() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar
+        position="sticky"
+        sx={{
+          backgroundColor: theme.palette.background.paper,
+          color: theme.palette.text.primary,
+        }}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -135,6 +141,15 @@ function NavBar() {
                       <Typography textAlign="center">{page}</Typography>
                     </MenuItem>
                   ))}
+                <MenuItem
+                  key="report"
+                  onClick={() => {
+                    setReportOpen(true);
+                    setAnchorElNav(null);
+                  }}
+                >
+                  <Typography textAlign="center">Report Missing Chart</Typography>
+                </MenuItem>
               </Menu>
             </Box>
             <StyledLink to="/">
@@ -149,14 +164,14 @@ function NavBar() {
                   <Button
                     key={page}
                     onClick={() => handleCloseNavMenu(page)}
-                    sx={{ my: 2, color: "white", display: "block" }}
+                    sx={{ my: 2, color: "inherit", display: "block" }}
                   >
                     {page}
                   </Button>
                 ))}
               <Button
                 onClick={() => setReportOpen(true)}
-                sx={{ my: 2, color: "white", display: "block", ml: 2 }}
+                sx={{ my: 2, color: "inherit", display: "block", ml: 2 }}
               >
                 Report Missing Chart
               </Button>
