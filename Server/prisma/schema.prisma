@@ -22,7 +22,7 @@ model User {
   tokens          Token[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
-  rating          Rating[]
+  ratings         Rating[]
 }
 
 model Token {
