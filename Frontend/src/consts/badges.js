@@ -347,5 +347,3 @@ export const metaBadges = {
   twist: "[Twist] Expert",
   specialist: "Specialist",
 };
-
-export { songBadges, metaBadges };
