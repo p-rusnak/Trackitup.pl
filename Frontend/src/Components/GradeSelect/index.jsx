@@ -44,6 +44,8 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
 `
 
 const Label = styled.span`
@@ -53,6 +55,7 @@ const Label = styled.span`
 const MainButtons = styled.div`
     display: flex;
     gap: 4px;
+    flex-wrap: wrap;
 `
 
 const GradeButton = styled(Button)`
