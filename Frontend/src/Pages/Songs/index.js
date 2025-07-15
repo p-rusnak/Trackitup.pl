@@ -462,7 +462,7 @@ const Songs = ({ mode }) => {
                 />
                 <GradeSelect
                   value={hideScore}
-                  onChange={(e) => setHideScores(e.target.value)}
+                  onChange={(g) => setHideScores(g)}
                 />
                 <Accordion>
                   <AccordionSummary

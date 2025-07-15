@@ -43,26 +43,14 @@ const SongDetails = ({ chart, changeGrade }) => {
       </div>
 
       {loggedIn && (
-        <>
-          <GradeSelect
-            label="Set Grade"
-            value={grade}
-            onChange={(e) => {
-              setGrade(e.target.value);
-              changeGrade(e.target.value);
-            }}
-          />
-          {grade && (
-            <Button
-              onClick={() => {
-                setGrade();
-                changeGrade();
-              }}
-            >
-              Remove
-            </Button>
-          )}
-        </>
+        <GradeSelect
+          label="Set Grade"
+          value={grade}
+          onChange={(g) => {
+            setGrade(g);
+            changeGrade(g);
+          }}
+        />
       )}
       
       {/* TODO: score upload */}
