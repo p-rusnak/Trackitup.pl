@@ -1,12 +1,14 @@
 import React, { useMemo, useState, useEffect } from "react";
-import { Box, Typography, Divider, Button } from "@mui/material";
+import { Box, Typography, Divider, Button, IconButton } from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
 
-const SongDetails = ({ chart, changeGrade }) => {
+const SongDetails = ({ chart, changeGrade, toggleFavorite }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
@@ -47,6 +49,9 @@ const SongDetails = ({ chart, changeGrade }) => {
       <CoverWrapper>
         <DiffBallMain className={`${chart.mode} ${chart.diff}`} />
         <Cover src={chart.img} alt={chart.title} />
+        <FavoriteButton onClick={() => toggleFavorite(chart)}>
+          {chart.fav ? <StarIcon /> : <StarBorderIcon />}
+        </FavoriteButton>
       </CoverWrapper>
       <Content>
         <Typography variant="h5" gutterBottom>
@@ -202,6 +207,13 @@ const DiffBallMain = styled.span`
   left: 20px;
   top: 20px;
 
+`;
+
+const FavoriteButton = styled(IconButton)`
+  position: absolute !important;
+  top: 8px;
+  right: 8px;
+  color: gold;
 `;
 
 const DiffBall = styled.span`

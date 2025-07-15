@@ -126,9 +126,18 @@ const Songs = ({ mode }) => {
     return stored ? JSON.parse(stored) : { item_single: {}, item_double: {} };
   });
 
+  const [favorites, setFavorites] = useState(() => {
+    const stored = localStorage.getItem("favorites");
+    return stored ? JSON.parse(stored) : {};
+  });
+
   useEffect(() => {
     localStorage.setItem("hiddenDiffs", JSON.stringify(hiddenDiffs));
   }, [hiddenDiffs]);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   useEffect(() => {
     localStorage.setItem("songSort", sort);
@@ -226,6 +235,25 @@ const Songs = ({ mode }) => {
     }
   };
 
+  const toggleFavorite = (chart) => {
+    const key = `${chart.id}-${chart.diff}-${chart.mode}`;
+    setFavorites((prev) => {
+      const updated = { ...prev };
+      if (updated[key]) {
+        delete updated[key];
+      } else {
+        updated[key] = true;
+      }
+      return updated;
+    });
+    if (openChart &&
+        openChart.id === chart.id &&
+        openChart.diff === chart.diff &&
+        openChart.mode === chart.mode) {
+      setOpenChart({ ...openChart, fav: !favorites[key] });
+    }
+  };
+
   const shouldDisplayDiff = (diff) => {
     const prefix1 = search?.p1Diff > 9 ? "lv_" : "lv_0";
     const prefix2 = search?.p2Diff > 9 ? "lv_" : "lv_0";
@@ -262,7 +290,11 @@ const Songs = ({ mode }) => {
         aria-describedby="modal-modal-description"
       >
         <StyledBox>
-          <SongDetails chart={openChart} changeGrade={changeGrade} />
+          <SongDetails
+            chart={openChart}
+            changeGrade={changeGrade}
+            toggleFavorite={toggleFavorite}
+          />
         </StyledBox>
       </Modal>
 
@@ -546,6 +578,7 @@ const Songs = ({ mode }) => {
                         ...(details[mode][diff]
                           ? details[mode][diff][chart[0]]
                           : {}),
+                        fav: favorites[`${chart[0]}-${diff}-${mode}`],
                       };
 
                       const adiff = chartData.diffs.find(
@@ -572,6 +605,7 @@ const Songs = ({ mode }) => {
                           <Thumbnail
                             data={chartData}
                             onClick={() => openPopup(chartData)}
+                            onToggleFavorite={() => toggleFavorite(chartData)}
                           />
                         </React.Fragment>
                       );

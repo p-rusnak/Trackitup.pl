@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import ChatIcon from '@mui/icons-material/Chat';
 import { Divider, Icon } from '@mui/material';
 import { styled as styledMui } from '@mui/system';
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useNavigate } from 'react-router';
 import grades from '../../Assets/Grades';
 
@@ -18,7 +20,7 @@ const TAG_COLORS = {
 }
 
 
-const Thumbnail = ({data, onClick}) => {
+const Thumbnail = ({data, onClick, onToggleFavorite}) => {
     const navigate = useNavigate()
     const diffData = data.diffs?.find(
         (d) => d.diff === data.diff && d.type === data.mode
@@ -32,16 +34,21 @@ const Thumbnail = ({data, onClick}) => {
     }
 
     return (
-        <Container
-            onClick={onClick}
-        >
+        <Container onClick={onClick}>
             <Image>
                 {tcolors.length > 0 && <TagIndicator style={tagStyle} />}
                 <MainImg src={data.img} />
                 {data.grade && <Score src={grades[data.grade]}/>}
                 <Short>{data.bpm}</Short>
+                <FavButton
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onToggleFavorite();
+                    }}
+                >
+                    {data.fav ? <StarIcon /> : <StarBorderIcon />}
+                </FavButton>
             </Image>
-
         </Container>
     )
 }
@@ -105,4 +112,13 @@ const TagIndicator = styled.div`
     top: 2px;
     left: 2px;
     z-index: 2;
+`
+
+const FavButton = styled.div`
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 2;
+    color: gold;
+    display: flex;
 `
