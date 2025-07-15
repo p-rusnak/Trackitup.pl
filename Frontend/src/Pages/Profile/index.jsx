@@ -141,6 +141,7 @@ const Profile = () => {
                   Singles
                 </TableCell>
               </TableRow>
+            </TableHead>
             <TableBody>
               {bestSingles.slice(0, 10).map((bp) => (
                 <TableRow key={`${bp.songId}-${bp.diff}`}>
