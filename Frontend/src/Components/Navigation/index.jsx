@@ -35,7 +35,6 @@ const pages = [
   "Coop",
   "Scores",
   "Leaderboard",
-  "Titles",
   // "Add Score",
 ];
 const settings = ["Profile", "Logout"];
@@ -149,7 +148,9 @@ function NavBar() {
                     setAnchorElNav(null);
                   }}
                 >
-                  <Typography textAlign="center">Report Missing Chart</Typography>
+                  <Typography textAlign="center">
+                    Report Missing Chart
+                  </Typography>
                 </MenuItem>
               </Menu>
             </Box>
