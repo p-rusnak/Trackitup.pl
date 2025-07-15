@@ -50,6 +50,39 @@ const checkBadges = (scores, currentBadges) => {
   return Array.from(badges);
 };
 
+const updateBadgesWithScore = (score, currentBadges) => {
+  const badges = new Set(currentBadges || []);
+
+  Object.entries(songBadges).forEach(([category, reqs]) => {
+    reqs.forEach((req) => {
+      if (req.level === 'Expert') return;
+      const songId = titleToId[req.song];
+      if (!songId) return;
+      if (
+        score.song_id === songId &&
+        score.diff === req.chart &&
+        gradeBetterOrEqual(score.grade, req.grade || 'SS')
+      ) {
+        badges.add(`${category}_${req.level}`);
+      }
+    });
+
+    if (
+      [...Array(10).keys()].every((i) => badges.has(`${category}_${i + 1}`)) &&
+      metaBadges[category]
+    ) {
+      badges.add(metaBadges[category]);
+    }
+  });
+
+  const hasAllLevels = Object.keys(songBadges).every((c) => {
+    return badges.has(`${c}_10`);
+  });
+  if (hasAllLevels) badges.add(metaBadges.specialist);
+
+  return Array.from(badges);
+};
+
 const checkTitles = (scores, currentTitles) => {
   const titles = new Set(currentTitles || []);
 
@@ -72,12 +105,21 @@ const checkTitles = (scores, currentTitles) => {
   return Array.from(titles);
 };
 
-const updateUserAchievements = async (userId) => {
+const updateUserAchievements = async (userId, score = null) => {
   const user = await prisma.user.findUnique({ where: { id: userId }, include: { scores: true } });
   if (!user) return;
 
-  const badges = checkBadges(user.scores, user.badges);
-  const titles = checkTitles(user.scores, user.titles);
+  let badges;
+  let titles;
+
+  if (score) {
+    badges = updateBadgesWithScore(score, user.badges);
+    const allScores = user.scores.concat([score]);
+    titles = checkTitles(allScores, user.titles);
+  } else {
+    badges = checkBadges(user.scores, user.badges);
+    titles = checkTitles(user.scores, user.titles);
+  }
 
   await prisma.user.update({ where: { id: userId }, data: { badges, titles } });
 };
