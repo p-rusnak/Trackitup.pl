@@ -56,9 +56,6 @@ const updateBadgesWithScore = (score, currentBadges) => {
   Object.entries(songBadges).forEach(([category, reqs]) => {
     reqs.forEach((req) => {
       if (req.level === 'Expert') return;
-      if (score.song_id === req.songId.toString()) {
-        console.log(req);
-      }
 
       if (
         score.song_id === req.songId.toString() &&
@@ -108,9 +105,6 @@ const checkTitles = (scores, currentTitles) => {
 
 const updateUserAchievements = async (userId, score = null) => {
   const user = await prisma.user.findUnique({ where: { id: userId }, include: { scores: true } });
-  console.log('Updating achievements for user:', userId);
-  console.log('Current badges:', user.badges);
-  console.log('Score:', score);
   if (!user) return;
 
   let badges;
