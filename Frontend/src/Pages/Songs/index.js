@@ -24,6 +24,7 @@ import SongDetails from "./SongDetails";
 import songs from "../../consts/songs";
 import diffCounter from "../../consts/diffsCounter";
 import GradeSelect from "../../Components/GradeSelect";
+import GradeDropdown from "../../Components/GradeDropdown";
 import compareGrades from "../../helpers/compareGrades";
 import { useNotification } from "../../Components/Notification";
 import { formatBadge } from "../../helpers/badgeUtils";
@@ -466,9 +467,9 @@ const Songs = ({ mode }) => {
                   }
                   label="Score better than"
                 />
-                <GradeSelect
+                <GradeDropdown
                   value={hideScore}
-                  onChange={(g) => setHideScores(g)}
+                  onChange={(e) => setHideScores(e.target.value)}
                 />
                 <Accordion>
                   <AccordionSummary
