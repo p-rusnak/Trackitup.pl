@@ -265,19 +265,19 @@ const Songs = ({ mode }) => {
             <FormControlLabel
               value="popularity"
               control={<Radio />}
-              label="Song popularity"
+              label="Popular"
             />
             <FormControlLabel value="grade" control={<Radio />} label="Grade" />
             <FormControlLabel
               value="tier"
               control={<Radio />}
-              label="Tier list diff"
+              label="Tier list"
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               value="fav"
               control={<Radio />}
               label="Favourites"
-            />
+            /> */}
           </SortOptions>
         </FormControl>
         <Accordion>
