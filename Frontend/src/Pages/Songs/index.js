@@ -106,11 +106,18 @@ const Songs = ({ mode }) => {
   const [details, setDetails] = useState({
     item_single: {},
     item_double: {},
+    item_coop: {},
   });
   const [sort, setSort] = useState("tier");
   const [hidden, setHidden] = useState({});
   const [tags, setTags] = useState({});
   const [hideScore, setHideScores] = useState("");
+
+  const maxDiff = Math.max(
+    ...Object.keys(diffCounter[mode]).map((d) =>
+      parseInt(d.replace("lv_", ""))
+    )
+  );
 
   let prevChart;
 
@@ -277,11 +284,11 @@ const Songs = ({ mode }) => {
             <Filters>
               <DiffSearch>
                 With diffs:
-                <NumberInput
-                  label="P1"
-                  type="number"
-                  min="1"
-                  max="28"
+                  <NumberInput
+                    label="P1"
+                    type="number"
+                    min="1"
+                    max={maxDiff}
                   value={search?.p1Diff || ""}
                   onChange={(e) =>
                     setSearch(
@@ -291,11 +298,11 @@ const Songs = ({ mode }) => {
                     )
                   }
                 />
-                <NumberInput
-                  label="P2"
-                  type="number"
-                  min="1"
-                  max="28"
+                  <NumberInput
+                    label="P2"
+                    type="number"
+                    min="1"
+                    max={maxDiff}
                   value={search?.p2Diff || ""}
                   onChange={(e) =>
                     setSearch(

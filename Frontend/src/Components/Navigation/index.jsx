@@ -24,9 +24,10 @@ import { styled as styled2 } from '@mui/system';
 
 
 const pages = [
-    'Single', 
-    'Double', 
-    'Scores', 
+    'Single',
+    'Double',
+    'Coop',
+    'Scores',
     'Leaderboard',
     'Add Score',
 ];
