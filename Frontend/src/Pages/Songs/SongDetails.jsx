@@ -3,17 +3,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
-import Tesseract from "tesseract.js";
 
 const SongDetails = ({ chart, changeGrade }) => {
   const [grade, setGrade] = useState(chart.grade || "");
-  const [goal, setGoal] = useState(chart.goal || "");
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [recognizedText, setRecognizedText] = useState("");
-  const handleImageUpload = (event) => {
-    const image = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(image));
-  };
 
   chart.diffs.sort((a, b) => {
     if (a.type > b.type) return -1;
@@ -25,13 +17,6 @@ const SongDetails = ({ chart, changeGrade }) => {
     return 0;
   });
 
-  const recognizeText = async () => {
-    if (selectedImage) {
-      const result = await Tesseract.recognize(selectedImage);
-      setRecognizedText(result.data.text);
-      console.log(result);
-    }
-  };
 
   const loggedIn = Boolean(localStorage.getItem("token"));
 
@@ -79,23 +64,8 @@ const SongDetails = ({ chart, changeGrade }) => {
           )}
         </>
       )}
-      {/* <GradeSelect
-            label="Set Goal"
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-        /> */}
-      {loggedIn && (
-        <>
-          <div>
-            test
-            <input type="file" accept="image/*" onChange={handleImageUpload} />
-            {/* {selectedImage && <img src={selectedImage} alt="Selected" />} */}
-            {recognizedText && <div>{recognizedText}</div>}
-          </div>
-          <Button onClick={recognizeText}>Add Score</Button>
-        </>
-      )}
-      {/* <Button>Add To Favorite</Button> */}
+      
+      {/* TODO: score upload */}
     </div>
   );
 };
