@@ -7,6 +7,7 @@ import Layout from '../Components/Layout'
 import Songs from '../Pages/Songs'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
+import Profile from '../Pages/Profile'
 
 const router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'profile/:id',
-                element: <div>user profile</div>
+                element: <Profile />
             },
             {
                 path: 'login',
