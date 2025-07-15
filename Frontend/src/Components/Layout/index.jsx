@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router";
 import Navbar from "../Navigation";
 import NotificationProvider from "../Notification";
+import UserProvider from "../User";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box, GlobalStyles } from "@mui/material";
@@ -48,27 +49,29 @@ const Layout = () => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={mode === "light" ? themeLight : themeDark}>
-        <NotificationProvider>
-          <CssBaseline />
-          <GlobalStyles
-            styles={{
-              body: { backgroundColor: theme.background },
-            }}
-          />
-          <div>
-            <Navbar />
-            <Box
-              sx={{
-                padding: {
-                  sx: "0px 0 0 0",
-                  md: "50px 10%;",
-                },
+        <UserProvider>
+          <NotificationProvider>
+            <CssBaseline />
+            <GlobalStyles
+              styles={{
+                body: { backgroundColor: theme.background },
               }}
-            >
-              <Outlet />
-            </Box>
-          </div>
-        </NotificationProvider>
+            />
+            <div>
+              <Navbar />
+              <Box
+                sx={{
+                  padding: {
+                    sx: "0px 0 0 0",
+                    md: "50px 10%;",
+                  },
+                }}
+              >
+                <Outlet />
+              </Box>
+            </div>
+          </NotificationProvider>
+        </UserProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

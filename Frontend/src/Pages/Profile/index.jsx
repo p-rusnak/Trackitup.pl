@@ -22,6 +22,7 @@ import styled from "styled-components";
 import getBestTitle from "../../helpers/getBestTitle";
 import { formatBadge } from "../../helpers/badgeUtils";
 import Av from "../../Assets/anon.png";
+import { useUser } from "../../Components/User";
 
 const MODES = {
   SINGLE: "item_single",
@@ -64,6 +65,7 @@ const Profile = () => {
   const [doubleScores, setDoubleScores] = useState({});
   const [bestTitle, setBestTitle] = useState(null);
   const fileInputRef = useRef(null);
+  const { user: loggedUser, setUser: setLoggedUser } = useUser();
 
   const handleAvatarChange = (e) => {
     const file = e.target.files && e.target.files[0];
@@ -73,6 +75,9 @@ const Profile = () => {
       const avatarUrl = reader.result;
       setUser((u) => ({ ...u, avatarUrl }));
       apiClient.updateUser(id, { avatarUrl }).catch((err) => console.error(err));
+      if (loggedUser && String(loggedUser.id) === String(id)) {
+        setLoggedUser((u) => ({ ...u, avatarUrl }));
+      }
     };
     reader.readAsDataURL(file);
   };
