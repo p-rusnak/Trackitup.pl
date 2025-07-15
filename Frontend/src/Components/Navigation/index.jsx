@@ -28,6 +28,7 @@ import { Link } from "react-router-dom";
 import { styled as styled2 } from "@mui/system";
 import { ApiClient } from "../../API/httpService";
 import { useNotification } from "../Notification";
+import { useUser } from "../User";
 
 const pages = [
   "Single",
@@ -50,6 +51,7 @@ function NavBar() {
   const colorMode = React.useContext(ColorModeContext);
   const { notify } = useNotification();
   const apiClient = React.useMemo(() => new ApiClient(), []);
+  const { user, setUser } = useUser();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -182,7 +184,7 @@ function NavBar() {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="T" src={Av} />
+                    <Avatar alt="avatar" src={user?.avatarUrl || Av} />
                   </IconButton>
                 </Tooltip>
                 <Menu
