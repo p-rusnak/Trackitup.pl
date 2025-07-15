@@ -26,6 +26,7 @@ const Scores = () => {
               <TableCell>Song</TableCell>
               <TableCell>Diff</TableCell>
               <TableCell>Grade</TableCell>
+              <TableCell>Date</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -45,6 +46,7 @@ const Scores = () => {
                     '-'
                   )}
                 </TableCell>
+                <TableCell>{new Date(s.createdAt).toLocaleDateString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>

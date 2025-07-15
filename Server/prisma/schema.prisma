@@ -41,6 +41,7 @@ model Score {
   diff      String
   grade     String?
   mode      String
+  createdAt DateTime @default(now())
 }
 
 model Missing {
