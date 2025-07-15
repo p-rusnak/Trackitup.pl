@@ -28,17 +28,18 @@ const createScore = async (scoreBody, mode, user) => {
     if (existing) {
       await prisma.score.delete({ where: { id: existing.id } });
     }
-    return null;
+    const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id);
+    return { score: null, newBadges, newTitles };
   }
 
   if (existing) {
     const res = await prisma.score.update({ where: { id: existing.id }, data: { grade } });
-    await achievementService.updateUserAchievements(user.id, res);
-    return res;
+    const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id, res);
+    return { score: res, newBadges, newTitles };
   }
   const res = await prisma.score.create({ data: { song_id, diff, grade, userId: user.id, mode } });
-  await achievementService.updateUserAchievements(user.id, res);
-  return res;
+  const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id, res);
+  return { score: res, newBadges, newTitles };
 };
 
 const getLatestScores = async (limit = 10) =>

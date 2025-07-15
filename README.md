@@ -6,3 +6,5 @@ This repository contains a PIU score tracker. The `Frontend/src/consts` folder n
 - **titleRequirements.js** – defines titles earned for clearing a given number of songs within difficulty ranges (e.g. *Intermediate* and *Advanced* levels).
 
 These constants are meant for future logic awarding badges when users submit scores.
+
+Submitting a score now returns any newly earned badges or titles in the response. The front end displays an alert when new achievements are awarded.
