@@ -95,7 +95,7 @@ const SongDetails = ({ chart, changeGrade }) => {
         </PackList>
         <Divider sx={{ my: 2 }} />
         <Typography variant="subtitle2" gutterBottom>
-          Difficulty rating
+          Difficulty rating {mainDiff.adiff && `(${mainDiff.adiff})`}
         </Typography>
         <RateButtons>
           <Button color="error" size="small" onClick={() => rateChart(1)}>
