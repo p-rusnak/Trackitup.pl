@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Section from '../../Components/Layout/Section';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
 import { ApiClient } from '../../API/httpService';
 import songs from '../../consts/songs.json';
 import compareGrades from '../../helpers/compareGrades';
@@ -26,6 +33,15 @@ const Profile = () => {
   });
   bestPasses.sort((a, b) => compareGrades(a.grade, b.grade));
 
+  const parseLevel = (d) => {
+    const n = parseInt(d.replace('lv_', ''));
+    return Number.isNaN(n) ? 0 : n;
+  };
+
+  const diffCounts = Object.entries(scores || {})
+    .map(([diff, vals]) => ({ diff, count: Object.keys(vals).length }))
+    .sort((a, b) => parseLevel(a.diff) - parseLevel(b.diff));
+
   return (
     <div>
       <Section header="User info">
@@ -50,16 +66,22 @@ const Profile = () => {
         </ul>
       </Section>
       <Section header="Passes by difficulty">
-        {Object.entries(scores).map(([diff, vals]) => (
-          <div key={diff}>
-            <h4>{diff}</h4>
-            <ul>
-              {Object.entries(vals).map(([songId, { grade }]) => (
-                <li key={`${songId}-${diff}`}>{songs[songId]?.title} - {grade}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Difficulty</TableCell>
+              <TableCell align="right">Pass count</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {diffCounts.map(({ diff, count }) => (
+              <TableRow key={diff}>
+                <TableCell>{diff}</TableCell>
+                <TableCell align="right">{count}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </Section>
     </div>
   );
