@@ -4,6 +4,7 @@ import { ApiClient } from '../../API/httpService';
 import songs from '../../consts/songs.json';
 import styled from 'styled-components';
 import grades from '../../Assets/Grades';
+import { Link } from 'react-router-dom';
 
 const apiClient = new ApiClient();
 
@@ -20,8 +21,8 @@ const Scores = () => {
         <List>
           {latest.map((s) => (
             <Item key={s.id}>
-              <strong>{s.user?.username}</strong> – {songs[s.song_id]?.title || s.song_id} [
-              {s.mode === 'item_double' ? 'Double' : 'Single'} {s.diff}] :{' '}
+              <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink> –{' '}
+              {songs[s.song_id]?.title || s.song_id} <DiffBall className={`${s.mode} ${s.diff}`} /> :{' '}
               {s.grade ? (
                 <GradeIcon src={grades[s.grade]} alt={s.grade} />
               ) : (
@@ -49,4 +50,16 @@ const Item = styled.li`
 const GradeIcon = styled.img`
   height: 20px;
   vertical-align: middle;
+`;
+
+const DiffBall = styled.span`
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+`;
+
+const UserLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
 `;
