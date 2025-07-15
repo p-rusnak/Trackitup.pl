@@ -56,6 +56,18 @@ function NavBar() {
 
   const handleCloseUserMenu = (action) => {
     switch(action) {
+      case 'Profile':
+        try {
+          const token = localStorage.getItem('token');
+          if (token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            navigate(`/profile/${payload.sub}`);
+            window.location.reload();
+          }
+        } catch (e) {
+          console.error('Failed to parse token', e);
+        }
+        break;
       case 'Logout':
         localStorage.removeItem('token')
         window.location.reload()
