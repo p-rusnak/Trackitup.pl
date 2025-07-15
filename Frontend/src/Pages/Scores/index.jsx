@@ -3,6 +3,7 @@ import Section from '../../Components/Layout/Section';
 import { ApiClient } from '../../API/httpService';
 import songs from '../../consts/songs.json';
 import styled from 'styled-components';
+import grades from '../../Assets/Grades';
 
 const apiClient = new ApiClient();
 
@@ -21,7 +22,11 @@ const Scores = () => {
             <Item key={s.id}>
               <strong>{s.user?.username}</strong> – {songs[s.song_id]?.title || s.song_id} [
               {s.mode === 'item_double' ? 'Double' : 'Single'} {s.diff}] :{' '}
-              {s.grade || '-'}
+              {s.grade ? (
+                <GradeIcon src={grades[s.grade]} alt={s.grade} />
+              ) : (
+                '-'
+              )}
             </Item>
           ))}
         </List>
@@ -39,4 +44,9 @@ const List = styled.ul`
 
 const Item = styled.li`
   margin-bottom: 5px;
+`;
+
+const GradeIcon = styled.img`
+  height: 20px;
+  vertical-align: middle;
 `;
