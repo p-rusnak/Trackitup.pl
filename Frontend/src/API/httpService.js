@@ -18,6 +18,7 @@ export class ApiClient {
     postScores = (mode, data) => client.post(`scores/${mode}`, data)
 
     getUsers = () => client.get('users')
+    getLeaderboard = (mode) => client.get(`leaderboard/${mode}`)
 }
 
 export default client
