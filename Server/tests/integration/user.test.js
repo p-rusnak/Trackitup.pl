@@ -16,6 +16,7 @@ describe('User routes', () => {
     beforeEach(() => {
       newUser = {
         name: faker.name.findName(),
+        avatarUrl: faker.internet.url(),
         email: faker.internet.email().toLowerCase(),
         password: 'password1',
         role: 'user',
@@ -35,6 +36,7 @@ describe('User routes', () => {
       expect(res.body).toEqual({
         id: expect.anything(),
         name: newUser.name,
+        avatarUrl: newUser.avatarUrl,
         email: newUser.email,
         role: newUser.role,
         isEmailVerified: false,
@@ -43,7 +45,7 @@ describe('User routes', () => {
       const dbUser = await User.findById(res.body.id);
       expect(dbUser).toBeDefined();
       expect(dbUser.password).not.toBe(newUser.password);
-      expect(dbUser).toMatchObject({ name: newUser.name, email: newUser.email, role: newUser.role, isEmailVerified: false });
+      expect(dbUser).toMatchObject({ name: newUser.name, email: newUser.email, role: newUser.role, isEmailVerified: false, avatarUrl: newUser.avatarUrl });
     });
 
     test('should be able to create an admin as well', async () => {
@@ -161,6 +163,7 @@ describe('User routes', () => {
       expect(res.body.results[0]).toEqual({
         id: userOne.id.toHexString(),
         name: userOne.name,
+        avatarUrl: userOne.avatarUrl,
         email: userOne.email,
         role: userOne.role,
         isEmailVerified: userOne.isEmailVerified,
@@ -365,6 +368,7 @@ describe('User routes', () => {
         id: userOne.id.toHexString(),
         email: userOne.email,
         name: userOne.name,
+        avatarUrl: userOne.avatarUrl,
         role: userOne.role,
         isEmailVerified: userOne.isEmailVerified,
       });
@@ -483,6 +487,7 @@ describe('User routes', () => {
       await insertUsers([userOne]);
       const updateBody = {
         name: faker.name.findName(),
+        avatarUrl: faker.internet.url(),
         email: faker.internet.email().toLowerCase(),
         password: 'newPassword1',
       };
@@ -497,6 +502,7 @@ describe('User routes', () => {
       expect(res.body).toEqual({
         id: userOne.id.toHexString(),
         name: updateBody.name,
+        avatarUrl: updateBody.avatarUrl,
         email: updateBody.email,
         role: 'user',
         isEmailVerified: false,
@@ -505,7 +511,7 @@ describe('User routes', () => {
       const dbUser = await User.findById(userOne.id);
       expect(dbUser).toBeDefined();
       expect(dbUser.password).not.toBe(updateBody.password);
-      expect(dbUser).toMatchObject({ name: updateBody.name, email: updateBody.email, role: 'user' });
+      expect(dbUser).toMatchObject({ name: updateBody.name, email: updateBody.email, role: 'user', avatarUrl: updateBody.avatarUrl });
     });
 
     test('should return 401 error if access token is missing', async () => {

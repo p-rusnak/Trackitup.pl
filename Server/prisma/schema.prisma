@@ -17,6 +17,7 @@ model User {
   isEmailVerified Boolean @default(false)
   badges         String[] @default([])
   titles         String[] @default([])
+  avatarUrl      String?
   scores         Score[]
   tokens         Token[]
   createdAt      DateTime @default(now())

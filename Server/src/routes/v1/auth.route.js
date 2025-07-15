@@ -43,6 +43,9 @@ module.exports = router;
  *             properties:
  *               name:
  *                 type: string
+ *               avatarUrl:
+ *                 type: string
+ *                 format: uri
  *               email:
  *                 type: string
  *                 format: email
@@ -54,6 +57,7 @@ module.exports = router;
  *                 description: At least one number and one letter
  *             example:
  *               name: fake name
+ *               avatarUrl: https://example.com/avatar.png
  *               email: fake@example.com
  *               password: password1
  *     responses:
