@@ -38,6 +38,9 @@ export class ApiClient {
     getUser = (id) => client.get(`users/${id}`)
     getLeaderboard = () => client.get('leaderboard')
     reportMissing = (data) => client.post('missings', data)
+
+    getRating = (songId, diff) => client.get(`ratings/${songId}/${diff}`)
+    postRating = (data) => client.post('ratings', data)
 }
 
 export default client

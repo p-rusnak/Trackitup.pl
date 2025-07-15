@@ -51,3 +51,16 @@ model Missing {
   diff      String
   createdAt DateTime @default(now())
 }
+
+model Rating {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  song_id   String
+  diff      String
+  value     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, song_id, diff])
+}

@@ -1,13 +1,24 @@
-import React, { useMemo, useState } from "react";
-import { Box, Typography, Divider } from "@mui/material";
+import React, { useMemo, useState, useEffect } from "react";
+import { Box, Typography, Divider, Button } from "@mui/material";
 
 import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
+import { ApiClient } from "../../API/httpService";
 
 const SongDetails = ({ chart, changeGrade }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
+  const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
+  const apiClient = useMemo(() => new ApiClient(), []);
+
+  useEffect(() => {
+    apiClient.getRating(chart.id, chart.diff).then((r) => setRatings(r.data));
+  }, [chart, apiClient]);
+
+  const rateChart = (val) => {
+    apiClient.postRating({ song_id: chart.id, diff: chart.diff, rating: val }).then((r) => setRatings(r.data));
+  };
 
 
   const mainDiff = useMemo(
@@ -82,6 +93,26 @@ const SongDetails = ({ chart, changeGrade }) => {
             </PackItem>
           ))}
         </PackList>
+        <Divider sx={{ my: 2 }} />
+        <Typography variant="subtitle2" gutterBottom>
+          Difficulty rating
+        </Typography>
+        <RateButtons>
+          <Button color="error" size="small" onClick={() => rateChart(1)}>
+            Harder
+          </Button>
+          <Button color="warning" size="small" onClick={() => rateChart(0)}>
+            It's ok
+          </Button>
+          <Button color="success" size="small" onClick={() => rateChart(-1)}>
+            Easier
+          </Button>
+        </RateButtons>
+        <RatingBar>
+          <RatingSegment color="#e57373" width={ratings.harder} total={ratings} />
+          <RatingSegment color="#ffeb3b" width={ratings.ok} total={ratings} />
+          <RatingSegment color="#81c784" width={ratings.easier} total={ratings} />
+        </RatingBar>
         {otherDiffs.length > 0 && (
           <>
             <Divider sx={{ my: 2 }} />
@@ -103,6 +134,12 @@ const SongDetails = ({ chart, changeGrade }) => {
 };
 
 export default SongDetails;
+
+const RatingSegment = ({ color, width, total }) => {
+  const totalVotes = total.harder + total.ok + total.easier;
+  const w = totalVotes ? (width / totalVotes) * 100 : 0;
+  return <Segment style={{ width: `${w}%`, backgroundColor: color }} />;
+};
 
 const Container = styled.div`
   display: flex;
@@ -171,4 +208,21 @@ const DiffBall = styled.span`
   display: inline-block;
   width: 40px;
   height: 40px;
+`;
+
+const RateButtons = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+`;
+
+const RatingBar = styled.div`
+  display: flex;
+  width: 100%;
+  height: 8px;
+  background-color: #ddd;
+`;
+
+const Segment = styled.div`
+  height: 100%;
 `;
