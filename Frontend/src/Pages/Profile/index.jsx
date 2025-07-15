@@ -11,7 +11,21 @@ import {
 import { ApiClient } from '../../API/httpService';
 import songs from '../../consts/songs.json';
 import compareGrades from '../../helpers/compareGrades';
+import grades from '../../Assets/Grades';
+import styled from 'styled-components';
 import getBestTitle from '../../helpers/getBestTitle';
+
+const MODE = 'item_single';
+
+const DiffBall = styled.span`
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+`;
+
+const GradeImg = styled.img`
+  height: 40px;
+`;
 
 const apiClient = new ApiClient();
 
@@ -65,7 +79,7 @@ const Profile = () => {
       <Section header="Best passes">
         <ul>
           {bestPasses.slice(0, 10).map((bp) => (
-            <li key={`${bp.songId}-${bp.diff}`}>{songs[bp.songId]?.title} - {bp.grade} ({bp.diff})</li>
+            <li key={`${bp.songId}-${bp.diff}`}>{songs[bp.songId]?.title} - <GradeImg src={grades[bp.grade]} alt={bp.grade}/> <DiffBall className={`${MODE} ${bp.diff}`} /></li>
           ))}
         </ul>
       </Section>
