@@ -5,7 +5,9 @@ import { Box, FormControl, InputLabel, MenuItem, Select, Table, TableBody, Table
 const apiClient = new ApiClient();
 
 const Leaderboard = () => {
-  const [sort, setSort] = useState('singles');
+  const [sort, setSort] = useState(() =>
+    localStorage.getItem('leaderboardSort') || 'singles'
+  );
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -13,6 +15,10 @@ const Leaderboard = () => {
       setData(res.data);
     });
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('leaderboardSort', sort);
+  }, [sort]);
 
   const sortedData = [...data].sort((a, b) => b[sort] - a[sort]);
 

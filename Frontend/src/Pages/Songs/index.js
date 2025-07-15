@@ -111,7 +111,9 @@ const Songs = ({ mode }) => {
     item_double: {},
     item_coop: {},
   });
-  const [sort, setSort] = useState("tier");
+  const [sort, setSort] = useState(() =>
+    localStorage.getItem("songSort") || "tier"
+  );
   const [hidden, setHidden] = useState({});
   const [tags, setTags] = useState({});
   const [hideScore, setHideScores] = useState("");
@@ -123,6 +125,10 @@ const Songs = ({ mode }) => {
   useEffect(() => {
     localStorage.setItem("hiddenDiffs", JSON.stringify(hiddenDiffs));
   }, [hiddenDiffs]);
+
+  useEffect(() => {
+    localStorage.setItem("songSort", sort);
+  }, [sort]);
 
   const maxDiff = Math.max(
     ...Object.keys(diffCounter[mode]).map((d) => parseInt(d.replace("lv_", "")))
