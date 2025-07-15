@@ -7,6 +7,9 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Chip,
+  Box,
+  Typography,
 } from '@mui/material';
 import { ApiClient } from '../../API/httpService';
 import songs from '../../consts/songs.json';
@@ -94,15 +97,19 @@ const Profile = () => {
     <div>
       <Section header="User info">
         {user && (
-          <div>
-            <div>Username: {user.username}</div>
+          <Box>
+            <Typography variant="h6">{user.username}</Typography>
             {bestTitle && (
-              <div>Title: {bestTitle}</div>
+              <Typography variant="subtitle1">Best title: {bestTitle}</Typography>
             )}
             {user.badges?.length > 0 && (
-              <div>Badges: {user.badges.join(', ')}</div>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
+                {user.badges.map((b) => (
+                  <Chip key={b} label={b} size="small" />
+                ))}
+              </Box>
             )}
-          </div>
+          </Box>
         )}
       </Section>
       <Section header="Best passes">
