@@ -51,7 +51,7 @@ const songBadges = {
     { level: 10, song: 'Yog Sothoth', songId: 127, mode: 'item_double', diff: 'lv_24' },
     { level: 'Expert', song: 'All 10 Titles', songId: 1 },
   ],
-  twistExpert: [
+  twist: [
     { level: 1, song: 'Street Showdown', songId: 413, mode: 'item_single', diff: 'lv_15' },
     { level: 2, song: 'Final Audition 3', songId: 342, mode: 'item_single', diff: 'lv_16' },
     { level: 3, song: 'U Got Me Rocking', songId: 246, mode: 'item_single', diff: 'lv_17' },

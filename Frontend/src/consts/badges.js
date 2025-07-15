@@ -274,7 +274,7 @@ const songBadges = {
     },
     { level: "Expert", song: "All 10 Titles", songId: 1 },
   ],
-  twistExpert: [
+  twist: [
     {
       level: 1,
       song: "Street Showdown",
