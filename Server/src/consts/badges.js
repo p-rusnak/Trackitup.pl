@@ -67,6 +67,10 @@ const songBadges = {
 };
 
 const metaBadges = {
+  drill: '[Drill] Expert',
+  gimmick: '[Gimmick] Expert',
+  half: '[Half] Expert',
+  run: '[Run] Expert',
   twistExpert: '[Twist] Expert',
   specialist: 'Specialist'
 };
