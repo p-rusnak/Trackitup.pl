@@ -19,7 +19,8 @@ const Scores = () => {
         <List>
           {latest.map((s) => (
             <Item key={s.id}>
-              <strong>{s.user?.username}</strong> – {songs[s.song_id]?.title || s.song_id} [{s.diff}] :{' '}
+              <strong>{s.user?.username}</strong> – {songs[s.song_id]?.title || s.song_id} [
+              {s.mode === 'item_double' ? 'Double' : 'Single'} {s.diff}] :{' '}
               {s.grade || '-'}
             </Item>
           ))}
