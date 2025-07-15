@@ -15,6 +15,8 @@ model User {
   name           String?
   role           String
   isEmailVerified Boolean @default(false)
+  badges         String[] @default([])
+  titles         String[] @default([])
   scores         Score[]
   tokens         Token[]
   createdAt      DateTime @default(now())

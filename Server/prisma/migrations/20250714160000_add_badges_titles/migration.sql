@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN "badges" TEXT[] DEFAULT ARRAY[]::TEXT[];
+ALTER TABLE "User" ADD COLUMN "titles" TEXT[] DEFAULT ARRAY[]::TEXT[];

@@ -33,6 +33,12 @@ const Profile = () => {
           <div>
             <div>Username: {user.username}</div>
             <div>Email: {user.email}</div>
+            {user.titles?.length > 0 && (
+              <div>Title: {user.titles[user.titles.length - 1]}</div>
+            )}
+            {user.badges?.length > 0 && (
+              <div>Badges: {user.badges.join(', ')}</div>
+            )}
           </div>
         )}
       </Section>

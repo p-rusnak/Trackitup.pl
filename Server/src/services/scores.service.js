@@ -1,4 +1,5 @@
 const prisma = require('../db');
+const { achievementService } = require('./index');
 
 const getScores = async (filter) => {
   const scores = await prisma.score.findMany({ where: { userId: filter.userId, mode: filter.mode } });
@@ -27,13 +28,18 @@ const createScore = async (scoreBody, mode, user) => {
     if (existing) {
       await prisma.score.delete({ where: { id: existing.id } });
     }
+    await achievementService.updateUserAchievements(user.id);
     return null;
   }
 
   if (existing) {
-    return prisma.score.update({ where: { id: existing.id }, data: { grade } });
+    const res = await prisma.score.update({ where: { id: existing.id }, data: { grade } });
+    await achievementService.updateUserAchievements(user.id);
+    return res;
   }
-  return prisma.score.create({ data: { song_id, diff, grade, userId: user.id, mode } });
+  const res = await prisma.score.create({ data: { song_id, diff, grade, userId: user.id, mode } });
+  await achievementService.updateUserAchievements(user.id);
+  return res;
 };
 
 const getLatestScores = async (limit = 10) =>
