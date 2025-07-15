@@ -5,7 +5,7 @@ const createScore = {
     mode: Joi.string(),
   }),
   body: Joi.object().keys({
-    grade: Joi.string(),
+    grade: Joi.string().allow('', null),
     song_id: Joi.string().required(),
     diff: Joi.string().required(),
   }),
