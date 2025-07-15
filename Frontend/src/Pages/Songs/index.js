@@ -111,6 +111,16 @@ const Songs = ({ mode }) => {
   const [hidden, setHidden] = useState({});
   const [tags, setTags] = useState({});
   const [hideScore, setHideScores] = useState("");
+  const [hiddenDiffs, setHiddenDiffs] = useState(() => {
+    const stored = localStorage.getItem("hiddenDiffs");
+    return (
+      stored ? JSON.parse(stored) : { item_single: {}, item_double: {} }
+    );
+  });
+
+  useEffect(() => {
+    localStorage.setItem("hiddenDiffs", JSON.stringify(hiddenDiffs));
+  }, [hiddenDiffs]);
 
   let prevChart;
 
@@ -193,6 +203,7 @@ const Songs = ({ mode }) => {
     const prefix1 = search?.p1Diff > 9 ? "lv_" : "lv_0";
     const prefix2 = search?.p2Diff > 9 ? "lv_" : "lv_0";
     let result = true;
+    if (hiddenDiffs[mode]?.[diff]) result = false;
     if (!data[diff]?.length) result = false;
 
     if (search && search.p1Diff && search.p2Diff)
@@ -433,10 +444,38 @@ const Songs = ({ mode }) => {
                   value={hideScore}
                   onChange={(e) => setHideScores(e.target.value)}
                 />
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="hide-diffs-content"
+                    id="hide-diffs-header"
+                  >
+                    <Typography>Hide diffs</Typography>
+                  </AccordionSummary>
+                  <AccordionDetailsStyled>
+                    {Object.keys(diffCounter[mode]).map((d) => (
+                      <FormControlLabel
+                        key={d}
+                        control={
+                          <Checkbox
+                            checked={hiddenDiffs[mode]?.[d] || false}
+                            onChange={(_, b) =>
+                              setHiddenDiffs({
+                                ...hiddenDiffs,
+                                [mode]: { ...hiddenDiffs[mode], [d]: b },
+                              })
+                            }
+                          />
+                        }
+                        label={d.replace("lv_", "")}
+                      />
+                    ))}
+                  </AccordionDetailsStyled>
+                </Accordion>
               </div>
-            </Filters>
-          </AccordionDetailsStyled>
-        </Accordion>
+              </Filters>
+            </AccordionDetailsStyled>
+          </Accordion>
         <br />
       </div>
 
