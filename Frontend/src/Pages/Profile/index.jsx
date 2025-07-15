@@ -119,9 +119,7 @@ const Profile = () => {
           <Box>
             <Typography variant="h6">{user.username}</Typography>
             {bestTitle && (
-              <Typography variant="subtitle1">
-                Best title: {bestTitle}
-              </Typography>
+              <Typography variant="subtitle1">Title: {bestTitle}</Typography>
             )}
             {user.badges?.length > 0 && (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
