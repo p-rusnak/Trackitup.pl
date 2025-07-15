@@ -43,8 +43,8 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [reportOpen, setReportOpen] = React.useState(false);
-  const [songName, setSongName] = React.useState('');
-  const [diff, setDiff] = React.useState('');
+  const [songName, setSongName] = React.useState("");
+  const [diff, setDiff] = React.useState("");
   const navigate = useNavigate();
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
@@ -90,151 +90,158 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={() => handleCloseNavMenu()}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
+    <>
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={() => handleCloseNavMenu()}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages
+                  .filter(
+                    (p) => p !== "Add Score" || localStorage.getItem("token")
+                  )
+                  .map((page) => (
+                    <MenuItem
+                      key={page}
+                      onClick={() => handleCloseNavMenu(page)}
+                    >
+                      <Typography textAlign="center">{page}</Typography>
+                    </MenuItem>
+                  ))}
+              </Menu>
+            </Box>
+            <StyledLink to="/">
+              <StyledLogo src={Logo} alt="Logo" />
+            </StyledLink>
+            <Box sx={{ flexGrow: 20, display: { xs: "none", md: "flex" } }}>
               {pages
                 .filter(
                   (p) => p !== "Add Score" || localStorage.getItem("token")
                 )
                 .map((page) => (
-                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
-            </Menu>
-          </Box>
-          <StyledLink to="/">
-            <StyledLogo src={Logo} alt="Logo" />
-          </StyledLink>
-          <Box sx={{ flexGrow: 20, display: { xs: "none", md: "flex" } }}>
-            {pages
-              .filter((p) => p !== "Add Score" || localStorage.getItem("token"))
-              .map((page) => (
-                <Button
-                  key={page}
-                  onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
-              ))}
-            <Button
-              onClick={() => setReportOpen(true)}
-              sx={{ my: 2, color: "white", display: "block", ml: 2 }}
-            >
-              Report Missing Chart
-            </Button>
-          </Box>
-          {localStorage.getItem("token") ? (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="T" src={Av} />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem
-                    key={setting}
-                    onClick={() => handleCloseUserMenu(setting)}
+                  <Button
+                    key={page}
+                    onClick={() => handleCloseNavMenu(page)}
+                    sx={{ my: 2, color: "white", display: "block" }}
                   >
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
+                    {page}
+                  </Button>
                 ))}
-              </Menu>
+              <Button
+                onClick={() => setReportOpen(true)}
+                sx={{ my: 2, color: "white", display: "block", ml: 2 }}
+              >
+                Report Missing Chart
+              </Button>
             </Box>
-          ) : (
-            <MenuItem
-              onClick={() => {
-                navigate(`/login`);
-              }}
-            >
-              <Typography textAlign="center">Log In</Typography>
-            </MenuItem>
-          )}
-        </Toolbar>
-      </Container>
-    </AppBar>
-    <Dialog open={reportOpen} onClose={() => setReportOpen(false)}>
-      <DialogTitle>Report Missing Chart</DialogTitle>
-      <DialogContent>
-        <TextField
-          margin="dense"
-          label="Song name"
-          fullWidth
-          value={songName}
-          onChange={(e) => setSongName(e.target.value)}
-        />
-        <TextField
-          margin="dense"
-          label="Diff"
-          fullWidth
-          value={diff}
-          onChange={(e) => setDiff(e.target.value)}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={() => setReportOpen(false)}>Cancel</Button>
-        <Button
-          onClick={() => {
-            apiClient
-              .reportMissing({ song_name: songName, diff })
-              .then(() => notify("Report submitted", "success"))
-              .catch(() => notify("Error submitting report", "error"));
-            setReportOpen(false);
-            setSongName('');
-            setDiff('');
-          }}
-        >
-          Submit
-        </Button>
-      </DialogActions>
-    </Dialog>
+            {localStorage.getItem("token") ? (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="T" src={Av} />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem
+                      key={setting}
+                      onClick={() => handleCloseUserMenu(setting)}
+                    >
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            ) : (
+              <MenuItem
+                onClick={() => {
+                  navigate(`/login`);
+                }}
+              >
+                <Typography textAlign="center">Log In</Typography>
+              </MenuItem>
+            )}
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <Dialog open={reportOpen} onClose={() => setReportOpen(false)}>
+        <DialogTitle>Report Missing Chart</DialogTitle>
+        <DialogContent>
+          <TextField
+            margin="dense"
+            label="Song name"
+            fullWidth
+            value={songName}
+            onChange={(e) => setSongName(e.target.value)}
+          />
+          <TextField
+            margin="dense"
+            label="Diff"
+            fullWidth
+            value={diff}
+            onChange={(e) => setDiff(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setReportOpen(false)}>Cancel</Button>
+          <Button
+            onClick={() => {
+              apiClient
+                .reportMissing({ song_name: songName, diff })
+                .then(() => notify("Report submitted", "success"))
+                .catch(() => notify("Error submitting report", "error"));
+              setReportOpen(false);
+              setSongName("");
+              setDiff("");
+            }}
+          >
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 }
 export default NavBar;
