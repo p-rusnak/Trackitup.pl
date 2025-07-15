@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Section from "../../Components/Layout/Section";
 import {
   Table,
@@ -122,15 +122,18 @@ const Profile = () => {
             {bestTitle && (
               <Typography variant="subtitle1">Title: {bestTitle}</Typography>
             )}
-            {user.badges?.length > 0 && (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
-                {user.badges.map((b) => (
-                  <Chip key={b} label={formatBadge(b)} size="small" />
-                ))}
-              </Box>
-            )}
-          </Box>
-        )}
+          {user.badges?.length > 0 && (
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
+              {user.badges.map((b) => (
+                <Chip key={b} label={formatBadge(b)} size="small" />
+              ))}
+            </Box>
+          )}
+          <Typography sx={{ mt: 1 }}>
+            <Link to="/Titles">Titles info</Link>
+          </Typography>
+        </Box>
+      )}
       </Section>
       <Section header="Best passes">
         <TablesWrapper>

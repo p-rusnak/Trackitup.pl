@@ -35,6 +35,7 @@ const pages = [
   "Coop",
   "Scores",
   "Leaderboard",
+  "Titles",
   // "Add Score",
 ];
 const settings = ["Profile", "Logout"];
