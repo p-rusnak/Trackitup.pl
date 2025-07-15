@@ -72,6 +72,6 @@ const DiffBall = styled.span`
 
 const UserLink = styled(Link)`
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: bold;
 `;
