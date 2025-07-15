@@ -159,19 +159,53 @@ const Profile = () => {
           </Table>
         </TablesWrapper>
       </Section>
-      <Section header="Passes by difficulty">
+      <Section header="Passes by difficulty - Single">
         <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>Difficulty</TableCell>
-              <TableCell align="right">Pass count</TableCell>
+              <TableCell align="right">A</TableCell>
+              <TableCell align="right">S</TableCell>
+              <TableCell align="right">SS</TableCell>
+              <TableCell align="right">SSS</TableCell>
+              <TableCell align="right">Total</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {diffCounts.map(({ diff, count }) => (
+            {diffStatsSingle.map(({ diff, A, S, SS, SSS, total }) => (
               <TableRow key={diff}>
                 <TableCell>{diff}</TableCell>
-                <TableCell align="right">{count}</TableCell>
+                <TableCell align="right">{A}</TableCell>
+                <TableCell align="right">{S}</TableCell>
+                <TableCell align="right">{SS}</TableCell>
+                <TableCell align="right">{SSS}</TableCell>
+                <TableCell align="right">{total}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Section>
+      <Section header="Passes by difficulty - Double">
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Difficulty</TableCell>
+              <TableCell align="right">A</TableCell>
+              <TableCell align="right">S</TableCell>
+              <TableCell align="right">SS</TableCell>
+              <TableCell align="right">SSS</TableCell>
+              <TableCell align="right">Total</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {diffStatsDouble.map(({ diff, A, S, SS, SSS, total }) => (
+              <TableRow key={diff}>
+                <TableCell>{diff}</TableCell>
+                <TableCell align="right">{A}</TableCell>
+                <TableCell align="right">{S}</TableCell>
+                <TableCell align="right">{SS}</TableCell>
+                <TableCell align="right">{SSS}</TableCell>
+                <TableCell align="right">{total}</TableCell>
               </TableRow>
             ))}
           </TableBody>

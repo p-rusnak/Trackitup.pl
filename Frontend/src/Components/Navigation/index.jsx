@@ -30,7 +30,7 @@ const pages = [
   "Leaderboard",
   // "Add Score",
 ];
-const settings = ["Profile", "Account", "Logout"];
+const settings = ["Profile", "Logout"];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
