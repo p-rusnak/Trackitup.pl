@@ -18,7 +18,14 @@ const postScore = catchAsync(async (req, res) => {
     res.status(httpStatus.CREATED).send(score);
 });
 
+const getLatestScores = catchAsync(async (req, res) => {
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const result = await scoresService.getLatestScores(limit);
+    res.send(result);
+});
+
 module.exports = {
     getScores,
     postScore,
+    getLatestScores,
 };

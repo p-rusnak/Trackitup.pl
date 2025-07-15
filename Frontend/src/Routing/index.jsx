@@ -5,6 +5,7 @@ import {
 } from "react-router-dom"
 import Layout from '../Components/Layout'
 import Songs from '../Pages/Songs'
+import Scores from '../Pages/Scores'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
 
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'Scores',
-                element: <div>scores</div>
+                element: <Scores />
             },
             {
                 path: 'Leaderboard',
