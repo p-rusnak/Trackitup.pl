@@ -111,9 +111,12 @@ const Songs = ({ mode }) => {
       case 'popularity':
         return parseInt(a[0]) - parseInt(b[0]);
       case 'tier':
-      default:
-        if (!adiff || !bdiff || adiff.adiff === '?' || bdiff.adiff === '?') return 0;
-        return adiff.adiff.localeCompare(bdiff.adiff);
+      default: {
+        const aTier = adiff?.adiff;
+        const bTier = bdiff?.adiff;
+        if (!aTier || !bTier || aTier === '?' || bTier === '?') return 0;
+        return String(aTier).localeCompare(String(bTier));
+      }
     }
   };
 
