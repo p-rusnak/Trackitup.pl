@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {
-    createBrowserRouter,
+    createHashRouter,
     RouterProvider,
 } from "react-router-dom"
 import Layout from '../Components/Layout'
@@ -11,7 +11,7 @@ import Leaderboard from '../Pages/Leaderboard'
 import Login from '../Pages/Login'
 import Profile from '../Pages/Profile'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: '/',
         element: <Layout />,
