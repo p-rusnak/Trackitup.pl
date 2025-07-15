@@ -33,9 +33,9 @@ const sortByFilters = (ar, br, diff, details, mode, sort) => {
   const b = br[1].diffs.find((v) => v.diff === diff && v.type === mode);
   switch (sort) {
     case "tier":
-      if (a === "?") return -1;
+      if (!a || !b || a.adiff === "?" || b.adiff === "?") return -1;
       if (a.adiff < b.adiff) return 1;
-      else if (a.adiff === b.bdiff) {
+      else if (a.adiff === b.adiff) {
         return 0;
       } else {
         return -1;
@@ -461,8 +461,8 @@ const Songs = ({ mode }) => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetailsStyled>
-                  {data[diff]
-                    ?.filter((a) =>
+                  {(data[diff] || [])
+                    .filter((a) =>
                       filterItems(
                         a,
                         details,

@@ -5,6 +5,8 @@ import {
 } from "react-router-dom"
 import Layout from '../Components/Layout'
 import Songs from '../Pages/Songs'
+import Scores from '../Pages/Scores'
+import Leaderboard from '../Pages/Leaderboard'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
 import Profile from '../Pages/Profile'
@@ -28,11 +30,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'Scores',
-                element: <div>scores</div>
+                element: <Scores />
             },
             {
                 path: 'Leaderboard',
-                element: <div>lb</div>
+                element: <Leaderboard />
             },
             {
                 path: 'add',
