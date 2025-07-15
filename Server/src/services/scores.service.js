@@ -34,11 +34,11 @@ const createScore = async (scoreBody, mode, user) => {
 
   if (existing) {
     const res = await prisma.score.update({ where: { id: existing.id }, data: { grade } });
-    await achievementService.updateUserAchievements(user.id);
+    await achievementService.updateUserAchievements(user.id, res);
     return res;
   }
   const res = await prisma.score.create({ data: { song_id, diff, grade, userId: user.id, mode } });
-  await achievementService.updateUserAchievements(user.id);
+  await achievementService.updateUserAchievements(user.id, res);
   return res;
 };
 
