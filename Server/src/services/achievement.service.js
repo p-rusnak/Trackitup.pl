@@ -37,12 +37,12 @@ const checkBadges = (scores, currentBadges) => {
         completed += 1;
       }
     });
-    if (completed >= 10 && category === 'twistExpert') {
-      badges.add(metaBadges.twistExpert);
+    if (completed >= 10 && metaBadges[category]) {
+      badges.add(metaBadges[category]);
     }
   });
 
-  const hasAllLevels = ['drill', 'gimmick', 'half', 'run', 'twistExpert'].every((c) => {
+  const hasAllLevels = Object.keys(songBadges).every((c) => {
     return badges.has(`${c}_10`);
   });
   if (hasAllLevels) badges.add(metaBadges.specialist);
