@@ -20,4 +20,24 @@ const getLeaderboard = async (mode) => {
   return board;
 };
 
-module.exports = { getLeaderboard };
+const getFullLeaderboard = async () => {
+  const users = await prisma.user.findMany({ include: { scores: true } });
+  const board = users.map((u) => {
+    const singles = u.scores.filter((s) => s.mode === 'item_single' && s.grade !== 'F');
+    const doubles = u.scores.filter((s) => s.mode === 'item_double' && s.grade !== 'F');
+    let singlesHighest = 0;
+    singles.forEach((s) => {
+      const level = parseLevel(s.diff);
+      if (level > singlesHighest) singlesHighest = level;
+    });
+    let doublesHighest = 0;
+    doubles.forEach((s) => {
+      const level = parseLevel(s.diff);
+      if (level > doublesHighest) doublesHighest = level;
+    });
+    return { id: u.id, username: u.username, singles: singlesHighest, doubles: doublesHighest };
+  });
+  return board;
+};
+
+module.exports = { getLeaderboard, getFullLeaderboard };

@@ -7,4 +7,9 @@ const getLeaderboard = catchAsync(async (req, res) => {
   res.send(board);
 });
 
-module.exports = { getLeaderboard };
+const getFullLeaderboard = catchAsync(async (req, res) => {
+  const board = await leaderboardService.getFullLeaderboard();
+  res.send(board);
+});
+
+module.exports = { getLeaderboard, getFullLeaderboard };

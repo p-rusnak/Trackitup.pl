@@ -5,36 +5,40 @@ import { Box, FormControl, InputLabel, MenuItem, Select, Table, TableBody, Table
 const apiClient = new ApiClient();
 
 const Leaderboard = () => {
-  const [mode, setMode] = useState('item_single');
+  const [sort, setSort] = useState('singles');
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    apiClient.getLeaderboard(mode).then((res) => {
+    apiClient.getLeaderboard().then((res) => {
       setData(res.data);
     });
-  }, [mode]);
+  }, []);
+
+  const sortedData = [...data].sort((a, b) => b[sort] - a[sort]);
 
   return (
     <Box sx={{ p: 2 }}>
       <FormControl sx={{ mb: 2, minWidth: 120 }} size="small">
-        <InputLabel id="mode-select-label">Mode</InputLabel>
-        <Select labelId="mode-select-label" value={mode} label="Mode" onChange={(e) => setMode(e.target.value)}>
-          <MenuItem value={'item_single'}>Singles</MenuItem>
-          <MenuItem value={'item_double'}>Doubles</MenuItem>
+        <InputLabel id="sort-select-label">Sort By</InputLabel>
+        <Select labelId="sort-select-label" value={sort} label="Sort By" onChange={(e) => setSort(e.target.value)}>
+          <MenuItem value={'singles'}>Singles</MenuItem>
+          <MenuItem value={'doubles'}>Doubles</MenuItem>
         </Select>
       </FormControl>
       <Table>
         <TableHead>
           <TableRow>
             <TableCell>User</TableCell>
-            <TableCell align="right">Highest Pass</TableCell>
+            <TableCell align="right">Singles</TableCell>
+            <TableCell align="right">Doubles</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {sortedData.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.username}</TableCell>
-              <TableCell align="right">{row.highest ? `LV ${row.highest}` : '-'}</TableCell>
+              <TableCell align="right">{row.singles ? `LV ${row.singles}` : '-'}</TableCell>
+              <TableCell align="right">{row.doubles ? `LV ${row.doubles}` : '-'}</TableCell>
             </TableRow>
           ))}
         </TableBody>
