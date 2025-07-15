@@ -290,48 +290,50 @@ const Songs = ({ mode }) => {
           </AccordionSummary>
           <AccordionDetailsStyled>
             <Filters>
-              <DiffSearch>
-                With diffs:
-                <NumberInput
-                  label="P1"
-                  type="number"
-                  min="1"
-                  max={maxDiff}
-                  value={search?.p1Diff || ""}
-                  onChange={(e) =>
-                    setSearch(
-                      e.target.value
-                        ? { ...search, p1Diff: e.target.value }
-                        : undefined
-                    )
-                  }
-                />
-                <NumberInput
-                  label="P2"
-                  type="number"
-                  min="1"
-                  max={maxDiff}
-                  value={search?.p2Diff || ""}
-                  onChange={(e) =>
-                    setSearch(
-                      e.target.value
-                        ? { ...search, p2Diff: e.target.value }
-                        : undefined
-                    )
-                  }
-                />
-                <Button
-                  onClick={() =>
-                    setSearch({
-                      ...search,
-                      p1Diff: undefined,
-                      p2Diff: undefined,
-                    })
-                  }
-                >
-                  Clear
-                </Button>
-              </DiffSearch>
+              {mode === "item_single" && (
+                <DiffSearch>
+                  With diffs:
+                  <NumberInput
+                    label="P1"
+                    type="number"
+                    min="1"
+                    max={maxDiff}
+                    value={search?.p1Diff || ""}
+                    onChange={(e) =>
+                      setSearch(
+                        e.target.value
+                          ? { ...search, p1Diff: e.target.value }
+                          : undefined
+                      )
+                    }
+                  />
+                  <NumberInput
+                    label="P2"
+                    type="number"
+                    min="1"
+                    max={maxDiff}
+                    value={search?.p2Diff || ""}
+                    onChange={(e) =>
+                      setSearch(
+                        e.target.value
+                          ? { ...search, p2Diff: e.target.value }
+                          : undefined
+                      )
+                    }
+                  />
+                  <Button
+                    onClick={() =>
+                      setSearch({
+                        ...search,
+                        p1Diff: undefined,
+                        p2Diff: undefined,
+                      })
+                    }
+                  >
+                    Clear
+                  </Button>
+                </DiffSearch>
+              )}
               <div>
                 Tags:
                 <FormControlLabel
