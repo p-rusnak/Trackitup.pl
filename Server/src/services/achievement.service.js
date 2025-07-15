@@ -2,9 +2,9 @@ const prisma = require('../db');
 const { songBadges, metaBadges } = require('../consts/badges');
 const { clearTitles } = require('../consts/titleRequirements');
 
-const songs = require('../../Frontend/src/consts/songs.json');
+const songs = require('./songs.json');
 
-const gradeOrder = ['SSS','SS','S','Ap','A','Bp','B','Cp','C','Dp','D','F'];
+const gradeOrder = ['SSS', 'SS', 'S', 'Ap', 'A', 'Bp', 'B', 'Cp', 'C', 'Dp', 'D', 'F'];
 const gradeBetterOrEqual = (a, b) => {
   if (!a) return false;
   return gradeOrder.indexOf(a) <= gradeOrder.indexOf(b);
@@ -42,7 +42,7 @@ const checkBadges = (scores, currentBadges) => {
     }
   });
 
-  const hasAllLevels = ['drill','gimmick','half','run','twistExpert'].every((c) => {
+  const hasAllLevels = ['drill', 'gimmick', 'half', 'run', 'twistExpert'].every((c) => {
     return badges.has(`${c}_10`);
   });
   if (hasAllLevels) badges.add(metaBadges.specialist);
