@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Box, Typography, Divider } from "@mui/material";
+
 import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
@@ -7,6 +8,7 @@ import packs from "../../consts/packs";
 const SongDetails = ({ chart, changeGrade }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
+
 
   const mainDiff = useMemo(
     () =>
@@ -152,6 +154,7 @@ const DiffItem = styled.div`
 
 const GradeWrapper = styled.div`
   margin-top: 16px;
+
 `;
 
 const DiffBallMain = styled.span`
@@ -161,6 +164,7 @@ const DiffBallMain = styled.span`
   position: absolute;
   left: 20px;
   top: 20px;
+
 `;
 
 const DiffBall = styled.span`

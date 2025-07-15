@@ -1,127 +1,44 @@
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Accordion,
-  AccordionDetails,
   AccordionSummary,
-  Button,
+  AccordionDetails,
+  Box,
   Checkbox,
-  Divider,
   FormControl,
   FormControlLabel,
-  FormLabel,
+  Grid,
+  InputLabel,
+  MenuItem,
   Modal,
-  Radio,
-  RadioGroup,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import styled from "styled-components";
 import { ApiClient } from "../../API/httpService";
-import Thumbnail from "../../Components/Thumbnail";
-import { Box } from "@mui/system";
-import SongDetails from "./SongDetails";
-import songs from "../../consts/songs";
+import songs from "../../consts/songs.json";
 import diffCounter from "../../consts/diffsCounter";
-import GradeSelect from "../../Components/GradeSelect";
-import GradeDropdown from "../../Components/GradeDropdown";
+import Thumbnail from "../../Components/Thumbnail";
+import SongDetails from "./SongDetails";
 import compareGrades from "../../helpers/compareGrades";
 import { useNotification } from "../../Components/Notification";
 import { formatBadge } from "../../helpers/badgeUtils";
 
 const apiClient = new ApiClient();
 
-const sortByFilters = (ar, br, diff, details, mode, sort) => {
-  const a = ar[1].diffs.find((v) => v.diff === diff && v.type === mode);
-  const b = br[1].diffs.find((v) => v.diff === diff && v.type === mode);
-  switch (sort) {
-    case "tier":
-      if (!a || !b || a.adiff === "?" || b.adiff === "?") return -1;
-      if (a.adiff < b.adiff) return 1;
-      else if (a.adiff === b.adiff) {
-        return 0;
-      } else {
-        return -1;
-      }
-    case "grade":
-      if (details[mode][diff]) {
-        return compareGrades(
-          details[mode][diff][ar[0]]?.grade,
-          details[mode][diff][br[0]]?.grade
-        );
-      } else {
-        return -1;
-      }
-    case "fav":
-      if (!!a.fav && !!b.fav) return 0;
-      if (!!a.fav) return 1;
-      if (!!b.fav) return -1;
-      break;
-    case "popularity":
-      if (parseInt(ar[0]) > parseInt(br[0])) {
-        return 1;
-      } else {
-        return -1;
-      }
-    default:
-      break;
-  }
-};
-
-const filterItems = (a, details, mode, diff, hidden, hideScore, tags) => {
-  let show = true;
-
-  if (Object.values(tags).some((d) => d)) {
-    show = false;
-    if (
-      Object.keys(tags).some(
-        (el) =>
-          tags[el] && a[1].diffs.find((d) => d.diff === diff).tag?.includes(el)
-      )
-    ) {
-      show = true;
-    }
-  }
-
-  const grade =
-    (details[mode][diff] && details[mode][diff][a[0]]?.grade) || undefined;
-  if (hidden.pass) {
-    if (grade) show = false;
-    if (["A", "B", "C", "D", "F", undefined].includes(grade)) show = true;
-  }
-  if (hidden.played) {
-    if (grade) show = false;
-  }
-  if (hidden.notPlayed) {
-    if (!grade) show = false;
-  }
-  if (hidden.score) {
-    if (compareGrades(grade, hideScore) < 1) show = false;
-  }
-
-  return show;
-};
-
 const Songs = ({ mode }) => {
   const { notify } = useNotification();
-  const [openChart, setOpenChart] = useState(false);
-  const [search, setSearch] = useState();
-  const [data, setData] = useState({});
-  const [details, setDetails] = useState({
-    item_single: {},
-    item_double: {},
-    item_coop: {},
-  });
-  const [sort, setSort] = useState(() =>
-    localStorage.getItem("songSort") || "tier"
-  );
-  const [hidden, setHidden] = useState({});
-  const [tags, setTags] = useState({});
-  const [hideScore, setHideScores] = useState("");
+  const [openChart, setOpenChart] = useState(null);
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState(() => localStorage.getItem("songSort") || "tier");
+  const [details, setDetails] = useState({ item_single: {}, item_double: {}, item_coop: {} });
   const [hiddenDiffs, setHiddenDiffs] = useState(() => {
     const stored = localStorage.getItem("hiddenDiffs");
     return stored ? JSON.parse(stored) : { item_single: {}, item_double: {} };
   });
+  const [hidePlayed, setHidePlayed] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("hiddenDiffs", JSON.stringify(hiddenDiffs));
@@ -131,520 +48,173 @@ const Songs = ({ mode }) => {
     localStorage.setItem("songSort", sort);
   }, [sort]);
 
-  const maxDiff = Math.max(
-    ...Object.keys(diffCounter[mode]).map((d) => parseInt(d.replace("lv_", "")))
-  );
-
-  let prevCategory;
-
-  const loadData = (songData) => {
-    const newData = {};
-    const sd = songData instanceof Array ? songData : Object.entries(songData);
-    Object.entries(diffCounter[mode]).forEach(([diff]) => {
-      newData[diff] = sd.filter(([key, value]) => {
-        return !!value.diffs?.find((d) => d.diff === diff && d.type === mode);
-      });
-    });
-    setData(newData);
-  };
-
   useEffect(() => {
-    loadData(songs);
-  }, []);
-
-  useEffect(() => {
-    setSearch(undefined);
-
     if (localStorage.getItem("token")) {
       apiClient.getScores(mode).then((response) => {
-        setDetails({ ...details, [mode]: response.data });
+        setDetails((d) => ({ ...d, [mode]: response.data }));
       });
     }
-
-    loadData(songs, true);
   }, [mode]);
 
-  useEffect(() => {
-    let newSongList = Object.entries(songs);
-    if (search?.title) {
-      newSongList = newSongList.filter(
-        ([key, value]) =>
-          !!value.title.toLowerCase().includes(search.title.toLowerCase())
-      );
-    }
-    if (search?.p1Diff && search?.p2Diff) {
-      newSongList = newSongList.filter(([key, value]) => {
-        const prefix1 = search.p1Diff > 9 ? "lv_" : "lv_0";
-        const prefix2 = search.p2Diff > 9 ? "lv_" : "lv_0";
-        return (
-          !!value.diffs?.find(
-            (d) => d.type === mode && d.diff === prefix1 + search.p1Diff
-          ) &&
-          !!value.diffs?.find(
-            (d) => d.type === mode && d.diff === prefix2 + search.p2Diff
-          )
-        );
+  const displayedSongs = useMemo(() => {
+    const res = {};
+    Object.entries(diffCounter[mode]).forEach(([diff]) => {
+      res[diff] = Object.entries(songs).filter(([key, value]) => {
+        const hasDiff = value.diffs?.some((d) => d.diff === diff && d.type === mode);
+        const inName = value.title.toLowerCase().includes(search.toLowerCase());
+        return hasDiff && inName;
       });
-    }
+    });
+    return res;
+  }, [search, mode]);
 
-    loadData(newSongList);
-  }, [search]);
-
-  const openPopup = (chart) => {
-    setOpenChart(chart);
-  };
-
-  const changeGrade = (value) => {
+  const changeGrade = (chart, value) => {
     apiClient
       .postScores(mode, {
-        song_id: openChart.id,
-        diff: openChart.diff,
+        song_id: chart.id,
+        diff: chart.diff,
         grade: value,
       })
       .then((r) => {
         const { newBadges = [], newTitles = [] } = r.data || {};
         if (newBadges.length || newTitles.length) {
           const badgeNames = newBadges.map((b) => formatBadge(b));
-          notify(
-            `New achievements: ${[...badgeNames, ...newTitles].join(', ')}`,
-            'success'
-          );
+          notify(`New achievements: ${[...badgeNames, ...newTitles].join(', ')}`, 'success');
         }
       });
 
-    if (details[mode][openChart.diff]) {
-      if (details[mode][openChart.diff][openChart.id]) {
-        details[mode][openChart.diff][openChart.id].grade = value;
-      } else {
-        details[mode][openChart.diff][openChart.id] = { grade: value };
-      }
-    } else {
-      details[mode][openChart.diff] = { [openChart.id]: { grade: value } };
-    }
+    setDetails((prev) => {
+      const copy = { ...prev };
+      copy[mode] = copy[mode] || {};
+      copy[mode][chart.diff] = copy[mode][chart.diff] || {};
+      copy[mode][chart.diff][chart.id] = { grade: value };
+      return copy;
+    });
   };
 
-  const shouldDisplayDiff = (diff) => {
-    const prefix1 = search?.p1Diff > 9 ? "lv_" : "lv_0";
-    const prefix2 = search?.p2Diff > 9 ? "lv_" : "lv_0";
-    let result = true;
-    if (hiddenDiffs[mode]?.[diff]) result = false;
-    if (!data[diff]?.length) result = false;
-
-    if (search && search.p1Diff && search.p2Diff)
-      if (
-        !(diff === `${prefix1}${search.p1Diff}`) &&
-        !(diff === `${prefix2}${search.p2Diff}`)
-      )
-        result = false;
-
-    if (
-      !data[diff]?.some((item) =>
-        filterItems(item, details, mode, diff, hidden, hideScore, tags)
-      )
-    ) {
-      result = false;
+  const shouldDisplay = (songId, diff) => {
+    if (hidePlayed && details[mode][diff]?.[songId]?.grade) {
+      return false;
     }
+    return true;
+  };
 
-    return result;
+  const sortCharts = (diff) => (a, b) => {
+    const adiff = a[1].diffs.find((v) => v.diff === diff && v.type === mode);
+    const bdiff = b[1].diffs.find((v) => v.diff === diff && v.type === mode);
+    switch (sort) {
+      case 'grade':
+        return compareGrades(
+          details[mode][diff]?.[a[0]]?.grade,
+          details[mode][diff]?.[b[0]]?.grade
+        );
+      case 'popularity':
+        return parseInt(a[0]) - parseInt(b[0]);
+      case 'tier':
+      default:
+        if (!adiff || !bdiff || adiff.adiff === '?' || bdiff.adiff === '?') return 0;
+        return adiff.adiff.localeCompare(bdiff.adiff);
+    }
   };
 
   return (
-    <div>
-      <Modal
-        open={!!openChart}
-        onClose={() => {
-          setOpenChart(false);
-        }}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <StyledBox>
-          <SongDetails chart={openChart} changeGrade={changeGrade} />
-        </StyledBox>
+    <Box>
+      <Modal open={Boolean(openChart)} onClose={() => setOpenChart(null)}>
+        <ModalBox>
+          {openChart && (
+            <SongDetails chart={openChart} changeGrade={(v) => changeGrade(openChart, v)} />
+          )}
+        </ModalBox>
       </Modal>
 
-      <div>
+      <TopBar>
         <StyledTextField
-          onChange={(e) =>
-            setSearch(
-              e.target.value ? { ...search, title: e.target.value } : undefined
-            )
-          }
-          value={search?.title || ""}
-          label="Search by name"
+          placeholder="Search song"
+          size="small"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <FormControl>
-          <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
-          <SortOptions
-            row
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="tier"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            name="radio-buttons-group"
-          >
-            <FormControlLabel
-              value="popularity"
-              control={<Radio />}
-              label="Popular"
-            />
-            <FormControlLabel value="grade" control={<Radio />} label="Grade" />
-            <FormControlLabel
-              value="tier"
-              control={<Radio />}
-              label="Tier list"
-            />
-            {/* <FormControlLabel
-              value="fav"
-              control={<Radio />}
-              label="Favourites"
-            /> */}
-          </SortOptions>
+        <FormControl size="small">
+          <InputLabel>Sort by</InputLabel>
+          <Select value={sort} label="Sort by" onChange={(e) => setSort(e.target.value)}>
+            <MenuItem value="tier">Tier</MenuItem>
+            <MenuItem value="grade">Grade</MenuItem>
+            <MenuItem value="popularity">Popular</MenuItem>
+          </Select>
         </FormControl>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={`search-content`}
-            id={`search-header`}
-          >
-            <Typography>More Filters</Typography>
-          </AccordionSummary>
-          <AccordionDetailsStyled>
-            <Filters>
-              {mode === "item_single" && (
-                <DiffSearch>
-                  With diffs:
-                  <NumberInput
-                    label="P1"
-                    type="number"
-                    min="1"
-                    max={maxDiff}
-                    value={search?.p1Diff || ""}
-                    onChange={(e) =>
-                      setSearch(
-                        e.target.value
-                          ? { ...search, p1Diff: e.target.value }
-                          : undefined
-                      )
-                    }
-                  />
-                  <NumberInput
-                    label="P2"
-                    type="number"
-                    min="1"
-                    max={maxDiff}
-                    value={search?.p2Diff || ""}
-                    onChange={(e) =>
-                      setSearch(
-                        e.target.value
-                          ? { ...search, p2Diff: e.target.value }
-                          : undefined
-                      )
-                    }
-                  />
-                  <Button
-                    onClick={() =>
-                      setSearch({
-                        ...search,
-                        p1Diff: undefined,
-                        p2Diff: undefined,
-                      })
-                    }
-                  >
-                    Clear
-                  </Button>
-                </DiffSearch>
-              )}
-              <div>
-                Tags:
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => setTags({ ...tags, side: b })}
-                      value={tags.side}
-                    />
-                  }
-                  label="Side"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => setTags({ ...tags, twist: b })}
-                      value={tags.twist}
-                    />
-                  }
-                  label="Twist"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => setTags({ ...tags, drill: b })}
-                      value={tags.drill}
-                    />
-                  }
-                  label="Drill"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => setTags({ ...tags, gimmick: b })}
-                      value={tags.gimmick}
-                    />
-                  }
-                  label="Gimmick"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => setTags({ ...tags, bracket: b })}
-                      value={tags.bracket}
-                    />
-                  }
-                  label="Bracket"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => setTags({ ...tags, "jack/jump": b })}
-                      value={tags["jack/jump"]}
-                    />
-                  }
-                  label="Jacks/Jumps"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => setTags({ ...tags, half: b })}
-                      value={tags.half}
-                    />
-                  }
-                  label="Half"
-                />
-              </div>
-              <div>
-                Hide:
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => {
-                        setHidden({ ...hidden, pass: b });
-                      }}
-                      value={hidden.pass}
-                    />
-                  }
-                  label="Pass"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => {
-                        setHidden({ ...hidden, played: b });
-                      }}
-                      value={hidden.played}
-                    />
-                  }
-                  label="Played"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => {
-                        setHidden({ ...hidden, notPlayed: b });
-                      }}
-                      value={hidden.notPlayed}
-                    />
-                  }
-                  label="Not Played"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={(_, b) => {
-                        setHidden({ ...hidden, score: b });
-                      }}
-                      value={hidden.score}
-                    />
-                  }
-                  label="Score better than"
-                />
-                <GradeDropdown
-                  value={hideScore}
-                  onChange={(e) => setHideScores(e.target.value)}
-                />
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="hide-diffs-content"
-                    id="hide-diffs-header"
-                  >
-                    <Typography>Hide diffs</Typography>
-                  </AccordionSummary>
-                  <AccordionDetailsStyled>
-                    {Object.keys(diffCounter[mode]).map((d) => (
-                      <FormControlLabel
-                        key={d}
-                        control={
-                          <Checkbox
-                            checked={hiddenDiffs[mode]?.[d] || false}
-                            onChange={(_, b) =>
-                              setHiddenDiffs({
-                                ...hiddenDiffs,
-                                [mode]: { ...hiddenDiffs[mode], [d]: b },
-                              })
-                            }
-                          />
-                        }
-                        label={d.replace("lv_", "")}
-                      />
-                    ))}
-                  </AccordionDetailsStyled>
-                </Accordion>
-              </div>
-            </Filters>
-          </AccordionDetailsStyled>
-        </Accordion>
-        <br />
-      </div>
+        <FormControlLabel
+          control={<Checkbox checked={hidePlayed} onChange={(e) => setHidePlayed(e.target.checked)} />}
+          label="Hide played"
+        />
+      </TopBar>
 
       <Card>
-        {Object.entries(diffCounter[mode]).map(
-          ([diff, count]) =>
-            shouldDisplayDiff(diff) && (
-              <Accordion key={diff}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls={`panel${diff}-content`}
-                  id={`panel${diff}-header`}
-                >
-                  <Typography>
-                    <DiffBall className={`${mode} ${diff}`}>{`(${
-                      (details[mode][diff] &&
-                        Object.values(details[mode][diff]).filter(
-                          (v) => !!v.grade
-                        )?.length) ||
-                      0
-                    }/${count}) `}</DiffBall>
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetailsStyled>
-                  {(data[diff] || [])
-                    .filter((a) =>
-                      filterItems(
-                        a,
-                        details,
-                        mode,
-                        diff,
-                        hidden,
-                        hideScore,
-                        tags
-                      )
-                    )
-                    .sort((a, b) =>
-                      sortByFilters(a, b, diff, details, mode, sort)
-                    )
-                    .map((chart) => {
+        {Object.entries(diffCounter[mode]).map(([diff, count]) => {
+          const songsForDiff = (displayedSongs[diff] || []).filter(([id]) => shouldDisplay(id, diff));
+          if (hiddenDiffs[mode]?.[diff] || songsForDiff.length === 0) return null;
+          return (
+            <Accordion key={diff} disableGutters>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography>
+                  {diff.replace('lv_', '')} ({
+                    (details[mode][diff] &&
+                      Object.values(details[mode][diff]).filter((v) => !!v.grade).length) || 0
+                  }/{count})
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Grid container spacing={1}>
+                  {songsForDiff
+                    .sort(sortCharts(diff))
+                    .map(([id, value]) => {
                       const chartData = {
-                        id: chart[0],
-                        ...chart[1],
+                        id,
+                        ...value,
                         mode,
                         diff,
-                        ...(details[mode][diff]
-                          ? details[mode][diff][chart[0]]
-                          : {}),
+                        ...(details[mode][diff]?.[id] || {}),
                       };
-
-                      const adiff = chartData.diffs.find(
-                        (a) => a.diff === diff && a.type === mode
-                      )?.adiff;
-                      const grade = chartData.grade;
-                      let divider = false;
-                      let dividerLabel = "";
-                      if (sort === "tier") {
-                        divider = prevCategory !== adiff;
-                        dividerLabel = adiff || "Not Specified";
-                        prevCategory = adiff;
-                      } else if (sort === "grade") {
-                        divider = prevCategory !== grade;
-                        dividerLabel = grade || "No Grade";
-                        prevCategory = grade;
-                      }
-
                       return (
-                        <React.Fragment key={`${chart[0]}-${diff}`}>
-                          {divider && (
-                            <DividerStyled>{dividerLabel}</DividerStyled>
-                          )}
-                          <Thumbnail
-                            data={chartData}
-                            onClick={() => openPopup(chartData)}
-                          />
-                        </React.Fragment>
+                        <Grid item key={id}>
+                          <Thumbnail data={chartData} onClick={() => setOpenChart(chartData)} />
+                        </Grid>
                       );
                     })}
-                </AccordionDetailsStyled>
-              </Accordion>
-            )
-        )}
+                </Grid>
+              </AccordionDetails>
+            </Accordion>
+          );
+        })}
       </Card>
-    </div>
+    </Box>
   );
 };
 
 export default Songs;
 
 const StyledTextField = styled(TextField)`
-  width: 100%;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  min-width: 250px;
 `;
 
-const NumberInput = styled(TextField)`
-  width: 70px;
-`;
-const StyledBox = styled(Box)`
+const ModalBox = styled(Box)`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
   background: white;
-  boxshadow: 24;
   padding: 14px;
 `;
 
-const Filters = styled.div`
-  width: 100%;
-`;
-const Card = styled.div`
-  background-color: #fafafa;
-  box-shadow: 0px 0px 35px -10px rgba(0, 0, 0, 0.15);
-`;
-const DiffSearch = styled.div`
+const TopBar = styled(Box)`
   display: flex;
   align-items: center;
-`;
-
-const SortOptions = styled(RadioGroup)`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   gap: 10px;
-  justify-content: space-between;
   margin-bottom: 20px;
 `;
 
-const AccordionDetailsStyled = styled(AccordionDetails)`
-  display: flex;
-  flex-wrap: wrap;
-`;
-const DividerStyled = styled(Divider)`
-  width: 100%;
-`;
-
-const DiffBall = styled.span`
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  padding-left: 40px;
-  line-height: 40px;
+const Card = styled(Box)`
+  background-color: #fafafa;
+  box-shadow: 0px 0px 35px -10px rgba(0, 0, 0, 0.15);
+  padding: 10px;
 `;
