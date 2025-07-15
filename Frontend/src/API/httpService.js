@@ -36,6 +36,7 @@ export class ApiClient {
 
     getUsers = () => client.get('users')
     getUser = (id) => client.get(`users/${id}`)
+    updateUser = (id, data) => client.patch(`users/${id}`, data)
     getLeaderboard = () => client.get('leaderboard')
     reportMissing = (data) => client.post('missings', data)
 
