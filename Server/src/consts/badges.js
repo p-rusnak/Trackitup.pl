@@ -47,7 +47,7 @@ const songBadges = {
     { level: 6, song: 'Bee', songId: 310, mode: 'item_double', diff: 'lv_20' },
     { level: 7, song: 'Sarabande', songId: 90, mode: 'item_double', diff: 'lv_21' },
     { level: 8, song: 'Just Hold On (To All Fighters)', songId: 140, mode: 'item_double', diff: 'lv_22' },
-    { level: 9, song: 'Final Audition Ep. 2-X', songId: 462, mode: 'item_single', diff: 'lv_23' },
+    { level: 9, song: 'Final Audition Ep. 2-X', songId: 462, mode: 'item_single', diff: 'lv_23', grade: 'S' },
     { level: 10, song: 'Yog Sothoth', songId: 127, mode: 'item_double', diff: 'lv_24' },
     { level: 'Expert', song: 'All 10 Titles', songId: 1 },
   ],
