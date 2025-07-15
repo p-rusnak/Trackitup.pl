@@ -110,26 +110,30 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              {pages
+                .filter((p) => p !== "Add Score" || localStorage.getItem("token"))
+                .map((page) => (
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                ))}
             </Menu>
           </Box>
           <StyledLink to="/">
             <StyledLogo src={Logo} alt="Logo" />
           </StyledLink>
           <Box sx={{ flexGrow: 20, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={() => handleCloseNavMenu(page)}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            {pages
+              .filter((p) => p !== "Add Score" || localStorage.getItem("token"))
+              .map((page) => (
+                <Button
+                  key={page}
+                  onClick={() => handleCloseNavMenu(page)}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              ))}
           </Box>
           {localStorage.getItem("token") ? (
             <Box sx={{ flexGrow: 0 }}>
