@@ -28,7 +28,6 @@ const createScore = async (scoreBody, mode, user) => {
     if (existing) {
       await prisma.score.delete({ where: { id: existing.id } });
     }
-    await achievementService.updateUserAchievements(user.id);
     return null;
   }
 
