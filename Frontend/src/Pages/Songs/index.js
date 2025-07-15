@@ -114,9 +114,7 @@ const Songs = ({ mode }) => {
   const [hideScore, setHideScores] = useState("");
   const [hiddenDiffs, setHiddenDiffs] = useState(() => {
     const stored = localStorage.getItem("hiddenDiffs");
-    return (
-      stored ? JSON.parse(stored) : { item_single: {}, item_double: {} }
-    );
+    return stored ? JSON.parse(stored) : { item_single: {}, item_double: {} };
   });
 
   useEffect(() => {
@@ -124,9 +122,7 @@ const Songs = ({ mode }) => {
   }, [hiddenDiffs]);
 
   const maxDiff = Math.max(
-    ...Object.keys(diffCounter[mode]).map((d) =>
-      parseInt(d.replace("lv_", ""))
-    )
+    ...Object.keys(diffCounter[mode]).map((d) => parseInt(d.replace("lv_", "")))
   );
 
   let prevChart;
@@ -295,11 +291,11 @@ const Songs = ({ mode }) => {
             <Filters>
               <DiffSearch>
                 With diffs:
-                  <NumberInput
-                    label="P1"
-                    type="number"
-                    min="1"
-                    max={maxDiff}
+                <NumberInput
+                  label="P1"
+                  type="number"
+                  min="1"
+                  max={maxDiff}
                   value={search?.p1Diff || ""}
                   onChange={(e) =>
                     setSearch(
@@ -309,11 +305,11 @@ const Songs = ({ mode }) => {
                     )
                   }
                 />
-                  <NumberInput
-                    label="P2"
-                    type="number"
-                    min="1"
-                    max={maxDiff}
+                <NumberInput
+                  label="P2"
+                  type="number"
+                  min="1"
+                  max={maxDiff}
                   value={search?.p2Diff || ""}
                   onChange={(e) =>
                     setSearch(
@@ -480,9 +476,9 @@ const Songs = ({ mode }) => {
                   </AccordionDetailsStyled>
                 </Accordion>
               </div>
-              </Filters>
-            </AccordionDetailsStyled>
-          </Accordion>
+            </Filters>
+          </AccordionDetailsStyled>
+        </Accordion>
         <br />
       </div>
 
