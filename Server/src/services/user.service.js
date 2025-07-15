@@ -13,7 +13,7 @@ const createUser = async (userBody) => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Username already taken');
   }
   const hashedPassword = await bcrypt.hash(userBody.password, 8);
-  const user = await prisma.user.create({ data: { ...userBody, password: hashedPassword, role: 'user', badges: [], titles: [] } });
+  const user = await prisma.user.create({ data: { ...userBody, password: hashedPassword, role: 'user', badges: [], titles: [], avatarUrl: userBody.avatarUrl } });
   return user;
 };
 

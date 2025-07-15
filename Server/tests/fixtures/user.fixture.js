@@ -9,6 +9,7 @@ const hashedPassword = bcrypt.hashSync(password, salt);
 const userOne = {
   id: faker.datatype.uuid(),
   name: faker.name.findName(),
+  avatarUrl: faker.internet.url(),
   email: faker.internet.email().toLowerCase(),
   password,
   role: 'user',
@@ -18,6 +19,7 @@ const userOne = {
 const userTwo = {
   id: faker.datatype.uuid(),
   name: faker.name.findName(),
+  avatarUrl: faker.internet.url(),
   email: faker.internet.email().toLowerCase(),
   password,
   role: 'user',
@@ -27,6 +29,7 @@ const userTwo = {
 const admin = {
   id: faker.datatype.uuid(),
   name: faker.name.findName(),
+  avatarUrl: faker.internet.url(),
   email: faker.internet.email().toLowerCase(),
   password,
   role: 'admin',
