@@ -56,7 +56,6 @@ const updateBadgesWithScore = (score, currentBadges) => {
   Object.entries(songBadges).forEach(([category, reqs]) => {
     reqs.forEach((req) => {
       if (req.level === 'Expert') return;
-      if (!songId) return;
       if (
         score.song_id === req.songId &&
         score.diff === req.diff &&
