@@ -15,7 +15,10 @@ import grades from '../../Assets/Grades';
 import styled from 'styled-components';
 import getBestTitle from '../../helpers/getBestTitle';
 
-const MODE = 'item_single';
+const MODES = {
+  single: 'item_single',
+  double: 'item_double',
+};
 
 const DiffBall = styled.span`
   display: inline-block;
@@ -32,7 +35,8 @@ const apiClient = new ApiClient();
 const Profile = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [scores, setScores] = useState({});
+  const [scoresSingle, setScoresSingle] = useState({});
+  const [scoresDouble, setScoresDouble] = useState({});
   const [bestTitle, setBestTitle] = useState(null);
 
   useEffect(() => {
@@ -41,11 +45,12 @@ const Profile = () => {
       setUser(r.data);
       setBestTitle(getBestTitle(r.data.titles));
     });
-    apiClient.getScores('item_single').then((r) => setScores(r.data));
+    apiClient.getScores(MODES.single).then((r) => setScoresSingle(r.data));
+    apiClient.getScores(MODES.double).then((r) => setScoresDouble(r.data));
   }, [id]);
 
   const bestPasses = [];
-  Object.entries(scores || {}).forEach(([diff, vals]) => {
+  Object.entries(scoresSingle || {}).forEach(([diff, vals]) => {
     Object.entries(vals).forEach(([songId, { grade }]) => {
       bestPasses.push({ diff, songId, grade });
     });
@@ -57,9 +62,24 @@ const Profile = () => {
     return Number.isNaN(n) ? 0 : n;
   };
 
-  const diffCounts = Object.entries(scores || {})
-    .map(([diff, vals]) => ({ diff, count: Object.keys(vals).length }))
-    .sort((a, b) => parseLevel(a.diff) - parseLevel(b.diff));
+  const buildStats = (scores) =>
+    Object.entries(scores || {})
+      .map(([diff, vals]) => {
+        const stats = { A: 0, S: 0, SS: 0, SSS: 0, total: 0 };
+        Object.values(vals).forEach(({ grade }) => {
+          stats.total += 1;
+          if (!grade) return;
+          if (grade === 'SSS') stats.SSS += 1;
+          else if (grade === 'SS') stats.SS += 1;
+          else if (grade === 'S') stats.S += 1;
+          else if (grade.startsWith('A')) stats.A += 1;
+        });
+        return { diff, ...stats };
+      })
+      .sort((a, b) => parseLevel(a.diff) - parseLevel(b.diff));
+
+  const diffStatsSingle = buildStats(scoresSingle);
+  const diffStatsDouble = buildStats(scoresDouble);
 
   return (
     <div>
@@ -79,23 +99,57 @@ const Profile = () => {
       <Section header="Best passes">
         <ul>
           {bestPasses.slice(0, 10).map((bp) => (
-            <li key={`${bp.songId}-${bp.diff}`}>{songs[bp.songId]?.title} - <GradeImg src={grades[bp.grade]} alt={bp.grade}/> <DiffBall className={`${MODE} ${bp.diff}`} /></li>
+            <li key={`${bp.songId}-${bp.diff}`}>{songs[bp.songId]?.title} - <GradeImg src={grades[bp.grade]} alt={bp.grade}/> <DiffBall className={`${MODES.single} ${bp.diff}`} /></li>
           ))}
         </ul>
       </Section>
-      <Section header="Passes by difficulty">
+      <Section header="Passes by difficulty - Single">
         <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>Difficulty</TableCell>
-              <TableCell align="right">Pass count</TableCell>
+              <TableCell align="right">A</TableCell>
+              <TableCell align="right">S</TableCell>
+              <TableCell align="right">SS</TableCell>
+              <TableCell align="right">SSS</TableCell>
+              <TableCell align="right">Total</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {diffCounts.map(({ diff, count }) => (
+            {diffStatsSingle.map(({ diff, A, S, SS, SSS, total }) => (
               <TableRow key={diff}>
                 <TableCell>{diff}</TableCell>
-                <TableCell align="right">{count}</TableCell>
+                <TableCell align="right">{A}</TableCell>
+                <TableCell align="right">{S}</TableCell>
+                <TableCell align="right">{SS}</TableCell>
+                <TableCell align="right">{SSS}</TableCell>
+                <TableCell align="right">{total}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Section>
+      <Section header="Passes by difficulty - Double">
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Difficulty</TableCell>
+              <TableCell align="right">A</TableCell>
+              <TableCell align="right">S</TableCell>
+              <TableCell align="right">SS</TableCell>
+              <TableCell align="right">SSS</TableCell>
+              <TableCell align="right">Total</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {diffStatsDouble.map(({ diff, A, S, SS, SSS, total }) => (
+              <TableRow key={diff}>
+                <TableCell>{diff}</TableCell>
+                <TableCell align="right">{A}</TableCell>
+                <TableCell align="right">{S}</TableCell>
+                <TableCell align="right">{SS}</TableCell>
+                <TableCell align="right">{SSS}</TableCell>
+                <TableCell align="right">{total}</TableCell>
               </TableRow>
             ))}
           </TableBody>
