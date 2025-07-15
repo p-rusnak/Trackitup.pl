@@ -1,9 +1,5 @@
 import React, { useMemo, useState } from "react";
-import {
-  Box,
-  Typography,
-  Divider,
-} from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
 import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
@@ -14,9 +10,8 @@ const SongDetails = ({ chart, changeGrade }) => {
 
   const mainDiff = useMemo(
     () =>
-      chart.diffs.find(
-        (d) => d.type === chart.mode && d.diff === chart.diff
-      ) || {},
+      chart.diffs.find((d) => d.type === chart.mode && d.diff === chart.diff) ||
+      {},
     [chart]
   );
 
@@ -37,8 +32,8 @@ const SongDetails = ({ chart, changeGrade }) => {
   return (
     <Container>
       <CoverWrapper>
-        <Cover src={chart.img} alt={chart.title} />
         <DiffBallMain className={`${chart.mode} ${chart.diff}`} />
+        <Cover src={chart.img} alt={chart.title} />
       </CoverWrapper>
       <Content>
         <Typography variant="h5" gutterBottom>
@@ -58,6 +53,18 @@ const SongDetails = ({ chart, changeGrade }) => {
           </Typography>
         )}
         <Divider sx={{ my: 2 }} />
+        {loggedIn && (
+          <GradeWrapper>
+            <GradeSelect
+              label="Set Grade"
+              value={grade}
+              onChange={(g) => {
+                setGrade(g);
+                changeGrade(g);
+              }}
+            />
+          </GradeWrapper>
+        )}
         <Typography variant="subtitle2" gutterBottom>
           Packs
         </Typography>
@@ -83,25 +90,10 @@ const SongDetails = ({ chart, changeGrade }) => {
               {otherDiffs.map((d) => (
                 <DiffItem key={`${d.type}-${d.diff}`}>
                   <DiffBall className={`${d.type} ${d.diff}`} />
-                  <Typography variant="caption" sx={{ ml: 1 }}>
-                    {d.diff.replace("lv_", "")}
-                  </Typography>
                 </DiffItem>
               ))}
             </DiffList>
           </>
-        )}
-        {loggedIn && (
-          <GradeWrapper>
-            <GradeSelect
-              label="Set Grade"
-              value={grade}
-              onChange={(g) => {
-                setGrade(g);
-                changeGrade(g);
-              }}
-            />
-          </GradeWrapper>
         )}
       </Content>
     </Container>
@@ -118,11 +110,12 @@ const Container = styled.div`
 
 const CoverWrapper = styled.div`
   position: relative;
+  text-align: right;
 `;
 
 const Cover = styled.img`
-  width: 100%;
   height: auto;
+  max-height: 300px;
 `;
 
 const Content = styled(Box)`
@@ -142,8 +135,8 @@ const PackItem = styled.div`
 `;
 
 const PackImg = styled.img`
-  width: 24px;
-  height: 24px;
+  width: auto;
+  height: 52px;
 `;
 
 const DiffList = styled.div`
@@ -166,7 +159,7 @@ const DiffBallMain = styled.span`
   width: 80px;
   height: 80px;
   position: absolute;
-  right: 20px;
+  left: 20px;
   top: 20px;
 `;
 
