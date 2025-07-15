@@ -10,6 +10,9 @@ const gradeBetterOrEqual = (a, b) => {
   return gradeOrder.indexOf(a) <= gradeOrder.indexOf(b);
 };
 
+// Grades that qualify when counting clears for title achievements
+const titleGrades = ['SSS', 'SS', 'S', 'Ap', 'Bp'];
+
 const diffNumber = (diff) => parseInt(diff.replace(/[^0-9]/g, ''), 10);
 
 const buildTitleMap = () => {
@@ -91,7 +94,7 @@ const checkTitles = (scores, currentTitles) => {
     const songSet = new Set();
     scores.forEach((sc) => {
       const n = diffNumber(sc.diff);
-      if (n >= min && n <= max && sc.grade) {
+      if (n >= min && n <= max && titleGrades.includes(sc.grade)) {
         songSet.add(sc.song_id);
       }
     });
