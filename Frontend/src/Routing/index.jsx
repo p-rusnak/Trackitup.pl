@@ -6,6 +6,7 @@ import {
 import Layout from '../Components/Layout'
 import Songs from '../Pages/Songs'
 import Scores from '../Pages/Scores'
+import Leaderboard from '../Pages/Leaderboard'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
 
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'Leaderboard',
-                element: <div>lb</div>
+                element: <Leaderboard />
             },
             {
                 path: 'add',
