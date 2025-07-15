@@ -17,6 +17,7 @@ import compareGrades from "../../helpers/compareGrades";
 import grades from "../../Assets/Grades";
 import styled from "styled-components";
 import getBestTitle from "../../helpers/getBestTitle";
+import { formatBadge } from "../../helpers/badgeUtils";
 
 const MODES = {
   SINGLE: "item_single",
@@ -124,7 +125,7 @@ const Profile = () => {
             {user.badges?.length > 0 && (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
                 {user.badges.map((b) => (
-                  <Chip key={b} label={b} size="small" />
+                  <Chip key={b} label={formatBadge(b)} size="small" />
                 ))}
               </Box>
             )}
