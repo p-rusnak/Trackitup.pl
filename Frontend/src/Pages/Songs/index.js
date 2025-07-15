@@ -255,6 +255,7 @@ const Songs = ({ mode }) => {
         <FormControl>
           <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
           <SortOptions
+            row
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="tier"
             value={sort}
@@ -595,8 +596,9 @@ const DiffSearch = styled.div`
 const SortOptions = styled(RadioGroup)`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
+  justify-content: space-between;
   margin-bottom: 20px;
 `;
 
