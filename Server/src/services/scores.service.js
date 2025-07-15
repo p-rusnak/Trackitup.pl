@@ -1,5 +1,5 @@
 const prisma = require('../db');
-const { achievementService } = require('./index');
+const achievementService = require('./achievement.service');
 
 const getScores = async (filter) => {
   const scores = await prisma.score.findMany({ where: { userId: filter.userId, mode: filter.mode } });
