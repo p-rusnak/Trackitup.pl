@@ -16,8 +16,8 @@ import styled from 'styled-components';
 import getBestTitle from '../../helpers/getBestTitle';
 
 const MODES = {
-  single: 'item_single',
-  double: 'item_double',
+  SINGLE: 'item_single',
+  DOUBLE: 'item_double',
 };
 
 const DiffBall = styled.span`
@@ -30,13 +30,19 @@ const GradeImg = styled.img`
   height: 40px;
 `;
 
+const TablesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
 const apiClient = new ApiClient();
 
 const Profile = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [scoresSingle, setScoresSingle] = useState({});
-  const [scoresDouble, setScoresDouble] = useState({});
+  const [singleScores, setSingleScores] = useState({});
+  const [doubleScores, setDoubleScores] = useState({});
   const [bestTitle, setBestTitle] = useState(null);
 
   useEffect(() => {
@@ -45,41 +51,44 @@ const Profile = () => {
       setUser(r.data);
       setBestTitle(getBestTitle(r.data.titles));
     });
-    apiClient.getScores(MODES.single).then((r) => setScoresSingle(r.data));
-    apiClient.getScores(MODES.double).then((r) => setScoresDouble(r.data));
+    apiClient.getScores(MODES.SINGLE).then((r) => setSingleScores(r.data));
+    apiClient.getScores(MODES.DOUBLE).then((r) => setDoubleScores(r.data));
   }, [id]);
 
-  const bestPasses = [];
-  Object.entries(scoresSingle || {}).forEach(([diff, vals]) => {
-    Object.entries(vals).forEach(([songId, { grade }]) => {
-      bestPasses.push({ diff, songId, grade });
+  const getAdiff = (songId, diff, mode) => {
+    const chart = songs[songId]?.diffs.find(
+      (d) => d.diff === diff && d.type === mode
+    );
+    const val = chart?.adiff;
+    return val ? parseFloat(val) : 0;
+  };
+
+  const buildBestPasses = (scoresData, mode) => {
+    const arr = [];
+    Object.entries(scoresData || {}).forEach(([diff, vals]) => {
+      Object.entries(vals).forEach(([songId, { grade }]) => {
+        arr.push({ diff, songId, grade, adiff: getAdiff(songId, diff, mode) });
+      });
     });
-  });
-  bestPasses.sort((a, b) => compareGrades(a.grade, b.grade));
+    arr.sort((a, b) => {
+      const gradeComp = compareGrades(a.grade, b.grade);
+      if (gradeComp !== 0) return gradeComp;
+      return b.adiff - a.adiff;
+    });
+    return arr;
+  };
+
+  const bestSingles = buildBestPasses(singleScores, MODES.SINGLE);
+  const bestDoubles = buildBestPasses(doubleScores, MODES.DOUBLE);
 
   const parseLevel = (d) => {
     const n = parseInt(d.replace('lv_', ''));
     return Number.isNaN(n) ? 0 : n;
   };
 
-  const buildStats = (scores) =>
-    Object.entries(scores || {})
-      .map(([diff, vals]) => {
-        const stats = { A: 0, S: 0, SS: 0, SSS: 0, total: 0 };
-        Object.values(vals).forEach(({ grade }) => {
-          stats.total += 1;
-          if (!grade) return;
-          if (grade === 'SSS') stats.SSS += 1;
-          else if (grade === 'SS') stats.SS += 1;
-          else if (grade === 'S') stats.S += 1;
-          else if (grade.startsWith('A')) stats.A += 1;
-        });
-        return { diff, ...stats };
-      })
-      .sort((a, b) => parseLevel(a.diff) - parseLevel(b.diff));
-
-  const diffStatsSingle = buildStats(scoresSingle);
-  const diffStatsDouble = buildStats(scoresDouble);
+  const diffCounts = Object.entries(singleScores || {})
+    .map(([diff, vals]) => ({ diff, count: Object.keys(vals).length }))
+    .sort((a, b) => parseLevel(a.diff) - parseLevel(b.diff));
 
   return (
     <div>
@@ -97,11 +106,58 @@ const Profile = () => {
         )}
       </Section>
       <Section header="Best passes">
-        <ul>
-          {bestPasses.slice(0, 10).map((bp) => (
-            <li key={`${bp.songId}-${bp.diff}`}>{songs[bp.songId]?.title} - <GradeImg src={grades[bp.grade]} alt={bp.grade}/> <DiffBall className={`${MODES.single} ${bp.diff}`} /></li>
-          ))}
-        </ul>
+        <TablesWrapper>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" colSpan={3}>Singles</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Song</TableCell>
+                <TableCell>Grade</TableCell>
+                <TableCell>Diff</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {bestSingles.slice(0, 10).map((bp) => (
+                <TableRow key={`${bp.songId}-${bp.diff}`}>
+                  <TableCell>{songs[bp.songId]?.title}</TableCell>
+                  <TableCell>
+                    <GradeImg src={grades[bp.grade]} alt={bp.grade} />
+                  </TableCell>
+                  <TableCell>
+                    <DiffBall className={`${MODES.SINGLE} ${bp.diff}`} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" colSpan={3}>Doubles</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Song</TableCell>
+                <TableCell>Grade</TableCell>
+                <TableCell>Diff</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {bestDoubles.slice(0, 10).map((bp) => (
+                <TableRow key={`${bp.songId}-${bp.diff}`}>
+                  <TableCell>{songs[bp.songId]?.title}</TableCell>
+                  <TableCell>
+                    <GradeImg src={grades[bp.grade]} alt={bp.grade} />
+                  </TableCell>
+                  <TableCell>
+                    <DiffBall className={`${MODES.DOUBLE} ${bp.diff}`} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TablesWrapper>
       </Section>
       <Section header="Passes by difficulty - Single">
         <Table size="small">
