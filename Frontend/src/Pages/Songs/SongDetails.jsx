@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
@@ -17,6 +17,8 @@ const SongDetails = ({ chart, changeGrade }) => {
     return 0;
   });
 
+
+  const loggedIn = Boolean(localStorage.getItem("token"));
 
   return (
     <div>
@@ -40,24 +42,29 @@ const SongDetails = ({ chart, changeGrade }) => {
         ))}
       </div>
 
-      <GradeSelect
-        label="Set Grade"
-        value={grade}
-        onChange={(e) => {
-          setGrade(e.target.value);
-          changeGrade(e.target.value);
-        }}
-      />
-      {grade && (
-        <Button
-          onClick={() => {
-            setGrade();
-            changeGrade();
-          }}
-        >
-          Remove
-        </Button>
+      {loggedIn && (
+        <>
+          <GradeSelect
+            label="Set Grade"
+            value={grade}
+            onChange={(e) => {
+              setGrade(e.target.value);
+              changeGrade(e.target.value);
+            }}
+          />
+          {grade && (
+            <Button
+              onClick={() => {
+                setGrade();
+                changeGrade();
+              }}
+            >
+              Remove
+            </Button>
+          )}
+        </>
       )}
+      
       {/* TODO: score upload */}
     </div>
   );

@@ -5,8 +5,11 @@ import {
 } from "react-router-dom"
 import Layout from '../Components/Layout'
 import Songs from '../Pages/Songs'
+import Scores from '../Pages/Scores'
+import Leaderboard from '../Pages/Leaderboard'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
+import Profile from '../Pages/Profile'
 
 const router = createBrowserRouter([
     {
@@ -26,12 +29,16 @@ const router = createBrowserRouter([
                 element: <Songs mode='item_double'/>
             },
             {
+                path: 'Coop',
+                element: <Songs mode='item_coop'/>
+            },
+            {
                 path: 'Scores',
-                element: <div>scores</div>
+                element: <Scores />
             },
             {
                 path: 'Leaderboard',
-                element: <div>lb</div>
+                element: <Leaderboard />
             },
             {
                 path: 'add',
@@ -39,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'profile/:id',
-                element: <div>user profile</div>
+                element: <Profile />
             },
             {
                 path: 'login',
