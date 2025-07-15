@@ -141,12 +141,6 @@ const Profile = () => {
                   Singles
                 </TableCell>
               </TableRow>
-              <TableRow>
-                <TableCell>Song</TableCell>
-                <TableCell>Grade</TableCell>
-                <TableCell>Diff</TableCell>
-              </TableRow>
-            </TableHead>
             <TableBody>
               {bestSingles.slice(0, 10).map((bp) => (
                 <TableRow key={`${bp.songId}-${bp.diff}`}>
@@ -167,11 +161,6 @@ const Profile = () => {
                 <TableCell align="center" colSpan={3}>
                   Doubles
                 </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Song</TableCell>
-                <TableCell>Grade</TableCell>
-                <TableCell>Diff</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
