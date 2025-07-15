@@ -56,9 +56,14 @@ const updateBadgesWithScore = (score, currentBadges) => {
   Object.entries(songBadges).forEach(([category, reqs]) => {
     reqs.forEach((req) => {
       if (req.level === 'Expert') return;
-      const songId = titleToId[req.song];
       if (!songId) return;
-      if (score.song_id === songId && score.diff === req.chart && gradeBetterOrEqual(score.grade, req.grade || 'SS')) {
+      if (
+        score.song_id === req.songId &&
+        score.diff === req.diff &&
+        score.mode === req.mode &&
+        gradeBetterOrEqual(score.grade, req.grade || 'SS')
+      ) {
+        console.log(`Adding badge for ${category}_${req.level}`);
         badges.add(`${category}_${req.level}`);
       }
     });

@@ -10275,6 +10275,13 @@
         "tag": ["twist", "half"]
       },
       {
+        "type": "item_double",
+        "diff": "lv_23",
+        "stepmaker": "EXC",
+        "adiff": "23.7",
+        "tag": ["twist"]
+      },
+      {
         "type": "item_coop",
         "diff": "lv_x2",
         "stepmaker": "ANDAMIRO",
@@ -18991,6 +18998,13 @@
         "diff": "lv_17",
         "stepmaker": "ANDAMIRO",
         "adiff": "17.9"
+      },
+      {
+        "type": "item_double",
+        "diff": "lv_22",
+        "stepmaker": "ANDAMIRO",
+        "adiff": "22.9",
+        "tag": ["twist"]
       }
     ]
   },
