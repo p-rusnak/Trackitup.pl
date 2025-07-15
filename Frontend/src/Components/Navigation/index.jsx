@@ -28,7 +28,7 @@ const pages = [
   "Coop",
   "Scores",
   "Leaderboard",
-  "Add Score",
+  // "Add Score",
 ];
 const settings = ["Profile", "Account", "Logout"];
 
@@ -111,7 +111,9 @@ function NavBar() {
               }}
             >
               {pages
-                .filter((p) => p !== "Add Score" || localStorage.getItem("token"))
+                .filter(
+                  (p) => p !== "Add Score" || localStorage.getItem("token")
+                )
                 .map((page) => (
                   <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
                     <Typography textAlign="center">{page}</Typography>
