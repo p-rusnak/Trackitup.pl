@@ -36,7 +36,7 @@ export class ApiClient {
 
     getUsers = () => client.get('users')
     getUser = (id) => client.get(`users/${id}`)
-    getLeaderboard = (mode) => client.get(`leaderboard/${mode}`)
+    getLeaderboard = () => client.get('leaderboard')
 }
 
 export default client
