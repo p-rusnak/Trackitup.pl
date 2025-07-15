@@ -5,6 +5,7 @@ import songs from '../../consts/songs.json';
 import styled from 'styled-components';
 import grades from '../../Assets/Grades';
 import { Link } from 'react-router-dom';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 
 const apiClient = new ApiClient();
 
@@ -18,19 +19,35 @@ const Scores = () => {
   return (
     <>
       <Section header="Latest scores">
-        <List>
-          {latest.map((s) => (
-            <Item key={s.id}>
-              <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink> –{' '}
-              {songs[s.song_id]?.title || s.song_id} <DiffBall className={`${s.mode} ${s.diff}`} /> :{' '}
-              {s.grade ? (
-                <GradeIcon src={grades[s.grade]} alt={s.grade} />
-              ) : (
-                '-'
-              )}
-            </Item>
-          ))}
-        </List>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>User</TableCell>
+              <TableCell>Song</TableCell>
+              <TableCell>Grade</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {latest.map((s) => (
+              <TableRow key={s.id}>
+                <TableCell>
+                  <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
+                </TableCell>
+                <TableCell>
+                  {songs[s.song_id]?.title || s.song_id}{' '}
+                  <DiffBall className={`${s.mode} ${s.diff}`} />
+                </TableCell>
+                <TableCell>
+                  {s.grade ? (
+                    <GradeIcon src={grades[s.grade]} alt={s.grade} />
+                  ) : (
+                    '-'
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </Section>
     </>
   );
@@ -38,14 +55,6 @@ const Scores = () => {
 
 export default Scores;
 
-const List = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-const Item = styled.li`
-  margin-bottom: 5px;
-`;
 
 const GradeIcon = styled.img`
   height: 20px;
