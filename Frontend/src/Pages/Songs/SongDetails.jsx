@@ -33,6 +33,8 @@ const SongDetails = ({ chart, changeGrade }) => {
     }
   };
 
+  const loggedIn = Boolean(localStorage.getItem("token"));
+
   return (
     <div>
       <div>Title: {chart.title}</div>
@@ -55,36 +57,44 @@ const SongDetails = ({ chart, changeGrade }) => {
         ))}
       </div>
 
-      <GradeSelect
-        label="Set Grade"
-        value={grade}
-        onChange={(e) => {
-          setGrade(e.target.value);
-          changeGrade(e.target.value);
-        }}
-      />
-      {grade && (
-        <Button
-          onClick={() => {
-            setGrade();
-            changeGrade();
-          }}
-        >
-          Remove
-        </Button>
+      {loggedIn && (
+        <>
+          <GradeSelect
+            label="Set Grade"
+            value={grade}
+            onChange={(e) => {
+              setGrade(e.target.value);
+              changeGrade(e.target.value);
+            }}
+          />
+          {grade && (
+            <Button
+              onClick={() => {
+                setGrade();
+                changeGrade();
+              }}
+            >
+              Remove
+            </Button>
+          )}
+        </>
       )}
       {/* <GradeSelect
             label="Set Goal"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
         /> */}
-      <div>
-        test
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
-        {/* {selectedImage && <img src={selectedImage} alt="Selected" />} */}
-        {recognizedText && <div>{recognizedText}</div>}
-      </div>
-      <Button onClick={recognizeText}>Add Score</Button>
+      {loggedIn && (
+        <>
+          <div>
+            test
+            <input type="file" accept="image/*" onChange={handleImageUpload} />
+            {/* {selectedImage && <img src={selectedImage} alt="Selected" />} */}
+            {recognizedText && <div>{recognizedText}</div>}
+          </div>
+          <Button onClick={recognizeText}>Add Score</Button>
+        </>
+      )}
       {/* <Button>Add To Favorite</Button> */}
     </div>
   );
