@@ -1,6 +1,6 @@
 const pool = require('../../src/db');
 
-const tables = ['users', 'tokens', 'comments', 'games', 'ratings', 'scores'];
+const tables = ['users', 'tokens', 'comments', 'games', 'ratings', 'scores', 'goals'];
 
 const setupTestDB = () => {
   beforeEach(async () => {

@@ -65,3 +65,15 @@ model Rating {
 
   @@unique([userId, song_id, diff])
 }
+
+model Goal {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  song_id   String
+  diff      String
+  mode      String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, song_id, diff, mode])
+}

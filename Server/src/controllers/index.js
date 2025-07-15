@@ -4,3 +4,4 @@ module.exports.scoresController = require('./scores.controller');
 module.exports.leaderboardController = require('./leaderboard.controller');
 module.exports.missingController = require('./missing.controller');
 module.exports.ratingsController = require('./ratings.controller');
+module.exports.goalsController = require('./goals.controller');
