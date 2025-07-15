@@ -272,7 +272,9 @@ const Songs = ({ mode }) => {
             <StyledTextField
               onChange={(e) =>
                 setSearch(
-                  e.target.value ? { ...search, title: e.target.value } : undefined
+                  e.target.value
+                    ? { ...search, title: e.target.value }
+                    : undefined
                 )
               }
               value={search?.title || ""}
@@ -295,7 +297,11 @@ const Songs = ({ mode }) => {
                   control={<Radio />}
                   label="Popular"
                 />
-                <FormControlLabel value="grade" control={<Radio />} label="Grade" />
+                <FormControlLabel
+                  value="grade"
+                  control={<Radio />}
+                  label="Grade"
+                />
                 <FormControlLabel
                   value="tier"
                   control={<Radio />}
@@ -625,7 +631,8 @@ const FilterCard = styled(Paper)`
 `;
 const Card = styled(Paper)`
   padding: 20px;
-  background-color: ${({ theme }) => theme.palette.background.paper};
+  background-color: ${({ theme }) =>
+    theme.palette?.background.paper || "white"};
 `;
 const DiffSearch = styled.div`
   display: flex;
