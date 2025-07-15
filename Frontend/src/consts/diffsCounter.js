@@ -55,6 +55,9 @@ const diffCounter = {
         'lv_04': 3,
         'lv_03': 1,
     },
+    'item_coop': {
+        'lv_50': 104,
+    },
 }
 
 export default diffCounter;

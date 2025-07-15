@@ -29,6 +29,10 @@ const router = createBrowserRouter([
                 element: <Songs mode='item_double'/>
             },
             {
+                path: 'Coop',
+                element: <Songs mode='item_coop'/>
+            },
+            {
                 path: 'Scores',
                 element: <Scores />
             },
