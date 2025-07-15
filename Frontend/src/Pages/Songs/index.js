@@ -13,6 +13,9 @@ import {
   RadioGroup,
   TextField,
   Typography,
+  Grid,
+  Paper,
+  Container,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -249,7 +252,7 @@ const Songs = ({ mode }) => {
   };
 
   return (
-    <div>
+    <Container maxWidth="lg">
       <Modal
         open={!!openChart}
         onClose={() => {
@@ -263,44 +266,45 @@ const Songs = ({ mode }) => {
         </StyledBox>
       </Modal>
 
-      <div>
-        <StyledTextField
-          onChange={(e) =>
-            setSearch(
-              e.target.value ? { ...search, title: e.target.value } : undefined
-            )
-          }
-          value={search?.title || ""}
-          label="Search by name"
-        />
-        <FormControl>
-          <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
-          <SortOptions
-            row
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="tier"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            name="radio-buttons-group"
-          >
-            <FormControlLabel
-              value="popularity"
-              control={<Radio />}
-              label="Popular"
+      <FilterCard>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <StyledTextField
+              onChange={(e) =>
+                setSearch(
+                  e.target.value ? { ...search, title: e.target.value } : undefined
+                )
+              }
+              value={search?.title || ""}
+              label="Search by name"
             />
-            <FormControlLabel value="grade" control={<Radio />} label="Grade" />
-            <FormControlLabel
-              value="tier"
-              control={<Radio />}
-              label="Tier list"
-            />
-            {/* <FormControlLabel
-              value="fav"
-              control={<Radio />}
-              label="Favourites"
-            /> */}
-          </SortOptions>
-        </FormControl>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth>
+              <FormLabel id="radio-buttons-group-label">Sort by</FormLabel>
+              <SortOptions
+                row
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="tier"
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+                name="radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="popularity"
+                  control={<Radio />}
+                  label="Popular"
+                />
+                <FormControlLabel value="grade" control={<Radio />} label="Grade" />
+                <FormControlLabel
+                  value="tier"
+                  control={<Radio />}
+                  label="Tier list"
+                />
+              </SortOptions>
+            </FormControl>
+          </Grid>
+        </Grid>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -504,7 +508,7 @@ const Songs = ({ mode }) => {
           </AccordionDetailsStyled>
         </Accordion>
         <br />
-      </div>
+      </FilterCard>
 
       <Card>
         {Object.entries(diffCounter[mode]).map(
@@ -586,7 +590,7 @@ const Songs = ({ mode }) => {
             )
         )}
       </Card>
-    </div>
+    </Container>
   );
 };
 
@@ -615,9 +619,13 @@ const StyledBox = styled(Box)`
 const Filters = styled.div`
   width: 100%;
 `;
-const Card = styled.div`
-  background-color: #fafafa;
-  box-shadow: 0px 0px 35px -10px rgba(0, 0, 0, 0.15);
+const FilterCard = styled(Paper)`
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+const Card = styled(Paper)`
+  padding: 20px;
+  background-color: ${({ theme }) => theme.palette.background.paper};
 `;
 const DiffSearch = styled.div`
   display: flex;
