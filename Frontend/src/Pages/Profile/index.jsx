@@ -4,6 +4,7 @@ import Section from '../../Components/Layout/Section';
 import { ApiClient } from '../../API/httpService';
 import songs from '../../consts/songs.json';
 import compareGrades from '../../helpers/compareGrades';
+import getBestTitle from '../../helpers/getBestTitle';
 
 const apiClient = new ApiClient();
 
@@ -11,10 +12,14 @@ const Profile = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [scores, setScores] = useState({});
+  const [bestTitle, setBestTitle] = useState(null);
 
   useEffect(() => {
     if (!id) return;
-    apiClient.getUser(id).then((r) => setUser(r.data));
+    apiClient.getUser(id).then((r) => {
+      setUser(r.data);
+      setBestTitle(getBestTitle(r.data.titles));
+    });
     apiClient.getScores('item_single').then((r) => setScores(r.data));
   }, [id]);
 
@@ -32,9 +37,8 @@ const Profile = () => {
         {user && (
           <div>
             <div>Username: {user.username}</div>
-            <div>Email: {user.email}</div>
-            {user.titles?.length > 0 && (
-              <div>Title: {user.titles[user.titles.length - 1]}</div>
+            {bestTitle && (
+              <div>Title: {bestTitle}</div>
             )}
             {user.badges?.length > 0 && (
               <div>Badges: {user.badges.join(', ')}</div>
