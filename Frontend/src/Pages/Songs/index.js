@@ -249,10 +249,12 @@ const Songs = ({ mode }) => {
       }
       return updated;
     });
-    if (openChart &&
-        openChart.id === chart.id &&
-        openChart.diff === chart.diff &&
-        openChart.mode === chart.mode) {
+    if (
+      openChart &&
+      openChart.id === chart.id &&
+      openChart.diff === chart.diff &&
+      openChart.mode === chart.mode
+    ) {
       setOpenChart({ ...openChart, fav: !favorites[key] });
     }
   };
@@ -643,10 +645,8 @@ const StyledTextField = styled(TextField)`
   margin-bottom: 20px !important;
   @media only screen and (max-width: 600px) {
     position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: ${({ theme }) =>
-      theme.palette?.background.paper || "white"};
+    top: 20px;
+    z-index: 10;
   }
 `;
 
