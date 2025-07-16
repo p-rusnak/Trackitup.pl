@@ -12,6 +12,8 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   TextField,
+  InputAdornment,
+  IconButton,
   Typography,
   Grid,
   Paper,
@@ -19,6 +21,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ClearIcon from "@mui/icons-material/Clear";
 import styled from "styled-components";
 import { ApiClient } from "../../API/httpService";
 import Thumbnail from "../../Components/Thumbnail";
@@ -311,6 +314,19 @@ const Songs = ({ mode }) => {
               }
               value={search?.title || ""}
               label="Search by name"
+              InputProps={{
+                endAdornment: search?.title ? (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="clear search"
+                      onClick={() => setSearch(undefined)}
+                      edge="end"
+                    >
+                      <ClearIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ) : null,
+              }}
             />
           </Grid>
           <Grid item xs={12} md={6}>
@@ -625,6 +641,13 @@ const StyledTextField = styled(TextField)`
   width: 100%;
   margin-top: 20px !important;
   margin-bottom: 20px !important;
+  @media only screen and (max-width: 600px) {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: ${({ theme }) =>
+      theme.palette?.background.paper || "white"};
+  }
 `;
 
 const NumberInput = styled(TextField)`
