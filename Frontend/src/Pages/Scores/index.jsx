@@ -72,7 +72,7 @@ const Scores = () => {
                       />
                       <UserLink
                         to={`/profile/${s.userId}`}
-                        onClick={() => Navigate(`/sessions/${s.id}`)}
+                        onClick={(e) => e.stopPropagation()}
                       >
                         {s.user?.username}
                       </UserLink>
