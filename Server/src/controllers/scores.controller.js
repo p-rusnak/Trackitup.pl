@@ -24,6 +24,12 @@ const getLatestScores = catchAsync(async (req, res) => {
     res.send(result);
 });
 
+const getLatestPlayers = catchAsync(async (req, res) => {
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const result = await scoresService.getLatestPlayers(limit);
+    res.send(result);
+});
+
 const getAllScores = catchAsync(async (req, res) => {
     const page = parseInt(req.query.page, 10) || 1;
     const limit = parseInt(req.query.limit, 10) || 30;
@@ -35,5 +41,6 @@ module.exports = {
     getScores,
     postScore,
     getLatestScores,
+    getLatestPlayers,
     getAllScores,
 };

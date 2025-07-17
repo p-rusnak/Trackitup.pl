@@ -11,9 +11,13 @@ const apiClient = new ApiClient();
 
 const Scores = () => {
   const [latest, setLatest] = useState([]);
+  const [latestPlayers, setLatestPlayers] = useState([]);
 
   useEffect(() => {
     apiClient.getLatestScores().then((res) => setLatest(res.data)).catch(() => {});
+    apiClient.getLatestPlayers()
+      .then((res) => setLatestPlayers(res.data))
+      .catch(() => {});
   }, []);
 
   return (
@@ -54,6 +58,26 @@ const Scores = () => {
         <p>
           <Link to="/ScoresAll">See all scores</Link>
         </p>
+      </Section>
+      <Section header="Latest players">
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>User</TableCell>
+              <TableCell>Date</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {latestPlayers.map((p) => (
+              <TableRow key={p.userId}>
+                <TableCell>
+                  <UserLink to={`/profile/${p.userId}`}>{p.user?.username}</UserLink>
+                </TableCell>
+                <TableCell>{new Date(p.createdAt).toLocaleDateString()}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </Section>
     </>
   );

@@ -11,6 +11,10 @@ router
   .get(validate(scoresValidation.getLatestScores), scoresController.getLatestScores);
 
 router
+  .route('/latestPlayers')
+  .get(validate(scoresValidation.getLatestPlayers), scoresController.getLatestPlayers);
+
+router
   .route('/all')
   .get(validate(scoresValidation.getAllScores), scoresController.getAllScores);
 
