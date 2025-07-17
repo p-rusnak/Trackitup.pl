@@ -1,4 +1,19 @@
-const gradeOrder = ['SSS', 'SS', 'S', 'Ap', 'A', "Bp", "B", "Cp", 'C', "Dp", "D", "F"]
+// Grade order from best to worst
+// SSS > SS > S > Ap > Bp > Cp > Dp > A > B > C > D > F
+const gradeOrder = [
+    'SSS',
+    'SS',
+    'S',
+    'Ap',
+    'Bp',
+    'Cp',
+    'Dp',
+    'A',
+    'B',
+    'C',
+    'D',
+    'F',
+]
 
 const compareGrades = (a, b) => {
     if (!b) return -1
