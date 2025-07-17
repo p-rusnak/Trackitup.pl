@@ -64,7 +64,7 @@ const Scores = () => {
                   key={s.id}
                   hover
                   sx={{ cursor: "pointer" }}
-                  onClick={() => navigate(`/sessions/${s.id}`)}
+                  onClick={() => navigate(`/session/${s.id}`)}
                 >
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -136,7 +136,12 @@ const Scores = () => {
                     <>
                       <GradeIcon src={grades[s.grade]} alt={s.grade} />
                       {s.firstPass && (
-                        <Chip label="New" color="success" size="small" sx={{ ml: 1 }} />
+                        <Chip
+                          label="New"
+                          color="success"
+                          size="small"
+                          sx={{ ml: 1 }}
+                        />
                       )}
                     </>
                   ) : (
@@ -169,7 +174,7 @@ const Scores = () => {
                   key={s.id}
                   hover
                   sx={{ cursor: "pointer" }}
-                  onClick={() => navigate(`/sessions/${s.id}`)}
+                  onClick={() => navigate(`/session/${s.id}`)}
                 >
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
