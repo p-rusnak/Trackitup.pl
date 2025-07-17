@@ -720,6 +720,8 @@ const StyledBox = styled(Box)`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
+  max-height: 90vh;
+  overflow-y: auto;
   background: white;
   boxshadow: 24;
   padding: 14px;
