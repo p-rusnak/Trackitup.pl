@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Section from "../../Components/Layout/Section";
 import {
@@ -12,6 +12,7 @@ import {
   Typography,
   Avatar,
   IconButton,
+  TextField,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { ApiClient } from "../../API/httpService";
@@ -70,25 +71,23 @@ const Profile = () => {
   const [singleGoals, setSingleGoals] = useState([]);
   const [doubleGoals, setDoubleGoals] = useState([]);
   const [bestTitle, setBestTitle] = useState(null);
-  const fileInputRef = useRef(null);
+  const [showAvatarInput, setShowAvatarInput] = useState(false);
+  const [avatarUrlInput, setAvatarUrlInput] = useState("");
   const { user: loggedUser, setUser: setLoggedUser } = useUser();
   const isOwnProfile = loggedUser && String(loggedUser.id) === String(id);
 
-  const handleAvatarChange = (e) => {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const avatarUrl = reader.result;
-      setUser((u) => ({ ...u, avatarUrl }));
-      apiClient
-        .updateUser(id, { avatarUrl })
-        .catch((err) => console.error(err));
-      if (loggedUser && String(loggedUser.id) === String(id)) {
-        setLoggedUser((u) => ({ ...u, avatarUrl }));
-      }
-    };
-    reader.readAsDataURL(file);
+  const handleAvatarSubmit = () => {
+    const avatarUrl = avatarUrlInput.trim();
+    if (!avatarUrl) return;
+    setUser((u) => ({ ...u, avatarUrl }));
+    apiClient
+      .updateUser(id, { avatarUrl })
+      .catch((err) => console.error(err));
+    if (loggedUser && String(loggedUser.id) === String(id)) {
+      setLoggedUser((u) => ({ ...u, avatarUrl }));
+    }
+    setShowAvatarInput(false);
+    setAvatarUrlInput("");
   };
 
   useEffect(() => {
@@ -178,20 +177,24 @@ const Profile = () => {
               {isOwnProfile && (
                 <>
                   <AddButton
-                    onClick={() =>
-                      fileInputRef.current && fileInputRef.current.click()
-                    }
+                    onClick={() => setShowAvatarInput((v) => !v)}
                     size="small"
                   >
                     <AddIcon fontSize="small" />
                   </AddButton>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    ref={fileInputRef}
-                    onChange={handleAvatarChange}
-                    style={{ display: "none" }}
-                  />
+                  {showAvatarInput && (
+                    <Box sx={{ position: "absolute", top: "100%", left: 0, mt: 1, display: "flex", gap: 1 }}>
+                      <TextField
+                        label="Avatar URL"
+                        size="small"
+                        value={avatarUrlInput}
+                        onChange={(e) => setAvatarUrlInput(e.target.value)}
+                      />
+                      <IconButton onClick={handleAvatarSubmit} size="small">
+                        <AddIcon fontSize="small" />
+                      </IconButton>
+                    </Box>
+                  )}
                 </>
               )}
             </AvatarWrapper>
