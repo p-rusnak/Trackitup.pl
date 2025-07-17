@@ -8,6 +8,7 @@ const missingRoute = require('./missing.route');
 const ratingsRoute = require('./ratings.route');
 const goalsRoute = require('./goals.route');
 const sessionsRoute = require('./sessions.route');
+const rivalsRoute = require('./rivals.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -44,6 +45,10 @@ const defaultRoutes = [
   {
     path: '/sessions',
     route: sessionsRoute,
+  },
+  {
+    path: '/rivals',
+    route: rivalsRoute,
   },
 ];
 

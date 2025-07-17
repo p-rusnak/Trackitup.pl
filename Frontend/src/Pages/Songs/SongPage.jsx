@@ -11,6 +11,7 @@ const SongPage = () => {
   const navigate = useNavigate();
   const [chart, setChart] = useState(null);
   const [history, setHistory] = useState([]);
+  const [rivalScores, setRivalScores] = useState([]);
   const { user } = useUser();
   const [favorites, setFavorites] = useState(() => {
     const stored = localStorage.getItem("favorites");
@@ -28,6 +29,7 @@ const SongPage = () => {
         setChart({ id, ...song, diff, mode, grade, fav });
       });
       api.getScoreHistory(mode, id, diff).then((r) => setHistory(r.data));
+      api.getRivalScores(mode, id, diff).then((r) => setRivalScores(r.data));
     } else {
       setChart({ id, ...song, diff, mode, fav });
     }
@@ -82,6 +84,7 @@ const SongPage = () => {
         toggleFavorite={toggleFavorite}
         changeDiff={changeDiff}
         history={history}
+        rivalScores={rivalScores}
         removeScore={removeScore}
       />
     </div>

@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -26,7 +27,7 @@ import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
 
-const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history = [], removeScore }) => {
+const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history = [], removeScore, rivalScores = [] }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
@@ -165,6 +166,38 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
                 </DiffItem>
               ))}
             </DiffList>
+          </>
+        )}
+        {rivalScores.length > 0 && (
+          <>
+            <Divider sx={{ my: 2 }} />
+            <Typography variant="subtitle2" gutterBottom>
+              Rival scores
+            </Typography>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Player</TableCell>
+                  <TableCell>Grade</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rivalScores.map((s) => (
+                  <TableRow key={s.user.id}>
+                    <TableCell>
+                      <Link to={`/profile/${s.user.id}`}>{s.user.username}</Link>
+                    </TableCell>
+                    <TableCell>
+                      {s.grade ? (
+                        <GradeIcon src={grades[s.grade]} alt={s.grade} />
+                      ) : (
+                        '-'
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </>
         )}
         {history.length > 0 && (

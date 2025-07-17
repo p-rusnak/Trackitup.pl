@@ -12,9 +12,11 @@ import {
   Typography,
   Avatar,
   IconButton,
+  Button,
   TextField,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import ClearIcon from "@mui/icons-material/Clear";
 import { ApiClient } from "../../API/httpService";
 import songs from "../../consts/songs.json";
 import compareGrades from "../../helpers/compareGrades";
@@ -77,6 +79,8 @@ const Profile = () => {
   const [doubleGoals, setDoubleGoals] = useState([]);
   const [bestTitle, setBestTitle] = useState(null);
   const [sessions, setSessions] = useState([]);
+  const [rivals, setRivals] = useState([]);
+  const [myRivals, setMyRivals] = useState([]);
   const [showAvatarInput, setShowAvatarInput] = useState(false);
   const [avatarUrlInput, setAvatarUrlInput] = useState("");
   const { user: loggedUser, setUser: setLoggedUser } = useUser();
@@ -96,6 +100,18 @@ const Profile = () => {
     setAvatarUrlInput("");
   };
 
+  const handleAddRival = () => {
+    apiClient.postRival(id).then(() => {
+      apiClient.getRivals().then((r) => setMyRivals(r.data));
+    });
+  };
+
+  const handleRemoveRival = (rid) => {
+    apiClient.postRival(rid).then(() => {
+      setMyRivals((rs) => rs.filter((r) => r.id !== rid));
+    });
+  };
+
   useEffect(() => {
     if (!id) return;
     apiClient.getUser(id).then((r) => {
@@ -107,7 +123,11 @@ const Profile = () => {
     apiClient.getGoals(MODES.SINGLE, id).then((r) => setSingleGoals(r.data));
     apiClient.getGoals(MODES.DOUBLE, id).then((r) => setDoubleGoals(r.data));
     apiClient.listSessions(id).then((r) => setSessions(r.data));
-  }, [id]);
+    apiClient.getRivals(id).then((r) => setRivals(r.data));
+    if (loggedUser) {
+      apiClient.getRivals().then((r) => setMyRivals(r.data));
+    }
+  }, [id, loggedUser]);
 
   const getAdiff = (songId, diff, mode) => {
     const chart = songs[songId]?.diffs.find(
@@ -225,9 +245,42 @@ const Profile = () => {
             <Typography sx={{ mt: 1 }}>
               <Link to="/Titles">Titles info</Link>
             </Typography>
+            {!isOwnProfile && loggedUser && (
+              <Box sx={{ mt: 1 }}>
+                <Button
+                  size="small"
+                  onClick={handleAddRival}
+                  disabled={myRivals.some((r) => r.id === user.id) || myRivals.length >= 5}
+                >
+                  {myRivals.some((r) => r.id === user.id) ? 'Rival added' : 'Add as rival'}
+                </Button>
+                {myRivals.length >= 5 && !myRivals.some((r) => r.id === user.id) && (
+                  <Typography variant="caption" sx={{ ml: 1 }}>
+                    You already selected 5 rivals
+                  </Typography>
+                )}
+              </Box>
+            )}
           </Box>
         )}
       </Section>
+      {rivals.length > 0 && (
+        <Section header="Rivals">
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            {rivals.slice(0, 5).map((r) => (
+              <Box key={r.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Avatar src={r.avatarUrl || Av} sx={{ width: 40, height: 40 }} />
+                <Link to={`/profile/${r.id}`}>{r.username}</Link>
+                {isOwnProfile && (
+                  <IconButton size="small" onClick={() => handleRemoveRival(r.id)}>
+                    <ClearIcon fontSize="small" />
+                  </IconButton>
+                )}
+              </Box>
+            ))}
+          </Box>
+        </Section>
+      )}
       {sessions.length > 0 && (
         <Section header="Your sessions">
           <Table size="small">
