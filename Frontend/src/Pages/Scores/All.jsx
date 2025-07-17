@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Section from '../../Components/Layout/Section';
 import { ApiClient } from '../../API/httpService';
 import songs from '../../consts/songs.json';
@@ -13,6 +13,9 @@ import {
   TableRow,
   TablePagination,
   TextField,
+  Autocomplete,
+  Select,
+  MenuItem,
   Button,
   Avatar,
   Box,
@@ -29,17 +32,36 @@ const AllScores = () => {
   const [total, setTotal] = useState(0);
   const [player, setPlayer] = useState('');
   const [songId, setSongId] = useState('');
-  const [diff, setDiff] = useState('');
+  const [songInput, setSongInput] = useState('');
+  const [songOption, setSongOption] = useState(null);
+  const [diffNumber, setDiffNumber] = useState('');
+  const [diffMode, setDiffMode] = useState('');
   const [grade, setGrade] = useState('');
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const rowsPerPage = 30;
 
+  const songsOptions = useMemo(
+    () =>
+      Object.entries(songs).map(([id, value]) => ({ id, title: value.title })),
+    []
+  );
+
   const fetchData = () => {
+    const diffValue = diffNumber
+      ? `lv_${diffNumber.toString().padStart(2, '0')}`
+      : undefined;
+    const modeValue =
+      diffMode === 'S'
+        ? 'item_single'
+        : diffMode === 'D'
+        ? 'item_double'
+        : undefined;
     const params = {
       player: player || undefined,
       songId: songId || undefined,
-      diff: diff || undefined,
+      diff: diffValue,
+      mode: modeValue,
       grade: grade || undefined,
       from: from || undefined,
       to: to || undefined,
@@ -70,18 +92,41 @@ const AllScores = () => {
             value={player}
             onChange={(e) => setPlayer(e.target.value)}
           />
-          <TextField
-            label="Song ID"
+          <Autocomplete
+            freeSolo
+            options={songsOptions}
+            getOptionLabel={(o) => o.title}
             size="small"
-            value={songId}
-            onChange={(e) => setSongId(e.target.value)}
+            value={songOption}
+            inputValue={songInput}
+            onInputChange={(e, val) => setSongInput(val)}
+            onChange={(_, val) => {
+              setSongOption(val);
+              setSongId(val ? val.id : '');
+            }}
+            renderInput={(params) => <TextField {...params} label="Song" />}
+            sx={{ minWidth: 200 }}
           />
           <TextField
             label="Diff"
+            type="number"
             size="small"
-            value={diff}
-            onChange={(e) => setDiff(e.target.value)}
+            value={diffNumber}
+            onChange={(e) => setDiffNumber(e.target.value)}
+            sx={{ width: 80 }}
           />
+          <Select
+            value={diffMode}
+            displayEmpty
+            size="small"
+            onChange={(e) => setDiffMode(e.target.value)}
+          >
+            <MenuItem value="">
+              <em>-</em>
+            </MenuItem>
+            <MenuItem value="S">S</MenuItem>
+            <MenuItem value="D">D</MenuItem>
+          </Select>
           <GradeDropdown
             value={grade}
             onChange={(e) => setGrade(e.target.value)}

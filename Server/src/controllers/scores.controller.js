@@ -40,6 +40,7 @@ const getAllScores = catchAsync(async (req, res) => {
         'grade',
         'from',
         'to',
+        'mode',
     ]);
     const result = await scoresService.getAllScores(page, limit, filters);
     res.send(result);
