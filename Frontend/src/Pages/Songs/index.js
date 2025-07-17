@@ -259,6 +259,20 @@ const Songs = ({ mode }) => {
     }
   };
 
+  const changeDiff = (d) => {
+    if (!openChart) return;
+    const { id } = openChart;
+    const grade =
+      details[d.type]?.[d.diff]?.[id]?.grade || "";
+    setOpenChart({
+      ...openChart,
+      diff: d.diff,
+      mode: d.type,
+      grade,
+      fav: favorites[`${id}-${d.diff}-${d.type}`],
+    });
+  };
+
   const shouldDisplayDiff = (diff) => {
     const prefix1 = search?.p1Diff > 9 ? "lv_" : "lv_0";
     const prefix2 = search?.p2Diff > 9 ? "lv_" : "lv_0";
@@ -299,6 +313,7 @@ const Songs = ({ mode }) => {
             chart={openChart}
             changeGrade={changeGrade}
             toggleFavorite={toggleFavorite}
+            changeDiff={changeDiff}
           />
         </StyledBox>
       </Modal>

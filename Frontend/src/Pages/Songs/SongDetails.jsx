@@ -8,7 +8,7 @@ import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
 
-const SongDetails = ({ chart, changeGrade, toggleFavorite }) => {
+const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
@@ -16,6 +16,7 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite }) => {
   const apiClient = useMemo(() => new ApiClient(), []);
 
   useEffect(() => {
+    setGrade(chart.grade || "");
     apiClient.getRating(chart.id, chart.diff).then((r) => setRatings(r.data));
     apiClient.getGoals(chart.mode).then((r) => {
       const isGoal = r.data.some(
@@ -140,7 +141,8 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite }) => {
             </Typography>
             <DiffList>
               {otherDiffs.map((d) => (
-                <DiffItem key={`${d.type}-${d.diff}`}>
+                <DiffItem key={`${d.type}-${d.diff}`}
+                  onClick={() => changeDiff && changeDiff(d)}>
                   <DiffBall className={`${d.type} ${d.diff}`} />
                 </DiffItem>
               ))}
@@ -206,6 +208,7 @@ const DiffList = styled.div`
 const DiffItem = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const GradeWrapper = styled.div`
@@ -234,6 +237,7 @@ const DiffBall = styled.span`
   display: inline-block;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 `;
 
 const RateButtons = styled.div`
