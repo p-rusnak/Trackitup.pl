@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ApiClient } from "../../API/httpService";
 import songs from "../../consts/songs.json";
 import grades from "../../Assets/Grades";
@@ -14,8 +14,11 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Paper,
+  Checkbox,
+  IconButton,
 } from "@mui/material";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import ShareIcon from "@mui/icons-material/Share";
 import { useUser } from "../../Components/User";
 import styled from "styled-components";
 
@@ -27,6 +30,11 @@ const DiffBall = styled.span`
   height: 20px;
 `;
 
+const DiffText = styled.span`
+  font-weight: bold;
+  color: ${(props) => (props.$mode === 'item_single' ? 'red' : 'green')};
+`;
+
 const GradeImg = styled.img`
   position: absolute;
   top: 0;
@@ -34,10 +42,17 @@ const GradeImg = styled.img`
   height: 40px;
 `;
 
+const parseLevel = (d) => {
+  const n = parseInt(d.replace('lv_', ''));
+  return Number.isNaN(n) ? d : n;
+};
+
 const SessionPage = () => {
   const { id } = useParams();
   const [session, setSession] = useState(null);
   const [view, setView] = useState("list");
+  const [selected, setSelected] = useState(new Set());
+  const shareRef = useRef(null);
   const navigate = useNavigate();
   const { user } = useUser();
   const isOwn = user && session && String(user.id) === String(session.userId);
@@ -56,6 +71,10 @@ const SessionPage = () => {
     load();
   }, [id]);
 
+  useEffect(() => {
+    setSelected(new Set(session?.scores.map((s) => s.id)));
+  }, [session]);
+
   const endSession = () => {
     api.endSession().then(() => load());
   };
@@ -69,6 +88,35 @@ const SessionPage = () => {
     api.deleteSession(id).then(() => {
       if (user) navigate(`/sessions/${user.id}`);
     });
+  };
+
+  const toggleSelect = (sid) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(sid)) next.delete(sid);
+      else next.add(sid);
+      return next;
+    });
+  };
+
+  const share = async () => {
+    if (!shareRef.current) return;
+    if (!window.html2canvas) {
+      await new Promise((res) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+        script.onload = res;
+        document.body.appendChild(script);
+      });
+    }
+    const canvas = await window.html2canvas(shareRef.current);
+    const url = canvas.toDataURL('image/png');
+    const win = window.open('');
+    if (win) {
+      const img = new Image();
+      img.src = url;
+      win.document.body.appendChild(img);
+    }
   };
 
   if (!session)
@@ -93,6 +141,11 @@ const SessionPage = () => {
             </Button>
           </Box>
         )}
+        <Box sx={{ mb: 2 }}>
+          <IconButton onClick={share} color="primary">
+            <ShareIcon />
+          </IconButton>
+        </Box>
         <ToggleButtonGroup
           value={view}
           exclusive
@@ -106,6 +159,7 @@ const SessionPage = () => {
           <Table size="small">
             <TableHead>
               <TableRow>
+                <TableCell />
                 <TableCell>Song</TableCell>
                 <TableCell>Grade</TableCell>
                 <TableCell>Diff</TableCell>
@@ -114,6 +168,12 @@ const SessionPage = () => {
             <TableBody>
               {session.scores.map((s) => (
                 <TableRow key={s.id}>
+                  <TableCell padding="checkbox">
+                    <Checkbox
+                      checked={selected.has(s.id)}
+                      onChange={() => toggleSelect(s.id)}
+                    />
+                  </TableCell>
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                       <img src={songs[s.song_id]?.img} alt="cover" width={40} />
@@ -142,7 +202,12 @@ const SessionPage = () => {
         ) : (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
             {session.scores.map((s) => (
-              <Paper key={s.id} sx={{ p: 2, width: 160 }}>
+              <Paper key={s.id} sx={{ p: 2, width: 160, position: 'relative' }}>
+                <Checkbox
+                  checked={selected.has(s.id)}
+                  onChange={() => toggleSelect(s.id)}
+                  sx={{ position: 'absolute', top: 0, left: 0 }}
+                />
                 <Box
                   sx={{
                     display: "flex",
@@ -152,7 +217,7 @@ const SessionPage = () => {
                     mb: 1,
                   }}
                 >
-                  <DiffBall className={`${s.mode} ${s.diff}`} />
+                  <DiffText $mode={s.mode}>{parseLevel(s.diff)}</DiffText>
                   <Link to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{
                     songs[s.song_id]?.title || s.song_id
                   }</Link>
@@ -172,6 +237,61 @@ const SessionPage = () => {
             ))}
           </Box>
         )}
+        <Box sx={{ position: 'absolute', left: -9999, top: 0 }} ref={shareRef}>
+          {view === 'list'
+            ? (
+              <Table size="small">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Song</TableCell>
+                    <TableCell>Grade</TableCell>
+                    <TableCell>Diff</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {session.scores.filter((s) => selected.has(s.id)).map((s) => (
+                    <TableRow key={`share-${s.id}`}> 
+                      <TableCell>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <img src={songs[s.song_id]?.img} alt="cover" width={40} />
+                          <span>{songs[s.song_id]?.title || s.song_id}</span>
+                        </Box>
+                      </TableCell>
+                      <TableCell>
+                        {s.grade ? <img src={grades[s.grade]} alt={s.grade} height={30}/> : '-'}
+                      </TableCell>
+                      <TableCell>
+                        <DiffBall className={`${s.mode} ${s.diff}`} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>)
+            : (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                {session.scores.filter((s) => selected.has(s.id)).map((s) => (
+                  <Paper key={`share-${s.id}`} sx={{ p: 2, width: 160 }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 1,
+                        mb: 1,
+                      }}
+                    >
+                      <DiffText $mode={s.mode}>{parseLevel(s.diff)}</DiffText>
+                      <span>{songs[s.song_id]?.title || s.song_id}</span>
+                    </Box>
+                    <Box sx={{ position: 'relative', textAlign: 'center' }}>
+                      <img src={songs[s.song_id]?.img} alt="cover" width={120} />
+                      {s.grade && <GradeImg src={grades[s.grade]} alt={s.grade} />}
+                    </Box>
+                  </Paper>
+                ))}
+              </Box>)
+          }
+        </Box>
       </Box>
     );
 
