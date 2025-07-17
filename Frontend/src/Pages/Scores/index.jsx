@@ -23,7 +23,7 @@ const Scores = () => {
   const [latest, setLatest] = useState([]);
   const [latestPlayers, setLatestPlayers] = useState([]);
   const [ongoingSessions, setOngoingSessions] = useState([]);
-  const [allSessions, setAllSessions] = useState([]);
+  const [latestSessions, setLatestSessions] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const Scores = () => {
       .catch(() => {});
     apiClient
       .getAllSessions()
-      .then((res) => setAllSessions(res.data))
+      .then((res) => setLatestSessions(res.data))
       .catch(() => {});
   }, []);
 
@@ -96,6 +96,9 @@ const Scores = () => {
               ))}
             </TableBody>
           </Table>
+          <p>
+            <Link to="/SessionsAll">See all sessions</Link>
+          </p>
         </Section>
       )}
       <Section header="Latest scores">
@@ -157,8 +160,8 @@ const Scores = () => {
           <Link to="/ScoresAll">See all scores</Link>
         </p>
       </Section>
-      {allSessions.length > 0 && (
-        <Section header="All sessions">
+      {latestSessions.length > 0 && (
+        <Section header="Latest sessions">
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -169,7 +172,7 @@ const Scores = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {allSessions.map((s) => (
+              {latestSessions.map((s) => (
                 <TableRow
                   key={s.id}
                   hover
@@ -206,6 +209,9 @@ const Scores = () => {
               ))}
             </TableBody>
           </Table>
+          <p>
+            <Link to="/SessionsAll">See all sessions</Link>
+          </p>
         </Section>
       )}
 
