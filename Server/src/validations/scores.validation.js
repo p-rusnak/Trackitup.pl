@@ -41,6 +41,7 @@ const getAllScores = {
     grade: Joi.string(),
     from: Joi.date(),
     to: Joi.date(),
+    sortBy: Joi.string(),
   }),
 };
 

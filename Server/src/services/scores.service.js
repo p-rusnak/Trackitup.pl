@@ -65,7 +65,18 @@ const getLatestPlayers = async (limit = 10) =>
     },
   });
 
-const getAllScores = async (page = 1, limit = 30, filters = {}) => {
+const parseSortBy = (sortBy) => {
+  if (!sortBy) {
+    return { createdAt: 'desc' };
+  }
+  const orders = sortBy.split(',').map((sortOpt) => {
+    const [field, order = 'asc'] = sortOpt.split(':');
+    return { [field]: order === 'desc' ? 'desc' : 'asc' };
+  });
+  return orders.length === 1 ? orders[0] : orders;
+};
+
+const getAllScores = async (page = 1, limit = 30, filters = {}, sortBy) => {
   const skip = (page - 1) * limit;
   const where = {};
   if (filters.player) {
@@ -93,10 +104,12 @@ const getAllScores = async (page = 1, limit = 30, filters = {}) => {
     }
   }
 
+  const orderBy = parseSortBy(sortBy);
+
   const results = await prisma.score.findMany({
     skip,
     take: limit,
-    orderBy: { id: 'desc' },
+    orderBy,
     where,
     include: {
       user: {
