@@ -116,9 +116,11 @@ const Profile = () => {
   };
 
   const buildBestPasses = (scoresData, mode) => {
+    const allowedGrades = new Set(["SSS", "SS", "S", "Ap", "Bp"]);
     const arr = [];
     Object.entries(scoresData || {}).forEach(([diff, vals]) => {
       Object.entries(vals).forEach(([songId, { grade }]) => {
+        if (!allowedGrades.has(grade)) return;
         arr.push({ diff, songId, grade, adiff: getAdiff(songId, diff, mode) });
       });
     });
