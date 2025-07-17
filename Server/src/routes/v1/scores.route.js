@@ -11,6 +11,10 @@ router
   .get(validate(scoresValidation.getLatestScores), scoresController.getLatestScores);
 
 router
+  .route('/all')
+  .get(validate(scoresValidation.getAllScores), scoresController.getAllScores);
+
+router
   .route('/:mode')
   .post(auth('postScores'), validate(scoresValidation.createScore), scoresController.postScore)
   .get(auth('getScores'), validate(scoresValidation.getScores), scoresController.getScores);

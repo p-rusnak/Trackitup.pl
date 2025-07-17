@@ -24,8 +24,16 @@ const getLatestScores = {
   }),
 };
 
+const getAllScores = {
+  query: Joi.object().keys({
+    page: Joi.number().integer(),
+    limit: Joi.number().integer(),
+  }),
+};
+
 module.exports = {
   createScore,
   getScores,
   getLatestScores,
+  getAllScores,
 };
