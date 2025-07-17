@@ -1,6 +1,6 @@
 const prisma = require('../db');
 const achievementService = require('./achievement.service');
-const { sessionService } = require('./index');
+const sessionService = require('./session.service');
 
 const getScores = async (filter) => {
   const scores = await prisma.score.findMany({ where: { userId: filter.userId, mode: filter.mode } });
@@ -124,7 +124,6 @@ const getAllScores = async (page = 1, limit = 30, filters = {}, sortBy) => {
   const totalPages = Math.ceil(totalResults / limit);
   return { results, page, limit, totalPages, totalResults };
 };
-
 
 module.exports = {
   getScores,
