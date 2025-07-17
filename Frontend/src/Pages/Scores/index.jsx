@@ -4,7 +4,7 @@ import { ApiClient } from "../../API/httpService";
 import songs from "../../consts/songs.json";
 import styled from "styled-components";
 import grades from "../../Assets/Grades";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -58,14 +58,22 @@ const Scores = () => {
             </TableHead>
             <TableBody>
               {ongoingSessions.map((s) => (
-                <TableRow key={s.id}>
+                <TableRow
+                  key={s.id}
+                  hover
+                  sx={{ cursor: "pointer" }}
+                  onClick={() => Navigate(`/sessions/${s.id}`)}
+                >
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                       <Avatar
                         src={s.user?.avatarUrl || Av}
                         sx={{ width: 24, height: 24 }}
                       />
-                      <UserLink to={`/profile/${s.userId}`}>
+                      <UserLink
+                        to={`/profile/${s.userId}`}
+                        onClick={() => Navigate(`/sessions/${s.id}`)}
+                      >
                         {s.user?.username}
                       </UserLink>
                     </Box>
@@ -150,14 +158,22 @@ const Scores = () => {
             </TableHead>
             <TableBody>
               {allSessions.map((s) => (
-                <TableRow key={s.id}>
+                <TableRow
+                  key={s.id}
+                  hover
+                  sx={{ cursor: "pointer" }}
+                  onClick={() => Navigate(`/sessions/${s.id}`)}
+                >
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                       <Avatar
                         src={s.user?.avatarUrl || Av}
                         sx={{ width: 24, height: 24 }}
                       />
-                      <UserLink to={`/profile/${s.userId}`}>
+                      <UserLink
+                        to={`/profile/${s.userId}`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         {s.user?.username}
                       </UserLink>
                     </Box>

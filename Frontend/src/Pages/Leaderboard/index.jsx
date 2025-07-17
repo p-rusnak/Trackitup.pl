@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { ApiClient } from '../../API/httpService';
-import Section from '../../Components/Layout/Section';
+import React, { useEffect, useState } from "react";
+import { ApiClient } from "../../API/httpService";
+import Section from "../../Components/Layout/Section";
 import {
   Box,
   FormControl,
@@ -13,10 +13,10 @@ import {
   TableHead,
   TableRow,
   Avatar,
-} from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import Av from '../../Assets/anon.png';
+} from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Av from "../../Assets/anon.png";
 
 const apiClient = new ApiClient();
 
@@ -43,8 +43,8 @@ const SortOptions = styled(ToggleButtonGroup)`
 
 const Leaderboard = () => {
   const navigate = useNavigate();
-  const [sort, setSort] = useState(() =>
-    localStorage.getItem('leaderboardSort') || 'singles'
+  const [sort, setSort] = useState(
+    () => localStorage.getItem("leaderboardSort") || "singles"
   );
   const [data, setData] = useState([]);
 
@@ -55,7 +55,7 @@ const Leaderboard = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('leaderboardSort', sort);
+    localStorage.setItem("leaderboardSort", sort);
   }, [sort]);
 
   const sortedData = [...data].sort((a, b) => b[sort] - a[sort]);
@@ -83,24 +83,27 @@ const Leaderboard = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-          {sortedData.map((row) => (
-              <TableRow
-                key={row.id}
-                hover
-                sx={{ cursor: 'pointer' }}
-                onClick={() => navigate(`/sessions/${row.id}`)}
-              >
+            {sortedData.map((row) => (
+              <TableRow key={row.id} hover>
                 <TableCell>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Avatar src={row.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
-                    <UserLink to={`/profile/${row.id}`} onClick={(e) => e.stopPropagation()}>{row.username}</UserLink>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Avatar
+                      src={row.avatarUrl || Av}
+                      sx={{ width: 24, height: 24 }}
+                    />
+                    <UserLink
+                      to={`/profile/${row.id}`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {row.username}
+                    </UserLink>
                   </Box>
                 </TableCell>
                 <TableCell align="right">
-                  {row.singles ? `LV ${row.singles}` : '-'}
+                  {row.singles ? `LV ${row.singles}` : "-"}
                 </TableCell>
                 <TableCell align="right">
-                  {row.doubles ? `LV ${row.doubles}` : '-'}
+                  {row.doubles ? `LV ${row.doubles}` : "-"}
                 </TableCell>
               </TableRow>
             ))}
