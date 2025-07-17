@@ -1,14 +1,31 @@
 import React, { useMemo, useState, useEffect } from "react";
-import { Box, Typography, Divider, Button, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Divider,
+  Button,
+  IconButton,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ClearIcon from "@mui/icons-material/Clear";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import grades from "../../Assets/Grades";
 
 import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
 
-const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff }) => {
+const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history = [], removeScore }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
@@ -149,6 +166,50 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff }) => {
             </DiffList>
           </>
         )}
+        {history.length > 0 && (
+          <>
+            <Divider sx={{ my: 2 }} />
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography>Play History</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Table size="small">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Grade</TableCell>
+                      <TableCell>Date / Time</TableCell>
+                      {removeScore && <TableCell />}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {history.map((h) => (
+                      <TableRow key={h.id}>
+                        <TableCell>
+                          {h.grade ? (
+                            <GradeIcon src={grades[h.grade]} alt={h.grade} />
+                          ) : (
+                            "-"
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          {new Date(h.createdAt).toLocaleString()}
+                        </TableCell>
+                        {removeScore && (
+                          <TableCell>
+                            <IconButton size="small" onClick={() => removeScore(h.id)}>
+                              <ClearIcon fontSize="small" />
+                            </IconButton>
+                          </TableCell>
+                        )}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </AccordionDetails>
+            </Accordion>
+          </>
+        )}
       </Content>
     </Container>
   );
@@ -255,4 +316,9 @@ const RatingBar = styled.div`
 
 const Segment = styled.div`
   height: 100%;
+`;
+
+const GradeIcon = styled.img`
+  height: 20px;
+  vertical-align: middle;
 `;

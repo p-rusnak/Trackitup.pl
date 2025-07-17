@@ -30,7 +30,6 @@ const GradeSelect = ({ value, label, onChange }) => {
         >
             {otherGrades.map(g => <MenuItem key={g} value={g}><Grade src={grades[g]} /></MenuItem>)}
         </Select>
-        {value && <Button onClick={() => onChange('')}>Remove</Button>}
     </Wrapper>
 }
 

@@ -2,45 +2,51 @@ const prisma = require('../db');
 const achievementService = require('./achievement.service');
 const sessionService = require('./session.service');
 
+const gradeOrder = [
+  'SSS',
+  'SS',
+  'S',
+  'Ap',
+  'Bp',
+  'Cp',
+  'Dp',
+  'A',
+  'B',
+  'C',
+  'D',
+  'F',
+];
+
+const getGradeIndex = (g) => {
+  const idx = gradeOrder.indexOf(g);
+  return idx === -1 ? gradeOrder.length : idx;
+};
+
 const getScores = async (filter) => {
-  const scores = await prisma.score.findMany({ where: { userId: filter.userId, mode: filter.mode } });
+  const scores = await prisma.score.findMany({
+    where: { userId: filter.userId, mode: filter.mode },
+  });
   const response = {};
   scores.forEach((el) => {
-    if (response[el.diff]) {
-      if (response[el.diff][el.song_id]) {
-        response[el.diff][el.song_id].grade = el.grade;
-      } else {
-        response[el.diff][el.song_id] = { grade: el.grade };
-      }
-    } else {
-      response[el.diff] = { [el.song_id]: { grade: el.grade } };
+    const diffObj = response[el.diff] || {};
+    const existing = diffObj[el.song_id]?.grade;
+    if (!existing || getGradeIndex(el.grade) < getGradeIndex(existing)) {
+      diffObj[el.song_id] = { grade: el.grade };
     }
+    response[el.diff] = diffObj;
   });
   return response;
 };
 
 const createScore = async (scoreBody, mode, user) => {
   const { song_id, diff, grade } = scoreBody;
-  const existing = await prisma.score.findFirst({
-    where: { userId: user.id, song_id, diff, mode },
+  const res = await prisma.score.create({
+    data: { song_id, diff, grade: grade || null, userId: user.id, mode },
   });
-
-  if (grade === null || grade === undefined || grade === '') {
-    if (existing) {
-      await prisma.score.delete({ where: { id: existing.id } });
-    }
-    const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id);
-    return { score: null, newBadges, newTitles };
-  }
-
-  if (existing) {
-    const res = await prisma.score.update({ where: { id: existing.id }, data: { grade } });
-    const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id, res);
-    await sessionService.handleScore(user.id, res.id);
-    return { score: res, newBadges, newTitles };
-  }
-  const res = await prisma.score.create({ data: { song_id, diff, grade, userId: user.id, mode } });
-  const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id, res);
+  const { newBadges, newTitles } = await achievementService.updateUserAchievements(
+    user.id,
+    res,
+  );
   await sessionService.handleScore(user.id, res.id);
   return { score: res, newBadges, newTitles };
 };
@@ -125,10 +131,26 @@ const getAllScores = async (page = 1, limit = 30, filters = {}, sortBy) => {
   return { results, page, limit, totalPages, totalResults };
 };
 
+const getScoreHistory = async (userId, mode, songId, diff) =>
+  prisma.score.findMany({
+    where: { userId, mode, song_id: songId, diff },
+    orderBy: { createdAt: 'desc' },
+  });
+
+const deleteScore = async (id, userId) => {
+  const score = await prisma.score.findUnique({ where: { id } });
+  if (!score || score.userId !== userId) return null;
+  await prisma.score.delete({ where: { id } });
+  await achievementService.updateUserAchievements(userId);
+  return score;
+};
+
 module.exports = {
   getScores,
   createScore,
   getLatestScores,
   getLatestPlayers,
   getAllScores,
+  getScoreHistory,
+  deleteScore,
 };
