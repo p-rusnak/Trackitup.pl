@@ -14,7 +14,7 @@ const getLeaderboard = async (mode) => {
       const level = parseLevel(s.diff);
       if (level > highest) highest = level;
     });
-    return { id: u.id, username: u.username, highest };
+    return { id: u.id, username: u.username, avatarUrl: u.avatarUrl, highest };
   });
   board.sort((a, b) => b.highest - a.highest);
   return board;
@@ -35,7 +35,7 @@ const getFullLeaderboard = async () => {
       const level = parseLevel(s.diff);
       if (level > doublesHighest) doublesHighest = level;
     });
-    return { id: u.id, username: u.username, singles: singlesHighest, doubles: doublesHighest };
+    return { id: u.id, username: u.username, avatarUrl: u.avatarUrl, singles: singlesHighest, doubles: doublesHighest };
   });
   return board;
 };

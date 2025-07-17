@@ -12,9 +12,11 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Avatar,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Av from '../../Assets/anon.png';
 
 const apiClient = new ApiClient();
 
@@ -75,7 +77,10 @@ const Leaderboard = () => {
             {sortedData.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>
-                  <UserLink to={`/profile/${row.id}`}>{row.username}</UserLink>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Avatar src={row.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
+                    <UserLink to={`/profile/${row.id}`}>{row.username}</UserLink>
+                  </Box>
                 </TableCell>
                 <TableCell align="right">
                   {row.singles ? `LV ${row.singles}` : '-'}
