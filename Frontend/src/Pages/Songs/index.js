@@ -134,6 +134,7 @@ const Songs = ({ mode }) => {
     const stored = localStorage.getItem("favorites");
     return stored ? JSON.parse(stored) : {};
   });
+  const [expandedDiffs, setExpandedDiffs] = useState({});
 
   useEffect(() => {
     localStorage.setItem("hiddenDiffs", JSON.stringify(hiddenDiffs));
@@ -146,6 +147,18 @@ const Songs = ({ mode }) => {
   useEffect(() => {
     localStorage.setItem("songSort", sort);
   }, [sort]);
+
+  useEffect(() => {
+    if (search?.title && search.title.length > 5) {
+      const newExpanded = {};
+      Object.keys(diffCounter[mode]).forEach((d) => {
+        newExpanded[d] = true;
+      });
+      setExpandedDiffs(newExpanded);
+    } else if (!search?.title) {
+      setExpandedDiffs({});
+    }
+  }, [search?.title, mode]);
 
   const maxDiff = Math.max(
     ...Object.keys(diffCounter[mode]).map((d) => parseInt(d.replace("lv_", "")))
@@ -574,8 +587,14 @@ const Songs = ({ mode }) => {
         {Object.entries(diffCounter[mode]).map(([diff, count]) => {
           prevCategory = undefined;
           return (
-            shouldDisplayDiff(diff) && (
-              <Accordion key={diff}>
+              shouldDisplayDiff(diff) && (
+                <Accordion
+                  key={diff}
+                  expanded={expandedDiffs[diff] || false}
+                  onChange={(_, exp) =>
+                    setExpandedDiffs({ ...expandedDiffs, [diff]: exp })
+                  }
+                >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={`panel${diff}-content`}
