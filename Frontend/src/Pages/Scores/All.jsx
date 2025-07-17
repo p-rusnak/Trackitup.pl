@@ -158,7 +158,7 @@ const AllScores = () => {
               <TableCell>Song</TableCell>
               <TableCell>Diff</TableCell>
               <TableCell>Grade</TableCell>
-              <TableCell>Date</TableCell>
+              <TableCell>Date / Time</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -181,7 +181,7 @@ const AllScores = () => {
                 <TableCell>
                   {s.grade ? <GradeIcon src={grades[s.grade]} alt={s.grade} /> : '-'}
                 </TableCell>
-                <TableCell>{new Date(s.createdAt).toLocaleDateString()}</TableCell>
+                <TableCell>{new Date(s.createdAt).toLocaleString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
