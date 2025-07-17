@@ -4,9 +4,9 @@ import Section from '../../Components/Layout/Section';
 import {
   Box,
   FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
+  FormLabel,
+  ToggleButton,
+  ToggleButtonGroup,
   Table,
   TableBody,
   TableCell,
@@ -32,6 +32,15 @@ const Wrapper = styled(Box)`
   width: 100%;
 `;
 
+const SortOptions = styled(ToggleButtonGroup)`
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+  & .MuiToggleButton-root {
+    flex: 1;
+  }
+`;
+
 const Leaderboard = () => {
   const [sort, setSort] = useState(() =>
     localStorage.getItem('leaderboardSort') || 'singles'
@@ -53,17 +62,16 @@ const Leaderboard = () => {
   return (
     <Section header="Leaderboard">
       <Wrapper>
-        <FormControl sx={{ mb: 2, minWidth: 120 }} size="small">
-          <InputLabel id="sort-select-label">Sort By</InputLabel>
-          <Select
-            labelId="sort-select-label"
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <FormLabel>Sort by</FormLabel>
+          <SortOptions
+            exclusive
             value={sort}
-            label="Sort By"
-            onChange={(e) => setSort(e.target.value)}
+            onChange={(_, v) => v && setSort(v)}
           >
-            <MenuItem value={'singles'}>Singles</MenuItem>
-            <MenuItem value={'doubles'}>Doubles</MenuItem>
-          </Select>
+            <ToggleButton value="singles">Singles</ToggleButton>
+            <ToggleButton value="doubles">Doubles</ToggleButton>
+          </SortOptions>
         </FormControl>
         <Table size="small">
           <TableHead>
