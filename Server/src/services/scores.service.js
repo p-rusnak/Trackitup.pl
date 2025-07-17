@@ -53,8 +53,21 @@ const getLatestScores = async (limit = 10) =>
     },
   });
 
+const getLatestPlayers = async (limit = 10) =>
+  prisma.score.findMany({
+    distinct: ['userId'],
+    orderBy: { createdAt: 'desc' },
+    take: limit,
+    include: {
+      user: {
+        select: { username: true },
+      },
+    },
+  });
+
 module.exports = {
   getScores,
   createScore,
   getLatestScores,
+  getLatestPlayers,
 };

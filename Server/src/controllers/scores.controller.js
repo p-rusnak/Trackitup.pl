@@ -24,8 +24,15 @@ const getLatestScores = catchAsync(async (req, res) => {
     res.send(result);
 });
 
+const getLatestPlayers = catchAsync(async (req, res) => {
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const result = await scoresService.getLatestPlayers(limit);
+    res.send(result);
+});
+
 module.exports = {
     getScores,
     postScore,
     getLatestScores,
+    getLatestPlayers,
 };
