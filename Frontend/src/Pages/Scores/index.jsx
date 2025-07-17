@@ -5,7 +5,8 @@ import songs from '../../consts/songs.json';
 import styled from 'styled-components';
 import grades from '../../Assets/Grades';
 import { Link } from 'react-router-dom';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Table, TableBody, TableCell, TableHead, TableRow, Avatar, Box } from '@mui/material';
+import Av from '../../Assets/anon.png';
 
 const apiClient = new ApiClient();
 
@@ -37,7 +38,10 @@ const Scores = () => {
             {latest.map((s) => (
               <TableRow key={s.id}>
                 <TableCell>
-                  <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Avatar src={s.user?.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
+                    <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
+                  </Box>
                 </TableCell>
                 <TableCell>{songs[s.song_id]?.title || s.song_id}</TableCell>
                 <TableCell>
@@ -71,7 +75,10 @@ const Scores = () => {
             {latestPlayers.map((p) => (
               <TableRow key={p.userId}>
                 <TableCell>
-                  <UserLink to={`/profile/${p.userId}`}>{p.user?.username}</UserLink>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Avatar src={p.user?.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
+                    <UserLink to={`/profile/${p.userId}`}>{p.user?.username}</UserLink>
+                  </Box>
                 </TableCell>
                 <TableCell>{new Date(p.createdAt).toLocaleDateString()}</TableCell>
               </TableRow>
