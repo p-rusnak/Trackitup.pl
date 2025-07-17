@@ -42,9 +42,9 @@ const sortByFilters = (ar, br, diff, details, mode, sort) => {
   const a = ar[1].diffs.find((v) => v.diff === diff && v.type === mode);
   const b = br[1].diffs.find((v) => v.diff === diff && v.type === mode);
   const getAdiffValue = (d) => {
-    if (!d) return Infinity;
+    if (!d) return -Infinity;
     const val = parseFloat(d.adiff);
-    return isNaN(val) ? Infinity : val;
+    return Number.isNaN(val) ? -Infinity : val;
   };
 
   switch (sort) {
@@ -52,7 +52,7 @@ const sortByFilters = (ar, br, diff, details, mode, sort) => {
       const aVal = getAdiffValue(a);
       const bVal = getAdiffValue(b);
       if (aVal === bVal) return 0;
-      return aVal > bVal ? 1 : -1;
+      return aVal > bVal ? -1 : 1;
     }
     case "grade":
       if (details[mode][diff]) {
