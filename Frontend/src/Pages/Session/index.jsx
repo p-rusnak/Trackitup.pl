@@ -22,6 +22,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import { useUser } from "../../Components/User";
 import styled from "styled-components";
 import { storeSessionId } from "../../helpers/sessionUtils";
+import Logo from "../../Assets/logo.png";
 
 const api = new ApiClient();
 
@@ -399,10 +400,23 @@ const SessionPage = () => {
               ))}
           </Box>
         )}
+        <Box
+          sx={{
+            mt: 2,
+            textAlign: "center",
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 1,
+          }}
+        >
+          <img src={Logo} alt="logo" height={20} crossOrigin="anonymous" />
+          Trackitup.pl
+        </Box>
         <Box sx={{ mt: 2, textAlign: "center", fontWeight: "bold" }}>
           {new Date(session.startedAt).toLocaleDateString()}
         </Box>
-        <Box sx={{ textAlign: "center", fontWeight: "bold" }}>Trackitup.pl</Box>
       </Box>
     </Box>
   );
