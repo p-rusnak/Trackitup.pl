@@ -12,10 +12,14 @@ import {
   TableHead,
   TableRow,
   TablePagination,
+  TextField,
+  Button,
   Avatar,
   Box,
 } from '@mui/material';
+import GradeDropdown from '../../Components/GradeDropdown';
 import Av from '../../Assets/anon.png';
+
 
 const apiClient = new ApiClient();
 
@@ -23,18 +27,85 @@ const AllScores = () => {
   const [scores, setScores] = useState([]);
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState(0);
+  const [player, setPlayer] = useState('');
+  const [songId, setSongId] = useState('');
+  const [diff, setDiff] = useState('');
+  const [grade, setGrade] = useState('');
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
   const rowsPerPage = 30;
 
-  useEffect(() => {
-    apiClient.getAllScores(page + 1, rowsPerPage).then((res) => {
+  const fetchData = () => {
+    const params = {
+      player: player || undefined,
+      songId: songId || undefined,
+      diff: diff || undefined,
+      grade: grade || undefined,
+      from: from || undefined,
+      to: to || undefined,
+    };
+    apiClient.getAllScores(page + 1, rowsPerPage, params).then((res) => {
       setScores(res.data.results);
       setTotal(res.data.totalResults);
     });
+  };
+
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
+
+  const handleFilter = () => {
+    setPage(0);
+    fetchData();
+  };
 
   return (
     <>
       <Section header="All scores">
+        <Filters>
+          <TextField
+            label="Player"
+            size="small"
+            value={player}
+            onChange={(e) => setPlayer(e.target.value)}
+          />
+          <TextField
+            label="Song ID"
+            size="small"
+            value={songId}
+            onChange={(e) => setSongId(e.target.value)}
+          />
+          <TextField
+            label="Diff"
+            size="small"
+            value={diff}
+            onChange={(e) => setDiff(e.target.value)}
+          />
+          <GradeDropdown
+            value={grade}
+            onChange={(e) => setGrade(e.target.value)}
+          />
+          <TextField
+            label="From"
+            type="date"
+            size="small"
+            InputLabelProps={{ shrink: true }}
+            value={from}
+            onChange={(e) => setFrom(e.target.value)}
+          />
+          <TextField
+            label="To"
+            type="date"
+            size="small"
+            InputLabelProps={{ shrink: true }}
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+          />
+          <Button variant="contained" onClick={handleFilter}>
+            Apply
+          </Button>
+        </Filters>
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -96,4 +167,11 @@ const UserLink = styled(Link)`
   color: inherit;
   text-decoration: underline;
   font-weight: bold;
+`;
+
+const Filters = styled.div`
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 `;

@@ -34,6 +34,12 @@ const getAllScores = {
   query: Joi.object().keys({
     page: Joi.number().integer(),
     limit: Joi.number().integer(),
+    player: Joi.string(),
+    songId: Joi.string(),
+    diff: Joi.string(),
+    grade: Joi.string(),
+    from: Joi.date(),
+    to: Joi.date(),
   }),
 };
 
