@@ -255,7 +255,7 @@ const SessionPage = () => {
                 sx={{
                   p: 2,
                   width: 160,
-                  height: 200,
+                  height: 160,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
