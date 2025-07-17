@@ -39,6 +39,7 @@ const AllScores = () => {
   const [grade, setGrade] = useState('');
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
+  const [sort, setSort] = useState('createdAt:desc');
   const rowsPerPage = 30;
 
   const songsOptions = useMemo(
@@ -66,7 +67,7 @@ const AllScores = () => {
       from: from || undefined,
       to: to || undefined,
     };
-    apiClient.getAllScores(page + 1, rowsPerPage, params).then((res) => {
+    apiClient.getAllScores(page + 1, rowsPerPage, params, sort).then((res) => {
       setScores(res.data.results);
       setTotal(res.data.totalResults);
     });
@@ -75,7 +76,7 @@ const AllScores = () => {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [page, sort]);
 
   const handleFilter = () => {
     setPage(0);
@@ -147,6 +148,12 @@ const AllScores = () => {
             value={to}
             onChange={(e) => setTo(e.target.value)}
           />
+          <Select value={sort} size="small" onChange={(e) => setSort(e.target.value)}>
+            <MenuItem value="createdAt:desc">Newest</MenuItem>
+            <MenuItem value="createdAt:asc">Oldest</MenuItem>
+            <MenuItem value="diff:desc">Diff &#8595;</MenuItem>
+            <MenuItem value="diff:asc">Diff &#8593;</MenuItem>
+          </Select>
           <Button variant="contained" onClick={handleFilter}>
             Apply
           </Button>

@@ -34,7 +34,8 @@ export class ApiClient {
     postScores = (mode, data) => client.post(`scores/${mode}`, data)
     getLatestScores = (limit) => client.get('scores/latest', { params: { limit } })
     getLatestPlayers = (limit) => client.get('scores/latestPlayers', { params: { limit } })
-    getAllScores = (page, limit, filters = {}) => client.get('scores/all', { params: { page, limit, ...filters } })
+    getAllScores = (page, limit, filters = {}, sortBy) =>
+        client.get('scores/all', { params: { page, limit, sortBy, ...filters } })
 
     getGoals = (mode, userId) => client.get(`goals/${mode}`, { params: userId ? { userId } : {} })
     postGoal = (mode, data) => client.post(`goals/${mode}`, data)
