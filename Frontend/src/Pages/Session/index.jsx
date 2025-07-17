@@ -61,6 +61,19 @@ const TitleSpan = styled.span`
   max-width: 115px;
 `;
 
+const ShareBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+  margin-left: 4px;
+  border-radius: 4px;
+  background-color: #2e7d32;
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: bold;
+`;
+
 const parseLevel = (d) => {
   const n = parseInt(d.replace("lv_", ""));
   return Number.isNaN(n) ? d : n;
@@ -345,9 +358,7 @@ const SessionPage = () => {
                       {s.grade ? (
                         <>
                           <img src={grades[s.grade]} alt={s.grade} height={30} />
-                          {s.firstPass && (
-                            <Chip label="New" color="success" size="small" sx={{ ml: 1 }} />
-                          )}
+                          {s.firstPass && <ShareBadge>New</ShareBadge>}
                         </>
                       ) : (
                         "-"
@@ -401,12 +412,9 @@ const SessionPage = () => {
                       <>
                         <GradeImg src={grades[s.grade]} alt={s.grade} />
                         {s.firstPass && (
-                          <Chip
-                            label="New"
-                            color="success"
-                            size="small"
-                            sx={{ position: "absolute", top: 0, left: 0 }}
-                          />
+                          <ShareBadge style={{ position: "absolute", top: 0, left: 0 }}>
+                            New
+                          </ShareBadge>
                         )}
                       </>
                     )}
