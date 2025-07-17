@@ -13,11 +13,21 @@ const apiClient = new ApiClient();
 const Scores = () => {
   const [latest, setLatest] = useState([]);
   const [latestPlayers, setLatestPlayers] = useState([]);
+  const [ongoingSessions, setOngoingSessions] = useState([]);
+  const [allSessions, setAllSessions] = useState([]);
 
   useEffect(() => {
     apiClient.getLatestScores().then((res) => setLatest(res.data)).catch(() => {});
     apiClient.getLatestPlayers()
       .then((res) => setLatestPlayers(res.data))
+      .catch(() => {});
+    apiClient
+      .getOngoingSessions()
+      .then((res) => setOngoingSessions(res.data))
+      .catch(() => {});
+    apiClient
+      .getAllSessions()
+      .then((res) => setAllSessions(res.data))
       .catch(() => {});
   }, []);
 
@@ -90,6 +100,68 @@ const Scores = () => {
           </TableBody>
         </Table>
       </Section>
+      {ongoingSessions.length > 0 && (
+        <Section header="Current sessions">
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>User</TableCell>
+                <TableCell>Play count</TableCell>
+                <TableCell>Duration</TableCell>
+                <TableCell>Start</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {ongoingSessions.map((s) => (
+                <TableRow key={s.id}>
+                  <TableCell>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Avatar src={s.user?.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
+                      <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
+                    </Box>
+                  </TableCell>
+                  <TableCell>{s._count?.scores || 0}</TableCell>
+                  <TableCell>
+                    {Math.round((new Date(s.endedAt || s.lastScore) - new Date(s.startedAt)) / 60000)}m
+                  </TableCell>
+                  <TableCell>{new Date(s.startedAt).toLocaleString()}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Section>
+      )}
+      {allSessions.length > 0 && (
+        <Section header="All sessions">
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>User</TableCell>
+                <TableCell>Play count</TableCell>
+                <TableCell>Duration</TableCell>
+                <TableCell>Start</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {allSessions.map((s) => (
+                <TableRow key={s.id}>
+                  <TableCell>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Avatar src={s.user?.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
+                      <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
+                    </Box>
+                  </TableCell>
+                  <TableCell>{s._count?.scores || 0}</TableCell>
+                  <TableCell>
+                    {Math.round((new Date(s.endedAt || s.lastScore) - new Date(s.startedAt)) / 60000)}m
+                  </TableCell>
+                  <TableCell>{new Date(s.startedAt).toLocaleString()}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Section>
+      )}
     </>
   );
 };

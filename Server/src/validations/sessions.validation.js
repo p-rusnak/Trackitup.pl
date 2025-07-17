@@ -6,6 +6,18 @@ const listSessions = {
   }),
 };
 
+const listOngoingSessions = {
+  query: Joi.object().keys({
+    limit: Joi.number().integer(),
+  }),
+};
+
+const listAllSessions = {
+  query: Joi.object().keys({
+    limit: Joi.number().integer(),
+  }),
+};
+
 const getSession = {
   params: Joi.object().keys({
     id: Joi.number().required(),
@@ -18,4 +30,10 @@ const deleteSession = {
   }),
 };
 
-module.exports = { listSessions, getSession, deleteSession };
+module.exports = {
+  listSessions,
+  listOngoingSessions,
+  listAllSessions,
+  getSession,
+  deleteSession,
+};

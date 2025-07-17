@@ -58,6 +58,8 @@ export class ApiClient {
     endSession = () => client.post('sessions/end')
     cancelSession = () => client.post('sessions/cancel')
     listSessions = (userId) => client.get('sessions', { params: userId ? { userId } : {} })
+    getOngoingSessions = (limit) => client.get('sessions/ongoing', { params: { limit } })
+    getAllSessions = (limit) => client.get('sessions/all', { params: { limit } })
     getSession = (id) => client.get(`sessions/${id}`)
     deleteSession = (id) => client.delete(`sessions/${id}`)
 }

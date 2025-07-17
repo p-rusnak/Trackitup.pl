@@ -21,6 +21,18 @@ const cancelSession = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const listOngoingSessions = catchAsync(async (req, res) => {
+  const limit = req.query.limit ? Number(req.query.limit) : undefined;
+  const sessions = await sessionService.listOngoingSessions(limit);
+  res.send(sessions);
+});
+
+const listAllSessions = catchAsync(async (req, res) => {
+  const limit = req.query.limit ? Number(req.query.limit) : undefined;
+  const sessions = await sessionService.listAllSessions(limit);
+  res.send(sessions);
+});
+
 const listSessions = catchAsync(async (req, res) => {
   const userId = req.query.userId || req.user.id;
   const sessions = await sessionService.listSessions(userId);
@@ -46,6 +58,8 @@ module.exports = {
   getCurrent,
   endSession,
   cancelSession,
+  listOngoingSessions,
+  listAllSessions,
   listSessions,
   getSession,
   deleteSession,
