@@ -19,6 +19,7 @@ import {
   Button,
   Avatar,
   Box,
+  TableSortLabel,
 } from '@mui/material';
 import GradeDropdown from '../../Components/GradeDropdown';
 import Av from '../../Assets/anon.png';
@@ -81,6 +82,15 @@ const AllScores = () => {
   const handleFilter = () => {
     setPage(0);
     fetchData();
+  };
+
+  const handleSort = (field) => {
+    setPage(0);
+    setSort((prev) => {
+      const [currField, currDir] = prev.split(':');
+      const newDir = currField === field && currDir === 'asc' ? 'desc' : 'asc';
+      return `${field}:${newDir}`;
+    });
   };
 
   return (
@@ -148,12 +158,6 @@ const AllScores = () => {
             value={to}
             onChange={(e) => setTo(e.target.value)}
           />
-          <Select value={sort} size="small" onChange={(e) => setSort(e.target.value)}>
-            <MenuItem value="createdAt:desc">Newest</MenuItem>
-            <MenuItem value="createdAt:asc">Oldest</MenuItem>
-            <MenuItem value="diff:desc">Diff &#8595;</MenuItem>
-            <MenuItem value="diff:asc">Diff &#8593;</MenuItem>
-          </Select>
           <Button variant="contained" onClick={handleFilter}>
             Apply
           </Button>
@@ -161,11 +165,51 @@ const AllScores = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell>User</TableCell>
-              <TableCell>Song</TableCell>
-              <TableCell>Diff</TableCell>
-              <TableCell>Grade</TableCell>
-              <TableCell>Date / Time</TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sort.startsWith('userId')}
+                  direction={sort.startsWith('userId') ? sort.split(':')[1] : 'asc'}
+                  onClick={() => handleSort('userId')}
+                >
+                  User
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sort.startsWith('song_id')}
+                  direction={sort.startsWith('song_id') ? sort.split(':')[1] : 'asc'}
+                  onClick={() => handleSort('song_id')}
+                >
+                  Song
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sort.startsWith('diff')}
+                  direction={sort.startsWith('diff') ? sort.split(':')[1] : 'asc'}
+                  onClick={() => handleSort('diff')}
+                >
+                  Diff
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sort.startsWith('grade')}
+                  direction={sort.startsWith('grade') ? sort.split(':')[1] : 'asc'}
+                  onClick={() => handleSort('grade')}
+                >
+                  Grade
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sort.startsWith('createdAt')}
+                  direction={sort.startsWith('createdAt') ? sort.split(':')[1] : 'asc'}
+                  onClick={() => handleSort('createdAt')}
+                >
+                  Date / Time
+                </TableSortLabel>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
