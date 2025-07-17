@@ -185,7 +185,7 @@ const Profile = () => {
                     <AddIcon fontSize="small" />
                   </AddButton>
                   {showAvatarInput && (
-                    <Box sx={{ position: "absolute", top: "100%", left: 0, mt: 1, display: "flex", gap: 1 }}>
+                    <Box sx={{ mt: 1, display: "flex", gap: 1 }}>
                       <TextField
                         label="Avatar URL"
                         size="small"
