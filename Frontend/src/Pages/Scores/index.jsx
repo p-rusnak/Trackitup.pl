@@ -13,6 +13,7 @@ import {
   TableRow,
   Avatar,
   Box,
+  Chip,
 } from "@mui/material";
 import Av from "../../Assets/anon.png";
 
@@ -131,7 +132,12 @@ const Scores = () => {
                 </TableCell>
                 <TableCell>
                   {s.grade ? (
-                    <GradeIcon src={grades[s.grade]} alt={s.grade} />
+                    <>
+                      <GradeIcon src={grades[s.grade]} alt={s.grade} />
+                      {s.firstPass && (
+                        <Chip label="New" color="success" size="small" sx={{ ml: 1 }} />
+                      )}
+                    </>
                   ) : (
                     "-"
                   )}

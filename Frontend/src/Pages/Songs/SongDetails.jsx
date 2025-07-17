@@ -13,6 +13,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Chip,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -187,7 +188,12 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
                       <TableRow key={h.id}>
                         <TableCell>
                           {h.grade ? (
-                            <GradeIcon src={grades[h.grade]} alt={h.grade} />
+                            <>
+                              <GradeIcon src={grades[h.grade]} alt={h.grade} />
+                              {h.firstPass && (
+                                <Chip label="New" color="success" size="small" sx={{ ml: 1 }} />
+                              )}
+                            </>
                           ) : (
                             "-"
                           )}

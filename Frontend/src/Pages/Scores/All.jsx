@@ -20,6 +20,7 @@ import {
   Avatar,
   Box,
   TableSortLabel,
+  Chip,
 } from '@mui/material';
 import GradeDropdown from '../../Components/GradeDropdown';
 import Av from '../../Assets/anon.png';
@@ -230,7 +231,16 @@ const AllScores = () => {
                   <DiffBall className={`${s.mode} ${s.diff}`} />
                 </TableCell>
                 <TableCell>
-                  {s.grade ? <GradeIcon src={grades[s.grade]} alt={s.grade} /> : '-'}
+                  {s.grade ? (
+                    <>
+                      <GradeIcon src={grades[s.grade]} alt={s.grade} />
+                      {s.firstPass && (
+                        <Chip label="New" color="success" size="small" sx={{ ml: 1 }} />
+                      )}
+                    </>
+                  ) : (
+                    '-'
+                  )}
                 </TableCell>
                 <TableCell>{new Date(s.createdAt).toLocaleString()}</TableCell>
               </TableRow>
