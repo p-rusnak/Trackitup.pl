@@ -400,8 +400,9 @@ const SessionPage = () => {
           </Box>
         )}
         <Box sx={{ mt: 2, textAlign: "center", fontWeight: "bold" }}>
-          Trackitup.pl
+          {new Date(session.startedAt).toLocaleDateString()}
         </Box>
+        <Box sx={{ textAlign: "center", fontWeight: "bold" }}>Trackitup.pl</Box>
       </Box>
     </Box>
   );
