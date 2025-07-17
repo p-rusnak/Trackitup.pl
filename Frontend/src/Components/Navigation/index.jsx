@@ -222,6 +222,19 @@ function NavBar() {
                 <Typography textAlign="center">Log In</Typography>
               </MenuItem>
             )}
+            <Tooltip title="Toggle dark mode">
+              <IconButton
+                sx={{ ml: 1 }}
+                onClick={colorMode.toggleColorMode}
+                color="inherit"
+              >
+                {theme.palette.mode === "dark" ? (
+                  <Brightness7Icon />
+                ) : (
+                  <Brightness4Icon />
+                )}
+              </IconButton>
+            </Tooltip>
           </Toolbar>
         </Container>
       </AppBar>

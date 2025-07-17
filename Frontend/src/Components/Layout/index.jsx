@@ -35,8 +35,13 @@ const themeDark = createTheme({
     },
   },
 });
+const getInitialMode = () => {
+  const saved = localStorage.getItem("mode");
+  return saved === "dark" ? "dark" : "light";
+};
+
 const Layout = () => {
-  const [mode, setMode] = React.useState("light");
+  const [mode, setMode] = React.useState(getInitialMode);
   const theme = useTheme();
   const colorMode = React.useMemo(
     () => ({
@@ -46,6 +51,10 @@ const Layout = () => {
     }),
     []
   );
+
+  React.useEffect(() => {
+    localStorage.setItem("mode", mode);
+  }, [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
