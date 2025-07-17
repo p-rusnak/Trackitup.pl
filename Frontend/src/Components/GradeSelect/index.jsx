@@ -37,7 +37,7 @@ const GradeSelect = ({ value, label, onChange }) => {
 export default GradeSelect
 
 const Grade = styled.img`
-    height: 35px;
+    height: 30px;
 `
 
 const Wrapper = styled.div`
