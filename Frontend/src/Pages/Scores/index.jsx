@@ -31,7 +31,7 @@ const Scores = () => {
               <TableCell>Song</TableCell>
               <TableCell>Diff</TableCell>
               <TableCell>Grade</TableCell>
-              <TableCell>Date</TableCell>
+              <TableCell>Date / Time</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -58,7 +58,7 @@ const Scores = () => {
                     '-'
                   )}
                 </TableCell>
-                <TableCell>{new Date(s.createdAt).toLocaleDateString()}</TableCell>
+                <TableCell>{new Date(s.createdAt).toLocaleString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -72,7 +72,7 @@ const Scores = () => {
           <TableHead>
             <TableRow>
               <TableCell>User</TableCell>
-              <TableCell>Date</TableCell>
+              <TableCell>Date / Time</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -84,7 +84,7 @@ const Scores = () => {
                     <UserLink to={`/profile/${p.userId}`}>{p.user?.username}</UserLink>
                   </Box>
                 </TableCell>
-                <TableCell>{new Date(p.createdAt).toLocaleDateString()}</TableCell>
+                <TableCell>{new Date(p.createdAt).toLocaleString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
