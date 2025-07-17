@@ -22,8 +22,15 @@ const api = new ApiClient();
 
 const DiffBall = styled.span`
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
+`;
+
+const GradeImg = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
 `;
 
 const SessionPage = () => {
@@ -125,15 +132,25 @@ const SessionPage = () => {
         ) : (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
             {session.scores.map((s) => (
-              <Paper key={s.id} sx={{ p: 2 }}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  <img src={songs[s.song_id]?.img} alt="cover" width={40} />
-                  <Link to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{songs[s.song_id]?.title || s.song_id}</Link>
+              <Paper key={s.id} sx={{ p: 2, width: 160 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 1,
+                    mb: 1,
+                  }}
+                >
+                  <DiffBall className={`${s.mode} ${s.diff}`} />
+                  <Link to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{
+                    songs[s.song_id]?.title || s.song_id
+                  }</Link>
                 </Box>
-                <Box sx={{ mt: 1 }}>
-                  {s.grade ? <img src={grades[s.grade]} alt={s.grade} height={30}/> : "-"}
+                <Box sx={{ position: "relative", textAlign: "center" }}>
+                  <img src={songs[s.song_id]?.img} alt="cover" width={120} />
+                  {s.grade && <GradeImg src={grades[s.grade]} alt={s.grade} />}
                 </Box>
-                <DiffBall className={`${s.mode} ${s.diff}`} />
               </Paper>
             ))}
           </Box>
