@@ -5,6 +5,7 @@ import {
 } from "react-router-dom"
 import Layout from '../Components/Layout'
 import Songs from '../Pages/Songs'
+import SongPage from '../Pages/Songs/SongPage'
 import Scores from '../Pages/Scores'
 import AllScores from '../Pages/Scores/All'
 import Leaderboard from '../Pages/Leaderboard'
@@ -49,6 +50,10 @@ const router = createHashRouter([
             {
                 path: 'Titles',
                 element: <Titles />
+            },
+            {
+                path: 'song/:id/:mode/:diff',
+                element: <SongPage />
             },
             {
                 path: 'add',
