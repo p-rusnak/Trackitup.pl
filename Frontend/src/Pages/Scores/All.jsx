@@ -12,7 +12,10 @@ import {
   TableHead,
   TableRow,
   TablePagination,
+  Avatar,
+  Box,
 } from '@mui/material';
+import Av from '../../Assets/anon.png';
 
 const apiClient = new ApiClient();
 
@@ -46,7 +49,10 @@ const AllScores = () => {
             {scores.map((s) => (
               <TableRow key={s.id}>
                 <TableCell>
-                  <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Avatar src={s.user?.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
+                    <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
+                  </Box>
                 </TableCell>
                 <TableCell>{songs[s.song_id]?.title || s.song_id}</TableCell>
                 <TableCell>

@@ -48,7 +48,7 @@ const getLatestScores = async (limit = 10) =>
     orderBy: { id: 'desc' },
     include: {
       user: {
-        select: { username: true },
+        select: { username: true, avatarUrl: true },
       },
     },
   });
@@ -60,7 +60,7 @@ const getLatestPlayers = async (limit = 10) =>
     take: limit,
     include: {
       user: {
-        select: { username: true },
+        select: { username: true, avatarUrl: true },
       },
     },
   });
@@ -73,7 +73,7 @@ const getAllScores = async (page = 1, limit = 30) => {
     orderBy: { id: 'desc' },
     include: {
       user: {
-        select: { username: true },
+        select: { username: true, avatarUrl: true },
       },
     },
   });
