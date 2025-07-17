@@ -90,10 +90,10 @@ const Profile = () => {
       setUser(r.data);
       setBestTitle(getBestTitle(r.data.titles));
     });
-    apiClient.getScores(MODES.SINGLE).then((r) => setSingleScores(r.data));
-    apiClient.getScores(MODES.DOUBLE).then((r) => setDoubleScores(r.data));
-    apiClient.getGoals(MODES.SINGLE).then((r) => setSingleGoals(r.data));
-    apiClient.getGoals(MODES.DOUBLE).then((r) => setDoubleGoals(r.data));
+    apiClient.getScores(MODES.SINGLE, id).then((r) => setSingleScores(r.data));
+    apiClient.getScores(MODES.DOUBLE, id).then((r) => setDoubleScores(r.data));
+    apiClient.getGoals(MODES.SINGLE, id).then((r) => setSingleGoals(r.data));
+    apiClient.getGoals(MODES.DOUBLE, id).then((r) => setDoubleGoals(r.data));
   }, [id]);
 
   const getAdiff = (songId, diff, mode) => {

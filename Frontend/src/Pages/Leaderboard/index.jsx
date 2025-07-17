@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ApiClient } from '../../API/httpService';
 import { Box, FormControl, InputLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const apiClient = new ApiClient();
 
@@ -42,7 +43,9 @@ const Leaderboard = () => {
         <TableBody>
           {sortedData.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.username}</TableCell>
+              <TableCell>
+                <Link to={`/profile/${row.id}`}>{row.username}</Link>
+              </TableCell>
               <TableCell align="right">{row.singles ? `LV ${row.singles}` : '-'}</TableCell>
               <TableCell align="right">{row.doubles ? `LV ${row.doubles}` : '-'}</TableCell>
             </TableRow>

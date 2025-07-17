@@ -14,6 +14,7 @@ const createScore = {
 const getScores = {
   query: Joi.object().keys({
     mode: Joi.string(),
+    userId: Joi.string(),
   }),
 };
 

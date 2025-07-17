@@ -4,7 +4,8 @@ const { goalsService } = require('../services');
 
 const getGoals = catchAsync(async (req, res) => {
   const mode = req.params.mode;
-  const goals = await goalsService.getGoals(mode, req.user.id);
+  const userId = req.query.userId || req.user.id;
+  const goals = await goalsService.getGoals(mode, userId);
   res.send(goals);
 });
 
