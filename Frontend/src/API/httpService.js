@@ -53,6 +53,7 @@ export class ApiClient {
     endSession = () => client.post('sessions/end')
     cancelSession = () => client.post('sessions/cancel')
     listSessions = (userId) => client.get('sessions', { params: userId ? { userId } : {} })
+    getSession = (id) => client.get(`sessions/${id}`)
 }
 
 export default client

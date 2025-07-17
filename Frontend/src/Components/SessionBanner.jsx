@@ -8,13 +8,18 @@ const api = new ApiClient();
 const SessionBanner = () => {
   const [sessionId, setSessionId] = useState(null);
   useEffect(() => {
-    api
-      .getCurrentSession()
-      .then((r) => {
-        if (r.status === 204) setSessionId(null);
-        else setSessionId(r.data.id);
-      })
-      .catch(() => setSessionId(null));
+    const load = () => {
+      api
+        .getCurrentSession()
+        .then((r) => {
+          if (r.status === 204) setSessionId(null);
+          else setSessionId(r.data.id);
+        })
+        .catch(() => setSessionId(null));
+    };
+    load();
+    const interval = setInterval(load, 30000);
+    return () => clearInterval(interval);
   }, []);
   if (!sessionId) return null;
   return (

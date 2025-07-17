@@ -11,6 +11,7 @@ import AllScores from '../Pages/Scores/All'
 import Leaderboard from '../Pages/Leaderboard'
 import Titles from '../Pages/Titles'
 import SessionPage from '../Pages/Session'
+import SessionsPage from '../Pages/Sessions'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
 import Profile from '../Pages/Profile'
@@ -47,6 +48,14 @@ const router = createHashRouter([
             {
                 path: 'session',
                 element: <SessionPage />
+            },
+            {
+                path: 'session/:id',
+                element: <SessionPage />
+            },
+            {
+                path: 'sessions/:userId',
+                element: <SessionsPage />
             },
             {
                 path: 'Leaderboard',

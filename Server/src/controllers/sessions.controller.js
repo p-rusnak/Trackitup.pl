@@ -26,4 +26,12 @@ const listSessions = catchAsync(async (req, res) => {
   res.send(sessions);
 });
 
-module.exports = { getCurrent, endSession, cancelSession, listSessions };
+const getSession = catchAsync(async (req, res) => {
+  const session = await sessionService.getSession(req.params.id);
+  if (!session) {
+    return res.status(httpStatus.NOT_FOUND).send();
+  }
+  res.send(session);
+});
+
+module.exports = { getCurrent, endSession, cancelSession, listSessions, getSession };

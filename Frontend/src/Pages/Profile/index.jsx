@@ -240,7 +240,7 @@ const Profile = () => {
             </TableHead>
             <TableBody>
               {sessions.map((s) => (
-                <TableRow key={s.id}>
+                <TableRow key={s.id} component={Link} to={`/session/${s.id}`}>
                   <TableCell>{new Date(s.startedAt).toLocaleString()}</TableCell>
                   <TableCell>
                     {Math.round((new Date(s.endedAt || s.lastScore) - new Date(s.startedAt)) / 60000)}m
@@ -250,6 +250,9 @@ const Profile = () => {
               ))}
             </TableBody>
           </Table>
+          <Box sx={{ mt: 1 }}>
+            <Link to={`/sessions/${id}`}>Show all sessions</Link>
+          </Box>
         </Section>
       )}
       <Section header="Best passes">
