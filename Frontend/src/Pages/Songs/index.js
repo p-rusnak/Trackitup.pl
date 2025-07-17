@@ -262,8 +262,7 @@ const Songs = ({ mode }) => {
   const changeDiff = (d) => {
     if (!openChart) return;
     const { id } = openChart;
-    const grade =
-      details[d.type]?.[d.diff]?.[id]?.grade || "";
+    const grade = details[d.type]?.[d.diff]?.[id]?.grade || "";
     setOpenChart({
       ...openChart,
       diff: d.diff,
