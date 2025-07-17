@@ -264,10 +264,12 @@ const Profile = () => {
           </Box>
         )}
       </Section>
-      {rivals.length > 0 && (
-        <Section header="Rivals">
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-            {rivals.slice(0, 5).map((r) => (
+      <Section header="Rivals">
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          {rivals.length === 0 ? (
+            <Typography variant="body2">No rivals yet</Typography>
+          ) : (
+            rivals.slice(0, 5).map((r) => (
               <Box key={r.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Avatar src={r.avatarUrl || Av} sx={{ width: 40, height: 40 }} />
                 <Link to={`/profile/${r.id}`}>{r.username}</Link>
@@ -277,10 +279,10 @@ const Profile = () => {
                   </IconButton>
                 )}
               </Box>
-            ))}
-          </Box>
-        </Section>
-      )}
+            ))
+          )}
+        </Box>
+      </Section>
       {sessions.length > 0 && (
         <Section header="Your sessions">
           <Table size="small">
