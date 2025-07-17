@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import { ApiClient } from "../../API/httpService";
 import songs from "../../consts/songs.json";
 import grades from "../../Assets/Grades";
-import stepball from "../../Assets/Diffs";
 import { Table, TableBody, TableCell, TableHead, TableRow, Button, Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const api = new ApiClient();
+
+const DiffBall = styled.span`
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+`;
 
 const SessionPage = () => {
   const [session, setSession] = useState(null);
@@ -66,7 +72,7 @@ const SessionPage = () => {
                 {s.grade ? <img src={grades[s.grade]} alt={s.grade} height={30} /> : "-"}
               </TableCell>
               <TableCell>
-                <img src={stepball[s.mode === "item_double" ? "double" : "single"]} alt={s.diff} width={30} className={s.diff} />
+                <DiffBall className={`${s.mode} ${s.diff}`} />
               </TableCell>
             </TableRow>
           ))}
