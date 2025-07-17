@@ -48,6 +48,10 @@ const AddButton = styled(IconButton)`
   position: absolute !important;
   bottom: 0;
   right: 0;
+  background-color: white !important;
+  &:hover {
+    background-color: white;
+  }
 `;
 
 const TablesWrapper = styled.div`
@@ -68,6 +72,7 @@ const Profile = () => {
   const [bestTitle, setBestTitle] = useState(null);
   const fileInputRef = useRef(null);
   const { user: loggedUser, setUser: setLoggedUser } = useUser();
+  const isOwnProfile = loggedUser && String(loggedUser.id) === String(id);
 
   const handleAvatarChange = (e) => {
     const file = e.target.files && e.target.files[0];
@@ -170,21 +175,25 @@ const Profile = () => {
                 src={user.avatarUrl || Av}
                 sx={{ width: 80, height: 80 }}
               />
-              <AddButton
-                onClick={() =>
-                  fileInputRef.current && fileInputRef.current.click()
-                }
-                size="small"
-              >
-                <AddIcon fontSize="small" />
-              </AddButton>
-              <input
-                type="file"
-                accept="image/*"
-                ref={fileInputRef}
-                onChange={handleAvatarChange}
-                style={{ display: "none" }}
-              />
+              {isOwnProfile && (
+                <>
+                  <AddButton
+                    onClick={() =>
+                      fileInputRef.current && fileInputRef.current.click()
+                    }
+                    size="small"
+                  >
+                    <AddIcon fontSize="small" />
+                  </AddButton>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    ref={fileInputRef}
+                    onChange={handleAvatarChange}
+                    style={{ display: "none" }}
+                  />
+                </>
+              )}
             </AvatarWrapper>
             <Typography variant="h6" sx={{ mt: 1 }}>
               {user.username}
