@@ -41,20 +41,24 @@ const apiClient = new ApiClient();
 const sortByFilters = (ar, br, diff, details, mode, sort) => {
   const a = ar[1].diffs.find((v) => v.diff === diff && v.type === mode);
   const b = br[1].diffs.find((v) => v.diff === diff && v.type === mode);
+  const getAdiffValue = (d) => {
+    if (!d) return Infinity;
+    const val = parseFloat(d.adiff);
+    return isNaN(val) ? Infinity : val;
+  };
+
   switch (sort) {
-    case "tier":
-      if (!a || !b || a.adiff === "?" || b.adiff === "?") return -1;
-      if (a.adiff < b.adiff) return 1;
-      else if (a.adiff === b.adiff) {
-        return 0;
-      } else {
-        return -1;
-      }
+    case "tier": {
+      const aVal = getAdiffValue(a);
+      const bVal = getAdiffValue(b);
+      if (aVal === bVal) return 0;
+      return aVal > bVal ? 1 : -1;
+    }
     case "grade":
       if (details[mode][diff]) {
         return compareGrades(
           details[mode][diff][ar[0]]?.grade,
-          details[mode][diff][br[0]]?.grade
+          details[mode][diff][br[0]]?.grade,
         );
       } else {
         return -1;
@@ -83,7 +87,7 @@ const filterItems = (a, details, mode, diff, hidden, hideScore, tags) => {
     if (
       Object.keys(tags).some(
         (el) =>
-          tags[el] && a[1].diffs.find((d) => d.diff === diff).tag?.includes(el)
+          tags[el] && a[1].diffs.find((d) => d.diff === diff).tag?.includes(el),
       )
     ) {
       show = true;
@@ -120,7 +124,7 @@ const Songs = ({ mode }) => {
     item_coop: {},
   });
   const [sort, setSort] = useState(
-    () => localStorage.getItem("songSort") || "tier"
+    () => localStorage.getItem("songSort") || "tier",
   );
   const [hidden, setHidden] = useState({});
   const [tags, setTags] = useState({});
@@ -161,7 +165,9 @@ const Songs = ({ mode }) => {
   }, [search?.title, mode]);
 
   const maxDiff = Math.max(
-    ...Object.keys(diffCounter[mode]).map((d) => parseInt(d.replace("lv_", "")))
+    ...Object.keys(diffCounter[mode]).map((d) =>
+      parseInt(d.replace("lv_", "")),
+    ),
   );
 
   let prevCategory;
@@ -198,7 +204,7 @@ const Songs = ({ mode }) => {
     if (search?.title) {
       newSongList = newSongList.filter(
         ([key, value]) =>
-          !!value.title.toLowerCase().includes(search.title.toLowerCase())
+          !!value.title.toLowerCase().includes(search.title.toLowerCase()),
       );
     }
     if (search?.p1Diff && search?.p2Diff) {
@@ -207,10 +213,10 @@ const Songs = ({ mode }) => {
         const prefix2 = search.p2Diff > 9 ? "lv_" : "lv_0";
         return (
           !!value.diffs?.find(
-            (d) => d.type === mode && d.diff === prefix1 + search.p1Diff
+            (d) => d.type === mode && d.diff === prefix1 + search.p1Diff,
           ) &&
           !!value.diffs?.find(
-            (d) => d.type === mode && d.diff === prefix2 + search.p2Diff
+            (d) => d.type === mode && d.diff === prefix2 + search.p2Diff,
           )
         );
       });
@@ -234,13 +240,13 @@ const Songs = ({ mode }) => {
         const { newBadges = [], newTitles = [], isNew, session } = r.data || {};
         if (session) storeSessionId(session.id);
         if (isNew) {
-          notify('New pass!', 'success');
+          notify("New pass!", "success");
         }
         if (newBadges.length || newTitles.length) {
           const badgeNames = newBadges.map((b) => formatBadge(b));
           notify(
             `New achievements: ${[...badgeNames, ...newTitles].join(", ")}`,
-            "success"
+            "success",
           );
         }
       });
@@ -306,7 +312,7 @@ const Songs = ({ mode }) => {
 
     if (
       !data[diff]?.some((item) =>
-        filterItems(item, details, mode, diff, hidden, hideScore, tags)
+        filterItems(item, details, mode, diff, hidden, hideScore, tags),
       )
     ) {
       result = false;
@@ -343,7 +349,7 @@ const Songs = ({ mode }) => {
                 setSearch(
                   e.target.value
                     ? { ...search, title: e.target.value }
-                    : undefined
+                    : undefined,
                 )
               }
               value={search?.title || ""}
@@ -401,7 +407,7 @@ const Songs = ({ mode }) => {
                       setSearch(
                         e.target.value
                           ? { ...search, p1Diff: e.target.value }
-                          : undefined
+                          : undefined,
                       )
                     }
                   />
@@ -415,7 +421,7 @@ const Songs = ({ mode }) => {
                       setSearch(
                         e.target.value
                           ? { ...search, p2Diff: e.target.value }
-                          : undefined
+                          : undefined,
                       )
                     }
                   />
@@ -587,14 +593,14 @@ const Songs = ({ mode }) => {
         {Object.entries(diffCounter[mode]).map(([diff, count]) => {
           prevCategory = undefined;
           return (
-              shouldDisplayDiff(diff) && (
-                <Accordion
-                  key={diff}
-                  expanded={expandedDiffs[diff] || false}
-                  onChange={(_, exp) =>
-                    setExpandedDiffs({ ...expandedDiffs, [diff]: exp })
-                  }
-                >
+            shouldDisplayDiff(diff) && (
+              <Accordion
+                key={diff}
+                expanded={expandedDiffs[diff] || false}
+                onChange={(_, exp) =>
+                  setExpandedDiffs({ ...expandedDiffs, [diff]: exp })
+                }
+              >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={`panel${diff}-content`}
@@ -604,7 +610,7 @@ const Songs = ({ mode }) => {
                     <DiffBall className={`${mode} ${diff}`}>{`(${
                       (details[mode][diff] &&
                         Object.values(details[mode][diff]).filter(
-                          (v) => !!v.grade
+                          (v) => !!v.grade,
                         )?.length) ||
                       0
                     }/${count}) `}</DiffBall>
@@ -620,11 +626,11 @@ const Songs = ({ mode }) => {
                         diff,
                         hidden,
                         hideScore,
-                        tags
-                      )
+                        tags,
+                      ),
                     )
                     .sort((a, b) =>
-                      sortByFilters(a, b, diff, details, mode, sort)
+                      sortByFilters(a, b, diff, details, mode, sort),
                     )
                     .map((chart) => {
                       const chartData = {
@@ -639,7 +645,7 @@ const Songs = ({ mode }) => {
                       };
 
                       const adiff = chartData.diffs.find(
-                        (a) => a.diff === diff && a.type === mode
+                        (a) => a.diff === diff && a.type === mode,
                       )?.adiff;
                       const grade = chartData.grade;
                       let divider = false;
