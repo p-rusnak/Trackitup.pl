@@ -69,8 +69,8 @@ const createScore = async (scoreBody, mode, user) => {
     user.id,
     res,
   );
-  await sessionService.handleScore(user.id, res.id);
-  return { score: res, newBadges, newTitles, isNew: firstPass };
+  const session = await sessionService.handleScore(user.id, res.id);
+  return { score: res, newBadges, newTitles, isNew: firstPass, session };
 };
 
 const getLatestScores = async (limit = 10) =>
