@@ -8,6 +8,9 @@ const api = new ApiClient();
 const SessionBanner = () => {
   const [sessionId, setSessionId] = useState(null);
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
     const load = () => {
       api
         .getCurrentSession()
