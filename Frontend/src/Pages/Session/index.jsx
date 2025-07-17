@@ -262,6 +262,7 @@ const SessionPage = () => {
             bgcolor: '#111',
             color: '#fff',
             '& .MuiTableCell-root': { color: '#fff' },
+            width: view === 'grid' ? 512 : 'auto',
           }}
           ref={shareRef}
         >
