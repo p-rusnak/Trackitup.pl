@@ -85,9 +85,11 @@ const SessionPage = () => {
 
   const removeSession = () => {
     if (!id) return;
-    api.deleteSession(id).then(() => {
-      if (user) navigate(`/sessions/${user.id}`);
-    });
+    if (window.confirm('Delete this session?')) {
+      api.deleteSession(id).then(() => {
+        if (user) navigate(`/sessions/${user.id}`);
+      });
+    }
   };
 
   const toggleSelect = (sid) => {
