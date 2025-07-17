@@ -552,8 +552,9 @@ const Songs = ({ mode }) => {
       </FilterCard>
 
       <Card>
-        {Object.entries(diffCounter[mode]).map(
-          ([diff, count]) =>
+        {Object.entries(diffCounter[mode]).map(([diff, count]) => {
+          prevCategory = undefined;
+          return (
             shouldDisplayDiff(diff) && (
               <Accordion key={diff}>
                 <AccordionSummary
@@ -631,7 +632,8 @@ const Songs = ({ mode }) => {
                 </AccordionDetailsStyled>
               </Accordion>
             )
-        )}
+          );
+        })}
       </Card>
     </Container>
   );
