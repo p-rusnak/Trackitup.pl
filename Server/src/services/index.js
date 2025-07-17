@@ -8,3 +8,4 @@ module.exports.achievementService = require('./achievement.service');
 module.exports.missingService = require('./missing.service');
 module.exports.ratingsService = require('./ratings.service');
 module.exports.goalsService = require('./goals.service');
+module.exports.sessionService = require('./session.service');
