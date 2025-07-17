@@ -17,6 +17,8 @@ const gradeOrder = [
   'F',
 ];
 
+const passGrades = ['SSS', 'SS', 'S', 'Ap', 'Bp', 'Cp', 'Dp'];
+
 const getGradeIndex = (g) => {
   const idx = gradeOrder.indexOf(g);
   return idx === -1 ? gradeOrder.length : idx;
@@ -40,15 +42,35 @@ const getScores = async (filter) => {
 
 const createScore = async (scoreBody, mode, user) => {
   const { song_id, diff, grade } = scoreBody;
+  let firstPass = false;
+  if (grade && passGrades.includes(grade)) {
+    const existing = await prisma.score.findFirst({
+      where: {
+        userId: user.id,
+        song_id,
+        diff,
+        mode,
+        grade: { in: passGrades },
+      },
+    });
+    if (!existing) firstPass = true;
+  }
   const res = await prisma.score.create({
-    data: { song_id, diff, grade: grade || null, userId: user.id, mode },
+    data: {
+      song_id,
+      diff,
+      grade: grade || null,
+      userId: user.id,
+      mode,
+      firstPass,
+    },
   });
   const { newBadges, newTitles } = await achievementService.updateUserAchievements(
     user.id,
     res,
   );
   await sessionService.handleScore(user.id, res.id);
-  return { score: res, newBadges, newTitles };
+  return { score: res, newBadges, newTitles, isNew: firstPass };
 };
 
 const getLatestScores = async (limit = 10) =>

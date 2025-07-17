@@ -46,6 +46,7 @@ model Score {
   grade     String?
   mode      String
   createdAt DateTime @default(now())
+  firstPass Boolean  @default(false)
   sessionId Int?
   session   Session? @relation(fields: [sessionId], references: [id])
 }

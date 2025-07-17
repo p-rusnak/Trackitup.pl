@@ -1,0 +1,1 @@
+ALTER TABLE "Score" ADD COLUMN "firstPass" BOOLEAN NOT NULL DEFAULT false;
