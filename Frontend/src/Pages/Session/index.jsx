@@ -47,6 +47,17 @@ const GradeImg = styled.img`
 const SongLink = styled(Link)`
   color: inherit;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 115px;
+`;
+
+const TitleSpan = styled.span`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 115px;
 `;
 
 const parseLevel = (d) => {
@@ -222,7 +233,16 @@ const SessionPage = () => {
                   checked={selected.has(s.id)}
                   onChange={() => toggleSelect(s.id)}
                 />
-                <Paper sx={{ p: 2, width: 160 }}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    width: 160,
+                    height: 200,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
                   <Box
                     sx={{
                       display: "flex",
@@ -262,7 +282,7 @@ const SessionPage = () => {
             bgcolor: '#111',
             color: '#fff',
             '& .MuiTableCell-root': { color: '#fff' },
-            width: view === 'grid' ? 512 : 'auto',
+            width: view === 'grid' ? 688 : 'auto',
           }}
           ref={shareRef}
         >
@@ -298,7 +318,17 @@ const SessionPage = () => {
             : (
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
                 {session.scores.filter((s) => selected.has(s.id)).map((s) => (
-                  <Paper key={`share-${s.id}`} sx={{ p: 2, width: 160 }}>
+                  <Paper
+                    key={`share-${s.id}`}
+                    sx={{
+                      p: 2,
+                      width: 160,
+                      height: 200,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                    }}
+                  >
                     <Box
                       sx={{
                         display: 'flex',
@@ -309,7 +339,7 @@ const SessionPage = () => {
                       }}
                     >
                       <DiffText $mode={s.mode}>{parseLevel(s.diff)}</DiffText>
-                      <span>{songs[s.song_id]?.title || s.song_id}</span>
+                      <TitleSpan>{songs[s.song_id]?.title || s.song_id}</TitleSpan>
                     </Box>
                     <Box sx={{ position: 'relative', textAlign: 'center' }}>
                       <img src={songs[s.song_id]?.img} alt="cover" width={120} crossOrigin="anonymous" />
