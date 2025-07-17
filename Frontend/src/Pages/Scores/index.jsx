@@ -4,7 +4,7 @@ import { ApiClient } from "../../API/httpService";
 import songs from "../../consts/songs.json";
 import styled from "styled-components";
 import grades from "../../Assets/Grades";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -23,6 +23,7 @@ const Scores = () => {
   const [latestPlayers, setLatestPlayers] = useState([]);
   const [ongoingSessions, setOngoingSessions] = useState([]);
   const [allSessions, setAllSessions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     apiClient
@@ -62,7 +63,7 @@ const Scores = () => {
                   key={s.id}
                   hover
                   sx={{ cursor: "pointer" }}
-                  onClick={() => Navigate(`/sessions/${s.id}`)}
+                  onClick={() => navigate(`/sessions/${s.id}`)}
                 >
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -162,7 +163,7 @@ const Scores = () => {
                   key={s.id}
                   hover
                   sx={{ cursor: "pointer" }}
-                  onClick={() => Navigate(`/sessions/${s.id}`)}
+                  onClick={() => navigate(`/sessions/${s.id}`)}
                 >
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
