@@ -8,7 +8,7 @@ const parseLevel = (diff) => {
 const getLeaderboard = async (mode) => {
   const users = await prisma.user.findMany({ include: { scores: true } });
   const board = users.map((u) => {
-    const scores = u.scores.filter((s) => s.mode === mode && ['SSS', 'SS', 'S', 'Ap', 'Bp'].inlucde(s.grade));
+    const scores = u.scores.filter((s) => s.mode === mode && ['SSS', 'SS', 'S', 'Ap', 'Bp'].includes(s.grade));
     let highest = 0;
     scores.forEach((s) => {
       const level = parseLevel(s.diff);
@@ -23,8 +23,8 @@ const getLeaderboard = async (mode) => {
 const getFullLeaderboard = async () => {
   const users = await prisma.user.findMany({ include: { scores: true } });
   const board = users.map((u) => {
-    const singles = u.scores.filter((s) => s.mode === 'item_single' && ['SSS', 'SS', 'S', 'Ap', 'Bp'].inlucde(s.grade));
-    const doubles = u.scores.filter((s) => s.mode === 'item_double' && ['SSS', 'SS', 'S', 'Ap', 'Bp'].inlucde(s.grade));
+    const singles = u.scores.filter((s) => s.mode === 'item_single' && ['SSS', 'SS', 'S', 'Ap', 'Bp'].includes(s.grade));
+    const doubles = u.scores.filter((s) => s.mode === 'item_double' && ['SSS', 'SS', 'S', 'Ap', 'Bp'].includes(s.grade));
     let singlesHighest = 0;
     singles.forEach((s) => {
       const level = parseLevel(s.diff);
