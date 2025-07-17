@@ -59,6 +59,7 @@ export class ApiClient {
     cancelSession = () => client.post('sessions/cancel')
     listSessions = (userId) => client.get('sessions', { params: userId ? { userId } : {} })
     getSession = (id) => client.get(`sessions/${id}`)
+    deleteSession = (id) => client.delete(`sessions/${id}`)
 }
 
 export default client

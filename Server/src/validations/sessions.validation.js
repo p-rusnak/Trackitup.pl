@@ -12,4 +12,10 @@ const getSession = {
   }),
 };
 
-module.exports = { listSessions, getSession };
+const deleteSession = {
+  params: Joi.object().keys({
+    id: Joi.number().required(),
+  }),
+};
+
+module.exports = { listSessions, getSession, deleteSession };
