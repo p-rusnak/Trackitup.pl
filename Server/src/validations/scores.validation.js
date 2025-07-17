@@ -37,6 +37,7 @@ const getAllScores = {
     player: Joi.string(),
     songId: Joi.string(),
     diff: Joi.string(),
+    mode: Joi.string(),
     grade: Joi.string(),
     from: Joi.date(),
     to: Joi.date(),

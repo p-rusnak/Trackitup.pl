@@ -77,6 +77,9 @@ const getAllScores = async (page = 1, limit = 30, filters = {}) => {
   if (filters.diff) {
     where.diff = filters.diff;
   }
+  if (filters.mode) {
+    where.mode = filters.mode;
+  }
   if (filters.grade) {
     where.grade = filters.grade;
   }
