@@ -73,6 +73,27 @@ const listSessions = async (userId) =>
     include: { _count: { select: { scores: true } } },
   });
 
+const listOngoingSessions = async (limit = 10) =>
+  prisma.session.findMany({
+    where: { endedAt: null },
+    orderBy: { id: 'desc' },
+    take: limit,
+    include: {
+      user: { select: { username: true, avatarUrl: true } },
+      _count: { select: { scores: true } },
+    },
+  });
+
+const listAllSessions = async (limit = 10) =>
+  prisma.session.findMany({
+    take: limit,
+    orderBy: { id: 'desc' },
+    include: {
+      user: { select: { username: true, avatarUrl: true } },
+      _count: { select: { scores: true } },
+    },
+  });
+
 const getSession = async (id) =>
   prisma.session.findUnique({ where: { id: Number(id) }, include: { scores: true } });
 
@@ -82,6 +103,8 @@ module.exports = {
   endSession,
   cancelSession,
   listSessions,
+  listOngoingSessions,
+  listAllSessions,
   getSession,
   deleteSession,
 };
