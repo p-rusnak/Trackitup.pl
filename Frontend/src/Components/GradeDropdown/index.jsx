@@ -49,5 +49,5 @@ const GradeDropdown = ({ value, label, onChange }) => {
 export default GradeDropdown;
 
 const Grade = styled.img`
-  height: 35px;
+  height: 30px;
 `;
