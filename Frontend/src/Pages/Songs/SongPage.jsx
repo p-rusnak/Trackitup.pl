@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import SongDetails from "./SongDetails";
 import songs from "../../consts/songs";
 import { ApiClient } from "../../API/httpService";
 
 const SongPage = () => {
   const { id, diff, mode } = useParams();
+  const navigate = useNavigate();
   const [chart, setChart] = useState(null);
   const [favorites, setFavorites] = useState(() => {
     const stored = localStorage.getItem("favorites");
@@ -46,6 +47,10 @@ const SongPage = () => {
     setChart((c) => (c ? { ...c, fav: !c.fav } : c));
   };
 
+  const changeDiff = (d) => {
+    navigate(`/song/${id}/${d.type}/${d.diff}`);
+  };
+
   if (!chart) return null;
 
   return (
@@ -54,6 +59,7 @@ const SongPage = () => {
         chart={chart}
         changeGrade={changeGrade}
         toggleFavorite={toggleFavorite}
+        changeDiff={changeDiff}
       />
     </div>
   );
