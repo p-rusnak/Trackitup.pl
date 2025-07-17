@@ -4,7 +4,22 @@ const { clearTitles } = require('../consts/titleRequirements');
 
 const songs = require('./songs.json');
 
-const gradeOrder = ['SSS', 'SS', 'S', 'Ap', 'A', 'Bp', 'B', 'Cp', 'C', 'Dp', 'D', 'F'];
+// Grade order from best to worst used when comparing achievements
+// SSS > SS > S > Ap > Bp > Cp > Dp > A > B > C > D > F
+const gradeOrder = [
+  'SSS',
+  'SS',
+  'S',
+  'Ap',
+  'Bp',
+  'Cp',
+  'Dp',
+  'A',
+  'B',
+  'C',
+  'D',
+  'F',
+];
 const gradeBetterOrEqual = (a, b) => {
   if (!a) return false;
   return gradeOrder.indexOf(a) <= gradeOrder.indexOf(b);
