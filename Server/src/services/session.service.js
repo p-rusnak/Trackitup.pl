@@ -65,4 +65,7 @@ const listSessions = async (userId) =>
     include: { _count: { select: { scores: true } } },
   });
 
-module.exports = { handleScore, getCurrent, endSession, cancelSession, listSessions };
+const getSession = async (id) =>
+  prisma.session.findUnique({ where: { id: Number(id) }, include: { scores: true } });
+
+module.exports = { handleScore, getCurrent, endSession, cancelSession, listSessions, getSession };

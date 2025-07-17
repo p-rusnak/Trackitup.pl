@@ -3,7 +3,7 @@ import { ApiClient } from "../../API/httpService";
 import songs from "../../consts/songs.json";
 import grades from "../../Assets/Grades";
 import { Table, TableBody, TableCell, TableHead, TableRow, Button, Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const api = new ApiClient();
@@ -15,11 +15,12 @@ const DiffBall = styled.span`
 `;
 
 const SessionPage = () => {
+  const { id } = useParams();
   const [session, setSession] = useState(null);
 
   const load = () => {
-    api
-      .getCurrentSession()
+    const req = id ? api.getSession(id) : api.getCurrentSession();
+    req
       .then((r) => {
         if (r.status === 204) setSession(null);
         else setSession(r.data);
@@ -29,7 +30,7 @@ const SessionPage = () => {
 
   useEffect(() => {
     load();
-  }, []);
+  }, [id]);
 
   const endSession = () => {
     api.endSession().then(() => load());
@@ -39,18 +40,21 @@ const SessionPage = () => {
     api.cancelSession().then(() => load());
   };
 
-  if (!session) return <p>No active session</p>;
+  if (!session)
+    return <p>{id ? 'Session not found' : 'No active session'}</p>;
 
   return (
     <Box>
-      <Box sx={{ mb: 2 }}>
-        <Button onClick={endSession} variant="contained" sx={{ mr: 1 }}>
-          End Session
-        </Button>
-        <Button onClick={cancelSession} variant="outlined">
-          Cancel Session
-        </Button>
-      </Box>
+      {!id && (
+        <Box sx={{ mb: 2 }}>
+          <Button onClick={endSession} variant="contained" sx={{ mr: 1 }}>
+            End Session
+          </Button>
+          <Button onClick={cancelSession} variant="outlined">
+            Cancel Session
+          </Button>
+        </Box>
+      )}
       <Table size="small">
         <TableHead>
           <TableRow>
