@@ -343,7 +343,12 @@ const SessionPage = () => {
                     </TableCell>
                     <TableCell>
                       {s.grade ? (
-                        <img src={grades[s.grade]} alt={s.grade} height={30} />
+                        <>
+                          <img src={grades[s.grade]} alt={s.grade} height={30} />
+                          {s.firstPass && (
+                            <Chip label="New" color="success" size="small" sx={{ ml: 1 }} />
+                          )}
+                        </>
                       ) : (
                         "-"
                       )}
@@ -393,7 +398,17 @@ const SessionPage = () => {
                       crossOrigin="anonymous"
                     />
                     {s.grade && (
-                      <GradeImg src={grades[s.grade]} alt={s.grade} />
+                      <>
+                        <GradeImg src={grades[s.grade]} alt={s.grade} />
+                        {s.firstPass && (
+                          <Chip
+                            label="New"
+                            color="success"
+                            size="small"
+                            sx={{ position: "absolute", top: 0, left: 0 }}
+                          />
+                        )}
+                      </>
                     )}
                   </Box>
                 </Paper>
