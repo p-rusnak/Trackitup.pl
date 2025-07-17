@@ -267,8 +267,9 @@ const Profile = () => {
           </Table>
         </TablesWrapper>
       </Section>
-      <Section header="Goals">
-        <TablesWrapper>
+      {(singleGoals.length > 0 || doubleGoals.length > 0) && (
+        <Section header="Goals">
+          <TablesWrapper>
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -307,8 +308,9 @@ const Profile = () => {
               ))}
             </TableBody>
           </Table>
-        </TablesWrapper>
-      </Section>
+          </TablesWrapper>
+        </Section>
+      )}
       <Section header="Passes by difficulty - Single">
         <Table size="small">
           <TableHead>
