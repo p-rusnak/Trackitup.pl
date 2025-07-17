@@ -110,6 +110,11 @@ const Profile = () => {
     return val ? parseFloat(val) : 0;
   };
 
+  const parseLevel = (d) => {
+    const n = parseInt(d.replace("lv_", ""));
+    return Number.isNaN(n) ? 0 : n;
+  };
+
   const buildBestPasses = (scoresData, mode) => {
     const arr = [];
     Object.entries(scoresData || {}).forEach(([diff, vals]) => {
@@ -118,6 +123,8 @@ const Profile = () => {
       });
     });
     arr.sort((a, b) => {
+      const diffComp = parseLevel(b.diff) - parseLevel(a.diff);
+      if (diffComp !== 0) return diffComp;
       const gradeComp = compareGrades(a.grade, b.grade);
       if (gradeComp !== 0) return gradeComp;
       return b.adiff - a.adiff;
@@ -127,11 +134,6 @@ const Profile = () => {
 
   const bestSingles = buildBestPasses(singleScores, MODES.SINGLE);
   const bestDoubles = buildBestPasses(doubleScores, MODES.DOUBLE);
-
-  const parseLevel = (d) => {
-    const n = parseInt(d.replace("lv_", ""));
-    return Number.isNaN(n) ? 0 : n;
-  };
 
   const diffCounts = Object.entries(singleScores || {})
     .map(([diff, vals]) => ({ diff, count: Object.keys(vals).length }))
