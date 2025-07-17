@@ -37,12 +37,14 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
   useEffect(() => {
     setGrade(chart.grade || "");
     apiClient.getRating(chart.id, chart.diff).then((r) => setRatings(r.data));
-    apiClient.getGoals(chart.mode).then((r) => {
-      const isGoal = r.data.some(
-        (g) => g.song_id === chart.id && g.diff === chart.diff
-      );
-      setGoal(isGoal);
-    });
+    if (loggedIn) {
+      apiClient.getGoals(chart.mode).then((r) => {
+        const isGoal = r.data.some(
+          (g) => g.song_id === chart.id && g.diff === chart.diff
+        );
+        setGoal(isGoal);
+      });
+    }
   }, [chart, apiClient]);
 
   const rateChart = (val) => {
