@@ -19,6 +19,18 @@ router
   .get(validate(scoresValidation.getAllScores), scoresController.getAllScores);
 
 router
+  .route('/history/:mode/:songId/:diff')
+  .get(
+    auth('getScores'),
+    validate(scoresValidation.getScoreHistory),
+    scoresController.getScoreHistory,
+  );
+
+router
+  .route('/:id')
+  .delete(auth('postScores'), validate(scoresValidation.deleteScore), scoresController.deleteScore);
+
+router
   .route('/:mode')
   .post(auth('postScores'), validate(scoresValidation.createScore), scoresController.postScore)
   .get(auth('getScores'), validate(scoresValidation.getScores), scoresController.getScores);

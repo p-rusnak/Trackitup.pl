@@ -13,9 +13,26 @@ const getScores = catchAsync(async (req, res) => {
     res.send(result);
 });
 
+const getScoreHistory = catchAsync(async (req, res) => {
+    const mode = req.params.mode;
+    const { songId, diff } = req.params;
+    const userId = req.query.userId || req.user.id;
+    const history = await scoresService.getScoreHistory(userId, mode, songId, diff);
+    res.send(history);
+});
+
 const postScore = catchAsync(async (req, res) => {
     const result = await scoresService.createScore(req.body, req.params.mode, req.user);
     res.status(httpStatus.CREATED).send(result);
+});
+
+const deleteScore = catchAsync(async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const removed = await scoresService.deleteScore(id, req.user.id);
+    if (!removed) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Score not found');
+    }
+    res.status(httpStatus.NO_CONTENT).send();
 });
 
 const getLatestScores = catchAsync(async (req, res) => {
@@ -49,7 +66,9 @@ const getAllScores = catchAsync(async (req, res) => {
 
 module.exports = {
     getScores,
+    getScoreHistory,
     postScore,
+    deleteScore,
     getLatestScores,
     getLatestPlayers,
     getAllScores,

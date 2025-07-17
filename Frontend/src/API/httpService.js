@@ -37,6 +37,11 @@ export class ApiClient {
     getAllScores = (page, limit, filters = {}, sortBy) =>
         client.get('scores/all', { params: { page, limit, sortBy, ...filters } })
 
+    getScoreHistory = (mode, songId, diff, userId) =>
+        client.get(`scores/history/${mode}/${songId}/${diff}`, { params: userId ? { userId } : {} })
+
+    deleteScore = (id) => client.delete(`scores/${id}`)
+
     getGoals = (mode, userId) => client.get(`goals/${mode}`, { params: userId ? { userId } : {} })
     postGoal = (mode, data) => client.post(`goals/${mode}`, data)
 

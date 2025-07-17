@@ -3,11 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import SongDetails from "./SongDetails";
 import songs from "../../consts/songs";
 import { ApiClient } from "../../API/httpService";
+import { useUser } from "../../Components/User";
 
 const SongPage = () => {
   const { id, diff, mode } = useParams();
   const navigate = useNavigate();
   const [chart, setChart] = useState(null);
+  const [history, setHistory] = useState([]);
+  const { user } = useUser();
   const [favorites, setFavorites] = useState(() => {
     const stored = localStorage.getItem("favorites");
     return stored ? JSON.parse(stored) : {};
@@ -23,6 +26,7 @@ const SongPage = () => {
         const grade = r.data?.[diff]?.[id]?.grade;
         setChart({ id, ...song, diff, mode, grade, fav });
       });
+      api.getScoreHistory(mode, id, diff).then((r) => setHistory(r.data));
     } else {
       setChart({ id, ...song, diff, mode, fav });
     }
@@ -32,7 +36,10 @@ const SongPage = () => {
     const api = new ApiClient();
     api
       .postScores(mode, { song_id: id, diff, grade: value })
-      .then(() => setChart((c) => ({ ...c, grade: value })));
+      .then(() => {
+        setChart((c) => (c ? { ...c, grade: value } : c));
+        api.getScoreHistory(mode, id, diff).then((r) => setHistory(r.data));
+      });
   };
 
   const toggleFavorite = () => {
@@ -51,6 +58,17 @@ const SongPage = () => {
     navigate(`/song/${id}/${d.type}/${d.diff}`);
   };
 
+  const removeScore = (sid) => {
+    const api = new ApiClient();
+    api.deleteScore(sid).then(() => {
+      api.getScores(mode).then((r) => {
+        const grade = r.data?.[diff]?.[id]?.grade;
+        setChart((c) => (c ? { ...c, grade } : c));
+      });
+      api.getScoreHistory(mode, id, diff).then((r) => setHistory(r.data));
+    });
+  };
+
   if (!chart) return null;
 
   return (
@@ -60,6 +78,8 @@ const SongPage = () => {
         changeGrade={changeGrade}
         toggleFavorite={toggleFavorite}
         changeDiff={changeDiff}
+        history={history}
+        removeScore={removeScore}
       />
     </div>
   );

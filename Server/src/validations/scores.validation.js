@@ -18,6 +18,17 @@ const getScores = {
   }),
 };
 
+const getScoreHistory = {
+  params: Joi.object().keys({
+    mode: Joi.string(),
+    songId: Joi.string().required(),
+    diff: Joi.string().required(),
+  }),
+  query: Joi.object().keys({
+    userId: Joi.string(),
+  }),
+};
+
 const getLatestScores = {
   query: Joi.object().keys({
     limit: Joi.number(),
@@ -45,10 +56,18 @@ const getAllScores = {
   }),
 };
 
+const deleteScore = {
+  params: Joi.object().keys({
+    id: Joi.number().integer().required(),
+  }),
+};
+
 module.exports = {
   createScore,
   getScores,
+  getScoreHistory,
   getLatestScores,
   getLatestPlayers,
   getAllScores,
+  deleteScore,
 };
