@@ -33,12 +33,12 @@ const SectionBlock = styled2(Box)(({ theme }) => ({
     marginBottom: '25px'
 }));
 
-const Header = styled.h2`
-    
-`
+const Header = styled.h2``;
 
 const Content = styled.div`
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 20px;
     overflow-x: auto;
-`
+`;
+
