@@ -26,13 +26,14 @@ const api = new ApiClient();
 
 const DiffBall = styled.span`
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 `;
 
 const DiffText = styled.span`
   font-weight: bold;
   color: ${(props) => (props.$mode === 'item_single' ? 'red' : 'green')};
+  font-size: 1.2rem;
 `;
 
 const GradeImg = styled.img`
@@ -40,6 +41,11 @@ const GradeImg = styled.img`
   top: 0;
   right: 0;
   height: 40px;
+`;
+
+const SongLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `;
 
 const parseLevel = (d) => {
@@ -142,9 +148,9 @@ const SessionPage = () => {
           </Box>
         )}
         <Box sx={{ mb: 2 }}>
-          <IconButton onClick={share} color="primary">
-            <ShareIcon />
-          </IconButton>
+          <Button onClick={share} variant="contained" startIcon={<ShareIcon />}>
+            Share
+          </Button>
         </Box>
         <ToggleButtonGroup
           value={view}
@@ -159,7 +165,7 @@ const SessionPage = () => {
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell />
+                <TableCell>Share</TableCell>
                 <TableCell>Song</TableCell>
                 <TableCell>Grade</TableCell>
                 <TableCell>Diff</TableCell>
@@ -177,7 +183,7 @@ const SessionPage = () => {
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                       <img src={songs[s.song_id]?.img} alt="cover" width={40} />
-                      <Link to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{songs[s.song_id]?.title || s.song_id}</Link>
+                      <SongLink to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{songs[s.song_id]?.title || s.song_id}</SongLink>
                     </Box>
                   </TableCell>
                   <TableCell>
@@ -202,25 +208,25 @@ const SessionPage = () => {
         ) : (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
             {session.scores.map((s) => (
-              <Paper key={s.id} sx={{ p: 2, width: 160, position: 'relative' }}>
+              <Box key={s.id} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
                 <Checkbox
                   checked={selected.has(s.id)}
                   onChange={() => toggleSelect(s.id)}
-                  sx={{ position: 'absolute', top: 0, left: 0 }}
                 />
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 1,
-                    mb: 1,
-                  }}
-                >
+                <Paper sx={{ p: 2, width: 160 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 1,
+                      mb: 1,
+                    }}
+                  >
                   <DiffText $mode={s.mode}>{parseLevel(s.diff)}</DiffText>
-                  <Link to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{
+                  <SongLink to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{
                     songs[s.song_id]?.title || s.song_id
-                  }</Link>
+                  }</SongLink>
                 </Box>
                 <Box sx={{ position: "relative", textAlign: "center" }}>
                   <img src={songs[s.song_id]?.img} alt="cover" width={120} />
@@ -233,11 +239,15 @@ const SessionPage = () => {
                     </>
                   )}
                 </Box>
-              </Paper>
+                </Paper>
+              </Box>
             ))}
           </Box>
         )}
-        <Box sx={{ position: 'absolute', left: -9999, top: 0 }} ref={shareRef}>
+        <Box
+          sx={{ position: 'absolute', left: -9999, top: 0, p: 2, bgcolor: '#111', color: '#fff' }}
+          ref={shareRef}
+        >
           {view === 'list'
             ? (
               <Table size="small">
@@ -291,6 +301,7 @@ const SessionPage = () => {
                 ))}
               </Box>)
           }
+          <Box sx={{ mt: 2, textAlign: 'center', fontWeight: 'bold' }}>Trackitup.pl</Box>
         </Box>
       </Box>
     );
