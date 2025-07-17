@@ -6,10 +6,10 @@ const { scoresService } = require('../services');
 
 const getScores = catchAsync(async (req, res) => {
     const mode = req.params.mode
-    const user = {userId: req.user.id}
-    const filter = pick(user, ['userId']);
+    const userId = req.query.userId || req.user.id
+    const filter = { userId }
     const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    const result = await scoresService.getScores({...filter, mode}, options);
+    const result = await scoresService.getScores({ ...filter, mode }, options);
     res.send(result);
 });
 

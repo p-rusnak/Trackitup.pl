@@ -30,11 +30,11 @@ export class ApiClient {
     login = (params) => client.post('auth/login', params)
     register = (params) => client.post('auth/register', params)
 
-    getScores = (mode) => client.get(`scores/${mode}`)
+    getScores = (mode, userId) => client.get(`scores/${mode}`, { params: userId ? { userId } : {} })
     postScores = (mode, data) => client.post(`scores/${mode}`, data)
     getLatestScores = (limit) => client.get('scores/latest', { params: { limit } })
 
-    getGoals = (mode) => client.get(`goals/${mode}`)
+    getGoals = (mode, userId) => client.get(`goals/${mode}`, { params: userId ? { userId } : {} })
     postGoal = (mode, data) => client.post(`goals/${mode}`, data)
 
     getUsers = () => client.get('users')
