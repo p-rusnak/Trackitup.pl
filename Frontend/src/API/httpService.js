@@ -62,6 +62,11 @@ export class ApiClient {
     getAllSessions = (limit) => client.get('sessions/all', { params: { limit } })
     getSession = (id) => client.get(`sessions/${id}`)
     deleteSession = (id) => client.delete(`sessions/${id}`)
+
+    getRivals = (userId) => client.get('rivals', { params: userId ? { userId } : {} })
+    postRival = (rivalId) => client.post('rivals', { rivalId })
+    getRivalScores = (mode, songId, diff, userId) =>
+        client.get(`rivals/scores/${mode}/${songId}/${diff}`, { params: userId ? { userId } : {} })
 }
 
 export default client

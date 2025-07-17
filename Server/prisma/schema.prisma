@@ -25,6 +25,8 @@ model User {
   ratings         Rating[]
   goal            Goal[]
   session         Session[]
+  rivals          Rival[]        @relation("UserToRivals")
+  rivalOf         Rival[]        @relation("UserRivalOf")
 }
 
 model Token {
@@ -93,4 +95,15 @@ model Goal {
   createdAt DateTime @default(now())
 
   @@unique([userId, song_id, diff, mode])
+}
+
+model Rival {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  rivalId   String
+  createdAt DateTime @default(now())
+  user      User     @relation("UserToRivals", fields: [userId], references: [id])
+  rival     User     @relation("UserRivalOf", fields: [rivalId], references: [id])
+
+  @@unique([userId, rivalId])
 }

@@ -6,3 +6,4 @@ module.exports.missingController = require('./missing.controller');
 module.exports.ratingsController = require('./ratings.controller');
 module.exports.goalsController = require('./goals.controller');
 module.exports.sessionsController = require('./sessions.controller');
+module.exports.rivalsController = require('./rivals.controller');

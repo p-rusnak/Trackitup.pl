@@ -175,4 +175,5 @@ module.exports = {
   getAllScores,
   getScoreHistory,
   deleteScore,
+  getGradeIndex,
 };
