@@ -136,12 +136,20 @@ const Profile = () => {
       .map(([diff, vals]) => {
         const stats = { A: 0, S: 0, SS: 0, SSS: 0, total: 0 };
         Object.values(vals).forEach(({ grade }) => {
-          stats.total += 1;
           if (!grade) return;
-          if (grade === "SSS") stats.SSS += 1;
-          else if (grade === "SS") stats.SS += 1;
-          else if (grade === "S") stats.S += 1;
-          else if (grade.startsWith("A")) stats.A += 1;
+          if (grade === "SSS") {
+            stats.SSS += 1;
+            stats.total += 1;
+          } else if (grade === "SS") {
+            stats.SS += 1;
+            stats.total += 1;
+          } else if (grade === "S") {
+            stats.S += 1;
+            stats.total += 1;
+          } else if (grade.startsWith("A")) {
+            stats.A += 1;
+            stats.total += 1;
+          }
         });
         return { diff, ...stats };
       })
