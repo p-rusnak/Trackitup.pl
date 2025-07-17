@@ -58,6 +58,14 @@ const cancelSession = async (userId) => {
   return null;
 };
 
+const deleteSession = async (id, userId) => {
+  const session = await prisma.session.findUnique({ where: { id: Number(id) } });
+  if (!session || session.userId !== userId) return null;
+  await prisma.score.updateMany({ where: { sessionId: session.id }, data: { sessionId: null } });
+  await prisma.session.delete({ where: { id: session.id } });
+  return session;
+};
+
 const listSessions = async (userId) =>
   prisma.session.findMany({
     where: { userId },
@@ -68,4 +76,12 @@ const listSessions = async (userId) =>
 const getSession = async (id) =>
   prisma.session.findUnique({ where: { id: Number(id) }, include: { scores: true } });
 
-module.exports = { handleScore, getCurrent, endSession, cancelSession, listSessions, getSession };
+module.exports = {
+  handleScore,
+  getCurrent,
+  endSession,
+  cancelSession,
+  listSessions,
+  getSession,
+  deleteSession,
+};

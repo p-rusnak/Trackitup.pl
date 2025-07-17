@@ -1,5 +1,6 @@
 const catchAsync = require('../utils/catchAsync');
 const httpStatus = require('http-status');
+const ApiError = require('../utils/ApiError');
 const { sessionService } = require('../services');
 
 const getCurrent = catchAsync(async (req, res) => {
@@ -34,4 +35,18 @@ const getSession = catchAsync(async (req, res) => {
   res.send(session);
 });
 
-module.exports = { getCurrent, endSession, cancelSession, listSessions, getSession };
+const deleteSession = catchAsync(async (req, res) => {
+  const removed = await sessionService.deleteSession(req.params.id, req.user.id);
+  if (!removed) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Session not found');
+  }
+  res.status(httpStatus.NO_CONTENT).send();
+});
+module.exports = {
+  getCurrent,
+  endSession,
+  cancelSession,
+  listSessions,
+  getSession,
+  deleteSession,
+};

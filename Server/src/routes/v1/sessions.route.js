@@ -11,5 +11,6 @@ router.post('/end', auth('postScores'), sessionsController.endSession);
 router.post('/cancel', auth('postScores'), sessionsController.cancelSession);
 router.get('/', auth('getScores'), sessionsController.listSessions);
 router.get('/:id', auth('getScores'), validate(sessionsValidation.getSession), sessionsController.getSession);
+router.delete('/:id', auth('postScores'), validate(sessionsValidation.deleteSession), sessionsController.deleteSession);
 
 module.exports = router;
