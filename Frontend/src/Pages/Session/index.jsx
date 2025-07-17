@@ -247,7 +247,15 @@ const SessionPage = () => {
           </Box>
         )}
         <Box
-          sx={{ position: 'absolute', left: -9999, top: 0, p: 2, bgcolor: '#111', color: '#fff' }}
+          sx={{
+            position: 'absolute',
+            left: -9999,
+            top: 0,
+            p: 2,
+            bgcolor: '#111',
+            color: '#fff',
+            '& .MuiTableCell-root': { color: '#fff' },
+          }}
           ref={shareRef}
         >
           {view === 'list'
