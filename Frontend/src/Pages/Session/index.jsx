@@ -367,7 +367,7 @@ const SessionPage = () => {
                     height: 200,
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "space-between",
+                    justifyContent: "flex-start",
                   }}
                 >
                   <Box
