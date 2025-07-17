@@ -116,6 +116,8 @@ const filterItems = (a, details, mode, diff, hidden, hideScore, tags) => {
 const Songs = ({ mode }) => {
   const { notify } = useNotification();
   const [openChart, setOpenChart] = useState(false);
+  const [history, setHistory] = useState([]);
+  const [rivalScores, setRivalScores] = useState([]);
   const [search, setSearch] = useState();
   const [data, setData] = useState({});
   const [details, setDetails] = useState({
@@ -227,6 +229,17 @@ const Songs = ({ mode }) => {
 
   const openPopup = (chart) => {
     setOpenChart(chart);
+    if (localStorage.getItem("token")) {
+      apiClient
+        .getScoreHistory(chart.mode, chart.id, chart.diff)
+        .then((r) => setHistory(r.data));
+      apiClient
+        .getRivalScores(chart.mode, chart.id, chart.diff)
+        .then((r) => setRivalScores(r.data));
+    } else {
+      setHistory([]);
+      setRivalScores([]);
+    }
   };
 
   const changeGrade = (value) => {
@@ -337,6 +350,8 @@ const Songs = ({ mode }) => {
             changeGrade={changeGrade}
             toggleFavorite={toggleFavorite}
             changeDiff={changeDiff}
+            history={history}
+            rivalScores={rivalScores}
           />
         </StyledBox>
       </Modal>
