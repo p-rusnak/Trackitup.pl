@@ -10,6 +10,7 @@ import Scores from '../Pages/Scores'
 import AllScores from '../Pages/Scores/All'
 import Leaderboard from '../Pages/Leaderboard'
 import Titles from '../Pages/Titles'
+import SessionPage from '../Pages/Session'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
 import Profile from '../Pages/Profile'
@@ -42,6 +43,10 @@ const router = createHashRouter([
             {
                 path: 'ScoresAll',
                 element: <AllScores />
+            },
+            {
+                path: 'session',
+                element: <SessionPage />
             },
             {
                 path: 'Leaderboard',

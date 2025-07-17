@@ -45,6 +45,20 @@ model Score {
   grade     String?
   mode      String
   createdAt DateTime @default(now())
+  sessionId Int?
+  session   Session? @relation(fields: [sessionId], references: [id])
+}
+
+model Session {
+  id        Int       @id @default(autoincrement())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  startedAt DateTime  @default(now())
+  lastScore DateTime
+  endedAt   DateTime?
+  scores    Score[]
+
+  @@index([userId, endedAt])
 }
 
 model Missing {

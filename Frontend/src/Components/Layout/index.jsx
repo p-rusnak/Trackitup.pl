@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import Navbar from "../Navigation";
 import NotificationProvider from "../Notification";
 import UserProvider from "../User";
+import SessionBanner from "../SessionBanner";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box, GlobalStyles } from "@mui/material";
@@ -59,6 +60,7 @@ const Layout = () => {
             />
             <div>
               <Navbar />
+              <SessionBanner />
               <Box
                 sx={{
                   padding: {

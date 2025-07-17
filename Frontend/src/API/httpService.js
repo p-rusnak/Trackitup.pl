@@ -48,6 +48,11 @@ export class ApiClient {
 
     getRating = (songId, diff) => client.get(`ratings/${songId}/${diff}`)
     postRating = (data) => client.post('ratings', data)
+
+    getCurrentSession = () => client.get('sessions/current')
+    endSession = () => client.post('sessions/end')
+    cancelSession = () => client.post('sessions/cancel')
+    listSessions = (userId) => client.get('sessions', { params: userId ? { userId } : {} })
 }
 
 export default client

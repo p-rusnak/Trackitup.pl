@@ -1,5 +1,6 @@
 const prisma = require('../db');
 const achievementService = require('./achievement.service');
+const { sessionService } = require('./index');
 
 const getScores = async (filter) => {
   const scores = await prisma.score.findMany({ where: { userId: filter.userId, mode: filter.mode } });
@@ -35,10 +36,12 @@ const createScore = async (scoreBody, mode, user) => {
   if (existing) {
     const res = await prisma.score.update({ where: { id: existing.id }, data: { grade } });
     const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id, res);
+    await sessionService.handleScore(user.id, res.id);
     return { score: res, newBadges, newTitles };
   }
   const res = await prisma.score.create({ data: { song_id, diff, grade, userId: user.id, mode } });
   const { newBadges, newTitles } = await achievementService.updateUserAchievements(user.id, res);
+  await sessionService.handleScore(user.id, res.id);
   return { score: res, newBadges, newTitles };
 };
 

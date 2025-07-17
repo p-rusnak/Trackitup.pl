@@ -76,6 +76,7 @@ const Profile = () => {
   const [singleGoals, setSingleGoals] = useState([]);
   const [doubleGoals, setDoubleGoals] = useState([]);
   const [bestTitle, setBestTitle] = useState(null);
+  const [sessions, setSessions] = useState([]);
   const [showAvatarInput, setShowAvatarInput] = useState(false);
   const [avatarUrlInput, setAvatarUrlInput] = useState("");
   const { user: loggedUser, setUser: setLoggedUser } = useUser();
@@ -105,6 +106,7 @@ const Profile = () => {
     apiClient.getScores(MODES.DOUBLE, id).then((r) => setDoubleScores(r.data));
     apiClient.getGoals(MODES.SINGLE, id).then((r) => setSingleGoals(r.data));
     apiClient.getGoals(MODES.DOUBLE, id).then((r) => setDoubleGoals(r.data));
+    apiClient.listSessions(id).then((r) => setSessions(r.data));
   }, [id]);
 
   const getAdiff = (songId, diff, mode) => {
@@ -226,6 +228,30 @@ const Profile = () => {
           </Box>
         )}
       </Section>
+      {sessions.length > 0 && (
+        <Section header="Your sessions">
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>Start</TableCell>
+                <TableCell>Duration</TableCell>
+                <TableCell>Scores</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {sessions.map((s) => (
+                <TableRow key={s.id}>
+                  <TableCell>{new Date(s.startedAt).toLocaleString()}</TableCell>
+                  <TableCell>
+                    {Math.round((new Date(s.endedAt || s.lastScore) - new Date(s.startedAt)) / 60000)}m
+                  </TableCell>
+                  <TableCell>{s._count?.scores || s.scores?.length || 0}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Section>
+      )}
       <Section header="Best passes">
         <TablesWrapper>
           <Table size="small">
