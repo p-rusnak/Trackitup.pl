@@ -65,19 +65,43 @@ const getLatestPlayers = async (limit = 10) =>
     },
   });
 
-const getAllScores = async (page = 1, limit = 30) => {
+const getAllScores = async (page = 1, limit = 30, filters = {}) => {
   const skip = (page - 1) * limit;
+  const where = {};
+  if (filters.player) {
+    where.user = { username: { contains: filters.player, mode: 'insensitive' } };
+  }
+  if (filters.songId) {
+    where.song_id = filters.songId;
+  }
+  if (filters.diff) {
+    where.diff = filters.diff;
+  }
+  if (filters.grade) {
+    where.grade = filters.grade;
+  }
+  if (filters.from || filters.to) {
+    where.createdAt = {};
+    if (filters.from) {
+      where.createdAt.gte = new Date(filters.from);
+    }
+    if (filters.to) {
+      where.createdAt.lte = new Date(filters.to);
+    }
+  }
+
   const results = await prisma.score.findMany({
     skip,
     take: limit,
     orderBy: { id: 'desc' },
+    where,
     include: {
       user: {
         select: { username: true },
       },
     },
   });
-  const totalResults = await prisma.score.count();
+  const totalResults = await prisma.score.count({ where });
   const totalPages = Math.ceil(totalResults / limit);
   return { results, page, limit, totalPages, totalResults };
 };

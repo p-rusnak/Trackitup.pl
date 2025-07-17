@@ -33,7 +33,15 @@ const getLatestPlayers = catchAsync(async (req, res) => {
 const getAllScores = catchAsync(async (req, res) => {
     const page = parseInt(req.query.page, 10) || 1;
     const limit = parseInt(req.query.limit, 10) || 30;
-    const result = await scoresService.getAllScores(page, limit);
+    const filters = pick(req.query, [
+        'player',
+        'songId',
+        'diff',
+        'grade',
+        'from',
+        'to',
+    ]);
+    const result = await scoresService.getAllScores(page, limit, filters);
     res.send(result);
 });
 
