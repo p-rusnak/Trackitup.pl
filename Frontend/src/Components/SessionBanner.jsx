@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import { ApiClient } from "../API/httpService";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
+import {
+  getStoredSessionId,
+  SESSION_ID_EVENT,
+  storeSessionId,
+} from "../helpers/sessionUtils";
 
 const api = new ApiClient();
 
@@ -11,18 +16,22 @@ const SessionBanner = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    const load = () => {
+    const stored = getStoredSessionId();
+    if (stored) {
+      setSessionId(stored);
+    } else {
       api
         .getCurrentSession()
         .then((r) => {
-          if (r.status === 204) setSessionId(null);
-          else setSessionId(r.data.id);
+          if (r.status === 204) storeSessionId(null);
+          else storeSessionId(r.data.id);
         })
-        .catch(() => setSessionId(null));
-    };
-    load();
-    const interval = setInterval(load, 30000);
-    return () => clearInterval(interval);
+        .catch(() => storeSessionId(null));
+    }
+
+    const handler = (e) => setSessionId(e.detail || null);
+    window.addEventListener(SESSION_ID_EVENT, handler);
+    return () => window.removeEventListener(SESSION_ID_EVENT, handler);
   }, []);
   if (!sessionId) return null;
   return (

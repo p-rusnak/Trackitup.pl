@@ -21,6 +21,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import ShareIcon from "@mui/icons-material/Share";
 import { useUser } from "../../Components/User";
 import styled from "styled-components";
+import { storeSessionId } from "../../helpers/sessionUtils";
 
 const api = new ApiClient();
 
@@ -82,11 +83,17 @@ const SessionPage = () => {
   }, [session]);
 
   const endSession = () => {
-    api.endSession().then(() => load());
+    api.endSession().then(() => {
+      storeSessionId(null);
+      load();
+    });
   };
 
   const cancelSession = () => {
-    api.cancelSession().then(() => load());
+    api.cancelSession().then(() => {
+      storeSessionId(null);
+      load();
+    });
   };
 
   const removeSession = () => {

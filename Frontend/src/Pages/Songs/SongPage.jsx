@@ -4,6 +4,7 @@ import SongDetails from "./SongDetails";
 import songs from "../../consts/songs";
 import { ApiClient } from "../../API/httpService";
 import { useUser } from "../../Components/User";
+import { storeSessionId } from "../../helpers/sessionUtils";
 
 const SongPage = () => {
   const { id, diff, mode } = useParams();
@@ -36,9 +37,11 @@ const SongPage = () => {
     const api = new ApiClient();
     api
       .postScores(mode, { song_id: id, diff, grade: value })
-      .then(() => {
+      .then((r) => {
+        const { session } = r.data || {};
+        if (session) storeSessionId(session.id);
         setChart((c) => (c ? { ...c, grade: value } : c));
-        api.getScoreHistory(mode, id, diff).then((r) => setHistory(r.data));
+        api.getScoreHistory(mode, id, diff).then((res) => setHistory(res.data));
       });
   };
 

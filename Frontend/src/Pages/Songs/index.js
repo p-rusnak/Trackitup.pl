@@ -34,6 +34,7 @@ import GradeDropdown from "../../Components/GradeDropdown";
 import compareGrades from "../../helpers/compareGrades";
 import { useNotification } from "../../Components/Notification";
 import { formatBadge } from "../../helpers/badgeUtils";
+import { storeSessionId } from "../../helpers/sessionUtils";
 
 const apiClient = new ApiClient();
 
@@ -217,7 +218,8 @@ const Songs = ({ mode }) => {
         grade: value,
       })
       .then((r) => {
-        const { newBadges = [], newTitles = [], isNew } = r.data || {};
+        const { newBadges = [], newTitles = [], isNew, session } = r.data || {};
+        if (session) storeSessionId(session.id);
         if (isNew) {
           notify('New pass!', 'success');
         }
