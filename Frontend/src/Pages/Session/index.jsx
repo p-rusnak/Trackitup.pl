@@ -10,6 +10,7 @@ import {
   TableRow,
   Button,
   Box,
+  Chip,
   ToggleButton,
   ToggleButtonGroup,
   Paper,
@@ -120,7 +121,16 @@ const SessionPage = () => {
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {s.grade ? <img src={grades[s.grade]} alt={s.grade} height={30}/> : "-"}
+                    {s.grade ? (
+                      <>
+                        <img src={grades[s.grade]} alt={s.grade} height={30} />
+                        {s.firstPass && (
+                          <Chip label="New" color="success" size="small" sx={{ ml: 1 }} />
+                        )}
+                      </>
+                    ) : (
+                      "-"
+                    )}
                   </TableCell>
                   <TableCell>
                     <DiffBall className={`${s.mode} ${s.diff}`} />
@@ -149,7 +159,14 @@ const SessionPage = () => {
                 </Box>
                 <Box sx={{ position: "relative", textAlign: "center" }}>
                   <img src={songs[s.song_id]?.img} alt="cover" width={120} />
-                  {s.grade && <GradeImg src={grades[s.grade]} alt={s.grade} />}
+                  {s.grade && (
+                    <>
+                      <GradeImg src={grades[s.grade]} alt={s.grade} />
+                      {s.firstPass && (
+                        <Chip label="New" color="success" size="small" sx={{ position: 'absolute', top: 0, left: 0 }} />
+                      )}
+                    </>
+                  )}
                 </Box>
               </Paper>
             ))}

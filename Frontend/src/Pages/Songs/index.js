@@ -217,7 +217,10 @@ const Songs = ({ mode }) => {
         grade: value,
       })
       .then((r) => {
-        const { newBadges = [], newTitles = [] } = r.data || {};
+        const { newBadges = [], newTitles = [], isNew } = r.data || {};
+        if (isNew) {
+          notify('New pass!', 'success');
+        }
         if (newBadges.length || newTitles.length) {
           const badgeNames = newBadges.map((b) => formatBadge(b));
           notify(
