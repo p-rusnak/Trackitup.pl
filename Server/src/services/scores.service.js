@@ -65,9 +65,28 @@ const getLatestPlayers = async (limit = 10) =>
     },
   });
 
+const getAllScores = async (page = 1, limit = 30) => {
+  const skip = (page - 1) * limit;
+  const results = await prisma.score.findMany({
+    skip,
+    take: limit,
+    orderBy: { id: 'desc' },
+    include: {
+      user: {
+        select: { username: true },
+      },
+    },
+  });
+  const totalResults = await prisma.score.count();
+  const totalPages = Math.ceil(totalResults / limit);
+  return { results, page, limit, totalPages, totalResults };
+};
+
+
 module.exports = {
   getScores,
   createScore,
   getLatestScores,
   getLatestPlayers,
+  getAllScores,
 };

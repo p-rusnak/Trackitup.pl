@@ -76,7 +76,9 @@ const Profile = () => {
     reader.onload = () => {
       const avatarUrl = reader.result;
       setUser((u) => ({ ...u, avatarUrl }));
-      apiClient.updateUser(id, { avatarUrl }).catch((err) => console.error(err));
+      apiClient
+        .updateUser(id, { avatarUrl })
+        .catch((err) => console.error(err));
       if (loggedUser && String(loggedUser.id) === String(id)) {
         setLoggedUser((u) => ({ ...u, avatarUrl }));
       }
@@ -136,12 +138,20 @@ const Profile = () => {
       .map(([diff, vals]) => {
         const stats = { A: 0, S: 0, SS: 0, SSS: 0, total: 0 };
         Object.values(vals).forEach(({ grade }) => {
-          stats.total += 1;
           if (!grade) return;
-          if (grade === "SSS") stats.SSS += 1;
-          else if (grade === "SS") stats.SS += 1;
-          else if (grade === "S") stats.S += 1;
-          else if (grade.startsWith("A")) stats.A += 1;
+          if (grade === "SSS") {
+            stats.SSS += 1;
+            stats.total += 1;
+          } else if (grade === "SS") {
+            stats.SS += 1;
+            stats.total += 1;
+          } else if (grade === "S") {
+            stats.S += 1;
+            stats.total += 1;
+          } else if (grade === "Ap") {
+            stats.A += 1;
+            stats.total += 1;
+          }
         });
         return { diff, ...stats };
       })
@@ -156,8 +166,16 @@ const Profile = () => {
         {user && (
           <Box>
             <AvatarWrapper>
-              <Avatar src={user.avatarUrl || Av} sx={{ width: 80, height: 80 }} />
-              <AddButton onClick={() => fileInputRef.current && fileInputRef.current.click()} size="small">
+              <Avatar
+                src={user.avatarUrl || Av}
+                sx={{ width: 80, height: 80 }}
+              />
+              <AddButton
+                onClick={() =>
+                  fileInputRef.current && fileInputRef.current.click()
+                }
+                size="small"
+              >
                 <AddIcon fontSize="small" />
               </AddButton>
               <input
@@ -174,18 +192,18 @@ const Profile = () => {
             {bestTitle && (
               <Typography variant="subtitle1">Title: {bestTitle}</Typography>
             )}
-          {user.badges?.length > 0 && (
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
-              {user.badges.map((b) => (
-                <Chip key={b} label={formatBadge(b)} size="small" />
-              ))}
-            </Box>
-          )}
-          <Typography sx={{ mt: 1 }}>
-            <Link to="/Titles">Titles info</Link>
-          </Typography>
-        </Box>
-      )}
+            {user.badges?.length > 0 && (
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
+                {user.badges.map((b) => (
+                  <Chip key={b} label={formatBadge(b)} size="small" />
+                ))}
+              </Box>
+            )}
+            <Typography sx={{ mt: 1 }}>
+              <Link to="/Titles">Titles info</Link>
+            </Typography>
+          </Box>
+        )}
       </Section>
       <Section header="Best passes">
         <TablesWrapper>

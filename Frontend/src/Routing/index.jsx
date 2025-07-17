@@ -6,6 +6,7 @@ import {
 import Layout from '../Components/Layout'
 import Songs from '../Pages/Songs'
 import Scores from '../Pages/Scores'
+import AllScores from '../Pages/Scores/All'
 import Leaderboard from '../Pages/Leaderboard'
 import Titles from '../Pages/Titles'
 // import { useDispatch, useSelector } from 'react-redux'
@@ -36,6 +37,10 @@ const router = createHashRouter([
             {
                 path: 'Scores',
                 element: <Scores />
+            },
+            {
+                path: 'ScoresAll',
+                element: <AllScores />
             },
             {
                 path: 'Leaderboard',

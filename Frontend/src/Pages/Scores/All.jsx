@@ -5,24 +5,33 @@ import songs from '../../consts/songs.json';
 import styled from 'styled-components';
 import grades from '../../Assets/Grades';
 import { Link } from 'react-router-dom';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TablePagination,
+} from '@mui/material';
 
 const apiClient = new ApiClient();
 
-const Scores = () => {
-  const [latest, setLatest] = useState([]);
-  const [latestPlayers, setLatestPlayers] = useState([]);
+const AllScores = () => {
+  const [scores, setScores] = useState([]);
+  const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(0);
+  const rowsPerPage = 30;
 
   useEffect(() => {
-    apiClient.getLatestScores().then((res) => setLatest(res.data)).catch(() => {});
-    apiClient.getLatestPlayers()
-      .then((res) => setLatestPlayers(res.data))
-      .catch(() => {});
-  }, []);
+    apiClient.getAllScores(page + 1, rowsPerPage).then((res) => {
+      setScores(res.data.results);
+      setTotal(res.data.totalResults);
+    });
+  }, [page]);
 
   return (
     <>
-      <Section header="Latest scores">
+      <Section header="All scores">
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -34,7 +43,7 @@ const Scores = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {latest.map((s) => (
+            {scores.map((s) => (
               <TableRow key={s.id}>
                 <TableCell>
                   <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
@@ -44,47 +53,27 @@ const Scores = () => {
                   <DiffBall className={`${s.mode} ${s.diff}`} />
                 </TableCell>
                 <TableCell>
-                  {s.grade ? (
-                    <GradeIcon src={grades[s.grade]} alt={s.grade} />
-                  ) : (
-                    '-'
-                  )}
+                  {s.grade ? <GradeIcon src={grades[s.grade]} alt={s.grade} /> : '-'}
                 </TableCell>
                 <TableCell>{new Date(s.createdAt).toLocaleDateString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-        <p>
-          <Link to="/ScoresAll">See all scores</Link>
-        </p>
-      </Section>
-      <Section header="Latest players">
-        <Table size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell>User</TableCell>
-              <TableCell>Date</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {latestPlayers.map((p) => (
-              <TableRow key={p.userId}>
-                <TableCell>
-                  <UserLink to={`/profile/${p.userId}`}>{p.user?.username}</UserLink>
-                </TableCell>
-                <TableCell>{new Date(p.createdAt).toLocaleDateString()}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        <TablePagination
+          component="div"
+          count={total}
+          page={page}
+          onPageChange={(e, p) => setPage(p)}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[rowsPerPage]}
+        />
       </Section>
     </>
   );
 };
 
-export default Scores;
-
+export default AllScores;
 
 const GradeIcon = styled.img`
   height: 20px;
