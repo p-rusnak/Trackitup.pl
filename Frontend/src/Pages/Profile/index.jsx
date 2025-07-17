@@ -36,6 +36,11 @@ const DiffBall = styled.span`
   height: 40px;
 `;
 
+const SongLink = styled(Link)`
+  color: inherit;
+  text-decoration: underline;
+`;
+
 const GradeImg = styled.img`
   height: 40px;
 `;
@@ -232,7 +237,11 @@ const Profile = () => {
             <TableBody>
               {bestSingles.slice(0, 10).map((bp) => (
                 <TableRow key={`${bp.songId}-${bp.diff}`}>
-                  <TableCell>{songs[bp.songId]?.title}</TableCell>
+                  <TableCell>
+                    <SongLink to={`/song/${bp.songId}/${MODES.SINGLE}/${bp.diff}`}> 
+                      {songs[bp.songId]?.title}
+                    </SongLink>
+                  </TableCell>
                   <TableCell>
                     <GradeImg src={grades[bp.grade]} alt={bp.grade} />
                   </TableCell>
@@ -254,7 +263,11 @@ const Profile = () => {
             <TableBody>
               {bestDoubles.slice(0, 10).map((bp) => (
                 <TableRow key={`${bp.songId}-${bp.diff}`}>
-                  <TableCell>{songs[bp.songId]?.title}</TableCell>
+                  <TableCell>
+                    <SongLink to={`/song/${bp.songId}/${MODES.DOUBLE}/${bp.diff}`}> 
+                      {songs[bp.songId]?.title}
+                    </SongLink>
+                  </TableCell>
                   <TableCell>
                     <GradeImg src={grades[bp.grade]} alt={bp.grade} />
                   </TableCell>
@@ -280,7 +293,11 @@ const Profile = () => {
             <TableBody>
               {singleGoals.map((g) => (
                 <TableRow key={`${g.song_id}-${g.diff}`}>
-                  <TableCell>{songs[g.song_id]?.title || g.song_id}</TableCell>
+                  <TableCell>
+                    <SongLink to={`/song/${g.song_id}/${MODES.SINGLE}/${g.diff}`}> 
+                      {songs[g.song_id]?.title || g.song_id}
+                    </SongLink>
+                  </TableCell>
                   <TableCell>
                     <DiffBall className={`${MODES.SINGLE} ${g.diff}`} />
                   </TableCell>
@@ -299,7 +316,11 @@ const Profile = () => {
             <TableBody>
               {doubleGoals.map((g) => (
                 <TableRow key={`${g.song_id}-${g.diff}`}>
-                  <TableCell>{songs[g.song_id]?.title || g.song_id}</TableCell>
+                  <TableCell>
+                    <SongLink to={`/song/${g.song_id}/${MODES.DOUBLE}/${g.diff}`}> 
+                      {songs[g.song_id]?.title || g.song_id}
+                    </SongLink>
+                  </TableCell>
                   <TableCell>
                     <DiffBall className={`${MODES.DOUBLE} ${g.diff}`} />
                   </TableCell>

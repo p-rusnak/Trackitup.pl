@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Section from '../../Components/Layout/Section';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import CheckIcon from '@mui/icons-material/Check';
 import { clearTitles } from '../../consts/titleRequirements';
 import { songBadges, metaBadges } from '../../consts/badges';
@@ -88,7 +90,13 @@ const Titles = () => {
             {badgeRows.map((b) => (
               <TableRow key={b.key}>
                 <TableCell>{formatBadge(b.badge)}</TableCell>
-                <TableCell>{b.song || '-'}</TableCell>
+                <TableCell>
+                  {b.song ? (
+                    <SongLink to={`/song/${b.song}/${b.mode}/${b.diff}`}>{b.song}</SongLink>
+                  ) : (
+                    '-'
+                  )}
+                </TableCell>
                 <TableCell>{b.diff || '-'}</TableCell>
                 <TableCell>{b.mode ? b.mode.replace('item_', '') : '-'}</TableCell>
                 <TableCell>{b.grade || (b.song ? 'SS' : '-')}</TableCell>
@@ -107,3 +115,8 @@ const Titles = () => {
 };
 
 export default Titles;
+
+const SongLink = styled(Link)`
+  color: inherit;
+  text-decoration: underline;
+`;

@@ -170,7 +170,11 @@ const AllScores = () => {
                     <UserLink to={`/profile/${s.userId}`}>{s.user?.username}</UserLink>
                   </Box>
                 </TableCell>
-                <TableCell>{songs[s.song_id]?.title || s.song_id}</TableCell>
+                <TableCell>
+                  <SongLink to={`/song/${s.song_id}/${s.mode}/${s.diff}`}> 
+                    {songs[s.song_id]?.title || s.song_id}
+                  </SongLink>
+                </TableCell>
                 <TableCell>
                   <DiffBall className={`${s.mode} ${s.diff}`} />
                 </TableCell>
@@ -212,6 +216,11 @@ const UserLink = styled(Link)`
   color: inherit;
   text-decoration: underline;
   font-weight: bold;
+`;
+
+const SongLink = styled(Link)`
+  color: inherit;
+  text-decoration: underline;
 `;
 
 const Filters = styled.div`
