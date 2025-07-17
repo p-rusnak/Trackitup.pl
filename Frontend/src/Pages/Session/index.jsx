@@ -365,10 +365,10 @@ const SessionPage = () => {
                   sx={{
                     p: 2,
                     width: 160,
-                    height: 200,
+                    height: 180,
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "space-between",
+                    justifyContent: "flex-start",
                   }}
                 >
                   <Box
@@ -413,6 +413,9 @@ const SessionPage = () => {
         >
           <img src={Logo} alt="logo" height={20} crossOrigin="anonymous" />
           Trackitup.pl
+        </Box>
+        <Box sx={{ mt: 2, textAlign: "center", fontWeight: "bold" }}>
+          {new Date(session.startedAt).toLocaleDateString()}
         </Box>
       </Box>
     </Box>
