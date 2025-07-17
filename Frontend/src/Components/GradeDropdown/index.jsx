@@ -3,9 +3,15 @@ import React from "react";
 import styled from "styled-components";
 import grades from "../../Assets/Grades";
 
-const GradeDropdown = ({ value, label, onChange }) => {
+const GradeDropdown = ({ value, label, onChange, size = "small" }) => {
   return (
-    <Select value={value} label={label} onChange={onChange} defaultValue={"Ap"}>
+    <Select
+      value={value}
+      label={label}
+      onChange={onChange}
+      defaultValue={"Ap"}
+      size={size}
+    >
       <MenuItem value={"SSS"}>
         <Grade src={grades.SSS} />
       </MenuItem>
