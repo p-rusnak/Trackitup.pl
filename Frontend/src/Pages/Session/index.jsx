@@ -117,7 +117,7 @@ const SessionPage = () => {
         document.body.appendChild(script);
       });
     }
-    const canvas = await window.html2canvas(shareRef.current);
+    const canvas = await window.html2canvas(shareRef.current, { useCORS: true });
     const url = canvas.toDataURL('image/png');
     const win = window.open('');
     if (win) {
@@ -184,7 +184,7 @@ const SessionPage = () => {
                   </TableCell>
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                      <img src={songs[s.song_id]?.img} alt="cover" width={40} />
+                      <img src={songs[s.song_id]?.img} alt="cover" width={40} crossOrigin="anonymous" />
                       <SongLink to={`/song/${s.song_id}/${s.mode}/${s.diff}`}>{songs[s.song_id]?.title || s.song_id}</SongLink>
                     </Box>
                   </TableCell>
@@ -231,7 +231,7 @@ const SessionPage = () => {
                   }</SongLink>
                 </Box>
                 <Box sx={{ position: "relative", textAlign: "center" }}>
-                  <img src={songs[s.song_id]?.img} alt="cover" width={120} />
+                  <img src={songs[s.song_id]?.img} alt="cover" width={120} crossOrigin="anonymous" />
                   {s.grade && (
                     <>
                       <GradeImg src={grades[s.grade]} alt={s.grade} />
@@ -265,7 +265,7 @@ const SessionPage = () => {
                     <TableRow key={`share-${s.id}`}> 
                       <TableCell>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <img src={songs[s.song_id]?.img} alt="cover" width={40} />
+                          <img src={songs[s.song_id]?.img} alt="cover" width={40} crossOrigin="anonymous" />
                           <span>{songs[s.song_id]?.title || s.song_id}</span>
                         </Box>
                       </TableCell>
@@ -296,7 +296,7 @@ const SessionPage = () => {
                       <span>{songs[s.song_id]?.title || s.song_id}</span>
                     </Box>
                     <Box sx={{ position: 'relative', textAlign: 'center' }}>
-                      <img src={songs[s.song_id]?.img} alt="cover" width={120} />
+                      <img src={songs[s.song_id]?.img} alt="cover" width={120} crossOrigin="anonymous" />
                       {s.grade && <GradeImg src={grades[s.grade]} alt={s.grade} />}
                     </Box>
                   </Paper>
