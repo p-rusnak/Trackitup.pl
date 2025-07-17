@@ -25,7 +25,6 @@ const Scores = () => {
   const [ongoingSessions, setOngoingSessions] = useState([]);
   const [latestSessions, setLatestSessions] = useState([]);
   const navigate = useNavigate();
-  const loggedIn = Boolean(localStorage.getItem('token'));
 
   useEffect(() => {
     apiClient
@@ -36,16 +35,14 @@ const Scores = () => {
       .getLatestPlayers()
       .then((res) => setLatestPlayers(res.data))
       .catch(() => {});
-    if (loggedIn) {
-      apiClient
-        .getOngoingSessions()
-        .then((res) => setOngoingSessions(res.data))
-        .catch(() => {});
-      apiClient
-        .getAllSessions()
-        .then((res) => setLatestSessions(res.data))
-        .catch(() => {});
-    }
+    apiClient
+      .getOngoingSessions()
+      .then((res) => setOngoingSessions(res.data))
+      .catch(() => {});
+    apiClient
+      .getAllSessions()
+      .then((res) => setLatestSessions(res.data))
+      .catch(() => {});
   }, []);
 
   return (
