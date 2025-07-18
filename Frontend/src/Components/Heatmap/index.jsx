@@ -19,7 +19,9 @@ const DayLabelsWrapper = styled.div`
 `;
 
 const DayLabel = styled.div`
+  margin: 1px 0;
   height: 14px;
+  line-height: 14px;
   font-size: 10px;
   text-align: right;
 `;
