@@ -137,7 +137,7 @@ function NavBar() {
               >
                 {pages
                   .filter(
-                    (p) => p !== "Add Score" || localStorage.getItem("token")
+                    (p) => p !== "Add Score" || (user && user.username === "Snaki")
                   )
                   .map((page) => (
                     <MenuItem
@@ -166,7 +166,7 @@ function NavBar() {
             <Box sx={{ flexGrow: 20, display: { xs: "none", md: "flex" } }}>
               {pages
                 .filter(
-                  (p) => p !== "Add Score" || localStorage.getItem("token")
+                  (p) => p !== "Add Score" || (user && user.username === "Snaki")
                 )
                 .map((page) => (
                   <Button
