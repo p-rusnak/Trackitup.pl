@@ -217,7 +217,11 @@ const SessionPage = () => {
                 <TableCell padding="checkbox">
                   <Checkbox
                     checked={selected.has(s.id)}
-                    onChange={() => toggleSelect(s.id)}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => {
+                      e.stopPropagation();
+                      toggleSelect(s.id);
+                    }}
                   />
                 </TableCell>
                 <TableCell>
@@ -266,7 +270,11 @@ const SessionPage = () => {
             >
               <Checkbox
                 checked={selected.has(s.id)}
-                onChange={() => toggleSelect(s.id)}
+                onClick={(e) => e.stopPropagation()}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  toggleSelect(s.id);
+                }}
               />
               <Paper
                 onClick={() => setOpenScore(s)}
