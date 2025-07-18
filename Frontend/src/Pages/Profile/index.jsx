@@ -127,7 +127,7 @@ const Profile = () => {
     apiClient.listSessions(id).then((r) => setSessions(r.data));
     apiClient.getRivals(id).then((r) => setRivals(r.data));
       apiClient
-        .getDailyScores(id)
+        .getDailyScores(id, undefined, undefined, new Date().getTimezoneOffset())
         .then((r) => {
           const obj = {};
           r.data.forEach((d) => {

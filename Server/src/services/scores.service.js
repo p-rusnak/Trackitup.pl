@@ -185,7 +185,7 @@ const getBestScore = async (mode, songId, diff) => {
   return best;
 };
 
-const getDailyScores = async (userId, from, to) => {
+const getDailyScores = async (userId, from, to, tzOffset = 0) => {
   const where = [`"userId" = $1`];
   const params = [userId];
   if (from) {
@@ -197,7 +197,8 @@ const getDailyScores = async (userId, from, to) => {
     where.push(`"createdAt" <= $${params.length}`);
   }
   const whereClause = where.length ? `WHERE ${where.join(' AND ')}` : '';
-  const query = `SELECT DATE("createdAt") AS date, COUNT(*)::int AS count FROM "Score" ${whereClause} GROUP BY DATE("createdAt") ORDER BY DATE("createdAt")`;
+  const shift = `"createdAt" - INTERVAL '${tzOffset} minute'`;
+  const query = `SELECT DATE(${shift}) AS date, COUNT(*)::int AS count FROM "Score" ${whereClause} GROUP BY DATE(${shift}) ORDER BY DATE(${shift})`;
   return prisma.$queryRawUnsafe(query, ...params);
 };
 

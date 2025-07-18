@@ -82,6 +82,7 @@ const getDailyScores = {
     userId: Joi.string(),
     from: Joi.date(),
     to: Joi.date(),
+    tzOffset: Joi.number(),
   }),
 };
 
