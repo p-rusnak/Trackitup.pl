@@ -752,8 +752,9 @@ const StyledBox = styled(Box)`
   width: 70%;
   max-height: 90vh;
   overflow-y: auto;
-  background: white;
-  boxshadow: 24;
+  background: ${({ theme }) =>
+    theme.palette?.background.paper || "white"};
+  box-shadow: ${({ theme }) => theme.shadows?.[5] || 0};
   padding: 14px;
 `;
 
