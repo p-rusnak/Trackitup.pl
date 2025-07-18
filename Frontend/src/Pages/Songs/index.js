@@ -36,6 +36,7 @@ import compareGrades from "../../helpers/compareGrades";
 import { useNotification } from "../../Components/Notification";
 import { formatBadge } from "../../helpers/badgeUtils";
 import { storeSessionId } from "../../helpers/sessionUtils";
+import grades from "../../Assets/Grades";
 
 const apiClient = new ApiClient();
 
@@ -709,7 +710,13 @@ const Songs = ({ mode }) => {
                       return (
                         <React.Fragment key={`${chart[0]}-${diff}`}>
                           {divider && (
-                            <DividerStyled>{dividerLabel}</DividerStyled>
+                            <DividerStyled>
+                              {sort === "grade" && grades[dividerLabel] ? (
+                                <GradeIcon src={grades[dividerLabel]} alt={dividerLabel} />
+                              ) : (
+                                dividerLabel
+                              )}
+                            </DividerStyled>
                           )}
                           <Thumbnail
                             data={chartData}
@@ -791,6 +798,10 @@ const AccordionDetailsStyled = styled(AccordionDetails)`
 `;
 const DividerStyled = styled(Divider)`
   width: 100%;
+`;
+
+const GradeIcon = styled.img`
+  height: 30px;
 `;
 
 const DiffBall = styled.span`
