@@ -24,6 +24,7 @@ import {
 } from '@mui/material';
 import GradeDropdown from '../../Components/GradeDropdown';
 import Av from '../../Assets/anon.png';
+import ScoreDetailsDialog from '../../Components/ScoreDetailsDialog';
 
 
 const apiClient = new ApiClient();
@@ -42,6 +43,7 @@ const AllScores = () => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [sort, setSort] = useState('createdAt:desc');
+  const [openScore, setOpenScore] = useState(null);
   const rowsPerPage = 30;
 
   const songsOptions = useMemo(
@@ -215,7 +217,12 @@ const AllScores = () => {
           </TableHead>
           <TableBody>
             {scores.map((s) => (
-              <TableRow key={s.id}>
+              <TableRow
+                key={s.id}
+                hover
+                sx={{ cursor: 'pointer' }}
+                onClick={() => setOpenScore(s)}
+              >
                 <TableCell>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Avatar src={s.user?.avatarUrl || Av} sx={{ width: 24, height: 24 }} />
@@ -254,6 +261,11 @@ const AllScores = () => {
           onPageChange={(e, p) => setPage(p)}
           rowsPerPage={rowsPerPage}
           rowsPerPageOptions={[rowsPerPage]}
+        />
+        <ScoreDetailsDialog
+          open={!!openScore}
+          score={openScore}
+          onClose={() => setOpenScore(null)}
         />
       </Section>
     </>

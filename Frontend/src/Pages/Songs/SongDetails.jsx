@@ -27,6 +27,7 @@ import styled from "styled-components";
 import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
+import ScoreDetailsDialog from "../../Components/ScoreDetailsDialog";
 
 const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history = [], removeScore, rivalScores = [], bestScore }) => {
   const [grade, setGrade] = useState(chart.grade || "");
@@ -34,6 +35,7 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
   const [goal, setGoal] = useState(false);
   const [showAccurate, setShowAccurate] = useState(false);
+  const [openScore, setOpenScore] = useState(null);
   const [perf, setPerf] = useState(0);
   const [great, setGreat] = useState(0);
   const [good, setGood] = useState(0);
@@ -279,7 +281,12 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
                   </TableHead>
                   <TableBody>
                     {history.map((h) => (
-                      <TableRow key={h.id}>
+                      <TableRow
+                        key={h.id}
+                        hover
+                        sx={{ cursor: 'pointer' }}
+                        onClick={() => setOpenScore(h)}
+                      >
                         <TableCell>
                           {h.grade ? (
                             <>
@@ -311,6 +318,11 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
           </>
         )}
       </Content>
+      <ScoreDetailsDialog
+        open={!!openScore}
+        score={openScore}
+        onClose={() => setOpenScore(null)}
+      />
     </Container>
   );
 };
