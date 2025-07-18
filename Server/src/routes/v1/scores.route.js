@@ -14,7 +14,7 @@ router.route('/all').get(validate(scoresValidation.getAllScores), scoresControll
 
 router
   .route('/daily')
-  .get(auth('getScores'), validate(scoresValidation.getDailyScores), scoresController.getDailyScores);
+  .get(validate(scoresValidation.getDailyScores), scoresController.getDailyScores);
 
 router
   .route('/history/:mode/:songId/:diff')

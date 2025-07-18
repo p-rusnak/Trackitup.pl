@@ -29,8 +29,12 @@ const getBestScore = catchAsync(async (req, res) => {
 });
 
 const getDailyScores = catchAsync(async (req, res) => {
-    const userId = req.query.userId || req.user.id;
+    const userId = req.query.userId || req.user?.id;
     const { from, to } = req.query;
+    if (!userId) {
+        res.status(httpStatus.BAD_REQUEST).send({ message: 'userId is required' });
+        return;
+    }
     const data = await scoresService.getDailyScores(userId, from, to);
     res.send(data);
 });
