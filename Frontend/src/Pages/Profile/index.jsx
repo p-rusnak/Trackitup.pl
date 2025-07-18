@@ -126,15 +126,16 @@ const Profile = () => {
     apiClient.getGoals(MODES.DOUBLE, id).then((r) => setDoubleGoals(r.data));
     apiClient.listSessions(id).then((r) => setSessions(r.data));
     apiClient.getRivals(id).then((r) => setRivals(r.data));
-    apiClient
-      .getDailyScores(id)
-      .then((r) => {
-        const obj = {};
-        r.data.forEach((d) => {
-          obj[d.date] = d.count;
-        });
-        setDailyCounts(obj);
-      })
+      apiClient
+        .getDailyScores(id)
+        .then((r) => {
+          const obj = {};
+          r.data.forEach((d) => {
+            const key = new Date(d.date).toISOString().slice(0, 10);
+            obj[key] = d.count;
+          });
+          setDailyCounts(obj);
+        })
       .catch(() => {});
     if (loggedUser) {
       apiClient.getRivals().then((r) => setMyRivals(r.data));
