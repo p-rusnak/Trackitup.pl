@@ -3,30 +3,8 @@ const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const scoresValidation = require('../../validations/scores.validation');
 const scoresController = require('../../controllers/scores.controller');
-const multer = require('multer');
-const { spawn } = require('child_process');
-const path = require('path');
-const fs = require('fs');
 
 const router = express.Router();
-
-router.route('/ocr').post(upload.single('scoreImage'), (req, res) => {
-  const imagePath = req.file.path;
-
-  const scriptPath = path.join(__dirname, '../../../ocr/ocr_piupump.py');
-  const py = spawn('python3', [scriptPath, imagePath]);
-  let data = '';
-  py.stdout.on('data', (chunk) => (data += chunk));
-  py.on('close', (code) => {
-    fs.unlinkSync(imagePath); // cleanup file
-    try {
-      const result = JSON.parse(data);
-      res.json(result);
-    } catch (e) {
-      res.status(500).json({ error: 'OCR failed', details: data });
-    }
-  });
-});
 
 router.route('/latest').get(validate(scoresValidation.getLatestScores), scoresController.getLatestScores);
 
@@ -46,8 +24,6 @@ router
   .route('/:mode')
   .post(auth('postScores'), validate(scoresValidation.createScore), scoresController.postScore)
   .get(auth('getScores'), validate(scoresValidation.getScores), scoresController.getScores);
-
-const upload = multer({ dest: 'uploads/' });
 
 module.exports = router;
 
