@@ -274,6 +274,12 @@ const Profile = () => {
                 )}
               </Box>
             )}
+            {Object.keys(dailyCounts).length > 0 && (
+              <Box sx={{ mt: 2 }}>
+                <Typography variant="h6">Daily activity</Typography>
+                <CalendarHeatmap counts={dailyCounts} />
+              </Box>
+            )}
           </Box>
         )}
       </Section>
@@ -296,11 +302,6 @@ const Profile = () => {
           )}
         </Box>
       </Section>
-      {Object.keys(dailyCounts).length > 0 && (
-        <Section header="Daily activity">
-          <CalendarHeatmap counts={dailyCounts} />
-        </Section>
-      )}
       {sessions.length > 0 && (
         <Section header="Your sessions">
           <Table size="small">
