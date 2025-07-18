@@ -92,9 +92,7 @@ const Profile = () => {
     const avatarUrl = avatarUrlInput.trim();
     if (!avatarUrl) return;
     setUser((u) => ({ ...u, avatarUrl }));
-    apiClient
-      .updateUser(id, { avatarUrl })
-      .catch((err) => console.error(err));
+    apiClient.updateUser(id, { avatarUrl }).catch((err) => console.error(err));
     if (loggedUser && String(loggedUser.id) === String(id)) {
       setLoggedUser((u) => ({ ...u, avatarUrl }));
     }
@@ -126,16 +124,16 @@ const Profile = () => {
     apiClient.getGoals(MODES.DOUBLE, id).then((r) => setDoubleGoals(r.data));
     apiClient.listSessions(id).then((r) => setSessions(r.data));
     apiClient.getRivals(id).then((r) => setRivals(r.data));
-      apiClient
-        .getDailyScores(id, undefined, undefined, new Date().getTimezoneOffset())
-        .then((r) => {
-          const obj = {};
-          r.data.forEach((d) => {
-            const key = new Date(d.date).toISOString().slice(0, 10);
-            obj[key] = d.count;
-          });
-          setDailyCounts(obj);
-        })
+    apiClient
+      .getDailyScores(id, undefined, undefined, new Date().getTimezoneOffset())
+      .then((r) => {
+        const obj = {};
+        r.data.forEach((d) => {
+          const key = new Date(d.date).toISOString().slice(0, 10);
+          obj[key] = d.count;
+        });
+        setDailyCounts(obj);
+      })
       .catch(() => {});
     if (loggedUser) {
       apiClient.getRivals().then((r) => setMyRivals(r.data));
@@ -263,15 +261,21 @@ const Profile = () => {
                 <Button
                   size="small"
                   onClick={handleAddRival}
-                  disabled={myRivals.some((r) => r.id === user.id) || myRivals.length >= 5}
+                  disabled={
+                    myRivals.some((r) => r.id === user.id) ||
+                    myRivals.length >= 5
+                  }
                 >
-                  {myRivals.some((r) => r.id === user.id) ? 'Rival added' : 'Add as rival'}
+                  {myRivals.some((r) => r.id === user.id)
+                    ? "Rival added"
+                    : "Add as rival"}
                 </Button>
-                {myRivals.length >= 5 && !myRivals.some((r) => r.id === user.id) && (
-                  <Typography variant="caption" sx={{ ml: 1 }}>
-                    You already selected 5 rivals
-                  </Typography>
-                )}
+                {myRivals.length >= 5 &&
+                  !myRivals.some((r) => r.id === user.id) && (
+                    <Typography variant="caption" sx={{ ml: 1 }}>
+                      You already selected 5 rivals
+                    </Typography>
+                  )}
               </Box>
             )}
             {Object.keys(dailyCounts).length > 0 && (
@@ -284,16 +288,25 @@ const Profile = () => {
         )}
       </Section>
       <Section header="Rivals">
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
           {rivals.length === 0 ? (
             <Typography variant="body2">No rivals yet</Typography>
           ) : (
             rivals.slice(0, 5).map((r) => (
-              <Box key={r.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Avatar src={r.avatarUrl || Av} sx={{ width: 40, height: 40 }} />
+              <Box
+                key={r.id}
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <Avatar
+                  src={r.avatarUrl || Av}
+                  sx={{ width: 40, height: 40 }}
+                />
                 <Link to={`/profile/${r.id}`}>{r.username}</Link>
                 {isOwnProfile && (
-                  <IconButton size="small" onClick={() => handleRemoveRival(r.id)}>
+                  <IconButton
+                    size="small"
+                    onClick={() => handleRemoveRival(r.id)}
+                  >
                     <ClearIcon fontSize="small" />
                   </IconButton>
                 )}
@@ -303,7 +316,7 @@ const Profile = () => {
         </Box>
       </Section>
       {sessions.length > 0 && (
-        <Section header="Your sessions">
+        <Section header="Sessions">
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -315,11 +328,20 @@ const Profile = () => {
             <TableBody>
               {sessions.map((s) => (
                 <TableRow key={s.id} component={Link} to={`/session/${s.id}`}>
-                  <TableCell>{new Date(s.startedAt).toLocaleString()}</TableCell>
                   <TableCell>
-                    {Math.round((new Date(s.endedAt || s.lastScore) - new Date(s.startedAt)) / 60000)}m
+                    {new Date(s.startedAt).toLocaleString()}
                   </TableCell>
-                  <TableCell>{s._count?.scores || s.scores?.length || 0}</TableCell>
+                  <TableCell>
+                    {Math.round(
+                      (new Date(s.endedAt || s.lastScore) -
+                        new Date(s.startedAt)) /
+                        60000
+                    )}
+                    m
+                  </TableCell>
+                  <TableCell>
+                    {s._count?.scores || s.scores?.length || 0}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -343,7 +365,9 @@ const Profile = () => {
               {bestSingles.slice(0, 10).map((bp) => (
                 <TableRow key={`${bp.songId}-${bp.diff}`}>
                   <TableCell>
-                    <SongLink to={`/song/${bp.songId}/${MODES.SINGLE}/${bp.diff}`}> 
+                    <SongLink
+                      to={`/song/${bp.songId}/${MODES.SINGLE}/${bp.diff}`}
+                    >
                       {songs[bp.songId]?.title}
                     </SongLink>
                   </TableCell>
@@ -369,7 +393,9 @@ const Profile = () => {
               {bestDoubles.slice(0, 10).map((bp) => (
                 <TableRow key={`${bp.songId}-${bp.diff}`}>
                   <TableCell>
-                    <SongLink to={`/song/${bp.songId}/${MODES.DOUBLE}/${bp.diff}`}> 
+                    <SongLink
+                      to={`/song/${bp.songId}/${MODES.DOUBLE}/${bp.diff}`}
+                    >
                       {songs[bp.songId]?.title}
                     </SongLink>
                   </TableCell>
@@ -388,52 +414,56 @@ const Profile = () => {
       {(singleGoals.length > 0 || doubleGoals.length > 0) && (
         <Section header="Goals">
           <TablesWrapper>
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell align="center" colSpan={2}>
-                  Singles
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {singleGoals.map((g) => (
-                <TableRow key={`${g.song_id}-${g.diff}`}>
-                  <TableCell>
-                    <SongLink to={`/song/${g.song_id}/${MODES.SINGLE}/${g.diff}`}> 
-                      {songs[g.song_id]?.title || g.song_id}
-                    </SongLink>
-                  </TableCell>
-                  <TableCell>
-                    <DiffBall className={`${MODES.SINGLE} ${g.diff}`} />
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center" colSpan={2}>
+                    Singles
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell align="center" colSpan={2}>
-                  Doubles
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {doubleGoals.map((g) => (
-                <TableRow key={`${g.song_id}-${g.diff}`}>
-                  <TableCell>
-                    <SongLink to={`/song/${g.song_id}/${MODES.DOUBLE}/${g.diff}`}> 
-                      {songs[g.song_id]?.title || g.song_id}
-                    </SongLink>
-                  </TableCell>
-                  <TableCell>
-                    <DiffBall className={`${MODES.DOUBLE} ${g.diff}`} />
+              </TableHead>
+              <TableBody>
+                {singleGoals.map((g) => (
+                  <TableRow key={`${g.song_id}-${g.diff}`}>
+                    <TableCell>
+                      <SongLink
+                        to={`/song/${g.song_id}/${MODES.SINGLE}/${g.diff}`}
+                      >
+                        {songs[g.song_id]?.title || g.song_id}
+                      </SongLink>
+                    </TableCell>
+                    <TableCell>
+                      <DiffBall className={`${MODES.SINGLE} ${g.diff}`} />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center" colSpan={2}>
+                    Doubles
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {doubleGoals.map((g) => (
+                  <TableRow key={`${g.song_id}-${g.diff}`}>
+                    <TableCell>
+                      <SongLink
+                        to={`/song/${g.song_id}/${MODES.DOUBLE}/${g.diff}`}
+                      >
+                        {songs[g.song_id]?.title || g.song_id}
+                      </SongLink>
+                    </TableCell>
+                    <TableCell>
+                      <DiffBall className={`${MODES.DOUBLE} ${g.diff}`} />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </TablesWrapper>
         </Section>
       )}
