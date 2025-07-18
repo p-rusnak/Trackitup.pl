@@ -40,6 +40,8 @@ export class ApiClient {
     client.get("scores/latestPlayers", { params: { limit } });
   getAllScores = (page, limit, filters = {}, sortBy) =>
     client.get("scores/all", { params: { page, limit, sortBy, ...filters } });
+  getDailyScores = (userId, from, to) =>
+    client.get("scores/daily", { params: { userId, from, to } });
 
   getScoreHistory = (mode, songId, diff, userId) =>
     client.get(`scores/history/${mode}/${songId}/${diff}`, {

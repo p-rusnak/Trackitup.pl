@@ -13,6 +13,10 @@ router.route('/latestPlayers').get(validate(scoresValidation.getLatestPlayers), 
 router.route('/all').get(validate(scoresValidation.getAllScores), scoresController.getAllScores);
 
 router
+  .route('/daily')
+  .get(auth('getScores'), validate(scoresValidation.getDailyScores), scoresController.getDailyScores);
+
+router
   .route('/history/:mode/:songId/:diff')
   .get(auth('getScores'), validate(scoresValidation.getScoreHistory), scoresController.getScoreHistory);
 

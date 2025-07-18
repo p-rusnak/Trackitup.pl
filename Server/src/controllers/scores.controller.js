@@ -28,6 +28,13 @@ const getBestScore = catchAsync(async (req, res) => {
     res.send(score);
 });
 
+const getDailyScores = catchAsync(async (req, res) => {
+    const userId = req.query.userId || req.user.id;
+    const { from, to } = req.query;
+    const data = await scoresService.getDailyScores(userId, from, to);
+    res.send(data);
+});
+
 const postScore = catchAsync(async (req, res) => {
     const result = await scoresService.createScore(req.body, req.params.mode, req.user);
     res.status(httpStatus.CREATED).send(result);
@@ -80,4 +87,5 @@ module.exports = {
     getLatestScores,
     getLatestPlayers,
     getAllScores,
+    getDailyScores,
 };

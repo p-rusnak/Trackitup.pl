@@ -77,6 +77,14 @@ const getBestScore = {
   }),
 };
 
+const getDailyScores = {
+  query: Joi.object().keys({
+    userId: Joi.string(),
+    from: Joi.date(),
+    to: Joi.date(),
+  }),
+};
+
 module.exports = {
   createScore,
   getScores,
@@ -86,4 +94,5 @@ module.exports = {
   getLatestPlayers,
   getAllScores,
   deleteScore,
+  getDailyScores,
 };

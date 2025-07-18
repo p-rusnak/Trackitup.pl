@@ -18,6 +18,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ApiClient } from "../../API/httpService";
+import CalendarHeatmap from "../../Components/Heatmap";
 import songs from "../../consts/songs.json";
 import compareGrades from "../../helpers/compareGrades";
 import grades from "../../Assets/Grades";
@@ -81,6 +82,7 @@ const Profile = () => {
   const [sessions, setSessions] = useState([]);
   const [rivals, setRivals] = useState([]);
   const [myRivals, setMyRivals] = useState([]);
+  const [dailyCounts, setDailyCounts] = useState({});
   const [showAvatarInput, setShowAvatarInput] = useState(false);
   const [avatarUrlInput, setAvatarUrlInput] = useState("");
   const { user: loggedUser, setUser: setLoggedUser } = useUser();
@@ -124,6 +126,16 @@ const Profile = () => {
     apiClient.getGoals(MODES.DOUBLE, id).then((r) => setDoubleGoals(r.data));
     apiClient.listSessions(id).then((r) => setSessions(r.data));
     apiClient.getRivals(id).then((r) => setRivals(r.data));
+    apiClient
+      .getDailyScores(id)
+      .then((r) => {
+        const obj = {};
+        r.data.forEach((d) => {
+          obj[d.date] = d.count;
+        });
+        setDailyCounts(obj);
+      })
+      .catch(() => {});
     if (loggedUser) {
       apiClient.getRivals().then((r) => setMyRivals(r.data));
     }
@@ -283,6 +295,11 @@ const Profile = () => {
           )}
         </Box>
       </Section>
+      {Object.keys(dailyCounts).length > 0 && (
+        <Section header="Daily activity">
+          <CalendarHeatmap counts={dailyCounts} />
+        </Section>
+      )}
       {sessions.length > 0 && (
         <Section header="Your sessions">
           <Table size="small">

@@ -184,6 +184,22 @@ const getBestScore = async (mode, songId, diff) => {
   return best;
 };
 
+const getDailyScores = async (userId, from, to) => {
+  const where = [`"userId" = $1`];
+  const params = [userId];
+  if (from) {
+    params.push(new Date(from));
+    where.push(`"createdAt" >= $${params.length}`);
+  }
+  if (to) {
+    params.push(new Date(to));
+    where.push(`"createdAt" <= $${params.length}`);
+  }
+  const whereClause = where.length ? `WHERE ${where.join(' AND ')}` : '';
+  const query = `SELECT DATE("createdAt") AS date, COUNT(*)::int AS count FROM "Score" ${whereClause} GROUP BY DATE("createdAt") ORDER BY DATE("createdAt")`;
+  return prisma.$queryRawUnsafe(query, ...params);
+};
+
 const deleteScore = async (id, userId) => {
   const score = await prisma.score.findUnique({ where: { id } });
   if (!score || score.userId !== userId) return null;
@@ -202,4 +218,5 @@ module.exports = {
   deleteScore,
   getGradeIndex,
   getBestScore,
+  getDailyScores,
 };
