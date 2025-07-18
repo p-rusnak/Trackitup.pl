@@ -23,6 +23,7 @@ import { useUser } from "../../Components/User";
 import styled from "styled-components";
 import { storeSessionId } from "../../helpers/sessionUtils";
 import Logo from "../../Assets/logoSq.png";
+import ScoreDetailsDialog from "../../Components/ScoreDetailsDialog";
 
 const api = new ApiClient();
 
@@ -84,6 +85,7 @@ const SessionPage = () => {
   const [session, setSession] = useState(null);
   const [view, setView] = useState("list");
   const [selected, setSelected] = useState(new Set());
+  const [openScore, setOpenScore] = useState(null);
   const shareRef = useRef(null);
   const navigate = useNavigate();
   const { user } = useUser();
@@ -209,7 +211,12 @@ const SessionPage = () => {
           </TableHead>
           <TableBody>
             {session.scores.map((s) => (
-              <TableRow key={s.id}>
+              <TableRow
+                key={s.id}
+                hover
+                sx={{ cursor: 'pointer' }}
+                onClick={() => setOpenScore(s)}
+              >
                 <TableCell padding="checkbox">
                   <Checkbox
                     checked={selected.has(s.id)}
@@ -265,6 +272,7 @@ const SessionPage = () => {
                 onChange={() => toggleSelect(s.id)}
               />
               <Paper
+                onClick={() => setOpenScore(s)}
                 sx={{
                   p: 2,
                   width: 160,
@@ -272,6 +280,7 @@ const SessionPage = () => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  cursor: "pointer",
                 }}
               >
                 <Box
@@ -437,6 +446,11 @@ const SessionPage = () => {
           <img src={Logo} alt="logo" height={20} crossOrigin="anonymous" />
           {new Date(session.startedAt).toLocaleDateString()} - Trackitup.pl
         </Box>
+        <ScoreDetailsDialog
+          open={!!openScore}
+          score={openScore}
+          onClose={() => setOpenScore(null)}
+        />
       </Box>
     </Box>
   );
