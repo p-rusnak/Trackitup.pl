@@ -1,5 +1,5 @@
 // Grade order from best to worst
-// SSS > SS > S > Ap > Bp > Cp > Dp > A > B > C > D > F
+// SSS > SS > S > Ap > Bp > Cp > Dp > A > B > C > D > F > Failed
 const gradeOrder = [
     'SSS',
     'SS',
@@ -13,6 +13,7 @@ const gradeOrder = [
     'C',
     'D',
     'F',
+    'Failed',
 ]
 
 const compareGrades = (a, b) => {

@@ -100,7 +100,7 @@ const filterItems = (a, details, mode, diff, hidden, hideScore, tags) => {
     (details[mode][diff] && details[mode][diff][a[0]]?.grade) || undefined;
   if (hidden.pass) {
     if (grade) show = false;
-    if (["A", "B", "C", "D", "F", undefined].includes(grade)) show = true;
+    if (["A", "B", "C", "D", "F", "Failed", undefined].includes(grade)) show = true;
   }
   if (hidden.played) {
     if (grade) show = false;

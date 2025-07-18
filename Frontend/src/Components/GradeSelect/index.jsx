@@ -5,7 +5,7 @@ import grades from '../../Assets/Grades'
 
 const GradeSelect = ({ value, label, onChange }) => {
     const mainGrades = ['SS', 'S', 'Ap', 'A']
-    const otherGrades = ['SSS', 'Bp', 'Cp', 'Dp', 'B', 'C', 'D', 'F']
+    const otherGrades = ['SSS', 'Bp', 'Cp', 'Dp', 'B', 'C', 'D', 'F', 'Failed']
 
     const otherValue = otherGrades.includes(value) ? value : ''
 

@@ -48,6 +48,9 @@ const GradeDropdown = ({ value, label, onChange, size = "small" }) => {
       <MenuItem value={"F"}>
         <Grade src={grades.F} />
       </MenuItem>
+      <MenuItem value={"Failed"}>
+        <Grade src={grades.Failed} />
+      </MenuItem>
     </Select>
   );
 };
