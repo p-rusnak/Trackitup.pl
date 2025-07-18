@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Section from "../../Components/Layout/Section";
 import { ApiClient } from "../../API/httpService";
 import { Button, Box } from "@mui/material";
+import { useUser } from "../../Components/User";
 
 const apiClient = new ApiClient();
 
 const AddScore = () => {
+  const { user } = useUser();
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -19,6 +21,12 @@ const AddScore = () => {
       .catch(() => setResult(null))
       .finally(() => setLoading(false));
   };
+
+  if (!user || user.username !== "Snaki") {
+    return (
+      <Section header="Add Score">Only Snaki can access this page.</Section>
+    );
+  }
 
   return (
     <Section header="Add Score">
