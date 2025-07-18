@@ -3,12 +3,25 @@ import styled from 'styled-components';
 
 const LabelsWrapper = styled.div`
   display: flex;
-  margin-left: 14px;
+  margin-left: 0;
 `;
 const MonthLabel = styled.div`
   width: 14px;
   font-size: 10px;
   text-align: center;
+`;
+
+const DayLabelsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 4px;
+  width: 20px;
+`;
+
+const DayLabel = styled.div`
+  height: 14px;
+  font-size: 10px;
+  text-align: right;
 `;
 
 const Wrapper = styled.div`
@@ -46,9 +59,9 @@ const CalendarHeatmap = ({ counts }) => {
     weeks.push(days.slice(i, i + 7));
   }
   const monthLabels = weeks.map((week) => {
-    const first = week.find((v) => v);
-    if (first && first.date.getDate() === 1) {
-      return first.date.toLocaleString('default', { month: 'short' });
+    const firstOfMonth = week.find((v) => v && v.date.getDate() === 1);
+    if (firstOfMonth) {
+      return firstOfMonth.date.toLocaleString('default', { month: 'short' });
     }
     return '';
   });
@@ -61,27 +74,35 @@ const CalendarHeatmap = ({ counts }) => {
     if (t > 0.25) return 2;
     return 1;
   };
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   return (
-    <div>
-      <LabelsWrapper>
-        {monthLabels.map((m, i) => (
-          <MonthLabel key={i}>{m}</MonthLabel>
+    <div style={{ display: 'flex' }}>
+      <DayLabelsWrapper>
+        {daysOfWeek.map((d) => (
+          <DayLabel key={d}>{d}</DayLabel>
         ))}
-      </LabelsWrapper>
-      <Wrapper>
-        {weeks.map((week, i) => (
-          <Column key={i}>
-            {Array.from({ length: 7 }).map((_, j) => {
-              const day = week[j];
-              const count = day ? day.count : 0;
-              const dt = day ? dateKey(day.date) : '';
-              return (
-                <Cell key={j} level={level(count)} title={`${dt}: ${count}`} />
-              );
-            })}
-          </Column>
-        ))}
-      </Wrapper>
+      </DayLabelsWrapper>
+      <div>
+        <LabelsWrapper>
+          {monthLabels.map((m, i) => (
+            <MonthLabel key={i}>{m}</MonthLabel>
+          ))}
+        </LabelsWrapper>
+        <Wrapper>
+          {weeks.map((week, i) => (
+            <Column key={i}>
+              {Array.from({ length: 7 }).map((_, j) => {
+                const day = week[j];
+                const count = day ? day.count : 0;
+                const dt = day ? dateKey(day.date) : '';
+                return (
+                  <Cell key={j} level={level(count)} title={`${dt}: ${count}`} />
+                );
+              })}
+            </Column>
+          ))}
+        </Wrapper>
+      </div>
     </div>
   );
 };
