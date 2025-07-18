@@ -310,6 +310,34 @@ const Songs = ({ mode }) => {
     });
   };
 
+  const removeScore = (sid) => {
+    apiClient.deleteScore(sid).then(() => {
+      apiClient
+        .getScores(openChart.mode)
+        .then((r) => {
+          const grade =
+            r.data?.[openChart.diff]?.[openChart.id]?.grade || "";
+          if (grade) {
+            if (details[openChart.mode][openChart.diff]) {
+              details[openChart.mode][openChart.diff][openChart.id] = {
+                grade,
+              };
+            } else {
+              details[openChart.mode][openChart.diff] = {
+                [openChart.id]: { grade },
+              };
+            }
+          } else if (details[openChart.mode]?.[openChart.diff]) {
+            delete details[openChart.mode][openChart.diff][openChart.id];
+          }
+          setOpenChart((c) => (c ? { ...c, grade } : c));
+        });
+      apiClient
+        .getScoreHistory(openChart.mode, openChart.id, openChart.diff)
+        .then((r) => setHistory(r.data));
+    });
+  };
+
   const shouldDisplayDiff = (diff) => {
     const prefix1 = search?.p1Diff > 9 ? "lv_" : "lv_0";
     const prefix2 = search?.p2Diff > 9 ? "lv_" : "lv_0";
@@ -353,6 +381,7 @@ const Songs = ({ mode }) => {
             changeDiff={changeDiff}
             history={history}
             rivalScores={rivalScores}
+            removeScore={removeScore}
           />
         </StyledBox>
       </Modal>
