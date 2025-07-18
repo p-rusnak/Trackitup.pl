@@ -19,6 +19,7 @@ const gradeOrder = [
   'C',
   'D',
   'F',
+  'Failed',
 ];
 const gradeBetterOrEqual = (a, b) => {
   if (!a) return false;

@@ -15,6 +15,7 @@ const gradeOrder = [
   'C',
   'D',
   'F',
+  'Failed',
 ];
 
 const passGrades = ['SSS', 'SS', 'S', 'Ap', 'Bp', 'Cp', 'Dp'];
