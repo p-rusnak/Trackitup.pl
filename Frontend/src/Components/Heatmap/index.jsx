@@ -49,7 +49,7 @@ const CalendarHeatmap = ({ counts }) => {
   start.setDate(start.getDate() - 364);
   start.setHours(0, 0, 0, 0);
   const startDay = start.getDay();
-  start.setDate(start.getDate() - startDay);
+  start.setDate(start.getDate() - ((startDay + 6) % 7));
 
   const dateKey = (d) =>
     `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
@@ -82,7 +82,7 @@ const CalendarHeatmap = ({ counts }) => {
     if (t > 0.25) return 2;
     return 1;
   };
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   return (
     <div style={{ display: "flex" }}>
       <DayLabelsWrapper>
