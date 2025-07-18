@@ -35,6 +35,7 @@ const Cell = styled.div`
   width: 12px;
   height: 12px;
   margin: 1px;
+  visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
   background-color: ${({ level }) => ['#ebedf0','#c6e48b','#7bc96f','#239a3b','#196127'][level]};
 `;
 
@@ -95,8 +96,14 @@ const CalendarHeatmap = ({ counts }) => {
                 const day = week[j];
                 const count = day ? day.count : 0;
                 const dt = day ? dateKey(day.date) : '';
+                const hidden = !day;
                 return (
-                  <Cell key={j} level={level(count)} title={`${dt}: ${count}`} />
+                  <Cell
+                    key={j}
+                    level={level(count)}
+                    title={`${dt}: ${count}`}
+                    hidden={hidden}
+                  />
                 );
               })}
             </Column>
