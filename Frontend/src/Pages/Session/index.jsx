@@ -24,6 +24,7 @@ import styled from "styled-components";
 import { storeSessionId } from "../../helpers/sessionUtils";
 import Logo from "../../Assets/logoSq.png";
 import ScoreDetailsDialog from "../../Components/ScoreDetailsDialog";
+import ShareImageDialog from "../../Components/ShareImageDialog";
 
 const api = new ApiClient();
 
@@ -86,6 +87,7 @@ const SessionPage = () => {
   const [view, setView] = useState("list");
   const [selected, setSelected] = useState(new Set());
   const [openScore, setOpenScore] = useState(null);
+  const [shareUrl, setShareUrl] = useState(null);
   const shareRef = useRef(null);
   const navigate = useNavigate();
   const { user } = useUser();
@@ -156,12 +158,7 @@ const SessionPage = () => {
       useCORS: true,
     });
     const url = canvas.toDataURL("image/png");
-    const win = window.open("");
-    if (win) {
-      const img = new Image();
-      img.src = url;
-      win.document.body.appendChild(img);
-    }
+    setShareUrl(url);
   };
 
   if (!session) return <p>{id ? "Session not found" : "No active session"}</p>;
@@ -452,6 +449,11 @@ const SessionPage = () => {
           onClose={() => setOpenScore(null)}
         />
       </Box>
+      <ShareImageDialog
+        open={!!shareUrl}
+        url={shareUrl}
+        onClose={() => setShareUrl(null)}
+      />
     </Box>
   );
 };
