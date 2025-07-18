@@ -3,44 +3,51 @@ const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const scoresValidation = require('../../validations/scores.validation');
 const scoresController = require('../../controllers/scores.controller');
+const multer = require('multer');
+const { spawn } = require('child_process');
+const path = require('path');
+const fs = require('fs');
 
 const router = express.Router();
 
-router
-  .route('/latest')
-  .get(validate(scoresValidation.getLatestScores), scoresController.getLatestScores);
+router.route('/latest').get(validate(scoresValidation.getLatestScores), scoresController.getLatestScores);
 
-router
-  .route('/latestPlayers')
-  .get(validate(scoresValidation.getLatestPlayers), scoresController.getLatestPlayers);
+router.route('/latestPlayers').get(validate(scoresValidation.getLatestPlayers), scoresController.getLatestPlayers);
 
-router
-  .route('/all')
-  .get(validate(scoresValidation.getAllScores), scoresController.getAllScores);
+router.route('/all').get(validate(scoresValidation.getAllScores), scoresController.getAllScores);
 
 router
   .route('/history/:mode/:songId/:diff')
-  .get(
-    auth('getScores'),
-    validate(scoresValidation.getScoreHistory),
-    scoresController.getScoreHistory,
-  );
+  .get(auth('getScores'), validate(scoresValidation.getScoreHistory), scoresController.getScoreHistory);
 
-router
-  .route('/best/:mode/:songId/:diff')
-  .get(
-    validate(scoresValidation.getBestScore),
-    scoresController.getBestScore,
-  );
+router.route('/best/:mode/:songId/:diff').get(validate(scoresValidation.getBestScore), scoresController.getBestScore);
 
-router
-  .route('/:id')
-  .delete(auth('postScores'), validate(scoresValidation.deleteScore), scoresController.deleteScore);
+router.route('/:id').delete(auth('postScores'), validate(scoresValidation.deleteScore), scoresController.deleteScore);
 
 router
   .route('/:mode')
   .post(auth('postScores'), validate(scoresValidation.createScore), scoresController.postScore)
   .get(auth('getScores'), validate(scoresValidation.getScores), scoresController.getScores);
+
+const upload = multer({ dest: 'uploads/' });
+
+router.route('/ocr').post(upload.single('scoreImage'), (req, res) => {
+  const imagePath = req.file.path;
+
+  // Call Python OCR script
+  const py = spawn('python3', ['ocr_piupump.py', imagePath]);
+  let data = '';
+  py.stdout.on('data', (chunk) => (data += chunk));
+  py.on('close', (code) => {
+    fs.unlinkSync(imagePath); // cleanup file
+    try {
+      const result = JSON.parse(data);
+      res.json(result);
+    } catch (e) {
+      res.status(500).json({ error: 'OCR failed', details: data });
+    }
+  });
+});
 
 module.exports = router;
 
