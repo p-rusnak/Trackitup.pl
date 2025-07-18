@@ -12,6 +12,7 @@ const SongPage = () => {
   const [chart, setChart] = useState(null);
   const [history, setHistory] = useState([]);
   const [rivalScores, setRivalScores] = useState([]);
+  const [bestScore, setBestScore] = useState(null);
   const { user } = useUser();
   const [favorites, setFavorites] = useState(() => {
     const stored = localStorage.getItem("favorites");
@@ -33,6 +34,7 @@ const SongPage = () => {
     } else {
       setChart({ id, ...song, diff, mode, fav });
     }
+    api.getBestScore(mode, id, diff).then((r) => setBestScore(r.data));
   }, [id, diff, mode, favorites]);
 
   const changeGrade = (value) => {
@@ -85,6 +87,7 @@ const SongPage = () => {
         changeDiff={changeDiff}
         history={history}
         rivalScores={rivalScores}
+        bestScore={bestScore}
         removeScore={removeScore}
       />
     </div>

@@ -21,6 +21,13 @@ const getScoreHistory = catchAsync(async (req, res) => {
     res.send(history);
 });
 
+const getBestScore = catchAsync(async (req, res) => {
+    const mode = req.params.mode;
+    const { songId, diff } = req.params;
+    const score = await scoresService.getBestScore(mode, songId, diff);
+    res.send(score);
+});
+
 const postScore = catchAsync(async (req, res) => {
     const result = await scoresService.createScore(req.body, req.params.mode, req.user);
     res.status(httpStatus.CREATED).send(result);
@@ -67,6 +74,7 @@ const getAllScores = catchAsync(async (req, res) => {
 module.exports = {
     getScores,
     getScoreHistory,
+    getBestScore,
     postScore,
     deleteScore,
     getLatestScores,

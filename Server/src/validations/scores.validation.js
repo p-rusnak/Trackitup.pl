@@ -8,6 +8,13 @@ const createScore = {
     grade: Joi.string().allow('', null),
     song_id: Joi.string().required(),
     diff: Joi.string().required(),
+    perfects: Joi.number().integer().allow(null),
+    greats: Joi.number().integer().allow(null),
+    good: Joi.number().integer().allow(null),
+    bad: Joi.number().integer().allow(null),
+    misses: Joi.number().integer().allow(null),
+    combo: Joi.number().integer().allow(null),
+    total: Joi.number().integer().allow(null),
   }),
 };
 
@@ -62,10 +69,19 @@ const deleteScore = {
   }),
 };
 
+const getBestScore = {
+  params: Joi.object().keys({
+    mode: Joi.string(),
+    songId: Joi.string().required(),
+    diff: Joi.string().required(),
+  }),
+};
+
 module.exports = {
   createScore,
   getScores,
   getScoreHistory,
+  getBestScore,
   getLatestScores,
   getLatestPlayers,
   getAllScores,

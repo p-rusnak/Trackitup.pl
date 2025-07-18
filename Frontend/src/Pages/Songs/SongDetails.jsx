@@ -15,6 +15,7 @@ import {
   TableHead,
   TableRow,
   Chip,
+  TextField,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -27,11 +28,19 @@ import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
 
-const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history = [], removeScore, rivalScores = [] }) => {
+const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history = [], removeScore, rivalScores = [], bestScore }) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
   const [goal, setGoal] = useState(false);
+  const [showAccurate, setShowAccurate] = useState(false);
+  const [perf, setPerf] = useState(0);
+  const [great, setGreat] = useState(0);
+  const [good, setGood] = useState(0);
+  const [bad, setBad] = useState(0);
+  const [miss, setMiss] = useState(0);
+  const [combo, setCombo] = useState(0);
+  const [total, setTotal] = useState(0);
   const apiClient = useMemo(() => new ApiClient(), []);
 
   useEffect(() => {
@@ -117,7 +126,52 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
             }}>
               {goal ? 'Remove Goal' : 'Set Goal'}
             </Button>
+            <Button size="small" onClick={() => setShowAccurate((v) => !v)}>
+              Add Accurate Score
+            </Button>
           </GradeWrapper>
+        )}
+        {showAccurate && (
+          <Box sx={{ mt: 1, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+            <TextField label="Perfects" size="small" type="number" value={perf} onChange={(e) => setPerf(e.target.value)} />
+            <TextField label="Greats" size="small" type="number" value={great} onChange={(e) => setGreat(e.target.value)} />
+            <TextField label="Good" size="small" type="number" value={good} onChange={(e) => setGood(e.target.value)} />
+            <TextField label="Bad" size="small" type="number" value={bad} onChange={(e) => setBad(e.target.value)} />
+            <TextField label="Misses" size="small" type="number" value={miss} onChange={(e) => setMiss(e.target.value)} />
+            <TextField label="Max Combo" size="small" type="number" value={combo} onChange={(e) => setCombo(e.target.value)} />
+            <TextField label="Total Score" size="small" type="number" value={total} onChange={(e) => setTotal(e.target.value)} />
+            <Button
+              variant="contained"
+              size="small"
+              onClick={() => {
+                apiClient
+                  .postScores(chart.mode, {
+                    song_id: chart.id,
+                    diff: chart.diff,
+                    grade,
+                    perfects: Number(perf),
+                    greats: Number(great),
+                    good: Number(good),
+                    bad: Number(bad),
+                    misses: Number(miss),
+                    combo: Number(combo),
+                  total: Number(total),
+                })
+                  .then(() => {
+                    setShowAccurate(false);
+                    changeGrade && changeGrade(grade);
+                  });
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
+        )}
+        {bestScore && (
+          <Typography variant="subtitle2" gutterBottom sx={{ mt: 1 }}>
+            Best Score: {bestScore.user.username} - {bestScore.total || '-'}{' '}
+            {bestScore.grade && <GradeIcon src={grades[bestScore.grade]} alt={bestScore.grade} />}
+          </Typography>
         )}
         <Typography variant="subtitle2" gutterBottom>
           Packs
