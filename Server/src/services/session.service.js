@@ -3,6 +3,18 @@ const prisma = require('../db');
 const SESSION_TIMEOUT_MS = 60 * 60 * 1000; // 1 hour
 const START_THRESHOLD_MS = 10 * 60 * 1000; // 10 minutes
 
+const closeExpiredSessions = async () => {
+  const threshold = new Date(Date.now() - SESSION_TIMEOUT_MS);
+  const expired = await prisma.session.findMany({
+    where: { endedAt: null, lastScore: { lt: threshold } },
+  });
+  await Promise.all(
+    expired.map((s) =>
+      prisma.session.update({ where: { id: s.id }, data: { endedAt: s.lastScore } })
+    )
+  );
+};
+
 const handleScore = async (userId, scoreId) => {
   const now = new Date();
   let session = await prisma.session.findFirst({
@@ -40,8 +52,21 @@ const handleScore = async (userId, scoreId) => {
   return null;
 };
 
-const getCurrent = async (userId) =>
-  prisma.session.findFirst({ where: { userId, endedAt: null }, include: { scores: true } });
+const getCurrent = async (userId) => {
+  await closeExpiredSessions();
+  const session = await prisma.session.findFirst({
+    where: { userId, endedAt: null },
+    include: { scores: true },
+  });
+  if (session && Date.now() - session.lastScore.getTime() > SESSION_TIMEOUT_MS) {
+    await prisma.session.update({
+      where: { id: session.id },
+      data: { endedAt: session.lastScore },
+    });
+    return null;
+  }
+  return session;
+};
 
 const endSession = async (userId) => {
   const session = await prisma.session.findFirst({ where: { userId, endedAt: null } });
@@ -66,15 +91,18 @@ const deleteSession = async (id, userId) => {
   return session;
 };
 
-const listSessions = async (userId) =>
-  prisma.session.findMany({
+const listSessions = async (userId) => {
+  await closeExpiredSessions();
+  return prisma.session.findMany({
     where: { userId },
     orderBy: { startedAt: 'desc' },
     include: { _count: { select: { scores: true } } },
   });
+};
 
-const listOngoingSessions = async (limit = 10) =>
-  prisma.session.findMany({
+const listOngoingSessions = async (limit = 10) => {
+  await closeExpiredSessions();
+  return prisma.session.findMany({
     where: { endedAt: null },
     orderBy: { id: 'desc' },
     take: limit,
@@ -83,9 +111,11 @@ const listOngoingSessions = async (limit = 10) =>
       _count: { select: { scores: true } },
     },
   });
+};
 
-const listAllSessions = async (limit = 10) =>
-  prisma.session.findMany({
+const listAllSessions = async (limit = 10) => {
+  await closeExpiredSessions();
+  return prisma.session.findMany({
     take: limit,
     orderBy: { id: 'desc' },
     include: {
@@ -93,6 +123,7 @@ const listAllSessions = async (limit = 10) =>
       _count: { select: { scores: true } },
     },
   });
+};
 
 const getSession = async (id) =>
   prisma.session.findUnique({ where: { id: Number(id) }, include: { scores: true } });
