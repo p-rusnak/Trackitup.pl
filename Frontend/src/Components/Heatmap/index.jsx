@@ -1,6 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const LabelsWrapper = styled.div`
+  display: flex;
+  margin-left: 14px;
+`;
+const MonthLabel = styled.div`
+  width: 14px;
+  font-size: 10px;
+  text-align: center;
+`;
+
 const Wrapper = styled.div`
   display: flex;
 `;
@@ -35,6 +45,13 @@ const CalendarHeatmap = ({ counts }) => {
   for (let i = 0; i < days.length; i += 7) {
     weeks.push(days.slice(i, i + 7));
   }
+  const monthLabels = weeks.map((week) => {
+    const first = week.find((v) => v);
+    if (first && first.date.getDate() === 1) {
+      return first.date.toLocaleString('default', { month: 'short' });
+    }
+    return '';
+  });
   const max = Math.max(0, ...days.map((dd) => dd.count));
   const level = (c) => {
     if (c === 0 || max === 0) return 0;
@@ -45,18 +62,27 @@ const CalendarHeatmap = ({ counts }) => {
     return 1;
   };
   return (
-    <Wrapper>
-      {weeks.map((week, i) => (
-        <Column key={i}>
-          {Array.from({ length: 7 }).map((_, j) => {
-            const day = week[j];
-            const count = day ? day.count : 0;
-            const dt = day ? dateKey(day.date) : '';
-            return <Cell key={j} level={level(count)} title={`${dt}: ${count}`} />;
-          })}
-        </Column>
-      ))}
-    </Wrapper>
+    <div>
+      <LabelsWrapper>
+        {monthLabels.map((m, i) => (
+          <MonthLabel key={i}>{m}</MonthLabel>
+        ))}
+      </LabelsWrapper>
+      <Wrapper>
+        {weeks.map((week, i) => (
+          <Column key={i}>
+            {Array.from({ length: 7 }).map((_, j) => {
+              const day = week[j];
+              const count = day ? day.count : 0;
+              const dt = day ? dateKey(day.date) : '';
+              return (
+                <Cell key={j} level={level(count)} title={`${dt}: ${count}`} />
+              );
+            })}
+          </Column>
+        ))}
+      </Wrapper>
+    </div>
   );
 };
 
