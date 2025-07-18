@@ -72,6 +72,14 @@ export class ApiClient {
     postRival = (rivalId) => client.post('rivals', { rivalId })
     getRivalScores = (mode, songId, diff, userId) =>
         client.get(`rivals/scores/${mode}/${songId}/${diff}`, { params: userId ? { userId } : {} })
+
+    ocrScore = (file) => {
+        const data = new FormData()
+        data.append('scoreImage', file)
+        return client.post('scores/ocr', data, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        })
+    }
 }
 
 export default client

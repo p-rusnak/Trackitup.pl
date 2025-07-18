@@ -36,7 +36,7 @@ const pages = [
   "Coop",
   "Scores",
   "Leaderboard",
-  // "Add Score",
+  "Add Score",
 ];
 const settings = ["Profile", "Logout"];
 
@@ -62,7 +62,11 @@ function NavBar() {
 
   const handleCloseNavMenu = (page) => {
     if (page) {
-      navigate(`/${page}`);
+      if (page === "Add Score") {
+        navigate("/add");
+      } else {
+        navigate(`/${page}`);
+      }
     }
     setAnchorElNav(null);
   };
