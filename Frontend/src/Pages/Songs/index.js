@@ -242,14 +242,15 @@ const Songs = ({ mode }) => {
     }
   };
 
-  const changeGrade = (value) => {
-    apiClient
-      .postScores(mode, {
-        song_id: openChart.id,
-        diff: openChart.diff,
-        grade: value,
-      })
-      .then((r) => {
+  const changeGrade = (value, skipPost = false) => {
+    const post = skipPost
+      ? Promise.resolve({ data: {} })
+      : apiClient.postScores(mode, {
+          song_id: openChart.id,
+          diff: openChart.diff,
+          grade: value,
+        });
+    post.then((r) => {
         const { newBadges = [], newTitles = [], isNew, session } = r.data || {};
         if (session) storeSessionId(session.id);
         if (isNew) {
