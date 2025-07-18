@@ -109,7 +109,7 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
           </Typography>
         )}
         <Divider sx={{ my: 2 }} />
-        {loggedIn && (
+        {loggedIn && !showAccurate && (
           <GradeWrapper>
             <GradeSelect
               label="Set Grade"
@@ -133,6 +133,11 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
         )}
         {showAccurate && (
           <Box sx={{ mt: 1, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+            <GradeSelect
+              label="Set Grade"
+              value={grade}
+              onChange={(g) => setGrade(g)}
+            />
             <TextField label="Perfects" size="small" type="number" value={perf} onChange={(e) => setPerf(e.target.value)} />
             <TextField label="Greats" size="small" type="number" value={great} onChange={(e) => setGreat(e.target.value)} />
             <TextField label="Good" size="small" type="number" value={good} onChange={(e) => setGood(e.target.value)} />
@@ -159,7 +164,7 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
                 })
                   .then(() => {
                     setShowAccurate(false);
-                    changeGrade && changeGrade(grade);
+                    changeGrade && changeGrade(grade, true);
                   });
               }}
             >

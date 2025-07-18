@@ -37,16 +37,17 @@ const SongPage = () => {
     api.getBestScore(mode, id, diff).then((r) => setBestScore(r.data));
   }, [id, diff, mode, favorites]);
 
-  const changeGrade = (value) => {
+  const changeGrade = (value, skipPost = false) => {
     const api = new ApiClient();
-    api
-      .postScores(mode, { song_id: id, diff, grade: value })
-      .then((r) => {
-        const { session } = r.data || {};
-        if (session) storeSessionId(session.id);
-        setChart((c) => (c ? { ...c, grade: value } : c));
-        api.getScoreHistory(mode, id, diff).then((res) => setHistory(res.data));
-      });
+    const post = skipPost
+      ? Promise.resolve({ data: {} })
+      : api.postScores(mode, { song_id: id, diff, grade: value });
+    post.then((r) => {
+      const { session } = r.data || {};
+      if (session) storeSessionId(session.id);
+      setChart((c) => (c ? { ...c, grade: value } : c));
+      api.getScoreHistory(mode, id, diff).then((res) => setHistory(res.data));
+    });
   };
 
   const toggleFavorite = () => {
