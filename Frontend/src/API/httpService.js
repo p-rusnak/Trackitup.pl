@@ -42,6 +42,9 @@ export class ApiClient {
     getScoreHistory = (mode, songId, diff, userId) =>
         client.get(`scores/history/${mode}/${songId}/${diff}`, { params: userId ? { userId } : {} })
 
+    getBestScore = (mode, songId, diff) =>
+        client.get(`scores/best/${mode}/${songId}/${diff}`)
+
     deleteScore = (id) => client.delete(`scores/${id}`)
 
     getGoals = (mode, userId) => client.get(`goals/${mode}`, { params: userId ? { userId } : {} })

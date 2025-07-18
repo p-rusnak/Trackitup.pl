@@ -46,6 +46,13 @@ model Score {
   song_id   String
   diff      String
   grade     String?
+  perfects  Int?
+  greats    Int?
+  good      Int?
+  bad       Int?
+  misses    Int?
+  combo     Int?
+  total     Int?
   mode      String
   createdAt DateTime @default(now())
   firstPass Boolean  @default(false)

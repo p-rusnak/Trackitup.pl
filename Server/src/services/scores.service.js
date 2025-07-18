@@ -41,7 +41,7 @@ const getScores = async (filter) => {
 };
 
 const createScore = async (scoreBody, mode, user) => {
-  const { song_id, diff, grade } = scoreBody;
+  const { song_id, diff, grade, perfects, greats, good, bad, misses, combo, total } = scoreBody;
   let firstPass = false;
   if (grade && passGrades.includes(grade)) {
     const existing = await prisma.score.findFirst({
@@ -60,6 +60,13 @@ const createScore = async (scoreBody, mode, user) => {
       song_id,
       diff,
       grade: grade || null,
+      perfects: perfects ?? null,
+      greats: greats ?? null,
+      good: good ?? null,
+      bad: bad ?? null,
+      misses: misses ?? null,
+      combo: combo ?? null,
+      total: total ?? null,
       userId: user.id,
       mode,
       firstPass,
@@ -159,6 +166,24 @@ const getScoreHistory = async (userId, mode, songId, diff) =>
     orderBy: { createdAt: 'desc' },
   });
 
+const getBestScore = async (mode, songId, diff) => {
+  const scores = await prisma.score.findMany({
+    where: { mode, song_id: songId, diff },
+    include: { user: { select: { id: true, username: true, avatarUrl: true } } },
+  });
+  let best = null;
+  scores.forEach((s) => {
+    if (
+      !best ||
+      getGradeIndex(s.grade) < getGradeIndex(best.grade) ||
+      (getGradeIndex(s.grade) === getGradeIndex(best.grade) && (s.total || 0) > (best.total || 0))
+    ) {
+      best = s;
+    }
+  });
+  return best;
+};
+
 const deleteScore = async (id, userId) => {
   const score = await prisma.score.findUnique({ where: { id } });
   if (!score || score.userId !== userId) return null;
@@ -176,4 +201,5 @@ module.exports = {
   getScoreHistory,
   deleteScore,
   getGradeIndex,
+  getBestScore,
 };
