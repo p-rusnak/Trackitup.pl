@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const LabelsWrapper = styled.div`
   display: flex;
@@ -15,11 +15,12 @@ const DayLabelsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 4px;
+  margin-top: 14px;
   width: 20px;
 `;
 
 const DayLabel = styled.div`
-  margin: 1px 0;
+  margin: 0;
   height: 14px;
   line-height: 14px;
   font-size: 10px;
@@ -37,19 +38,23 @@ const Cell = styled.div`
   width: 12px;
   height: 12px;
   margin: 1px;
-  visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
-  background-color: ${({ level }) => ['#ebedf0','#c6e48b','#7bc96f','#239a3b','#196127'][level]};
+  visibility: ${({ hidden }) => (hidden ? "hidden" : "visible")};
+  background-color: ${({ level }) =>
+    ["#ebedf0", "#c6e48b", "#7bc96f", "#239a3b", "#196127"][level]};
 `;
 
 const CalendarHeatmap = ({ counts }) => {
   const today = new Date();
   const start = new Date(today);
   start.setDate(start.getDate() - 364);
-  start.setHours(0,0,0,0);
+  start.setHours(0, 0, 0, 0);
   const startDay = start.getDay();
   start.setDate(start.getDate() - startDay);
 
-  const dateKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const dateKey = (d) =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+      d.getDate()
+    ).padStart(2, "0")}`;
 
   const days = [];
   let d = new Date(start);
@@ -64,9 +69,9 @@ const CalendarHeatmap = ({ counts }) => {
   const monthLabels = weeks.map((week) => {
     const firstOfMonth = week.find((v) => v && v.date.getDate() === 1);
     if (firstOfMonth) {
-      return firstOfMonth.date.toLocaleString('default', { month: 'short' });
+      return firstOfMonth.date.toLocaleString("default", { month: "short" });
     }
-    return '';
+    return "";
   });
   const max = Math.max(0, ...days.map((dd) => dd.count));
   const level = (c) => {
@@ -77,9 +82,9 @@ const CalendarHeatmap = ({ counts }) => {
     if (t > 0.25) return 2;
     return 1;
   };
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <DayLabelsWrapper>
         {daysOfWeek.map((d) => (
           <DayLabel key={d}>{d}</DayLabel>
@@ -97,7 +102,7 @@ const CalendarHeatmap = ({ counts }) => {
               {Array.from({ length: 7 }).map((_, j) => {
                 const day = week[j];
                 const count = day ? day.count : 0;
-                const dt = day ? dateKey(day.date) : '';
+                const dt = day ? dateKey(day.date) : "";
                 const hidden = !day;
                 return (
                   <Cell
