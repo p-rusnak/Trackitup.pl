@@ -58,6 +58,7 @@ const AddButton = styled(IconButton)`
   bottom: 0;
   right: 0;
   background-color: white !important;
+  color: black !important;
   &:hover {
     background-color: white;
   }
