@@ -90,6 +90,7 @@ const SongPage = () => {
         rivalScores={rivalScores}
         bestScore={bestScore}
         removeScore={removeScore}
+        playHistoryExpanded
       />
     </div>
   );

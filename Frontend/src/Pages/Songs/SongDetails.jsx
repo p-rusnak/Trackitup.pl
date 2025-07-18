@@ -29,7 +29,17 @@ import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
 import ScoreDetailsDialog from "../../Components/ScoreDetailsDialog";
 
-const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history = [], removeScore, rivalScores = [], bestScore }) => {
+const SongDetails = ({
+  chart,
+  changeGrade,
+  toggleFavorite,
+  changeDiff,
+  history = [],
+  removeScore,
+  rivalScores = [],
+  bestScore,
+  playHistoryExpanded = false,
+}) => {
   const [grade, setGrade] = useState(chart.grade || "");
   const loggedIn = Boolean(localStorage.getItem("token"));
   const [ratings, setRatings] = useState({ harder: 0, ok: 0, easier: 0 });
@@ -266,7 +276,7 @@ const SongDetails = ({ chart, changeGrade, toggleFavorite, changeDiff, history =
         {history.length > 0 && (
           <>
             <Divider sx={{ my: 2 }} />
-            <Accordion>
+            <Accordion defaultExpanded={playHistoryExpanded}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography>Play History</Typography>
               </AccordionSummary>
