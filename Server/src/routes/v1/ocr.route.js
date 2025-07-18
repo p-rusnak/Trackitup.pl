@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 
 const multer = require('multer');
 const { spawn } = require('child_process');
@@ -7,6 +6,8 @@ const path = require('path');
 const fs = require('fs');
 
 const upload = multer({ dest: 'uploads/' });
+
+const router = express.Router();
 
 router.route('/ocr').post(upload.single('scoreImage'), (req, res) => {
   const imagePath = req.file.path;
@@ -25,3 +26,5 @@ router.route('/ocr').post(upload.single('scoreImage'), (req, res) => {
     }
   });
 });
+
+module.exports = router;
