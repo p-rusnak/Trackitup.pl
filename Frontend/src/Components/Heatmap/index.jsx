@@ -46,7 +46,7 @@ const CalendarHeatmap = ({ counts }) => {
   const startDay = start.getDay();
   start.setDate(start.getDate() - startDay);
 
-  const dateKey = (d) => d.toISOString().slice(0,10);
+  const dateKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
   const days = [];
   let d = new Date(start);
