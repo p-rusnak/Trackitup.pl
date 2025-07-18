@@ -23,6 +23,7 @@ import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ClearIcon from "@mui/icons-material/Clear";
 import styled from "styled-components";
+import { styled as styledMui } from "@mui/system";
 import { ApiClient } from "../../API/httpService";
 import Thumbnail from "../../Components/Thumbnail";
 import { Box } from "@mui/system";
@@ -744,7 +745,7 @@ const StyledTextField = styled(TextField)`
 const NumberInput = styled(TextField)`
   width: 70px;
 `;
-const StyledBox = styled(Box)`
+const StyledBox = styledMui(Box)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -765,7 +766,7 @@ const FilterCard = styled(Paper)`
   padding: 20px;
   margin-bottom: 20px;
 `;
-const Card = styled(Paper)`
+const Card = styledMui(Paper)`
   padding: 20px;
   background-color: ${({ theme }) =>
     theme.palette?.background.paper || "white"};
