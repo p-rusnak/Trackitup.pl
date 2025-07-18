@@ -29,7 +29,6 @@ router
   .post(auth('postScores'), validate(scoresValidation.createScore), scoresController.postScore)
   .get(auth('getScores'), validate(scoresValidation.getScores), scoresController.getScores);
 
-
 const upload = multer({ dest: 'uploads/' });
 
 router.route('/ocr').post(upload.single('scoreImage'), (req, res) => {
