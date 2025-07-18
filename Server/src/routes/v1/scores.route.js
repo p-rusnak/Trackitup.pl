@@ -29,13 +29,14 @@ router
   .post(auth('postScores'), validate(scoresValidation.createScore), scoresController.postScore)
   .get(auth('getScores'), validate(scoresValidation.getScores), scoresController.getScores);
 
+
 const upload = multer({ dest: 'uploads/' });
 
 router.route('/ocr').post(upload.single('scoreImage'), (req, res) => {
   const imagePath = req.file.path;
 
-  // Call Python OCR script
-  const py = spawn('python3', ['ocr_piupump.py', imagePath]);
+  const scriptPath = path.join(__dirname, '../../../ocr/ocr_piupump.py');
+  const py = spawn('python3', [scriptPath, imagePath]);
   let data = '';
   py.stdout.on('data', (chunk) => (data += chunk));
   py.on('close', (code) => {

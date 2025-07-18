@@ -13,6 +13,7 @@ import Titles from '../Pages/Titles'
 import SessionPage from '../Pages/Session'
 import SessionsPage from '../Pages/Sessions'
 import AllSessions from '../Pages/Sessions/All'
+import AddScore from '../Pages/AddScore'
 // import { useDispatch, useSelector } from 'react-redux'
 import Login from '../Pages/Login'
 import Profile from '../Pages/Profile'
@@ -76,7 +77,7 @@ const router = createHashRouter([
             },
             {
                 path: 'add',
-                element: <div>add</div>
+                element: <AddScore />
             },
             {
                 path: 'profile/:id',
