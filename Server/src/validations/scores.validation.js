@@ -15,6 +15,7 @@ const createScore = {
     misses: Joi.number().integer().allow(null),
     combo: Joi.number().integer().allow(null),
     total: Joi.number().integer().allow(null),
+    comment: Joi.string().allow('', null),
   }),
 };
 
@@ -69,6 +70,15 @@ const deleteScore = {
   }),
 };
 
+const updateScore = {
+  params: Joi.object().keys({
+    id: Joi.number().integer().required(),
+  }),
+  body: Joi.object().keys({
+    comment: Joi.string().allow('', null).required(),
+  }),
+};
+
 const getBestScore = {
   params: Joi.object().keys({
     mode: Joi.string(),
@@ -95,5 +105,6 @@ module.exports = {
   getLatestPlayers,
   getAllScores,
   deleteScore,
+  updateScore,
   getDailyScores,
 };

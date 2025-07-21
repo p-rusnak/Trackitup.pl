@@ -161,6 +161,18 @@ const SessionPage = () => {
     setShareUrl(url);
   };
 
+  const exportCsv = () => {
+    const sid = id || session.id;
+    api.exportSession(sid).then((r) => {
+      const url = window.URL.createObjectURL(new Blob([r.data]));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'session.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
+  };
+
   if (!session) return <p>{id ? "Session not found" : "No active session"}</p>;
 
   return (
@@ -182,10 +194,11 @@ const SessionPage = () => {
           </Button>
         </Box>
       )}
-      <Box sx={{ mb: 2 }}>
+      <Box sx={{ mb: 2, display: 'flex', gap: 1 }}>
         <Button onClick={share} variant="contained" startIcon={<ShareIcon />}>
           Share
         </Button>
+        <Button onClick={exportCsv} variant="outlined">Export CSV</Button>
       </Box>
       <ToggleButtonGroup
         value={view}

@@ -53,6 +53,15 @@ const deleteScore = catchAsync(async (req, res) => {
     res.status(httpStatus.NO_CONTENT).send();
 });
 
+const updateScore = catchAsync(async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const updated = await scoresService.updateScore(id, req.user.id, req.body.comment ?? null);
+    if (!updated) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Score not found');
+    }
+    res.send(updated);
+});
+
 const getLatestScores = catchAsync(async (req, res) => {
     const limit = parseInt(req.query.limit, 10) || 10;
     const result = await scoresService.getLatestScores(limit);
@@ -82,14 +91,65 @@ const getAllScores = catchAsync(async (req, res) => {
     res.send(result);
 });
 
+const exportScores = catchAsync(async (req, res) => {
+    const userId = req.query.userId || req.user.id;
+    const scores = await scoresService.getAllScores(1, 1000000, { player: undefined, songId: undefined, diff: undefined, grade: undefined, from: undefined, to: undefined, mode: undefined, userId }, 'createdAt:asc');
+    const lines = ['date,song,diff,mode,grade,miss_count,is_new_clear,is_fail,notes'];
+    scores.results.forEach((s) => {
+        const fail = s.grade === 'Failed' || s.grade === 'F';
+        lines.push([
+            s.createdAt.toISOString(),
+            s.song_id,
+            s.diff,
+            s.mode,
+            s.grade || '',
+            s.misses ?? '',
+            s.firstPass ? 'true' : 'false',
+            fail ? 'true' : 'false',
+            s.comment ? s.comment.replace(/\n/g, ' ') : ''
+        ].join(','));
+    });
+    res.header('Content-Type', 'text/csv');
+    res.attachment('scores.csv');
+    res.send(lines.join('\n'));
+});
+
+const exportSession = catchAsync(async (req, res) => {
+    const session = await sessionService.getSession(req.params.id);
+    if (!session) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Session not found');
+    }
+    const lines = ['date,song,diff,mode,grade,miss_count,is_new_clear,is_fail,notes'];
+    session.scores.forEach((s) => {
+        const fail = s.grade === 'Failed' || s.grade === 'F';
+        lines.push([
+            s.createdAt.toISOString(),
+            s.song_id,
+            s.diff,
+            s.mode,
+            s.grade || '',
+            s.misses ?? '',
+            s.firstPass ? 'true' : 'false',
+            fail ? 'true' : 'false',
+            s.comment ? s.comment.replace(/\n/g, ' ') : ''
+        ].join(','));
+    });
+    res.header('Content-Type', 'text/csv');
+    res.attachment('session.csv');
+    res.send(lines.join('\n'));
+});
+
 module.exports = {
     getScores,
     getScoreHistory,
     getBestScore,
     postScore,
     deleteScore,
+    updateScore,
     getLatestScores,
     getLatestPlayers,
     getAllScores,
     getDailyScores,
+    exportScores,
+    exportSession,
 };

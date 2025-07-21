@@ -21,6 +21,7 @@ router.get(
 );
 router.get('/', auth('getScores'), sessionsController.listSessions);
 router.get('/:id', validate(sessionsValidation.getSession), sessionsController.getSession);
+router.get('/:id/export', validate(sessionsValidation.getSession), sessionsController.exportSession);
 router.delete('/:id', auth('postScores'), validate(sessionsValidation.deleteSession), sessionsController.deleteSession);
 
 module.exports = router;

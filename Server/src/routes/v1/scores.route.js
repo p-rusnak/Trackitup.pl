@@ -23,6 +23,9 @@ router
 router.route('/best/:mode/:songId/:diff').get(validate(scoresValidation.getBestScore), scoresController.getBestScore);
 
 router.route('/:id').delete(auth('postScores'), validate(scoresValidation.deleteScore), scoresController.deleteScore);
+router.route('/:id').patch(auth('postScores'), validate(scoresValidation.updateScore), scoresController.updateScore);
+
+router.route('/export').get(auth('getScores'), scoresController.exportScores);
 
 router
   .route('/:mode')

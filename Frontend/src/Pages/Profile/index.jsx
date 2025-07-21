@@ -113,6 +113,17 @@ const Profile = () => {
     });
   };
 
+  const handleExport = () => {
+    apiClient.exportScores(id).then((r) => {
+      const url = window.URL.createObjectURL(new Blob([r.data]));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'scores.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
+  };
+
   useEffect(() => {
     if (!id) return;
     apiClient.getUser(id).then((r) => {
@@ -257,6 +268,13 @@ const Profile = () => {
             <Typography sx={{ mt: 1 }}>
               <Link to="/Titles">Titles info</Link>
             </Typography>
+            {isOwnProfile && (
+              <Box sx={{ mt: 1 }}>
+                <Button size="small" onClick={handleExport}>
+                  Export Scores
+                </Button>
+              </Box>
+            )}
             {!isOwnProfile && loggedUser && (
               <Box sx={{ mt: 1 }}>
                 <Button
