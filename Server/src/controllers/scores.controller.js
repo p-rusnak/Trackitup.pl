@@ -3,6 +3,7 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { scoresService } = require('../services');
+const songs = require('../services/songs.json');
 
 const getScores = catchAsync(async (req, res) => {
     const mode = req.params.mode
@@ -94,12 +95,13 @@ const getAllScores = catchAsync(async (req, res) => {
 const exportScores = catchAsync(async (req, res) => {
     const userId = req.query.userId || req.user.id;
     const scores = await scoresService.getAllScores(1, 1000000, { player: undefined, songId: undefined, diff: undefined, grade: undefined, from: undefined, to: undefined, mode: undefined, userId }, 'createdAt:asc');
-    const lines = ['date,song,diff,mode,grade,miss_count,is_new_clear,is_fail,notes'];
+    const lines = ['date,songId,song_name,diff,mode,grade,miss_count,is_new_clear,is_fail,notes'];
     scores.results.forEach((s) => {
-        const fail = s.grade === 'Failed' || s.grade === 'F';
+        const fail = ['Failed', 'F', 'A', 'B', 'C', 'D'].includes(s.grade);
         lines.push([
             s.createdAt.toISOString(),
             s.song_id,
+            songs[s.song_id]?.title || '',
             s.diff,
             s.mode,
             s.grade || '',
@@ -119,12 +121,13 @@ const exportSession = catchAsync(async (req, res) => {
     if (!session) {
         throw new ApiError(httpStatus.NOT_FOUND, 'Session not found');
     }
-    const lines = ['date,song,diff,mode,grade,miss_count,is_new_clear,is_fail,notes'];
+    const lines = ['date,songId,song_name,diff,mode,grade,miss_count,is_new_clear,is_fail,notes'];
     session.scores.forEach((s) => {
-        const fail = s.grade === 'Failed' || s.grade === 'F';
+        const fail = ['Failed', 'F', 'A', 'B', 'C', 'D'].includes(s.grade);
         lines.push([
             s.createdAt.toISOString(),
             s.song_id,
+            songs[s.song_id]?.title || '',
             s.diff,
             s.mode,
             s.grade || '',
