@@ -10,6 +10,7 @@ const goalsRoute = require('./goals.route');
 const sessionsRoute = require('./sessions.route');
 const rivalsRoute = require('./rivals.route');
 const ocrRoute = require('./ocr.route');
+const commentsRoute = require('./comments.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -50,6 +51,10 @@ const defaultRoutes = [
   {
     path: '/rivals',
     route: rivalsRoute,
+  },
+  {
+    path: '/comments',
+    route: commentsRoute,
   },
   {
     path: `/ocr`,

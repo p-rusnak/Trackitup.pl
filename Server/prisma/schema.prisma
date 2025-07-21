@@ -114,3 +114,14 @@ model Rival {
 
   @@unique([userId, rivalId])
 }
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  song_id   String
+  diff      String
+  mode      String
+  text      String
+  createdAt DateTime @default(now())
+}

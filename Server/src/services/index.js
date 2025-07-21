@@ -10,3 +10,4 @@ module.exports.ratingsService = require('./ratings.service');
 module.exports.goalsService = require('./goals.service');
 module.exports.sessionService = require('./session.service');
 module.exports.rivalsService = require('./rivals.service');
+module.exports.commentsService = require('./comments.service');
