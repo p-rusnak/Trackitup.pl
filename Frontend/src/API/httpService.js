@@ -52,6 +52,10 @@ export class ApiClient {
     client.get(`scores/best/${mode}/${songId}/${diff}`);
 
   deleteScore = (id) => client.delete(`scores/${id}`);
+  updateScore = (id, comment) => client.patch(`scores/${id}`, { comment });
+  exportScores = (userId) => client.get('scores/export', { params: { userId }, responseType: 'blob' });
+
+  exportSession = (id) => client.get(`sessions/${id}/export`, { responseType: 'blob' });
 
   getGoals = (mode, userId) =>
     client.get(`goals/${mode}`, { params: userId ? { userId } : {} });

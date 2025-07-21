@@ -42,7 +42,7 @@ const getScores = async (filter) => {
 };
 
 const createScore = async (scoreBody, mode, user) => {
-  const { song_id, diff, grade, perfects, greats, good, bad, misses, combo, total } = scoreBody;
+  const { song_id, diff, grade, perfects, greats, good, bad, misses, combo, total, comment } = scoreBody;
   let firstPass = false;
   if (grade && passGrades.includes(grade)) {
     const existing = await prisma.score.findFirst({
@@ -68,6 +68,7 @@ const createScore = async (scoreBody, mode, user) => {
       misses: misses ?? null,
       combo: combo ?? null,
       total: total ?? null,
+      comment: comment ?? null,
       userId: user.id,
       mode,
       firstPass,
@@ -210,6 +211,12 @@ const deleteScore = async (id, userId) => {
   return score;
 };
 
+const updateScore = async (id, userId, comment) => {
+  const score = await prisma.score.findUnique({ where: { id } });
+  if (!score || score.userId !== userId) return null;
+  return prisma.score.update({ where: { id }, data: { comment } });
+};
+
 module.exports = {
   getScores,
   createScore,
@@ -218,6 +225,7 @@ module.exports = {
   getAllScores,
   getScoreHistory,
   deleteScore,
+  updateScore,
   getGradeIndex,
   getBestScore,
   getDailyScores,

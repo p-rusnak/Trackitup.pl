@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ClearIcon from "@mui/icons-material/Clear";
+import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import grades from "../../Assets/Grades";
@@ -54,6 +55,7 @@ const SongDetails = ({
   const [miss, setMiss] = useState(0);
   const [combo, setCombo] = useState(0);
   const [total, setTotal] = useState(0);
+  const [comment, setComment] = useState("");
   const apiClient = useMemo(() => new ApiClient(), []);
 
   useEffect(() => {
@@ -158,6 +160,7 @@ const SongDetails = ({
             <TextField label="Misses" size="small" type="number" value={miss} onChange={(e) => setMiss(e.target.value)} />
             <TextField label="Max Combo" size="small" type="number" value={combo} onChange={(e) => setCombo(e.target.value)} />
             <TextField label="Total Score" size="small" type="number" value={total} onChange={(e) => setTotal(e.target.value)} />
+            <TextField label="Comment" size="small" value={comment} onChange={(e) => setComment(e.target.value)} />
             <Button
               variant="contained"
               size="small"
@@ -173,8 +176,9 @@ const SongDetails = ({
                     bad: Number(bad),
                     misses: Number(miss),
                     combo: Number(combo),
-                  total: Number(total),
-                })
+                    total: Number(total),
+                    comment,
+                  })
                   .then(() => {
                     setShowAccurate(false);
                     changeGrade && changeGrade(grade, true);
@@ -287,9 +291,10 @@ const SongDetails = ({
                     <TableRow>
                       <TableCell>Grade</TableCell>
                       <TableCell>Date / Time</TableCell>
+                      {removeScore && <TableCell>Notes</TableCell>}
                       {removeScore && <TableCell />}
                     </TableRow>
-                  </TableHead>
+                 </TableHead>
                   <TableBody>
                     {history.map((h) => (
                       <TableRow
@@ -314,11 +319,24 @@ const SongDetails = ({
                           {new Date(h.createdAt).toLocaleString()}
                         </TableCell>
                         {removeScore && (
-                          <TableCell>
-                            <IconButton size="small" onClick={() => removeScore(h.id)}>
-                              <ClearIcon fontSize="small" />
-                            </IconButton>
-                          </TableCell>
+                          <>
+                            <TableCell>
+                              <IconButton size="small" onClick={(e) => {
+                                e.stopPropagation();
+                                const val = window.prompt('Comment', h.comment || '');
+                                if (val !== null) apiClient.updateScore(h.id, val).then(() => {
+                                  h.comment = val;
+                                });
+                              }}>
+                                <NoteAltIcon fontSize="small" />
+                              </IconButton>
+                            </TableCell>
+                            <TableCell>
+                              <IconButton size="small" onClick={() => removeScore(h.id)}>
+                                <ClearIcon fontSize="small" />
+                              </IconButton>
+                            </TableCell>
+                          </>
                         )}
                       </TableRow>
                     ))}

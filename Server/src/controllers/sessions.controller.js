@@ -54,6 +54,31 @@ const deleteSession = catchAsync(async (req, res) => {
   }
   res.status(httpStatus.NO_CONTENT).send();
 });
+
+const exportSession = catchAsync(async (req, res) => {
+  const session = await sessionService.getSession(req.params.id);
+  if (!session) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Session not found');
+  }
+  const lines = ['date,song,diff,mode,grade,miss_count,is_new_clear,is_fail,notes'];
+  session.scores.forEach((s) => {
+    const fail = s.grade === 'Failed' || s.grade === 'F';
+    lines.push([
+      s.createdAt.toISOString(),
+      s.song_id,
+      s.diff,
+      s.mode,
+      s.grade || '',
+      s.misses ?? '',
+      s.firstPass ? 'true' : 'false',
+      fail ? 'true' : 'false',
+      s.comment ? s.comment.replace(/\n/g, ' ') : ''
+    ].join(','));
+  });
+  res.header('Content-Type', 'text/csv');
+  res.attachment('session.csv');
+  res.send(lines.join('\n'));
+});
 module.exports = {
   getCurrent,
   endSession,
@@ -63,4 +88,5 @@ module.exports = {
   listSessions,
   getSession,
   deleteSession,
+  exportSession,
 };

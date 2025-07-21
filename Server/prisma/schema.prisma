@@ -53,6 +53,7 @@ model Score {
   misses    Int?
   combo     Int?
   total     Int?
+  comment   String?
   mode      String
   createdAt DateTime @default(now())
   firstPass Boolean  @default(false)

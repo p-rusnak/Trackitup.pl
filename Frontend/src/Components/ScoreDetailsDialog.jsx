@@ -31,6 +31,7 @@ const ScoreDetailsDialog = ({ open, onClose, score }) => {
             {row('Bad', score.bad)}
             {row('Misses', score.misses)}
             {row('Max Combo', score.combo)}
+            {row('Comment', score.comment)}
           </TableBody>
         </Table>
       </DialogContent>
