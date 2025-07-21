@@ -85,6 +85,10 @@ export class ApiClient {
       params: userId ? { userId } : {},
     });
 
+  getComments = (mode, songId, diff) =>
+    client.get(`comments/${mode}/${songId}/${diff}`);
+  postComment = (mode, data) => client.post(`comments/${mode}/${data.song_id}/${data.diff}`, data);
+
   ocrScore = (file) => {
     const data = new FormData();
     data.append("scoreImage", file);

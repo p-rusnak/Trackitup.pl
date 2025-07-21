@@ -28,6 +28,7 @@ import GradeSelect from "../../Components/GradeSelect";
 import packs from "../../consts/packs";
 import { ApiClient } from "../../API/httpService";
 import ScoreDetailsDialog from "../../Components/ScoreDetailsDialog";
+import CommentsSection from "../../Components/CommentsSection";
 
 const SongDetails = ({
   chart,
@@ -327,6 +328,7 @@ const SongDetails = ({
             </Accordion>
           </>
         )}
+        <CommentsSection mode={chart.mode} songId={chart.id} diff={chart.diff} />
       </Content>
       <ScoreDetailsDialog
         open={!!openScore}
