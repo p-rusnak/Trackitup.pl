@@ -56,7 +56,7 @@ const getCurrent = async (userId) => {
   await closeExpiredSessions();
   const session = await prisma.session.findFirst({
     where: { userId, endedAt: null },
-    include: { scores: true },
+    include: { scores: { orderBy: { createdAt: 'asc' } } },
   });
   if (session && Date.now() - session.lastScore.getTime() > SESSION_TIMEOUT_MS) {
     await prisma.session.update({
@@ -126,7 +126,10 @@ const listAllSessions = async (limit = 10) => {
 };
 
 const getSession = async (id) =>
-  prisma.session.findUnique({ where: { id: Number(id) }, include: { scores: true } });
+  prisma.session.findUnique({
+    where: { id: Number(id) },
+    include: { scores: { orderBy: { createdAt: 'asc' } } },
+  });
 
 module.exports = {
   handleScore,
