@@ -27,6 +27,7 @@ model User {
   session         Session[]
   rivals          Rival[]        @relation("UserToRivals")
   rivalOf         Rival[]        @relation("UserRivalOf")
+  comments        Comment[]
 }
 
 model Token {
